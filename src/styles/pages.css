@@ -1,0 +1,13 @@
+.profile-image-container {
+  position: relative;
+  z-index: 10;
+}
+
+.profile-image {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.profile-image-container:hover .profile-image,
+.profile-image-container:focus-within .profile-image {
+  transform: scale(1.08) translateY(-5px);
+}

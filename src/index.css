@@ -1,0 +1,102 @@
+@import './styles/base.css';
+@import './styles/components.css';
+@import './styles/app.css';
+@import './styles/gradient-bg.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --c1-rgb: 26, 107, 60;
+    --c2-rgb: 45, 138, 86;
+    --c3-rgb: 13, 148, 136;
+    --c4-rgb: 217, 119, 6;
+    --c5-rgb: 245, 245, 245;
+    --interactive-rgb: 26, 107, 60;
+    --color-primary: #1A6B3C;
+    --color-primary-dark: #134F2D;
+    --color-primary-light: #E8F5EE;
+    --color-primary-mid: #2D8A56;
+    --color-dark: #111827;
+    --color-dark-mid: #1F2937;
+    --color-body: #374151;
+    --color-muted: #6B7280;
+    --color-faint: #9CA3AF;
+    --color-accent-teal: #0D9488;
+    --color-accent-warm: #D97706;
+    --color-border: #E5E7EB;
+    --color-border-strong: #D1D5DB;
+    --color-surface-base: #FBFBF9;
+    --color-surface-off: #F5F5F0;
+    --color-card-bg: rgba(255,255,255,0.85);
+    --color-card-border: rgba(229,231,235,0.8);
+    --background: 50 20% 97%;
+    --foreground: 218 18% 26%;
+    --card: 50 20% 98%;
+    --card-foreground: 218 18% 26%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 18% 26%;
+    --primary: 144 60% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 144 41% 93%;
+    --secondary-foreground: 144 60% 26%;
+    --muted: 50 10% 94%;
+    --muted-foreground: 218 11% 47%;
+    --accent: 174 84% 32%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 50 10% 88%;
+    --input: 50 10% 88%;
+    --ring: 144 60% 26%;
+    --radius: 8px;
+  }
+
+h1, .h1 {
+  @apply text-3xl md:text-4xl leading-tight tracking-tight;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-dark);
+}
+h2, .h2 {
+  @apply text-2xl md:text-3xl leading-tight;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-dark);
+}
+h3, .h3 {
+  @apply text-lg md:text-xl leading-snug;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  color: var(--color-dark);
+}
+p {
+  @apply leading-relaxed text-base;
+  color: var(--color-body);
+}
+}
+
+@layer components {
+  input, textarea, select {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .container-site {
+    @apply mx-auto px-5 md:px-8;
+    max-width: 1200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #gradient-bg .g1,
+  #gradient-bg .g2,
+  #gradient-bg .g3,
+  #gradient-bg .g4,
+  #gradient-bg .g5 {
+    animation: none;
+  }
+}

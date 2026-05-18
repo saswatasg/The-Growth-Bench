@@ -1,0 +1,31 @@
+import React from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import Layout from '@/components/Layout';
+import RoutesConfig from '@/config/RoutesConfig';
+import ScrollToTop from '@/components/ScrollToTop';
+import ChatWidget from '@/components/ChatWidget';
+import ParallaxShapes from '@/components/ParallaxShapes';
+import CursorGlow from '@/components/CursorGlow';
+import { Toaster } from '@/components/ui/toaster';
+import { useGradientBackground } from '@/hooks/useGradientBackground';
+import PageMeta from '@/components/PageMeta';
+
+function App() {
+  useGradientBackground();
+
+  return (
+    <HelmetProvider>
+      <ScrollToTop />
+      <PageMeta />
+      <ParallaxShapes />
+      <CursorGlow />
+      <Layout>
+        <RoutesConfig />
+      </Layout>
+      <ChatWidget />
+      <Toaster />
+    </HelmetProvider>
+  );
+}
+
+export default App;
