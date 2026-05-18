@@ -58,9 +58,16 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile Overlay — rendered outside <header> to avoid fixed-position stacking conflicts */}
+      {/* Mobile Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-40 bg-gray-900/95 flex flex-col items-center justify-center gap-8 md:hidden" style={{ top: '64px' }}>
+        <div className="fixed inset-0 z-[60] bg-gray-900/95 flex flex-col items-center justify-center gap-8 md:hidden" style={{ top: '64px' }}>
+          <button
+            className="absolute top-4 right-4 p-2 text-white hover:text-primary transition-colors"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="w-6 h-6" />
+          </button>
           {navLinks.map((link) => (
             <NavLink
               key={link.to}
