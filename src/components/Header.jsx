@@ -57,7 +57,7 @@ const Header = () => {
 
       {/* Mobile Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-dark flex flex-col items-center justify-center gap-8 md:hidden">
+        <div className="fixed inset-0 z-50 bg-gray-900/95 flex flex-col items-center justify-center gap-8 md:hidden">
           <button
             className="absolute top-4 right-4 p-2 text-white"
             onClick={() => setIsOpen(false)}
