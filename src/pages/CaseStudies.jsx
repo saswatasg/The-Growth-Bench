@@ -131,6 +131,13 @@ const CaseStudies = () => {
 
       <section className="section-light pt-32 pb-24">
         <div className="container-site">
+          <motion.div {...stagger}>
+            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
+              <span className="text-muted-foreground">/</span>
+              <span className="text-foreground font-medium" aria-current="page">Past Projects</span>
+            </nav>
+          </motion.div>
           <motion.div {...stagger} className="section-eyebrow">PAST PROJECTS</motion.div>
           <motion.h1 {...stagger} transition={{ ...stagger.transition, delay: 0.08 }}>Work that speaks for itself.</motion.h1>
           <motion.p {...stagger} transition={{ ...stagger.transition, delay: 0.16 }} className="text-body text-lg max-w-xl leading-relaxed">
@@ -169,6 +176,29 @@ const CaseStudies = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Related Insights */}
+      <section className="section-light">
+        <div className="container-site">
+          <motion.div {...stagger}>
+            <h2 className="mb-8">Insights from the same playbook</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="card-standard block no-underline group">
+                <span className="tag tag-green mb-2 self-start inline-block">CRO</span>
+                <h3 className="font-display font-bold text-lg mb-2 group-hover:text-primary transition-colors">We fixed a checkout flow. Recovered ₹2.89Cr/month.</h3>
+                <p className="text-sm text-body leading-relaxed mb-3">A step-by-step breakdown of how we diagnosed checkout leaks, rebuilt the flow, and recovered $329K/month for a US D2C furniture brand.</p>
+                <span className="link-arrow text-sm">Read<ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
+              </Link>
+              <Link to="/insights/funnel-audit-101-find-the-leak-before-spending-more-on-ads" className="card-standard block no-underline group">
+                <span className="tag tag-green mb-2 self-start inline-block">CRO</span>
+                <h3 className="font-display font-bold text-lg mb-2 group-hover:text-primary transition-colors">Funnel Audit 101: Find the leak before spending more on ads</h3>
+                <p className="text-sm text-body leading-relaxed mb-3">Running ads to a broken funnel costs you money. Here's the exact audit framework we use to find leaks in under an hour.</p>
+                <span className="link-arrow text-sm">Read<ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 

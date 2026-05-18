@@ -270,6 +270,11 @@ const Services = () => {
       {/* Hero */}
       <section className="section-dark pt-32 pb-24 text-center">
         <div className="container-site">
+          <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-white/50 mb-6">
+            <Link to="/" className="hover:text-white/80 transition-colors no-underline text-white/50">Home</Link>
+            <span className="text-white/50">/</span>
+            <span className="text-white font-medium" aria-current="page">Services</span>
+          </nav>
           <div className="section-eyebrow section-eyebrow-light justify-center before:hidden">WHAT WE DO</div>
           <h1 className="text-white max-w-3xl mx-auto mb-6">The full growth stack. Not parts of it.</h1>
           <p className="text-faint text-lg max-w-2xl mx-auto leading-relaxed">

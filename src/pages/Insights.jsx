@@ -23,6 +23,11 @@ const Insights = () => {
       <section className="section-light pt-32 pb-16">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
+              <span className="text-muted-foreground">/</span>
+              <span className="text-foreground font-medium" aria-current="page">Insights</span>
+            </nav>
             <div className="section-eyebrow">INSIGHTS</div>
             <h1 className="max-w-2xl">Frameworks. Teardowns. Things that actually work.</h1>
           </motion.div>
@@ -81,6 +86,27 @@ const Insights = () => {
           ) : (
             <p className="text-center text-muted-foreground py-16">No posts in this category yet.</p>
           )}
+        </div>
+      </section>
+
+      {/* Featured Case Studies */}
+      <section className="section-light pb-24">
+        <div className="container-site">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+            <h2 className="mb-8">Real results from the same frameworks</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <Link to="/past-projects" className="card-standard block no-underline group">
+                <div className="stat-number-dark text-xl mb-2" style={{ fontSize: '1.5rem' }}>$329K / month recovered</div>
+                <p className="text-sm text-body leading-relaxed mb-3">Complete cart & checkout flow redesign. Cut checkout abandonment by 26%, lifted mobile conversion by 47%.</p>
+                <span className="link-arrow text-sm">See full case study<ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
+              </Link>
+              <Link to="/past-projects" className="card-standard block no-underline group">
+                <div className="stat-number-dark text-xl mb-2" style={{ fontSize: '1.5rem' }}>5.7x ROAS (from 1.8x)</div>
+                <p className="text-sm text-body leading-relaxed mb-3">Full-funnel rebuild for a D2C coffee brand. Website redesign, analytics infrastructure, and high-converting ad campaigns.</p>
+                <span className="link-arrow text-sm">See full case study<ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>

@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import PageMeta from '@/components/PageMeta';
 
+const WEB3FORMS_KEY = 'de118db9-7fd7-47b6-b21f-c2af772a1c90';
+
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
@@ -29,11 +31,32 @@ const WorkWithUs = () => {
       return;
     }
     setSubmitting(true);
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1000));
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: 'New enquiry from The Growth Bench website',
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          revenue: form.revenue,
+          challenge: form.challenge,
+          found: form.found,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        toast.success('Message received! We\'ll be in touch within 24 hours.');
+      } else {
+        toast.error('Something went wrong. Please email us directly at hello@thegrowthbench.com.');
+      }
+    } catch {
+      toast.error('Network error. Please email us directly at hello@thegrowthbench.com.');
+    }
     setSubmitting(false);
-    setSubmitted(true);
-    toast.success('Message received! We\'ll be in touch within 24 hours.');
   };
 
   return (
@@ -143,6 +166,11 @@ const WorkWithUs = () => {
                     <Label htmlFor="found">How did you find us?</Label>
                     <Input id="found" name="found" value={form.found} onChange={handleChange} placeholder="Google, LinkedIn, referral..." />
                   </div>
+                  <p className="text-xs text-muted-foreground text-center">
+                    By submitting, you agree to our{' '}
+                    <a href="/privacy" className="underline hover:text-foreground">Privacy Policy</a>.
+                    Your data is kept confidential and will only be used to follow up on your enquiry.
+                  </p>
                   <Button type="submit" className="w-full" disabled={submitting}>
                     {submitting ? 'Sending...' : 'Book a Call \u2192'}
                   </Button>

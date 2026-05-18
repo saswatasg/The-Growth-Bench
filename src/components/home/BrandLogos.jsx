@@ -34,7 +34,7 @@ const BrandLogos = () => {
     <section className="section-off py-12 md:py-16 overflow-hidden relative">
       <div className="container-site relative z-10 mb-8">
         <p className="text-xs text-center uppercase tracking-widest text-muted-foreground font-medium">
-          Built with & trusted by the best tools in the industry
+          Powered by industry-leading tools
         </p>
       </div>
       <div className="marquee-wrapper relative w-full overflow-hidden">

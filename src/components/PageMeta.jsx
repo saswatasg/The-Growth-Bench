@@ -28,6 +28,14 @@ const pageSpecificMeta = {
     title: "Past Projects & Client Results | The Growth Bench",
     description: "Real outcomes with real numbers from The Growth Bench clients. Strategy, CRO, performance marketing, and growth systems for D2C brands and startups."
   },
+  '/privacy': {
+    title: "Privacy Policy | The Growth Bench",
+    description: "The Growth Bench privacy policy — how we collect, use, and protect your personal data when you visit our website or use our services."
+  },
+  '/terms': {
+    title: "Terms of Service | The Growth Bench",
+    description: "The Growth Bench terms of service — the terms and conditions that govern your use of our website and growth consulting services."
+  },
   '/insights': {
     title: "Growth Frameworks & Teardowns | The Growth Bench Insights",
     description: "Actionable growth advice, CRO teardowns, and marketing strategy frameworks for D2C brands and early-stage startups."
@@ -49,7 +57,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
   const siteUrl = "https://thegrowthbench.com/";
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath ? cleanPath + '/' : ''}`;
-  const ogImage = "/assets/images/og-card.jpg";
+  const ogImage = "/assets/images/og-card.svg";
 
   const orgSchema = {
     "@context": "https://schema.org",
@@ -64,12 +72,50 @@ const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
     ]
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Growth Bench",
+    "url": "https://thegrowthbench.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://thegrowthbench.com/search?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": []
+  };
+
+  const parts = currentPath.split('/').filter(Boolean);
+  let accumulated = '';
+  const items = [{ name: 'Home', path: '/' }];
+  parts.forEach((part) => {
+    accumulated += '/' + part;
+    const label = part.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+    items.push({ name: label === 'Work With Us' ? 'Work With Us' : label, path: accumulated });
+  });
+  items.forEach((item, i) => {
+    breadcrumbSchema.itemListElement.push({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": item.name,
+      "item": `https://thegrowthbench.com${item.path}/`
+    });
+  });
+
   return (
     <Helmet>
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       <link rel="canonical" href={finalUrl} />
-      {noindex && <meta name="robots" content="noindex" />}
+      {noindex ? <meta name="robots" content="noindex" /> : <meta name="robots" content="index,follow" />}
 
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDescription} />
@@ -84,6 +130,8 @@ const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
       <meta name="twitter:image" content={ogImage} />
 
       <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       {articleSchema && (
         <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
       )}

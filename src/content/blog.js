@@ -4,6 +4,7 @@ export const blogPosts = [
     title: 'The D2C Growth Stack: Where Most Founders Waste Their First ₹10L',
     date: 'May 2025',
     category: 'Growth Strategy',
+    image: '/assets/images/og-growth-strategy.svg',
     readTime: 8,
     description: 'Most D2C founders burn their first ₹10L on the wrong channels. Here\'s the framework we use to find the real growth levers before spending a rupee.',
     body: `Here's an uncomfortable truth about early-stage D2C growth: most founders spend their first ₹10 lakh on tactics that feel productive but deliver almost no return.
@@ -58,6 +59,7 @@ The brands that get this right don't necessarily spend more. They spend smarter.
     title: 'Funnel Audit 101: How to Find the Leak Before You Spend More on Ads',
     date: 'May 2025',
     category: 'CRO',
+    image: '/assets/images/og-cro.svg',
     readTime: 7,
     description: 'A systematic approach to auditing your growth funnel — find where you\'re losing money before you spend more to acquire customers.',
     body: `Most brands approach growth backwards. They increase ad spend when revenue plateaus, assuming the solution is more traffic. In most cases, the solution is fixing what's already broken.
@@ -107,6 +109,7 @@ In our experience, 80% of the revenue opportunity in a funnel audit comes from t
     title: 'Why "More Traffic" Is Rarely the Right Answer to Low Revenue',
     date: 'May 2025',
     category: 'Growth Strategy',
+    image: '/assets/images/og-growth-strategy.svg',
     readTime: 6,
     description: 'When your revenue is flat, the instinct is to drive more traffic. Here\'s why conversion optimisation is almost always a better first move.',
     body: `When revenue plateaus, the default answer is almost always the same: "We need more traffic."
@@ -154,6 +157,7 @@ But if you haven't done the conversion work first, you're leaving money on the t
     title: '90-Day Growth Roadmap: What We Prioritise in the First Quarter',
     date: 'April 2025',
     category: 'Growth Strategy',
+    image: '/assets/images/og-growth-strategy.svg',
     readTime: 9,
     description: 'Our proven 90-day framework for taking a brand from strategy to first results. Here\'s exactly what we focus on in weeks 1-12.',
     body: `When a new client comes on board, the first question is always: "What happens in the first 90 days?"
@@ -216,6 +220,7 @@ We don't try to do everything. We pick the single highest-leverage initiative ba
     title: 'Your Website Is Losing 73% of Visitors Before They See Your Hero — Here\'s Why',
     date: 'April 2025',
     category: 'CRO',
+    image: '/assets/images/og-cro.svg',
     readTime: 7,
     description: 'Most D2C websites are losing the majority of their visitors before the page even loads. Here\'s what causes it and how to fix it.',
     body: `If your website takes more than 3 seconds to load, you're losing nearly three-quarters of your mobile visitors before they see anything.
@@ -274,6 +279,7 @@ These aren't nice-to-haves. They're the difference between a visitor seeing your
     title: 'We Fixed a Checkout Flow and Recovered ₹2.89Cr/Month — Here\'s Exactly How',
     date: 'April 2025',
     category: 'CRO',
+    image: '/assets/images/og-cro.svg',
     readTime: 10,
     description: 'A detailed teardown of a cart and checkout redesign that recovered ₹2.89 crore per month for a US D2C furniture brand.',
     body: `In early 2025, we took on a client engagement with a clear brief: fix the cart and checkout for a US D2C furniture brand doing approximately $500K/month in revenue.
@@ -338,6 +344,7 @@ The next phase would focus on personalising the checkout experience based on cus
     title: 'Heatmaps Won\'t Tell You Everything: Combining Qualitative + Quantitative CRO',
     date: 'March 2025',
     category: 'CRO',
+    image: '/assets/images/og-cro.svg',
     readTime: 8,
     description: 'Heatmaps show you where people click, but not why. Here\'s how we combine qualitative and quantitative research for real CRO results.',
     body: `Heatmaps are one of the most popular CRO tools on the market. And for good reason — they're visual, intuitive, and immediately show you where people are clicking (and where they're not).
@@ -395,6 +402,7 @@ Use heatmaps as a starting point, not an answer. They tell you where to look. Qu
     title: 'Your Google Ads CPA Is Rising — What to Check Before Blaming the Algorithm',
     date: 'March 2025',
     category: 'Google Ads',
+    image: '/assets/images/og-google-ads.svg',
     readTime: 7,
     description: 'Before you blame Google\'s algorithm for rising CPAs, check these 7 levers that are almost certainly the real cause.',
     body: `Every Google Ads manager has been there: you open the dashboard on Monday morning and your CPA has jumped 40% over the weekend.
@@ -454,6 +462,7 @@ In most cases, the issue is one of these seven — and the fix doesn't require c
     title: 'Creative Testing on Meta: A Framework That Stops the Scroll',
     date: 'March 2025',
     category: 'Meta Ads',
+    image: '/assets/images/og-meta-ads.svg',
     readTime: 7,
     description: 'Most Meta ad creative fails because it\'s tested wrong. Here\'s our framework for creative testing that actually tells you what works.',
     body: `The single biggest lever in Meta Ads performance is creative. Not targeting. Not bidding. Not budget. The creative.
@@ -504,6 +513,7 @@ We maintain a pipeline of at least 3-4 active tests at all times. As soon as one
     title: 'A Lead Form Is Not a Lead System: Building the Full Infrastructure',
     date: 'March 2025',
     category: 'Lead Systems',
+    image: '/assets/images/og-lead-systems.svg',
     readTime: 8,
     description: 'Most businesses think a landing page with a form is a lead generation system. It\'s not. Here\'s what a real lead system looks like.',
     body: `"We have a lead generation system."
@@ -549,6 +559,7 @@ Most ad campaigns fail because they generate leads that no one follows up on. A 
     title: 'Mobile-First UX for D2C: Why 60% of Your Revenue Depends on 375px',
     date: 'February 2025',
     category: 'UI/UX',
+    image: '/assets/images/og-ui-ux.svg',
     readTime: 8,
     description: '60-70% of D2C traffic comes from mobile. If your site isn\'t designed mobile-first, you\'re making every visitor' + "'" + 's experience worse — including desktop users.',
     body: `Here's a number that should change how you think about your website: 60-70% of D2C traffic comes from mobile devices.
@@ -592,6 +603,7 @@ Fix that before you invest in any other growth initiative.`,
     title: '7 A/B Test Ideas That Actually Move the Needle for D2C Brands',
     date: 'February 2025',
     category: 'CRO',
+    image: '/assets/images/og-cro.svg',
     readTime: 8,
     description: 'Stop testing button colours. Here are 7 high-impact A/B test ideas that actually move conversion rates for D2C brands.',
     body: `Most CRO advice focuses on testing button colours, headline variations, and hero images. These tests rarely move the needle by more than a fraction of a percent.
@@ -655,6 +667,7 @@ Don't try to run all 7 at once. Each test builds on the learning from the previo
     title: 'Shopping Ads for D2C Brands: Feed Optimisation That Actually Works',
     date: 'February 2025',
     category: 'Google Ads',
+    image: '/assets/images/og-google-ads.svg',
     readTime: 7,
     description: 'Your Shopping feed is the most important asset in your Google Ads account. Here\'s how to optimise it for performance, not just completeness.',
     body: `Shopping Ads are the highest-converting ad format on Google for e-commerce. But most brands leave massive performance on the table because their product feed isn't optimised.
@@ -710,6 +723,7 @@ Shopping feed optimisation compounds. Every improvement makes your next improvem
     title: 'Post-iOS 14 Meta Ads: How CAPI Fixed Our Attribution and What You Need to Know',
     date: 'January 2025',
     category: 'Meta Ads',
+    image: '/assets/images/og-meta-ads.svg',
     readTime: 8,
     description: 'iOS 14 broke Meta ad attribution for millions of advertisers. Here\'s how Conversions API (CAPI) restored accurate tracking and improved performance.',
     body: `When Apple released iOS 14.5 in April 2021, it fundamentally changed how Meta tracks conversions. The impact is still being felt years later.
@@ -754,6 +768,7 @@ If you haven't implemented CAPI yet, it's the single highest-impact change you c
     title: 'Scaling from ₹50K to ₹5L/Month on Meta Without Breaking ROAS',
     date: 'January 2025',
     category: 'Meta Ads',
+    image: '/assets/images/og-meta-ads.svg',
     readTime: 9,
     description: 'Scaling Meta Ads is about more than increasing budgets. Here\'s the framework we use to scale 10x while maintaining ROAS.',
     body: `Going from ₹50K to ₹5L per month on Meta Ads is one of the hardest transitions in performance marketing.
@@ -820,6 +835,7 @@ This structure ensures you're filling the top of the funnel while maximising con
     title: 'WhatsApp for D2C: Nurture Sequences That Actually Convert',
     date: 'January 2025',
     category: 'Lead Systems',
+    image: '/assets/images/og-lead-systems.svg',
     readTime: 7,
     description: 'WhatsApp has 3x the open rate of email. Here\'s how to build nurture sequences that respect the channel and actually convert.',
     body: `Email open rates across e-commerce average 15-25%. WhatsApp open rates? 80-90%.
@@ -867,6 +883,7 @@ Automate the first 2-3 messages, then transition to a human conversation. This h
     title: 'Built to Convert: What Every D2C Website Needs Before Launch',
     date: 'December 2024',
     category: 'Website Dev',
+    image: '/assets/images/og-website-dev.svg',
     readTime: 9,
     description: 'A pre-launch checklist for D2C websites. Skip any of these and you\'re launching with a conversion disadvantage.',
     body: `We've audited dozens of D2C websites at launch. Most are missing at least 3-5 things from this list.
@@ -945,6 +962,7 @@ A D2C website launch is not a finish line. It's the start of an ongoing optimisa
     title: 'Freelancer vs Agency vs The Growth Bench: Which Model Actually Works for D2C?',
     date: 'December 2024',
     category: 'Growth Strategy',
+    image: '/assets/images/og-growth-strategy.svg',
     readTime: 8,
     description: 'A practical comparison of the three most common growth partnership models for D2C brands — and why none of them work as well as a hybrid approach.',
     body: `If you're a D2C founder trying to grow your brand, you have three options for outside help: hire a freelancer, hire an agency, or build an in-house team.
@@ -1021,6 +1039,7 @@ The model matters less than the partnership. But a model designed for your stage
     title: 'What We Learned From 3+ Years of Building Growth Systems for Indian & US Brands',
     date: 'December 2024',
     category: 'Growth Strategy',
+    image: '/assets/images/og-growth-strategy.svg',
     readTime: 10,
     description: 'Three years, two continents, and a dozen brands later — here are the most important lessons about building growth systems that actually work.',
     body: `We've spent the last 3+ years building growth systems for brands across India and the US. D2C furniture. B2B SaaS. AI ventures. Performance marketing agencies.
@@ -1083,6 +1102,7 @@ Adapt your playbook to the market. Don't force one approach on both.`,
     title: 'The Organic Engine: Why Your Paid Ads Work Better When Your Content Does Too',
     date: 'November 2024',
     category: 'Marketing Strategy',
+    image: '/assets/images/og-marketing-strategy.svg',
     readTime: 7,
     description: 'Paid ads and organic content aren\'t separate channels. Here\'s why they perform better together and how to integrate them.',
     body: `Most brands treat paid ads and organic content as separate functions with separate budgets and separate goals.
@@ -1136,6 +1156,7 @@ Don't treat channels as silos. The best growth happens at the intersection.`,
     title: 'Email Flows That Convert: Welcome, Abandon, Winback — the Right Way',
     date: 'November 2024',
     category: 'Marketing Strategy',
+    image: '/assets/images/og-marketing-strategy.svg',
     readTime: 8,
     description: 'Most D2C email flows are set up once and forgotten. Here\'s how to build welcome, abandoned cart, and winback flows that actually drive revenue.',
     body: `Email marketing has the highest ROI of any digital channel — ₹36 for every ₹1 spent. But most brands leave this money on the table because their automated flows are set up once and never optimised.
@@ -1192,6 +1213,7 @@ Don't set it and forget it. Optimise continuously.`,
     title: 'Reducing Friction in Your Product Page: A Before/After Teardown',
     date: 'November 2024',
     category: 'UI/UX',
+    image: '/assets/images/og-ui-ux.svg',
     readTime: 7,
     description: 'A detailed teardown of a D2C product page before and after CRO — showing exactly what changed and what improved.',
     body: `Product pages are the most important pages on your D2C site. They're where the buying decision happens. And most of them have significant friction.
@@ -1256,6 +1278,7 @@ The best product pages are the ones where the path from "interested" to "confide
     title: 'Search Intent Mapping: The Foundation of Profitable Google Campaigns',
     date: 'October 2024',
     category: 'Google Ads',
+    image: '/assets/images/og-google-ads.svg',
     readTime: 7,
     description: 'Most Google Ads campaigns fail because they don\'t match search intent. Here\'s how to map intent to campaign structure for better performance.',
     body: `The single biggest reason Google Ads campaigns underperform is simple: the ads don't match what the user is actually looking for.
@@ -1312,6 +1335,7 @@ The higher your intent match rate, the lower your CPA and the higher your conver
     title: 'Lead Scoring 101: How to Tell Your Sales Team Who to Call First',
     date: 'October 2024',
     category: 'Lead Systems',
+    image: '/assets/images/og-lead-systems.svg',
     readTime: 6,
     description: 'Not all leads are equal. Here\'s a simple lead scoring framework that helps your sales team focus on the leads most likely to convert.',
     body: `If your sales team is calling every lead that comes in, they're wasting time on leads that will never convert.
@@ -1369,6 +1393,7 @@ And then act on the score. A scoring model that doesn't change your sales team's
     title: 'Every Layout Decision Is a Hypothesis: A Framework for Design That Converts',
     date: 'October 2024',
     category: 'UI/UX',
+    image: '/assets/images/og-ui-ux.svg',
     readTime: 7,
     description: 'Stop designing by intuition. Here\'s a framework for making layout decisions based on user behaviour, not designer preference.',
     body: `Most website designs are based on what "looks good" or what the founder/designer "feels is right."

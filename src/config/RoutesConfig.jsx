@@ -8,6 +8,8 @@ const CaseStudies = React.lazy(() => import('@/pages/CaseStudies'));
 const Insights = React.lazy(() => import('@/pages/Insights'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
 const WorkWithUs = React.lazy(() => import('@/pages/WorkWithUs'));
+const Privacy = React.lazy(() => import('@/pages/Privacy'));
+const Terms = React.lazy(() => import('@/pages/Terms'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
 
 const PageLoader = () => (
@@ -30,6 +32,8 @@ const RoutesConfig = () => {
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<BlogPost />} />
         <Route path="/work-with-us" element={<WorkWithUs />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>

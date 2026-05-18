@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0F2B1A"/>
+  <rect x="0" y="0" width="1200" height="4" fill="#1A6B3C"/>
+  <text x="60" y="80" font-family="system-ui,sans-serif" font-size="24" font-weight="800" fill="#1A6B3C" letter-spacing="1">THE GROWTH BENCH</text>
+  <text x="60" y="130" font-family="system-ui,sans-serif" font-size="16" font-weight="400" fill="#6B8F7C" letter-spacing="2">INSIGHTS</text>
+  <rect x="60" y="160" width="80" height="3" fill="#1A6B3C"/>
+  <text x="60" y="380" font-family="system-ui,sans-serif" font-size="64" font-weight="800" fill="#FFFFFF">Marketing Strategy</text>
+  <text x="60" y="440" font-family="system-ui,sans-serif" font-size="24" font-weight="400" fill="#A0BBAE">Organic + paid = predictable growth engine</text>
+</svg>

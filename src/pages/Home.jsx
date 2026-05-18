@@ -158,6 +158,30 @@ const Home = () => {
 
       {/* Testimonials + Final CTA */}
       <section className="section-alt">
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+              {
+                "@type": "Review",
+                "position": 1,
+                "itemReviewed": { "@type": "Organization", "name": "The Growth Bench" },
+                "reviewRating": { "@type": "Rating", "ratingValue": 5 },
+                "author": { "@type": "Person", "name": "Founder, US D2C Brand" },
+                "reviewBody": "The Growth Bench fixed our checkout and helped us think about our entire funnel differently."
+              },
+              {
+                "@type": "Review",
+                "position": 2,
+                "itemReviewed": { "@type": "Organization", "name": "The Growth Bench" },
+                "reviewRating": { "@type": "Rating", "ratingValue": 5 },
+                "author": { "@type": "Person", "name": "CMO, B2B SaaS Startup" },
+                "reviewBody": "Most agencies just execute. The Growth Bench asks the right questions first, then builds the solution."
+              }
+            ]
+          })}
+        </script>
         <div className="container-site">
           <motion.div {...stagger}>
             <div className="section-eyebrow">WHAT PEOPLE SAY</div>

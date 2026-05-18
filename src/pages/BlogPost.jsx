@@ -1,17 +1,29 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronRight } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { blogPosts } from '@/content/blog';
 
+const slugToCategoryImage = {
+  'Growth Strategy': '/assets/images/og-growth-strategy.svg',
+  'CRO': '/assets/images/og-cro.svg',
+  'Google Ads': '/assets/images/og-google-ads.svg',
+  'Meta Ads': '/assets/images/og-meta-ads.svg',
+  'Lead Systems': '/assets/images/og-lead-systems.svg',
+  'UI/UX': '/assets/images/og-ui-ux.svg',
+  'Website Dev': '/assets/images/og-website-dev.svg',
+  'Marketing Strategy': '/assets/images/og-marketing-strategy.svg',
+};
+
 const BlogPost = () => {
   const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i';
 
 const { slug } = useParams();
+  const location = useLocation();
   const post = blogPosts.find((p) => p.slug === slug);
 
   if (!post) {
@@ -33,8 +45,10 @@ const { slug } = useParams();
     "headline": post.title,
     "description": post.description,
     "datePublished": post.date,
-    "author": { "@type": "Organization", "name": "The Growth Bench" },
-    "publisher": { "@type": "Organization", "name": "The Growth Bench" },
+    "dateModified": post.date,
+    "image": slugToCategoryImage[post.category] || "/assets/images/og-card.svg",
+    "author": { "@type": "Organization", "name": "The Growth Bench", "url": "https://thegrowthbench.com" },
+    "publisher": { "@type": "Organization", "name": "The Growth Bench", "url": "https://thegrowthbench.com" },
   };
 
   return (
@@ -44,9 +58,13 @@ const { slug } = useParams();
       <article className="section-light pt-32 pb-24">
         <div className="container-site max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <Link to="/insights" className="link-arrow text-sm mb-6 inline-block">
-              <ArrowLeft className="w-4 h-4 inline mr-1" /> Back to Insights
-            </Link>
+            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+              <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <Link to="/insights" className="hover:text-foreground transition-colors no-underline">Insights</Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-foreground font-medium" aria-current="page">{post.title}</span>
+            </nav>
 
             <div className="flex items-center gap-3 mb-4">
               <span className="tag tag-green">{post.category}</span>
