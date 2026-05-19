@@ -8,7 +8,7 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import PageMeta from '@/components/PageMeta';
 
-const WEB3FORMS_KEY = 'de118db9-7fd7-47b6-b21f-c2af772a1c90';
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'de118db9-7fd7-47b6-b21f-c2af772a1c90';
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -103,15 +103,17 @@ const WorkWithUs = () => {
             <h2 className="text-center mb-8">Book your free audit call</h2>
 
             {/* Google Calendar Embed */}
-            <div className="border border-border rounded-xl overflow-hidden bg-white mb-8" style={{ minHeight: '650px' }}>
-              <iframe
-                src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
-                style={{ border: 0, width: '100%', height: '650px' }}
-                frameBorder="0"
-                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
-                loading="lazy"
-                title="Book a call with The Growth Bench"
-              />
+            <div className="border border-border rounded-xl overflow-hidden bg-white mb-8" style={{ minHeight: '650px', position: 'relative' }}>
+              <div style={{ paddingBottom: '120%', height: 0 }}>
+                <iframe
+                  src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
+                  style={{ border: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                  frameBorder="0"
+                  sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+                  loading="lazy"
+                  title="Book a call with The Growth Bench"
+                />
+              </div>
             </div>
 
             {/* Fallback form */}

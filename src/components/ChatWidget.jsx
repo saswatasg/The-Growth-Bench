@@ -38,6 +38,8 @@ const TypewriterText = ({ text, speed = 25, onComplete }) => {
   const [isComplete, setIsComplete] = React.useState(false);
   const indexRef = React.useRef(0);
   const timeoutRef = React.useRef(null);
+  const onCompleteRef = React.useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   React.useEffect(() => {
     indexRef.current = 0;
@@ -50,7 +52,7 @@ const TypewriterText = ({ text, speed = 25, onComplete }) => {
         timeoutRef.current = setTimeout(type, speed);
       } else {
         setIsComplete(true);
-        if (onComplete) onComplete();
+        if (onCompleteRef.current) onCompleteRef.current();
       }
     };
     type();
@@ -70,7 +72,7 @@ const TypewriterText = ({ text, speed = 25, onComplete }) => {
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [messages, setMessages] = React.useState([]);
-  const [showOptions, setShowOptions] = React.useState(true);
+  const [showOptions, setShowOptions] = React.useState(false);
   const [customInput, setCustomInput] = React.useState('');
   const [chatHistory, setChatHistory] = React.useState([]);
   const [followUp, setFollowUp] = React.useState(null);
@@ -178,7 +180,7 @@ const ChatWidget = () => {
         }}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95"
         style={{ background: 'var(--color-primary)' }}
-        aria-label="Open chat"
+        aria-label={isOpen ? "Close chat" : "Open chat"}
       >
         {isOpen ? <X className="w-6 h-6 text-white" /> : <MessageCircle className="w-6 h-6 text-white" />}
       </button>
@@ -250,7 +252,7 @@ const ChatWidget = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.4 + (gi * group.items.length + i) * 0.05 }}
                             onClick={() => handleFAQClick(faq)}
-                            className="w-full text-left text-sm px-3.5 py-2.5 rounded-xl border border-border/70 hover:border-primary/30 transition-all text-foreground flex items-center justify-between gap-2 hover:bg-primary/5"
+                            className="w-full text-left text-sm px-3.5 py-3 rounded-xl border border-border/70 hover:border-primary/30 transition-all text-foreground flex items-center justify-between gap-2 hover:bg-primary/5"
                           >
                             <span className="flex-1 text-[13px]">{faq.q}</span>
                             <ChevronRight className="w-3 h-3 flex-shrink-0 text-muted-foreground" />
@@ -289,14 +291,14 @@ const ChatWidget = () => {
                 >
                   <button
                     onClick={handleBookCall}
-                    className="w-full text-center text-sm font-medium py-2.5 rounded-xl text-white transition-all hover:shadow-md"
+                    className="w-full text-center text-sm font-medium py-3 rounded-xl text-white transition-all hover:shadow-md"
                     style={{ background: 'var(--color-primary)' }}
                   >
                     Book a Free Audit Call
                   </button>
                   <button
                     onClick={handleTalkToAgent}
-                    className="w-full text-center text-sm py-2.5 rounded-xl border border-border text-foreground font-medium hover:bg-surface-off transition-all"
+                    className="w-full text-center text-sm py-3 rounded-xl border border-border text-foreground font-medium hover:bg-surface-off transition-all"
                   >
                     Talk to an Agent
                   </button>
@@ -332,12 +334,12 @@ const ChatWidget = () => {
                 onChange={(e) => setCustomInput(e.target.value)}
                 placeholder="Type your question..."
                 disabled={isTyping}
-                className="flex-1 text-sm px-3 py-2 rounded-lg border border-border/70 bg-surface-off outline-none focus:border-primary/30 transition-colors disabled:opacity-50"
+                className="flex-1 text-sm px-3 py-2.5 rounded-lg border border-border/70 bg-surface-off outline-none focus:border-primary/30 transition-colors disabled:opacity-50"
               />
               <button
                 type="submit"
                 disabled={isTyping || !customInput.trim()}
-                className="w-9 h-9 rounded-lg flex items-center justify-center text-white flex-shrink-0 transition-all disabled:opacity-50"
+                className="w-11 h-11 rounded-lg flex items-center justify-center text-white flex-shrink-0 transition-all disabled:opacity-50"
                 style={{ background: 'var(--color-primary)' }}
               >
                 <Send className="w-4 h-4" />

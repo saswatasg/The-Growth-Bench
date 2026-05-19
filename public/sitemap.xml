@@ -1,171 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/services/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
   <url>
-    <loc>https://thegrowthbench.com/past-projects/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/case-studies/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/work-with-us/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/terms/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/d2c-growth-stack-where-founders-waste-first-10L/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/funnel-audit-101-find-the-leak-before-spending-more-on-ads/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/why-more-traffic-is-rarely-the-right-answer/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/90-day-growth-roadmap-prioritise-first-quarter/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/your-website-losing-73-percent-visitors-before-hero/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/we-fixed-checkout-flow-recovered-2-89-crore-month/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/heatmaps-wont-tell-you-everything-cro-qualitative-quantitative/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/google-ads-cpa-rising-what-to-check-before-blaming-algorithm/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/creative-testing-meta-framework-stops-scroll/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/lead-form-is-not-lead-system-building-infrastructure/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/mobile-first-ux-d2c-60-percent-revenue-depends-on-375px/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/7-ab-test-ideas-that-actually-move-needle-d2c/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/shopping-ads-d2c-feed-optimisation-works/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/post-ios-14-meta-ads-capi-fixed-attribution/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/scaling-from-50k-to-5-lakh-month-meta-without-breaking-roas/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/whatsapp-d2c-nurture-sequences-convert/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/built-to-convert-every-d2c-website-needs-before-launch/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/freelancer-vs-agency-vs-growth-bench-right-model-d2c/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/what-we-learned-3-years-building-growth-systems-indian-us-brands/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/organic-engine-why-paid-ads-work-better-when-content-does-too/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/email-flows-convert-welcome-abandon-winback-right-way/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/reducing-friction-product-page-before-after-teardown/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/search-intent-mapping-foundation-profitable-google-campaigns/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/lead-scoring-101-tell-sales-team-who-to-call-first/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <lastmod>2026-05-19</lastmod>
     <loc>https://thegrowthbench.com/insights/every-layout-decision-hypothesis-framework-design-converts/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

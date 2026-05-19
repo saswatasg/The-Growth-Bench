@@ -27,9 +27,9 @@ const services = [
 const WhatIDoSection = () => {
   return (
     <section className="section-dark" id="work">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="container-site">
         <div className="max-w-xl mb-14">
-          <span className="text-[11px] uppercase tracking-[0.15em] text-[var(--accent-gold)] font-medium">What I Do</span>
+          <span className="text-[11px] uppercase tracking-[0.15em] text-[var(--accent-gold)] font-medium">What We Do</span>
           <h2 className="text-white mt-3 mb-4">Services &amp; Expertise</h2>
           <p className="text-white/50 text-[15px] md:text-[17px] leading-relaxed">
             Helping companies across D2C, e-commerce, and B2B SaaS diagnose growth problems and fix what&rsquo;s broken.

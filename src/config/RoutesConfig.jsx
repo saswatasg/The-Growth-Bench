@@ -1,5 +1,7 @@
 import React, { Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import AdminRoute from '@/components/AdminRoute';
 
 const Home = React.lazy(() => import('@/pages/Home'));
 const Services = React.lazy(() => import('@/pages/Services'));
@@ -10,6 +12,8 @@ const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
 const WorkWithUs = React.lazy(() => import('@/pages/WorkWithUs'));
 const Privacy = React.lazy(() => import('@/pages/Privacy'));
 const Terms = React.lazy(() => import('@/pages/Terms'));
+const AdminLogin = React.lazy(() => import('@/pages/AdminLogin'));
+const AdminDashboard = React.lazy(() => import('@/pages/AdminDashboard'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
 
 const PageLoader = () => (
@@ -22,21 +26,25 @@ const PageLoader = () => (
 
 const RoutesConfig = () => {
   return (
+    <ErrorBoundary>
     <Suspense fallback={<PageLoader />}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about" element={<About />} />
-        <Route path="/past-projects" element={<CaseStudies />} />
+        <Route path="/past-projects" element={<Navigate to="/case-studies" replace />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<BlogPost />} />
         <Route path="/work-with-us" element={<WorkWithUs />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
+    </ErrorBoundary>
   );
 };
 

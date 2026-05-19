@@ -1,12 +1,13 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import { AuthProvider } from '@/context/AuthContext';
 import Layout from '@/components/Layout';
 import RoutesConfig from '@/config/RoutesConfig';
 import ScrollToTop from '@/components/ScrollToTop';
 import ChatWidget from '@/components/ChatWidget';
 import ParallaxShapes from '@/components/ParallaxShapes';
 import CursorGlow from '@/components/CursorGlow';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/components/ui/sonner';
 import { useGradientBackground } from '@/hooks/useGradientBackground';
 import PageMeta from '@/components/PageMeta';
 
@@ -15,15 +16,17 @@ function App() {
 
   return (
     <HelmetProvider>
-      <ScrollToTop />
-      <PageMeta />
-      <ParallaxShapes />
-      <CursorGlow />
-      <Layout>
-        <RoutesConfig />
-      </Layout>
-      <ChatWidget />
-      <Toaster />
+      <AuthProvider>
+        <ScrollToTop />
+        <PageMeta />
+        <ParallaxShapes />
+        <CursorGlow />
+        <Layout>
+          <RoutesConfig />
+        </Layout>
+        <ChatWidget />
+        <Toaster />
+      </AuthProvider>
     </HelmetProvider>
   );
 }

@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
-import { blogPosts } from '@/content/blog';
-
-const categories = ['All', ...new Set(blogPosts.map((p) => p.category))];
+import { loadPosts } from '@/lib/blogUtils';
 
 const Insights = () => {
+  const [posts, setPosts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get('category') || 'All';
 
+  useEffect(() => {
+    setPosts(loadPosts());
+  }, []);
+
+  const categories = ['All', ...new Set(posts.map((p) => p.category))];
+
   const filtered = activeCategory === 'All'
-    ? blogPosts
-    : blogPosts.filter((p) => p.category === activeCategory);
+    ? posts
+    : posts.filter((p) => p.category === activeCategory);
 
   return (
     <>

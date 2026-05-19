@@ -166,3 +166,37 @@
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* --- Fixes for undefined classes --- */
+
+/* text-dark fallback */
+.text-dark {
+  color: var(--color-dark);
+}
+
+/* hide-scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* card-accent */
+.card-accent {
+  background: var(--color-dark);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  color: #fff;
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

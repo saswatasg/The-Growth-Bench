@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, X, Sparkles } from 'lucide-react';
@@ -9,6 +9,8 @@ import StatRow from '@/components/home/StatRow';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import BrandLogos from '@/components/home/BrandLogos';
 import { Magnetic } from '@/components/Magnetic';
+import { testimonialsData } from '@/data/testimonials';
+import { loadPosts } from '@/lib/blogUtils';
 
 const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i';
 
@@ -20,6 +22,12 @@ const stagger = {
 };
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    setPosts(loadPosts());
+  }, []);
+
   return (
     <>
       <PageMeta />
@@ -98,6 +106,7 @@ const Home = () => {
                   <span className="font-display font-extrabold text-xl text-primary">{step.num}</span>
                 </div>
                 <h3 className="text-lg font-display font-bold mb-2">{step.title}</h3>
+            
                 <p className="text-sm text-body leading-relaxed">{step.body}</p>
               </motion.div>
             ))}
@@ -156,10 +165,38 @@ const Home = () => {
         </div>
       </section>
 
+      {/* From the Blog */}
+      <section className="section-light">
+        <div className="container-site">
+          <motion.div {...stagger}>
+            <div className="section-eyebrow">FROM THE BLOG</div>
+            <h2 className="mb-4">Growth insights that actually help.</h2>
+            <p className="text-body text-lg max-w-2xl leading-relaxed mb-10">
+              Real frameworks, real teardowns, real numbers. No fluff.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {posts.slice(0, 3).map((post, i) => (
+              <motion.div key={post.slug} {...stagger} transition={{ ...stagger.transition, delay: i * 0.1 }}>
+                <Link to={`/insights/${post.slug}`} className="card-standard block no-underline group h-full">
+                  <span className="tag tag-green mb-3 self-start">{post.category}</span>
+                  <h3 className="font-display font-bold text-base mb-2 group-hover:text-primary transition-colors">{post.title}</h3>
+                  <p className="text-sm text-primary font-medium flex items-center gap-1">
+                    Read more <ArrowRight className="w-3.5 h-3.5" />
+                  </p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div {...stagger} className="text-center mt-10">
+            <Link to="/insights" className="btn-ghost no-underline">View all insights <ArrowRight className="w-4 h-4 ml-2 inline" /></Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Testimonials + Final CTA */}
       <section className="section-alt">
-        <script type="application/ld+json">
-          {JSON.stringify({
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
             "itemListElement": [
@@ -180,8 +217,7 @@ const Home = () => {
                 "reviewBody": "Most agencies just execute. The Growth Bench asks the right questions first, then builds the solution."
               }
             ]
-          })}
-        </script>
+          }) }} />
         <div className="container-site">
           <motion.div {...stagger}>
             <div className="section-eyebrow">WHAT PEOPLE SAY</div>

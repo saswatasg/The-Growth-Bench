@@ -28,7 +28,7 @@ const ServicesOverview = () => {
               <div className="service-number mb-2">{s.num}</div>
               <h3 className="text-white font-display text-xl font-bold mb-2">{s.name}</h3>
               <p style={{ color: 'rgba(255,255,255,0.5)' }} className="text-sm leading-relaxed">{s.desc}</p>
-              <Link to="/services" className="link-arrow text-sm mt-2 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--color-primary)' }}>
+              <Link to="/services" className="link-arrow text-sm mt-2 opacity-100 transition-opacity" style={{ color: 'var(--color-primary)' }}>
                 Learn more &rarr;
               </Link>
             </div>

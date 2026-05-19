@@ -307,6 +307,67 @@ const Services = () => {
         <Section key={service.id} service={service} index={i} />
       ))}
 
+      {/* Pricing */}
+      <section className="section-off">
+        <div className="container-site">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <div className="section-eyebrow">PRICING</div>
+            <h2 className="mb-4">Transparent pricing. No surprises.</h2>
+            <p className="text-body text-lg max-w-2xl leading-relaxed mb-10">
+              Every engagement is scoped to your specific needs. Here's what most projects look like.
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }} className="card-standard flex flex-col">
+              <h3 className="font-display font-bold text-lg mb-1">Growth Sprint</h3>
+              <p className="text-3xl font-display font-extrabold text-primary mb-1">?75K<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
+              <p className="text-xs text-muted-foreground mb-4">Monthly, 3-month minimum</p>
+              <ul className="space-y-2 text-sm text-body flex-1 mb-6">
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Strategy audit & roadmap</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> One growth channel managed</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Weekly check-ins</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Monthly strategy review</li>
+              </ul>
+              <Button asChild size="sm" className="w-full">
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
+              </Button>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="card-highlighted flex flex-col border-primary/20">
+              <span className="tag-amber text-[10px] mb-3 self-start">MOST POPULAR</span>
+              <h3 className="font-display font-bold text-lg mb-1">Full-Stack Growth</h3>
+              <p className="text-3xl font-display font-extrabold text-primary mb-1">?1.5L<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
+              <p className="text-xs text-muted-foreground mb-4">Monthly, 3-month minimum</p>
+              <ul className="space-y-2 text-sm text-body flex-1 mb-6">
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Everything in Growth Sprint</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> 2-3 growth channels managed</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> CRO program running</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Full analytics infrastructure</li>
+              </ul>
+              <Button asChild size="sm" className="w-full">
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
+              </Button>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="card-standard flex flex-col">
+              <h3 className="font-display font-bold text-lg mb-1">Full Stack + Dev</h3>
+              <p className="text-3xl font-display font-extrabold text-primary mb-1">?3L<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
+              <p className="text-xs text-muted-foreground mb-4">Monthly, 3-month minimum</p>
+              <ul className="space-y-2 text-sm text-body flex-1 mb-6">
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Everything in Full-Stack Growth</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Website dev & CRO</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Dedicated bench specialists</li>
+                <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Bi-weekly strategy calls</li>
+              </ul>
+              <Button asChild size="sm" className="w-full">
+                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
+              </Button>
+            </motion.div>
+          </div>
+          <motion.p className="text-center text-sm text-muted-foreground mt-8">
+            All plans include a 7-day free trial. No commitment. If you don't see value in the first week, you walk away.
+          </motion.p>
+        </div>
+      </section>
+
       {/* Bottom CTA */}
       <section className="section-dark text-center">
         <div className="container-site">

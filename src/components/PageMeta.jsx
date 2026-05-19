@@ -20,10 +20,6 @@ const pageSpecificMeta = {
     title: "About The Growth Bench — Who We Are and How We Work",
     description: "The Growth Bench is a full-stack growth consultancy built on a bench model — senior-led, specialist-backed, with one point of contact for the complete growth stack."
   },
-  '/past-projects': {
-    title: "Past Projects & Client Results | The Growth Bench",
-    description: "Real outcomes with real numbers from The Growth Bench clients. D2C, B2B SaaS, e-commerce — strategy, CRO, performance marketing, and growth systems that delivered measurable results."
-  },
   '/case-studies': {
     title: "Past Projects & Client Results | The Growth Bench",
     description: "Real outcomes with real numbers from The Growth Bench clients. Strategy, CRO, performance marketing, and growth systems for D2C brands and startups."
@@ -46,7 +42,7 @@ const pageSpecificMeta = {
   }
 };
 
-const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
+const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage: customOgImage }) => {
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -57,7 +53,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
   const siteUrl = "https://thegrowthbench.com/";
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath ? cleanPath + '/' : ''}`;
-  const ogImage = "/assets/images/og-card.svg";
+  const ogImage = customOgImage || "/assets/images/og-card.svg";
 
   const orgSchema = {
     "@context": "https://schema.org",
@@ -77,14 +73,6 @@ const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
     "@type": "WebSite",
     "name": "The Growth Bench",
     "url": "https://thegrowthbench.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://thegrowthbench.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
   };
 
   const breadcrumbSchema = {
@@ -129,11 +117,11 @@ const PageMeta = ({ title, description, noindex = false, articleSchema }) => {
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={ogImage} />
 
-      <script type="application/ld+json">{JSON.stringify(orgSchema)}</script>
-      <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
-      <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {articleSchema && (
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       )}
     </Helmet>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,12 +6,24 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
-  { to: '/past-projects', label: 'Past Projects' },
+  { to: '/case-studies', label: 'Past Projects' },
   { to: '/insights', label: 'Insights' },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const overlayRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleEscape = (e) => { if (e.key === 'Escape') setIsOpen(false); };
+    document.addEventListener('keydown', handleEscape);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -48,7 +60,7 @@ const Header = () => {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-3 text-foreground"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
           >
@@ -59,7 +71,7 @@ const Header = () => {
 
       {/* Mobile Overlay — separate from <header> to avoid fixed-in-fixed stacking issues */}
       {isOpen && (
-        <div className="fixed inset-0 z-[60] bg-gray-900/95 flex flex-col items-center justify-center gap-8 md:hidden">
+        <div ref={overlayRef} className="fixed inset-0 z-[60] bg-gray-900/95 flex flex-col items-center justify-center gap-8 md:hidden">
           <button
             className="absolute top-4 right-4 p-2 text-white"
             onClick={() => setIsOpen(false)}
