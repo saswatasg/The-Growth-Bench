@@ -64,6 +64,15 @@ export default async function handler(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = url.pathname;
 
+  // Non-www → www redirect
+  const host = req.headers.host;
+  if (host && !host.startsWith('www.') && !host.startsWith('localhost') && !host.includes('127.0.0.1')) {
+    const dest = `https://www.${host}${req.url}`;
+    res.writeHead(301, { Location: dest });
+    res.end();
+    return;
+  }
+
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
