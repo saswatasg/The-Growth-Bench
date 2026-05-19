@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
             <h1 className="mb-4">Something went wrong</h1>
             <p className="text-body mb-8 max-w-md mx-auto">
               We encountered an unexpected error. Please try refreshing the page, or{' '}
-              <a href="mailto:hello@thegrowthbench.com" className="text-primary underline">contact us</a> if the problem persists.
+              <a href="mailto:hi@saswatasg.com" className="text-primary underline">contact us</a> if the problem persists.
             </p>
             <Link to="/" className="btn-primary no-underline">Go Home</Link>
           </div>

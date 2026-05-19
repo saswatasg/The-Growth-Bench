@@ -51,10 +51,10 @@ const WorkWithUs = () => {
         setSubmitted(true);
         toast.success('Message received! We\'ll be in touch within 24 hours.');
       } else {
-        toast.error('Something went wrong. Please email us directly at hello@thegrowthbench.com.');
+        toast.error('Something went wrong. Please email us directly at hi@saswatasg.com.');
       }
     } catch {
-      toast.error('Network error. Please email us directly at hello@thegrowthbench.com.');
+      toast.error('Network error. Please email us directly at hi@saswatasg.com.');
     }
     setSubmitting(false);
   };
@@ -127,7 +127,7 @@ const WorkWithUs = () => {
                   <h3 className="font-display font-bold text-lg mb-2">We've got your message!</h3>
                   <p className="text-sm text-body">
                     You'll hear from us within 24 hours. If you'd rather not wait — email us directly at{' '}
-                    <a href="mailto:hello@thegrowthbench.com" className="text-primary underline">hello@thegrowthbench.com</a>
+                    <a href="mailto:hi@saswatasg.com" className="text-primary underline">hi@saswatasg.com</a>
                   </p>
                 </div>
               ) : (
