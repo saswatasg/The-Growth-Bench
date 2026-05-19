@@ -38,37 +38,68 @@ const Home = () => {
           <motion.div {...stagger}>
             <div className="section-eyebrow">THE GAP IN THE MARKET</div>
             <h2 className="max-w-2xl mb-6">Most growing brands are stuck between two bad options.</h2>
-            <p className="text-body text-lg max-w-3xl leading-relaxed mb-12">
-              Option one: a solo freelancer who's stretched thin across 12 clients and can't see the full picture. Option two: a bloated 50-person agency with an account manager as the middleman and a price tag that assumes you're already profitable.
-              <br /><br />
-              The Growth Bench lives in the gap. Senior-led. Specialist-backed. One point of contact with full-stack capability.
-            </p>
+            <div className="grid md:grid-cols-2 gap-6 mb-12 max-w-3xl">
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-red-500 text-sm font-bold">1</span>
+                </div>
+                <p className="text-body text-lg leading-relaxed">A solo freelancer stretched thin across 12 clients — can't see the full picture, no systems, no strategy ownership.</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="text-red-500 text-sm font-bold">2</span>
+                </div>
+                <p className="text-body text-lg leading-relaxed">A bloated 50-person agency with an account manager as middleman and a price tag that assumes you're already profitable.</p>
+              </div>
+            </div>
+            <div className="callout-box mb-12 max-w-3xl">
+              <p className="!mb-0 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary inline-block" />
+                The Growth Bench lives in the gap. Senior-led. Specialist-backed. One point of contact with full-stack capability.
+              </p>
+            </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <motion.div {...stagger} transition={{ ...stagger.transition, delay: 0 }} className="card-standard">
-              <div className="w-12 h-12 rounded-full bg-surface-grey flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-body)" strokeWidth="1.5"><path d="M12 20V10M12 10L8 14M12 10L16 14"/><circle cx="12" cy="12" r="9"/></svg>
+          <div className="grid md:grid-cols-3 gap-6 items-stretch">
+            <motion.div {...stagger} transition={{ ...stagger.transition, delay: 0 }} className="card-standard flex flex-col relative opacity-80 hover:opacity-100 transition-opacity">
+              <div className="w-11 h-11 rounded-full bg-red-50 flex items-center justify-center mb-4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="1.5"><path d="M12 20V10M12 10L8 14M12 10L16 14"/><circle cx="12" cy="12" r="9"/></svg>
               </div>
-              <h3 className="text-lg font-display font-bold mb-2">The freelancer problem</h3>
-              <p className="text-sm text-body leading-relaxed">Good people, limited scope. No systems, no strategy ownership. You outgrow them faster than you expected.</p>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-red-400 mb-1">The wrong way</span>
+              <h3 className="text-lg font-display font-bold mb-2">Freelancer</h3>
+              <p className="text-sm text-body leading-relaxed flex-grow">Good people, limited scope. No systems, no strategy ownership. You outgrow them faster than you expected.</p>
+              <div className="mt-4 pt-3 border-t border-border/50 text-xs text-muted-foreground">
+                <span className="text-red-400 font-medium">✗</span> No full funnel view
+              </div>
             </motion.div>
 
-            <motion.div {...stagger} transition={{ ...stagger.transition, delay: 0.1 }} className="card-highlighted">
-              <span className="tag-amber text-[10px] mb-3 inline-block">WHERE YOU WANT TO BE</span>
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            <motion.div {...stagger} transition={{ ...stagger.transition, delay: 0.1 }} className="card-highlighted flex flex-col relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Best of both</div>
+              <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center mb-4 mt-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
               </div>
-              <h3 className="text-lg font-display font-bold mb-2">The Growth Bench</h3>
-              <p className="text-sm text-body leading-relaxed">One senior partner who owns the full picture. Specialists on the bench for every function. You get depth without the overhead.</p>
+              <h3 className="text-lg font-display font-bold mb-1">The Growth Bench</h3>
+              <p className="text-sm text-body leading-relaxed flex-grow">One senior partner who owns the full picture. Specialists on the bench for every function. Depth without overhead.</p>
+              <div className="mt-4 pt-3 border-t border-primary/20 space-y-1.5">
+                {['One senior partner, full context', 'Specialists on demand', 'No middlemen, no layers'].map(item => (
+                  <div key={item} className="text-xs text-primary font-medium flex items-center gap-1.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="3"><path d="M20 6L9 17l-5-5"/></svg>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
-            <motion.div {...stagger} transition={{ ...stagger.transition, delay: 0.2 }} className="card-standard">
-              <div className="w-12 h-12 rounded-full bg-surface-grey flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-body)" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <motion.div {...stagger} transition={{ ...stagger.transition, delay: 0.2 }} className="card-standard flex flex-col relative opacity-80 hover:opacity-100 transition-opacity">
+              <div className="w-11 h-11 rounded-full bg-red-50 flex items-center justify-center mb-4">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
               </div>
-              <h3 className="text-lg font-display font-bold mb-2">The agency problem</h3>
-              <p className="text-sm text-body leading-relaxed">Expensive retainers, slow onboarding, and layers between you and the people actually doing the work.</p>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-red-400 mb-1">The wrong way</span>
+              <h3 className="text-lg font-display font-bold mb-2">Agency</h3>
+              <p className="text-sm text-body leading-relaxed flex-grow">Expensive retainers, slow onboarding, layers between you and the people actually doing the work.</p>
+              <div className="mt-4 pt-3 border-t border-border/50 text-xs text-muted-foreground">
+                <span className="text-red-400 font-medium">✗</span> Paying for what you don't use
+              </div>
             </motion.div>
           </div>
         </div>
