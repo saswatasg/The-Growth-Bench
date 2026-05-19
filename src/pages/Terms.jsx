@@ -18,7 +18,7 @@ const Terms = () => {
             </nav>
             <div className="section-eyebrow">LEGAL</div>
             <h1 className="mb-8">Terms of Service</h1>
-            <p className="text-sm text-muted-foreground mb-12">Last updated: May 2025</p>
+            <p className="text-sm text-muted-foreground mb-12">Last updated: May 2026</p>
 
             <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-dark prose-p:text-body prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
               <h2>1. Introduction</h2>
@@ -132,7 +132,7 @@ const Terms = () => {
               <h2>13. Contact</h2>
               <p>
                 For questions about these Terms, contact us at{' '}
-                <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>.
+                <a href="mailto:hi@saswatasg.com">hi@saswatasg.com</a>.
               </p>
             </div>
           </motion.div>

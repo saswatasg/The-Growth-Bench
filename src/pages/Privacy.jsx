@@ -18,18 +18,18 @@ const Privacy = () => {
             </nav>
             <div className="section-eyebrow">LEGAL</div>
             <h1 className="mb-8">Privacy Policy</h1>
-            <p className="text-sm text-muted-foreground mb-12">Last updated: May 2025</p>
+            <p className="text-sm text-muted-foreground mb-12">Last updated: May 2026</p>
 
             <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-dark prose-p:text-body prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
               <h2>1. Who We Are</h2>
               <p>
-                The Growth Bench ("we", "our", "us") is a growth consultancy operating from India. 
+                The Growth Bench ("we", "our", "us") is a growth consultancy founded by Saswata Sengupta, operating from India. 
                 We provide growth strategy, performance marketing, CRO, website development, and related services to D2C brands and startups. 
                 Our website is <a href="https://thegrowthbench.com">thegrowthbench.com</a>.
               </p>
               <p>
                 For any privacy-related questions, you can reach us at{' '}
-                <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>.
+                <a href="mailto:hi@saswatasg.com">hi@saswatasg.com</a>.
               </p>
 
               <h2>2. Information We Collect</h2>
@@ -83,17 +83,17 @@ const Privacy = () => {
                 <li><strong>Access:</strong> Request a copy of the data we hold about you</li>
                 <li><strong>Rectification:</strong> Request correction of inaccurate data</li>
                 <li><strong>Erasure:</strong> Request deletion of your data</li>
-                <li><strong>Restriction:</strong> Request限制 of processing</li>
+                <li><strong>Restriction:</strong> Request restriction of processing</li>
                 <li><strong>Portability:</strong> Request transfer of your data to another service</li>
                 <li><strong>Objection:</strong> Object to processing of your data</li>
               </ul>
-              <p>To exercise any of these rights, email us at <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>. We will respond within 30 days.</p>
+              <p>To exercise any of these rights, email us at <a href="mailto:hi@saswatasg.com">hi@saswatasg.com</a>. We will respond within 30 days.</p>
 
               <h2>9. Data Security</h2>
               <p>We implement appropriate technical and organizational measures to protect your data, including HTTPS encryption on our website and restricted access to form submission data.</p>
 
               <h2>10. Third-Party Links</h2>
-              <p>Our website contains links to third-party services (Google Calendar, WhatsApp, LinkedIn). We are not responsible for the privacy practices of these services. We encourage you to review their privacy policies before providing them with your data.</p>
+              <p>Our website contains links to third-party services (Google Calendar, WhatsApp). We are not responsible for the privacy practices of these services. We encourage you to review their privacy policies before providing them with your data.</p>
 
               <h2>11. Changes to This Policy</h2>
               <p>We may update this privacy policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this page periodically.</p>
@@ -101,7 +101,7 @@ const Privacy = () => {
               <h2>12. Contact</h2>
               <p>For any questions about this privacy policy or our data practices, contact us at:</p>
               <ul>
-                <li>Email: <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a></li>
+                <li>Email: <a href="mailto:hi@saswatasg.com">hi@saswatasg.com</a></li>
                 <li>WhatsApp: +91 8777875140</li>
               </ul>
             </div>
