@@ -8,6 +8,7 @@ const navLinks = [
   { to: '/services', label: 'Services' },
   { to: '/case-studies', label: 'Past Projects' },
   { to: '/insights', label: 'Insights' },
+  { to: '/work-with-us', label: 'Work With Us' },
 ];
 
 const Header = () => {
