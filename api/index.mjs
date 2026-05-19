@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'fs';
+import { join, extname } from 'path';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'tgb-change-this-in-production';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'growthbench2024';
@@ -26,6 +26,25 @@ const writeJSON = (file, data) => {
 
 const hash = bcrypt.hashSync(ADMIN_PASSWORD, 10);
 
+const MIME_TYPES = {
+  '.js': 'application/javascript',
+  '.css': 'text/css',
+  '.html': 'text/html',
+  '.png': 'image/png',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.svg': 'image/svg+xml',
+  '.ico': 'image/x-icon',
+  '.webp': 'image/webp',
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf',
+  '.json': 'application/json',
+  '.xml': 'application/xml',
+  '.txt': 'text/plain',
+  '.vcf': 'text/vcard',
+};
+
 function parseBody(req) {
   return new Promise((resolve) => {
     let body = '';
@@ -41,9 +60,33 @@ function json(res, status, data) {
   res.end(JSON.stringify(data));
 }
 
+function serveStatic(res, filePath) {
+  try {
+    const content = readFileSync(filePath);
+    const ext = extname(filePath).toLowerCase();
+    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+    res.writeHead(200, { 'Content-Type': contentType });
+    res.end(content);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function serveIndex(res, distDir) {
+  const indexPath = join(distDir, 'index.html');
+  try {
+    const content = readFileSync(indexPath, 'utf-8');
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(content);
+  } catch {
+    json(res, 404, { error: 'Not found' });
+  }
+}
+
 export default async function handler(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
-  const path = url.pathname.replace(/^\/api/, '') || '/';
+  const path = url.pathname;
 
   // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -55,49 +98,66 @@ export default async function handler(req, res) {
     return;
   }
 
-  // Auth middleware
-  function getUser() {
-    const header = req.headers.authorization;
-    if (!header || !header.startsWith('Bearer ')) return null;
-    try { return jwt.verify(header.split(' ')[1], JWT_SECRET); } catch { return null; }
+  // API routes
+  if (path.startsWith('/api/')) {
+    const apiPath = path.replace(/^\/api/, '') || '/';
+
+    function getUser() {
+      const header = req.headers.authorization;
+      if (!header || !header.startsWith('Bearer ')) return null;
+      try { return jwt.verify(header.split(' ')[1], JWT_SECRET); } catch { return null; }
+    }
+
+    try {
+      if (apiPath === '/login' && req.method === 'POST') {
+        const body = await parseBody(req);
+        if (!body.password) return json(res, 400, { error: 'Password required' });
+
+        const match = await bcrypt.compare(body.password, hash);
+        if (!match) return json(res, 401, { error: 'Invalid password' });
+        const token = jwt.sign({ role: 'admin' }, JWT_SECRET, { expiresIn: '24h' });
+        return json(res, 200, { token });
+      }
+
+      if (apiPath === '/posts') {
+        const user = getUser();
+        if (!user) return json(res, 401, { error: 'Unauthorized' });
+        if (req.method === 'GET') return json(res, 200, readJSON(POSTS_FILE, []));
+        if (req.method === 'PUT') {
+          const body = await parseBody(req);
+          if (!Array.isArray(body)) return json(res, 400, { error: 'Expected array' });
+          writeJSON(POSTS_FILE, body);
+          return json(res, 200, { success: true });
+        }
+      }
+
+      if (apiPath === '/ctas') {
+        const user = getUser();
+        if (!user) return json(res, 401, { error: 'Unauthorized' });
+        if (req.method === 'GET') return json(res, 200, readJSON(CTAS_FILE, {}));
+        if (req.method === 'PUT') {
+          const body = await parseBody(req);
+          writeJSON(CTAS_FILE, body);
+          return json(res, 200, { success: true });
+        }
+      }
+
+      return json(res, 404, { error: 'Not found' });
+    } catch (e) {
+      return json(res, 500, { error: e.message });
+    }
   }
 
-  try {
-    if (path === '/login' && req.method === 'POST') {
-      const body = await parseBody(req);
-      if (!body.password) return json(res, 400, { error: 'Password required' });
+  // Static files
+  const distDir = join(process.cwd(), 'dist');
+  const requestPath = path === '/' ? '/index.html' : path;
+  const filePath = join(distDir, requestPath);
 
-      const match = await bcrypt.compare(body.password, hash);
-      if (!match) return json(res, 401, { error: 'Invalid password' });
-      const token = jwt.sign({ role: 'admin' }, JWT_SECRET, { expiresIn: '24h' });
-      return json(res, 200, { token });
-    }
-
-    if (path === '/posts') {
-      const user = getUser();
-      if (!user) return json(res, 401, { error: 'Unauthorized' });
-      if (req.method === 'GET') return json(res, 200, readJSON(POSTS_FILE, []));
-      if (req.method === 'PUT') {
-        const body = await parseBody(req);
-        if (!Array.isArray(body)) return json(res, 400, { error: 'Expected array' });
-        writeJSON(POSTS_FILE, body);
-        return json(res, 200, { success: true });
-      }
-    }
-
-    if (path === '/ctas') {
-      const user = getUser();
-      if (!user) return json(res, 401, { error: 'Unauthorized' });
-      if (req.method === 'GET') return json(res, 200, readJSON(CTAS_FILE, {}));
-      if (req.method === 'PUT') {
-        const body = await parseBody(req);
-        writeJSON(CTAS_FILE, body);
-        return json(res, 200, { success: true });
-      }
-    }
-
-    json(res, 404, { error: 'Not found' });
-  } catch (e) {
-    json(res, 500, { error: e.message });
+  // Ensure we don't escape the dist directory
+  if (filePath.startsWith(distDir) && existsSync(filePath) && statSync(filePath).isFile()) {
+    if (serveStatic(res, filePath)) return;
   }
+
+  // SPA fallback
+  serveIndex(res, distDir);
 }
