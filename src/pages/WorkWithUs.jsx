@@ -7,8 +7,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import PageMeta from '@/components/PageMeta';
+import { BOOKING_URL, WHATSAPP_URL } from '@/lib/constants';
 
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || 'de118db9-7fd7-47b6-b21f-c2af772a1c90';
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -205,7 +206,7 @@ const WorkWithUs = () => {
         <div className="container-site">
           <p className="text-muted-foreground mb-4">Prefer to chat right away?</p>
           <Button asChild variant="outline">
-            <a href="https://wa.me/918777875140" target="_blank" rel="noopener noreferrer" className="no-underline">
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
               Message us on WhatsApp <ArrowRight className="w-4 h-4 ml-2" />
             </a>
           </Button>

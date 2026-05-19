@@ -22,7 +22,9 @@
 export function startGradientBg() {
   const interBubble = document.querySelector('#gradient-bg .interactive');
   if (!interBubble) {
-    console.warn('Interactive bubble element not found for gradient background.');
+    if (import.meta.env.DEV) {
+      console.warn('Interactive bubble element not found for gradient background.');
+    }
     return () => {};
   }
 

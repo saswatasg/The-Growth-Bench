@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Search, Users, Zap, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
+import { BOOKING_URL } from '@/lib/constants';
 
 const fadeIn = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -199,7 +200,7 @@ const About = () => {
           <motion.div {...fadeIn(0)}>
             <h2 className="text-white mb-4">If this sounds like what you've been looking for...</h2>
             <Button asChild size="lg">
-              <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
                 Book a 30-Minute Call <ArrowRight className="w-4 h-4 ml-2" />
               </a>
             </Button>

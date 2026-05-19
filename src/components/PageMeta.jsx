@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { SITE_URL } from '@/lib/constants';
 
 const defaultMeta = {
   title: "The Growth Bench — Full-Stack Growth Partner for D2C Brands & Startups",
@@ -50,7 +51,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
   const finalTitle = title || baseMeta.title;
   const finalDescription = description || baseMeta.description;
 
-  const siteUrl = "https://thegrowthbench.com/";
+  const siteUrl = SITE_URL.endsWith('/') ? SITE_URL : `${SITE_URL}/`;
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath ? cleanPath + '/' : ''}`;
   const ogImage = customOgImage || "/assets/images/og-card.svg";

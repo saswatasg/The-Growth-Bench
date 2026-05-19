@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, ChevronRight, Send, Sparkles } from 'lucide-react';
-
-const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i';
+import { BOOKING_URL } from '@/lib/constants';
 const CASESTUDIES_URL = '/case-studies';
 
 const FAQ_GROUPS = [

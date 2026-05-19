@@ -100,12 +100,12 @@ const Insights = () => {
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             <h2 className="mb-8">Real results from the same frameworks</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <Link to="/past-projects" className="card-standard block no-underline group">
+              <Link to="/case-studies" className="card-standard block no-underline group">
                 <div className="stat-number-dark text-xl mb-2" style={{ fontSize: '1.5rem' }}>$329K / month recovered</div>
                 <p className="text-sm text-body leading-relaxed mb-3">Complete cart & checkout flow redesign. Cut checkout abandonment by 26%, lifted mobile conversion by 47%.</p>
                 <span className="link-arrow text-sm">See full case study<ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
               </Link>
-              <Link to="/past-projects" className="card-standard block no-underline group">
+              <Link to="/case-studies" className="card-standard block no-underline group">
                 <div className="stat-number-dark text-xl mb-2" style={{ fontSize: '1.5rem' }}>5.7x ROAS (from 1.8x)</div>
                 <p className="text-sm text-body leading-relaxed mb-3">Full-funnel rebuild for a D2C coffee brand. Website redesign, analytics infrastructure, and high-converting ad campaigns.</p>
                 <span className="link-arrow text-sm">See full case study<ArrowRight className="w-3.5 h-3.5 ml-1" /></span>

@@ -9,8 +9,8 @@ import StatRow from '@/components/home/StatRow';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import { Magnetic } from '@/components/Magnetic';
 import { loadPosts } from '@/lib/blogUtils';
-
-const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i';
+import { BOOKING_URL } from '@/lib/constants';
+import { testimonialsData } from '@/data/testimonials';
 
 const stagger = {
   initial: { opacity: 0, y: 16 },
@@ -222,29 +222,19 @@ const Home = () => {
       </section>
 
       {/* Testimonials + Final CTA */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": testimonialsData.map((t, i) => ({
+          "@type": "Review",
+          "position": i + 1,
+          "itemReviewed": { "@type": "Organization", "name": "The Growth Bench" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5 },
+          "author": { "@type": "Person", "name": t.name },
+          "reviewBody": t.text
+        }))
+      })}} />
       <section className="section-alt">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "itemListElement": [
-              {
-                "@type": "Review",
-                "position": 1,
-                "itemReviewed": { "@type": "Organization", "name": "The Growth Bench" },
-                "reviewRating": { "@type": "Rating", "ratingValue": 5 },
-                "author": { "@type": "Person", "name": "Founder, US D2C Brand" },
-                "reviewBody": "The Growth Bench fixed our checkout and helped us think about our entire funnel differently."
-              },
-              {
-                "@type": "Review",
-                "position": 2,
-                "itemReviewed": { "@type": "Organization", "name": "The Growth Bench" },
-                "reviewRating": { "@type": "Rating", "ratingValue": 5 },
-                "author": { "@type": "Person", "name": "CMO, B2B SaaS Startup" },
-                "reviewBody": "Most agencies just execute. The Growth Bench asks the right questions first, then builds the solution."
-              }
-            ]
-          }) }} />
         <div className="container-site">
           <motion.div {...stagger}>
             <div className="section-eyebrow">WHAT PEOPLE SAY</div>
@@ -252,16 +242,13 @@ const Home = () => {
           </motion.div>
 
           <motion.div {...stagger} className="grid md:grid-cols-2 gap-6 mb-16">
-            <div className="card-standard relative">
-              <span className="absolute top-4 right-6 text-7xl font-display font-bold text-primary/10">&ldquo;</span>
-              <p className="text-body italic leading-relaxed mb-4">The Growth Bench didn't just fix our checkout — they helped us think about our entire funnel differently. The results speak for themselves.</p>
-              <p className="text-sm font-semibold" style={{ color: 'var(--color-dark)' }}>— Founder, US D2C Brand</p>
-            </div>
-            <div className="card-standard relative">
-              <span className="absolute top-4 right-6 text-7xl font-display font-bold text-primary/10">&ldquo;</span>
-              <p className="text-body italic leading-relaxed mb-4">What stood out was the strategic depth. Most agencies just execute. The Growth Bench asks the right questions first, then builds the solution. Completely different experience.</p>
-              <p className="text-sm font-semibold" style={{ color: 'var(--color-dark)' }}>— CMO, B2B SaaS Startup</p>
-            </div>
+            {testimonialsData.slice(0, 2).map((t, i) => (
+              <div key={i} className="card-standard relative">
+                <span className="absolute top-4 right-6 text-7xl font-display font-bold text-primary/10">&ldquo;</span>
+                <p className="text-body italic leading-relaxed mb-4">{t.text}</p>
+                <p className="text-sm font-semibold" style={{ color: 'var(--color-dark)' }}>— {t.name}, {t.title}</p>
+              </div>
+            ))}
           </motion.div>
 
           <motion.p className="text-sm text-center text-muted-foreground mt-8">

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { BOOKING_URL } from '@/lib/constants';
 
 const navLinks = [
   { to: '/about', label: 'About' },
@@ -55,7 +56,7 @@ const Header = () => {
               </NavLink>
             ))}
             <Button asChild size="sm">
-              <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call</a>
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call</a>
             </Button>
           </nav>
 
@@ -91,7 +92,7 @@ const Header = () => {
             </NavLink>
           ))}
           <Button asChild size="lg" className="mt-4" onClick={() => setIsOpen(false)}>
-            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call</a>
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call</a>
           </Button>
         </div>
       )}

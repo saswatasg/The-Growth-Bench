@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { LogOut, Plus, Save, Eye, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
+import { LogOut, Plus, Save, Eye, Trash2 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { blogPosts as defaultPosts } from '@/content/blog';
+import { fetchPosts, savePosts as apiSavePosts, fetchCTAs, saveCTAs as apiSaveCTAs } from '@/lib/api';
 
 const STORAGE_KEY = 'tgb_blog_posts';
 const SAVED_CTAS_KEY = 'tgb_blog_ctas';
@@ -21,7 +21,7 @@ const defaultCTAs = {
   }
 };
 
-const loadPosts = () => {
+const loadPostsFromStorage = () => {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
@@ -29,7 +29,7 @@ const loadPosts = () => {
   return JSON.parse(JSON.stringify(defaultPosts));
 };
 
-const loadCTAs = () => {
+const loadCTAsFromStorage = () => {
   try {
     const saved = localStorage.getItem(SAVED_CTAS_KEY);
     if (saved) return JSON.parse(saved);
@@ -48,13 +48,40 @@ const AdminDashboard = () => {
   const [saveMsg, setSaveMsg] = useState('');
 
   useEffect(() => {
-    setPosts(loadPosts());
-    setCtas(loadCTAs());
+    const load = async () => {
+      try {
+        const apiPosts = await fetchPosts();
+        if (apiPosts && apiPosts.length) {
+          setPosts(apiPosts);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(apiPosts));
+        } else {
+          setPosts(loadPostsFromStorage());
+        }
+      } catch {
+        setPosts(loadPostsFromStorage());
+      }
+      try {
+        const apiCtas = await fetchCTAs();
+        if (apiCtas && apiCtas.midArticle) {
+          setCtas(apiCtas);
+          localStorage.setItem(SAVED_CTAS_KEY, JSON.stringify(apiCtas));
+        } else {
+          setCtas(loadCTAsFromStorage());
+        }
+      } catch {
+        setCtas(loadCTAsFromStorage());
+      }
+    };
+    load();
   }, []);
 
-  const saveAll = () => {
+  const saveAll = async () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
     localStorage.setItem(SAVED_CTAS_KEY, JSON.stringify(ctas));
+    try {
+      await apiSavePosts(posts);
+      await apiSaveCTAs(ctas);
+    } catch {}
     setDirty(false);
     setSaveMsg('Saved.');
     setTimeout(() => setSaveMsg(''), 2000);

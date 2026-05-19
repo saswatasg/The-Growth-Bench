@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
+import { BOOKING_URL } from '@/lib/constants';
 
 const services = [
   {
@@ -320,7 +321,7 @@ const Services = () => {
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }} className="card-standard flex flex-col">
               <h3 className="font-display font-bold text-lg mb-1">Growth Sprint</h3>
-              <p className="text-3xl font-display font-extrabold text-primary mb-1">?75K<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
+              <p className="text-3xl font-display font-extrabold text-primary mb-1">₹75K<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
               <p className="text-xs text-muted-foreground mb-4">Monthly, 3-month minimum</p>
               <ul className="space-y-2 text-sm text-body flex-1 mb-6">
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Strategy audit & roadmap</li>
@@ -329,13 +330,13 @@ const Services = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Monthly strategy review</li>
               </ul>
               <Button asChild size="sm" className="w-full">
-                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
               </Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="card-highlighted flex flex-col border-primary/20">
               <span className="tag-amber text-[10px] mb-3 self-start">MOST POPULAR</span>
               <h3 className="font-display font-bold text-lg mb-1">Full-Stack Growth</h3>
-              <p className="text-3xl font-display font-extrabold text-primary mb-1">?1.5L<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
+              <p className="text-3xl font-display font-extrabold text-primary mb-1">₹1.5L<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
               <p className="text-xs text-muted-foreground mb-4">Monthly, 3-month minimum</p>
               <ul className="space-y-2 text-sm text-body flex-1 mb-6">
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Everything in Growth Sprint</li>
@@ -344,12 +345,12 @@ const Services = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Full analytics infrastructure</li>
               </ul>
               <Button asChild size="sm" className="w-full">
-                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
               </Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="card-standard flex flex-col">
               <h3 className="font-display font-bold text-lg mb-1">Full Stack + Dev</h3>
-              <p className="text-3xl font-display font-extrabold text-primary mb-1">?3L<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
+              <p className="text-3xl font-display font-extrabold text-primary mb-1">₹3L<span className="text-sm text-muted-foreground font-normal">/mo</span></p>
               <p className="text-xs text-muted-foreground mb-4">Monthly, 3-month minimum</p>
               <ul className="space-y-2 text-sm text-body flex-1 mb-6">
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Everything in Full-Stack Growth</li>
@@ -358,7 +359,7 @@ const Services = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Bi-weekly strategy calls</li>
               </ul>
               <Button asChild size="sm" className="w-full">
-                <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
               </Button>
             </motion.div>
           </div>
@@ -376,7 +377,7 @@ const Services = () => {
             That's what the audit call is for. We'll look at your current setup, identify the highest-impact gaps, and tell you honestly where we'd start.
           </p>
           <Button asChild size="lg">
-            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
               Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
             </a>
           </Button>

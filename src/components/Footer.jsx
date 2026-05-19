@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, MessageCircle } from 'lucide-react';
+import { WHATSAPP_URL } from '@/lib/constants';
 
 const services = [
   { label: 'Growth Strategy', to: '/services#strategy' },
@@ -71,7 +72,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/918777875140" target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors flex items-center gap-2">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors flex items-center gap-2">
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </a>
               </li>
@@ -87,7 +88,7 @@ const Footer = () => {
             <h4 className="text-white font-display font-semibold text-sm mb-2">Get growth insights in your inbox</h4>
             <p className="text-xs text-white/40 mb-4">Frameworks, teardowns, and strategy. No spam. Unsubscribe anytime.</p>
             <form action="https://api.web3forms.com/submit" method="POST" className="flex gap-2 max-w-sm mx-auto">
-              <input type="hidden" name="access_key" value="de118db9-7fd7-47b6-b21f-c2af772a1c90" />
+              <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS_KEY} />
               <input type="hidden" name="subject" value="Newsletter signup from The Growth Bench website" />
               <input
                 type="email"

@@ -7,6 +7,7 @@ import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { loadPosts, loadCTAs } from '@/lib/blogUtils';
+import { BOOKING_URL, WHATSAPP_URL } from '@/lib/constants';
 
 const slugToCategoryImage = {
   'Growth Strategy': '/assets/images/og-growth-strategy.svg',
@@ -20,8 +21,6 @@ const slugToCategoryImage = {
 };
 
 const BlogPost = () => {
-  const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i';
-
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [ctas, setCtas] = useState(null);
@@ -162,7 +161,7 @@ const BlogPost = () => {
                   </Button>
                   {ctas.bottomCTA.secondary && (
                     <Button asChild variant="outline" size="lg">
-                      <a href="https://wa.me/918777875140" target="_blank" rel="noopener noreferrer" className="no-underline">
+                      <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
                         {ctas.bottomCTA.secondary}
                       </a>
                     </Button>

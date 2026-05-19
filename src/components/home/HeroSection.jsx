@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { BOOKING_URL } from '@/lib/constants';
 
 const fadeUp = (delay) => ({
   initial: { opacity: 0, y: 20 },
@@ -33,7 +34,7 @@ const HeroSection = () => {
 
           <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-4 mb-8">
             <Button asChild size="lg">
-              <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i" target="_blank" rel="noopener noreferrer" className="no-underline">
+              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
                 Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
               </a>
             </Button>
