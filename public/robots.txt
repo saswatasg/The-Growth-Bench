@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thegrowthbench.com/sitemap.xml
+Sitemap: https://www.thegrowthbench.com/sitemap.xml

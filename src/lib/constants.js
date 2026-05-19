@@ -2,6 +2,6 @@ export const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointment
 
 export const WHATSAPP_URL = 'https://wa.me/918777875140';
 
-export const SITE_URL = 'https://thegrowthbench.com';
+export const SITE_URL = 'https://www.thegrowthbench.com';
 
 export const SITE_NAME = 'The Growth Bench';

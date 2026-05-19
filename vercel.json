@@ -3,6 +3,9 @@
     { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
     { "src": "api/index.mjs", "use": "@vercel/node" }
   ],
+  "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "thegrowthbench.com" }], "destination": "https://www.thegrowthbench.com/$1", "permanent": true }
+  ],
   "routes": [
     { "src": "/(.*)", "dest": "api/index.mjs" }
   ]

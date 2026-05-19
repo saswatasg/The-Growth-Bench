@@ -60,7 +60,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "The Growth Bench",
-    "url": "https://thegrowthbench.com",
+    "url": SITE_URL,
     "description": "Full-stack growth partner for D2C brands and early-stage startups.",
     "serviceType": [
       "Growth Strategy", "Performance Marketing", "CRO",
@@ -73,7 +73,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "The Growth Bench",
-    "url": "https://thegrowthbench.com",
+    "url": SITE_URL,
   };
 
   const breadcrumbSchema = {
@@ -95,7 +95,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
       "@type": "ListItem",
       "position": i + 1,
       "name": item.name,
-      "item": `https://thegrowthbench.com${item.path}/`
+      "item": `${SITE_URL}${item.path}/`
     });
   });
 

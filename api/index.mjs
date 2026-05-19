@@ -27,9 +27,9 @@ const writeJSON = (file, data) => {
 const hash = bcrypt.hashSync(ADMIN_PASSWORD, 10);
 
 const MIME_TYPES = {
-  '.js': 'application/javascript',
-  '.css': 'text/css',
-  '.html': 'text/html',
+  '.js': 'application/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.html': 'text/html; charset=utf-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -56,32 +56,8 @@ function parseBody(req) {
 }
 
 function json(res, status, data) {
-  res.writeHead(status, { 'Content-Type': 'application/json' });
+  res.writeHead(status, { 'Content-Type': 'application/json; charset=utf-8' });
   res.end(JSON.stringify(data));
-}
-
-function serveStatic(res, filePath) {
-  try {
-    const content = readFileSync(filePath);
-    const ext = extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': contentType });
-    res.end(content);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-function serveIndex(res, distDir) {
-  const indexPath = join(distDir, 'index.html');
-  try {
-    const content = readFileSync(indexPath, 'utf-8');
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(content);
-  } catch {
-    json(res, 404, { error: 'Not found' });
-  }
 }
 
 export default async function handler(req, res) {
@@ -148,16 +124,31 @@ export default async function handler(req, res) {
     }
   }
 
-  // Static files
+  // Serve static files from dist/
   const distDir = join(process.cwd(), 'dist');
   const requestPath = path === '/' ? '/index.html' : path;
   const filePath = join(distDir, requestPath);
 
-  // Ensure we don't escape the dist directory
-  if (filePath.startsWith(distDir) && existsSync(filePath) && statSync(filePath).isFile()) {
-    if (serveStatic(res, filePath)) return;
+  if (filePath.startsWith(distDir)) {
+    try {
+      if (statSync(filePath).isFile()) {
+        const content = readFileSync(filePath);
+        const ext = extname(filePath).toLowerCase();
+        const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+        res.writeHead(200, { 'Content-Type': contentType });
+        res.end(content);
+        return;
+      }
+    } catch {}
   }
 
-  // SPA fallback
-  serveIndex(res, distDir);
+  // SPA fallback — serve index.html for all non-file routes
+  try {
+    const indexPath = join(distDir, 'index.html');
+    const content = readFileSync(indexPath, 'utf-8');
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    res.end(content);
+  } catch (e) {
+    json(res, 404, { error: 'Not found: ' + e.message });
+  }
 }
