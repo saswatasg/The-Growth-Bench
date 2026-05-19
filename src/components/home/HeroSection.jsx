@@ -19,7 +19,7 @@ const HeroSection = () => {
             FULL-STACK GROWTH PARTNER
           </motion.div>
 
-          <motion.h1 {...fadeUp(0.08)} className="mb-6">
+          <motion.h1 {...fadeUp(0.08)} className="mb-6 gradient-text">
             We build the growth engine your brand actually needs.
           </motion.h1>
 

@@ -20,6 +20,7 @@ function App() {
         <ScrollToTop />
         <PageMeta />
         <ParallaxShapes />
+        <div className="noise-overlay" aria-hidden="true" />
         <CursorGlow />
         <Layout>
           <RoutesConfig />

@@ -191,6 +191,97 @@
   color: #fff;
 }
 
+/* Subtle noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* === Visual Enhancements === */
+
+/* Gradient text for hero & major headings */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2D8A56 40%, #0D9488 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse animation for social proof dots */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.35); }
+}
+.social-proof-dot {
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+.social-proof-dot:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* Enhanced card hover with green glow */
+.card-standard:hover {
+  box-shadow:
+    0 12px 20px -4px rgba(0, 0, 0, 0.1),
+    0 4px 8px -2px rgba(0, 0, 0, 0.05),
+    0 0 0 1px rgba(26, 107, 60, 0.12);
+  transform: translateY(-3px);
+  border-color: rgba(26, 107, 60, 0.2);
+}
+
+/* Better primary button hover */
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  box-shadow: 0 8px 28px rgba(26, 107, 60, 0.25);
+  transform: translateY(-2px) scale(1.02);
+}
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Ghost button hover enhancement */
+.btn-ghost:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 107, 60, 0.1);
+}
+
+/* Section reveal animation on scroll */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: sectionFadeIn 0.6s ease forwards;
+}
+@keyframes sectionFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tag hover effect */
+.tag-green:hover {
+  background: #d0ecd9;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+/* Callout box subtle accent */
+.callout-box {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, #f0faf3 100%);
+}
+
+/* Eyebrow accent animation */
+.section-eyebrow {
+  transition: gap 0.3s ease;
+}
+.section-eyebrow:hover {
+  gap: 1rem;
+}
+
 /* prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
