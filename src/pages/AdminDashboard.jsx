@@ -71,13 +71,13 @@ const AdminDashboard = () => {
     const slug = 'new-post-' + Date.now();
     const newPost = {
       slug,
-      title: 'New Post',
+      title: 'Untitled Post',
       date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
       category: 'Growth Strategy',
       image: '/assets/images/og-growth-strategy.svg',
       readTime: 5,
-      description: 'Edit this description.',
-      body: 'Start writing your content here...',
+      description: '',
+      body: '',
       faq: []
     };
     const updated = [...posts, newPost];

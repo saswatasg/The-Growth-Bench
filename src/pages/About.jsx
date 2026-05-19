@@ -141,7 +141,7 @@ const About = () => {
           </motion.div>
         </div>
       </section>
-`n      {/* Founder */}
+      {/* Founder */}
       <section className="section-light">
         <div className="container-site">
           <motion.div {...fadeIn(0)}>
@@ -152,14 +152,14 @@ const About = () => {
               <div className="w-48 h-48 rounded-full bg-primary-light flex items-center justify-center mb-4 overflow-hidden">
                 <span className="text-6xl font-display font-bold text-primary">S</span>
               </div>
-              <h3 className="font-display font-bold text-xl text-center md:text-left">Saswata Mukherjee</h3>
+              <h3 className="font-display font-bold text-xl text-center md:text-left">Saswata Sengupta</h3>
               <p className="text-sm text-muted-foreground text-center md:text-left">Founder, The Growth Bench</p>
             </motion.div>
             <motion.div {...fadeIn(0.2)} className="space-y-4 text-body text-lg leading-relaxed">
-              <p>Hi — I'm Saswata. I started The Growth Bench after spending years inside D2C e-commerce, B2B SaaS, and product discovery — on both the agency side and the founder side.</p>
+              <p>Hi â€” I'm Saswata Sengupta. I started The Growth Bench after spending years inside D2C e-commerce, B2B SaaS, and product discovery â€” on both the agency side and the founder side.</p>
               <p>I've managed ad accounts spending crores per month. I've fixed checkout flows that recovered lakhs in lost revenue. I've built growth systems from scratch for brands that had nothing but a Shopify store and a spreadsheet.</p>
-              <p>What I learned is that most brands don't need a bigger agency or a cheaper freelancer. They need one person who actually owns the full picture — with the right specialists on call when the work demands it.</p>
-              <p>That's what The Growth Bench is. If you'd like to talk about whether we can help, I'd love to hear from you.</p>
+              <p>What I learned is that most brands don't need a bigger agency or a cheaper freelancer. They need one person who actually owns the full picture â€” with the right specialists on call when the work demands it.</p>
+              <p>That's what The Growth Bench is. Reach me at <a href="mailto:hi@saswatasg.com" className="text-primary underline">hi@saswatasg.com</a> â€” I'd love to hear from you.</p>
             </motion.div>
           </div>
         </div>

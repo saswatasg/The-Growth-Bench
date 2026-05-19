@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Linkedin } from 'lucide-react';
+import { Mail, MessageCircle } from 'lucide-react';
 
 const services = [
   { label: 'Growth Strategy', to: '/services#strategy' },
@@ -66,18 +66,13 @@ const Footer = () => {
             <h4 className="text-white font-display font-semibold text-sm mb-4 uppercase tracking-wider">Get in Touch</h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@thegrowthbench.com" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors flex items-center gap-2">
-                  <Mail className="w-4 h-4" /> hello@thegrowthbench.com
+                <a href="mailto:hi@saswatasg.com" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors flex items-center gap-2">
+                  <Mail className="w-4 h-4" /> hi@saswatasg.com
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/company/the-growth-bench" target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors flex items-center gap-2">
-                  <Linkedin className="w-4 h-4" /> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="https://thegrowthbench.com" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors">
-                  thegrowthbench.com
+                <a href="https://wa.me/918777875140" target="_blank" rel="noopener noreferrer" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4" /> WhatsApp
                 </a>
               </li>
             </ul>

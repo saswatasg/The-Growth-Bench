@@ -7,9 +7,7 @@ import PageMeta from '@/components/PageMeta';
 import HeroSection from '@/components/home/HeroSection';
 import StatRow from '@/components/home/StatRow';
 import ServicesOverview from '@/components/home/ServicesOverview';
-import BrandLogos from '@/components/home/BrandLogos';
 import { Magnetic } from '@/components/Magnetic';
-import { testimonialsData } from '@/data/testimonials';
 import { loadPosts } from '@/lib/blogUtils';
 
 const BOOKING_URL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i';
@@ -33,8 +31,6 @@ const Home = () => {
       <PageMeta />
 
       <HeroSection />
-
-      <BrandLogos />
 
       {/* The Problem We Solve */}
       <section className="section-alt">
