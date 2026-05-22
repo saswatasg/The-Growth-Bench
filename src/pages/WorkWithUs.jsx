@@ -171,7 +171,7 @@ const WorkWithUs = () => {
                       Privacy Policy
                     </a>.
                   </p>
-                  <Button type="submit" className="w-full" disabled={submitting}>
+                  <Button type="submit" disabled={submitting}>
                     {submitting ? 'Sending...' : 'Send & Book Your Free Call \u2192'}
                   </Button>
                 </form>
