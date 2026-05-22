@@ -183,7 +183,7 @@ const WorkWithUs = () => {
                 </div>
                 <h2 className="text-2xl font-display font-bold mb-2">You're on the list.</h2>
                 <p className="text-body mb-6">Now pick a time for your free audit call.</p>
-                <Button onClick={openBookingModal} className="text-base px-8 py-6">
+                <Button onClick={openBookingModal}>
                   Book Your Free Call \u2192
                 </Button>
                 <p className="text-xs text-muted-foreground mt-4">
