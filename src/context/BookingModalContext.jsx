@@ -1,12 +1,17 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const BookingModalContext = createContext();
 
 export function BookingModalProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const openBookingModal = () => setIsOpen(true);
+  const openBookingModal = () => { setIsOpen(true); setLoading(true); };
   const closeBookingModal = () => setIsOpen(false);
+
+  useEffect(() => {
+    if (isOpen) setLoading(true);
+  }, [isOpen]);
 
   return (
     <BookingModalContext.Provider value={{ openBookingModal, closeBookingModal }}>
@@ -27,13 +32,20 @@ export function BookingModalProvider({ children }) {
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
-            <div style={{ height: '85vh', minHeight: '600px' }}>
+            <div style={{ height: '85vh', minHeight: '600px', position: 'relative' }}>
+              {loading && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4" style={{ background: 'var(--color-card-bg, #fff)' }}>
+                  <div className="w-10 h-10 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+                  <p className="text-sm text-muted-foreground">Loading booking calendar...</p>
+                </div>
+              )}
               <iframe
                 src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3wx11wN9wr9kdE7TBGU3impXZ4_MkcsGh6NsUD7F854Fnr5XsJnsR2mnPQ-K1IFLGydbxR_KKZ?gv=true"
-                style={{ border: 0, width: '100%', height: '100%' }}
+                style={{ border: 0, width: '100%', height: '100%', opacity: loading ? 0 : 1 }}
                 frameBorder="0"
                 sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
                 title="Book a call with The Growth Bench"
+                onLoad={() => setLoading(false)}
               />
             </div>
           </div>
