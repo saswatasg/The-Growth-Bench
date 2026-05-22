@@ -25,10 +25,9 @@ const MODULES = [
 ];
 
 const STATS = [
-  { value: '₹2.89Cr+', label: 'Revenue generated' },
   { value: '28.71%', label: 'Avg. conversion lift' },
-  { value: '168%', label: 'Avg. ROAS' },
-  { value: '3+ yrs', label: 'Avg. client tenure' },
+  { value: '468%', label: 'Avg. ROAS' },
+  { value: '2+ yrs', label: 'Avg. client tenure' },
 ];
 
 const STEPS = [

@@ -124,10 +124,9 @@ const About = () => {
         <div className="container-site">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { stat: '₹2.89Cr', label: 'Monthly checkout recovery' },
               { stat: '28.71%', label: 'Add-to-cart lift via CRO' },
-              { stat: '168%', label: 'Feature engagement uplift' },
-              { stat: '3+ yrs', label: 'Building growth systems' },
+              { stat: '468%', label: 'Avg. ROAS' },
+              { stat: '2+ yrs', label: 'Building growth systems' },
             ].map((s, i) => (
               <motion.div key={s.stat} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: i * 0.1 }}>
                 <div className="stat-number text-3xl">{s.stat}</div>
@@ -143,7 +142,7 @@ const About = () => {
           <motion.div {...fadeIn(0)}>
             <h2 className="mb-6">Where the experience comes from.</h2>
             <div className="max-w-3xl text-body text-lg leading-relaxed">
-              <p>The Growth Bench is founded by someone who has worked inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). The work has crossed performance marketing, product management, growth strategy, website CRO, and analytics infrastructure — all with real revenue on the line. The ₹2.89Cr checkout recovery and 28.71% ATC lift on the homepage came from actual sprints on actual brands.</p>
+              <p>The Growth Bench is founded by someone who has worked inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). The work has crossed performance marketing, product management, growth strategy, website CRO, and analytics infrastructure — all with real revenue on the line. The 28.71% ATC lift on the homepage came from actual sprints on actual brands.</p>
             </div>
           </motion.div>
         </div>
