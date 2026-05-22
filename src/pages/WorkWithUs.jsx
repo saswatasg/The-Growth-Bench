@@ -75,29 +75,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      {/* What happens on the call */}
-      <section className="section-off">
-        <div className="container-site">
-          <h2 className="mb-10">What happens on the call</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: 'Step 1', title: 'You tell us about your business.', body: "Where you are, what you're trying to grow, what's not working. No prep needed — just talk us through it." },
-              { step: 'Step 2', title: 'We diagnose live.', body: "We'll ask sharp questions and share what we're seeing. We usually spot 2–3 quick wins in the first 10 minutes." },
-              { step: 'Step 3', title: 'We give you a recommendation.', body: "Even if we're not the right fit, you'll leave the call with at least one actionable thing to try. That's a promise." },
-            ].map((s, i) => (
-              <motion.div key={s.step} {...fadeUp(i * 0.1)} className="text-center">
-                <div className="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-4">
-                  <span className="font-display font-extrabold text-primary">{`0${i + 1}`}</span>
-                </div>
-                <h3 className="font-display font-bold text-lg mb-2">{s.title}</h3>
-                <p className="text-sm text-body leading-relaxed">{s.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Widget */}
+      {/* Booking Widget (top of page) */}
       <section className="section-light">
         <div className="container-site">
           <motion.div {...fadeUp(0)} className="max-w-3xl mx-auto">
@@ -107,7 +85,7 @@ const WorkWithUs = () => {
             <div className="border border-border rounded-xl overflow-hidden bg-white mb-8" style={{ minHeight: '650px', position: 'relative' }}>
               <div style={{ paddingBottom: '120%', height: 0 }}>
                 <iframe
-                  src="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0ibq0OoR_jlsEkRC4bqMHktw4l2xPn-cgO1GY7xCqhA63VxmyJa2KgMdevw1coatF5CpBaLy6i?gv=true"
+                  src={BOOKING_URL}
                   style={{ border: 0, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                   frameBorder="0"
                   sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
@@ -181,6 +159,28 @@ const WorkWithUs = () => {
               )}
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* What happens on the call */}
+      <section className="section-off">
+        <div className="container-site">
+          <h2 className="mb-10">What happens on the call</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { step: 'Step 1', title: 'You tell us about your business.', body: "Where you are, what you're trying to grow, what's not working. No prep needed — just talk us through it." },
+              { step: 'Step 2', title: 'We diagnose live.', body: "We'll ask sharp questions and share what we're seeing. We usually spot 2–3 quick wins in the first 10 minutes." },
+              { step: 'Step 3', title: 'We give you a recommendation.', body: "Even if we're not the right fit, you'll leave the call with at least one actionable thing to try. That's a promise." },
+            ].map((s, i) => (
+              <motion.div key={s.step} {...fadeUp(i * 0.1)} className="text-center">
+                <div className="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-4">
+                  <span className="font-display font-extrabold text-primary">{`0${i + 1}`}</span>
+                </div>
+                <h3 className="font-display font-bold text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-body leading-relaxed">{s.body}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
