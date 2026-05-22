@@ -11,14 +11,14 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import { WHATSAPP_URL } from '@/lib/constants';
 
 const slugToCategoryImage = {
-  'Growth Strategy': '/assets/images/og-growth-strategy.svg',
-  'CRO': '/assets/images/og-cro.svg',
-  'Google Ads': '/assets/images/og-google-ads.svg',
-  'Meta Ads': '/assets/images/og-meta-ads.svg',
-  'Lead Systems': '/assets/images/og-lead-systems.svg',
-  'UI/UX': '/assets/images/og-ui-ux.svg',
-  'Website Dev': '/assets/images/og-website-dev.svg',
-  'Marketing Strategy': '/assets/images/og-marketing-strategy.svg',
+  'Growth Strategy': '/assets/images/og-growth-strategy.png',
+  'CRO': '/assets/images/og-cro.png',
+  'Google Ads': '/assets/images/og-google-ads.png',
+  'Meta Ads': '/assets/images/og-meta-ads.png',
+  'Lead Systems': '/assets/images/og-lead-systems.png',
+  'UI/UX': '/assets/images/og-ui-ux.png',
+  'Website Dev': '/assets/images/og-website-dev.png',
+  'Marketing Strategy': '/assets/images/og-marketing-strategy.png',
 };
 
 const BlogPost = () => {
@@ -60,14 +60,14 @@ const BlogPost = () => {
     "description": post.description,
     "datePublished": dateToISO(post.date),
     "dateModified": dateToISO(post.date),
-    "image": slugToCategoryImage[post.category] || "/assets/images/og-card.svg",
+    "image": slugToCategoryImage[post.category] || "/assets/images/og-card.png",
     "author": { "@type": "Organization", "name": "The Growth Bench", "url": "https://www.thegrowthbench.com" },
     "publisher": { "@type": "Organization", "name": "The Growth Bench", "url": "https://www.thegrowthbench.com" },
   };
 
   return (
     <>
-      <PageMeta title={`${post.title} | The Growth Bench Insights`} description={post.description} articleSchema={articleSchema} ogImage={slugToCategoryImage[post.category] || "/assets/images/og-card.svg"} />
+      <PageMeta title={`${post.title} | The Growth Bench Insights`} description={post.description} articleSchema={articleSchema} ogImage={slugToCategoryImage[post.category] || "/assets/images/og-card.png"} />
 
       <article className="section-light pt-32 pb-24">
         <div className="container-site max-w-3xl mx-auto">

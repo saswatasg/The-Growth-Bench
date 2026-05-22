@@ -54,7 +54,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
   const siteUrl = SITE_URL.endsWith('/') ? SITE_URL : `${SITE_URL}/`;
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath ? cleanPath + '/' : ''}`;
-  const ogImage = customOgImage || "/assets/images/og-card.svg";
+  const ogImage = customOgImage || "/assets/images/og-card.png";
 
   const orgSchema = {
     "@context": "https://schema.org",

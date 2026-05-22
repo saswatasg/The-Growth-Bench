@@ -210,7 +210,7 @@ const AdminDashboard = () => {
 
                   <div>
                     <label className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-1 block">OG Image Path</label>
-                    <input value={activePost.image || ''} onChange={e => updatePost(activePost.slug, 'image', e.target.value)} className="input w-full text-sm font-mono" placeholder="/assets/images/og-card.svg" />
+                    <input value={activePost.image || ''} onChange={e => updatePost(activePost.slug, 'image', e.target.value)} className="input w-full text-sm font-mono" placeholder="/assets/images/og-card.png" />
                   </div>
 
                   <div className="border-t border-border pt-4">
