@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Check, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 const services = [
   {
@@ -247,6 +247,7 @@ const Section = ({ service, index }) => (
 );
 
 const Services = () => {
+  const { openBookingModal } = useBookingModal();
   const [activeId, setActiveId] = useState('');
 
   useEffect(() => {
@@ -329,9 +330,7 @@ const Services = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Weekly check-ins</li>
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Monthly strategy review</li>
               </ul>
-              <Button asChild size="sm" className="w-full">
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
-              </Button>
+              <Button size="sm" className="w-full" onClick={openBookingModal}>Book a Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="card-highlighted flex flex-col border-primary/20">
               <span className="tag-amber text-[10px] mb-3 self-start">MOST POPULAR</span>
@@ -344,9 +343,7 @@ const Services = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> CRO program running</li>
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Full analytics infrastructure</li>
               </ul>
-              <Button asChild size="sm" className="w-full">
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
-              </Button>
+              <Button size="sm" className="w-full" onClick={openBookingModal}>Book a Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="card-standard flex flex-col">
               <h3 className="font-display font-bold text-lg mb-1">Full Stack + Dev</h3>
@@ -358,9 +355,7 @@ const Services = () => {
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Dedicated bench specialists</li>
                 <li className="flex items-start gap-2"><Check className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" /> Bi-weekly strategy calls</li>
               </ul>
-              <Button asChild size="sm" className="w-full">
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call <ArrowRight className="w-4 h-4 ml-2" /></a>
-              </Button>
+              <Button size="sm" className="w-full" onClick={openBookingModal}>Book a Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </motion.div>
           </div>
           <motion.p className="text-center text-sm text-muted-foreground mt-8">
@@ -376,11 +371,7 @@ const Services = () => {
           <p className="text-faint text-lg max-w-xl mx-auto leading-relaxed mb-10">
             That's what the audit call is for. We'll look at your current setup, identify the highest-impact gaps, and tell you honestly where we'd start.
           </p>
-          <Button asChild size="lg">
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-              Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
+          <Button size="lg" onClick={openBookingModal}>Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
         </div>
       </section>
     </>

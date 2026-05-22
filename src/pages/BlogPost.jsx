@@ -7,7 +7,8 @@ import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { loadPosts, loadCTAs } from '@/lib/blogUtils';
-import { BOOKING_URL, WHATSAPP_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
+import { WHATSAPP_URL } from '@/lib/constants';
 
 const slugToCategoryImage = {
   'Growth Strategy': '/assets/images/og-growth-strategy.svg',
@@ -21,6 +22,7 @@ const slugToCategoryImage = {
 };
 
 const BlogPost = () => {
+  const { openBookingModal } = useBookingModal();
   const { slug } = useParams();
   const [posts, setPosts] = useState([]);
   const [ctas, setCtas] = useState(null);
@@ -100,9 +102,9 @@ const BlogPost = () => {
               <div className="callout-box my-10">
                 <p className="!mb-0">
                   <strong>{ctas.midArticle.text}</strong>{' '}
-                  <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary font-semibold whitespace-nowrap">
+                  <button onClick={openBookingModal} className="text-primary font-semibold whitespace-nowrap">
                     {ctas.midArticle.button} <ArrowRight className="w-4 h-4 inline" />
-                  </a>
+                  </button>
                   {ctas.midArticle.note && <> {' '}{ctas.midArticle.note}.</>}
                 </p>
               </div>
@@ -154,11 +156,7 @@ const BlogPost = () => {
                   <strong>{ctas.bottomCTA.text}</strong>
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Button asChild size="lg">
-                    <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-                      {ctas.bottomCTA.button} <ArrowRight className="w-4 h-4 ml-2" />
-                    </a>
-                  </Button>
+                  <Button size="lg" onClick={openBookingModal}>{ctas.bottomCTA.button} <ArrowRight className="w-4 h-4 ml-2" /></Button>
                   {ctas.bottomCTA.secondary && (
                     <Button asChild variant="outline" size="lg">
                       <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">

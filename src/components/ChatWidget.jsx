@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, ChevronRight, Send, Sparkles } from 'lucide-react';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 const CASESTUDIES_URL = '/case-studies';
 
 const FAQ_GROUPS = [
@@ -69,6 +69,7 @@ const TypewriterText = ({ text, speed = 25, onComplete }) => {
 };
 
 const ChatWidget = () => {
+  const { openBookingModal } = useBookingModal();
   const [isOpen, setIsOpen] = React.useState(false);
   const [messages, setMessages] = React.useState([]);
   const [showOptions, setShowOptions] = React.useState(false);
@@ -149,7 +150,7 @@ const ChatWidget = () => {
   };
 
   const handleBookCall = () => {
-    window.open(BOOKING_URL, '_blank');
+    openBookingModal();
   };
 
   const resetChat = () => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { AuthProvider } from '@/context/AuthContext';
+import { BookingModalProvider } from '@/context/BookingModalContext';
 import Layout from '@/components/Layout';
 import RoutesConfig from '@/config/RoutesConfig';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -17,6 +18,7 @@ function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
+        <BookingModalProvider>
         <ScrollToTop />
         <PageMeta />
         <ParallaxShapes />
@@ -27,6 +29,7 @@ function App() {
         </Layout>
         <ChatWidget />
         <Toaster />
+        </BookingModalProvider>
       </AuthProvider>
     </HelmetProvider>
   );

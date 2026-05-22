@@ -9,7 +9,7 @@ import StatRow from '@/components/home/StatRow';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import { Magnetic } from '@/components/Magnetic';
 import { loadPosts } from '@/lib/blogUtils';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 import { testimonialsData } from '@/data/testimonials';
 
 const stagger = {
@@ -20,6 +20,7 @@ const stagger = {
 };
 
 const Home = () => {
+  const { openBookingModal } = useBookingModal();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -253,7 +254,7 @@ const Home = () => {
 
           <motion.p className="text-sm text-center text-muted-foreground mt-8">
             Ready to see what your business could do with a full growth partner?{' '}
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary font-medium underline underline-offset-2" style={{ color: 'var(--color-primary)' }}>Book your free audit call.</a>
+            <button onClick={openBookingModal} className="text-primary font-medium underline underline-offset-2" style={{ color: 'var(--color-primary)' }}>Book your free audit call.</button>
           </motion.p>
         </div>
       </section>
@@ -270,10 +271,8 @@ const Home = () => {
               Book a free 30-minute audit call. We'll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure. If you don't see value in 7 days, you walk away.
             </p>
             <Magnetic strength={0.4}>
-              <Button asChild size="lg" className="shadow-green text-base px-9 py-4">
-                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-                  Book Your Free Trial <ArrowRight className="w-4 h-4 ml-2" />
-                </a>
+              <Button size="lg" className="shadow-green text-base px-9 py-4" onClick={openBookingModal}>
+                Book Your Free Trial <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Magnetic>
             <p className="text-sm text-white/40 mt-4">

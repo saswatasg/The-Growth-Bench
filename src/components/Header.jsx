@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 const navLinks = [
   { to: '/about', label: 'About' },
@@ -14,6 +14,7 @@ const navLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const { openBookingModal } = useBookingModal();
   const overlayRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -55,9 +56,7 @@ const Header = () => {
                 {link.label}
               </NavLink>
             ))}
-            <Button asChild size="sm">
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call</a>
-            </Button>
+            <Button size="sm" onClick={openBookingModal}>Book a Call</Button>
           </nav>
 
           {/* Mobile Hamburger */}
@@ -91,9 +90,7 @@ const Header = () => {
               {link.label}
             </NavLink>
           ))}
-          <Button asChild size="lg" className="mt-4" onClick={() => setIsOpen(false)}>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">Book a Call</a>
-          </Button>
+          <Button size="lg" className="mt-4" onClick={() => { openBookingModal(); setIsOpen(false); }}>Book a Call</Button>
         </div>
       )}
     </>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Search, Users, Zap, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 const fadeIn = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -14,6 +14,7 @@ const fadeIn = (delay = 0) => ({
 });
 
 const About = () => {
+  const { openBookingModal } = useBookingModal();
   return (
     <>
       <PageMeta />
@@ -199,11 +200,7 @@ const About = () => {
         <div className="container-site">
           <motion.div {...fadeIn(0)}>
             <h2 className="text-white mb-4">If this sounds like what you've been looking for...</h2>
-            <Button asChild size="lg">
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-                Book a 30-Minute Call <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
+            <Button size="lg" onClick={openBookingModal}>Book a 30-Minute Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
             <p className="text-sm text-white/40 italic mt-4">
               No commitment. We'll tell you in the first 10 minutes if we're the right fit.
             </p>

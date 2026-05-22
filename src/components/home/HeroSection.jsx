@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 const fadeUp = (delay) => ({
   initial: { opacity: 0, y: 20 },
@@ -12,6 +12,7 @@ const fadeUp = (delay) => ({
 });
 
 const HeroSection = () => {
+  const { openBookingModal } = useBookingModal();
   return (
     <section className="section-light min-h-screen flex items-center pt-16">
       <div className="container-site w-full">
@@ -33,11 +34,7 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-4 mb-8">
-            <Button asChild size="lg">
-              <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-                Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
+            <Button size="lg" onClick={openBookingModal}>Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
             <Link to="/services" className="btn-ghost no-underline">
               See Our Services
             </Link>

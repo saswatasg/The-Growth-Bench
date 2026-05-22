@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
-import { BOOKING_URL } from '@/lib/constants';
+import { useBookingModal } from '@/context/BookingModalContext';
 import { TiltCard } from '@/components/TiltCard';
 
 const pastProjects = [
@@ -127,6 +127,7 @@ const stagger = {
 };
 
 const CaseStudies = () => {
+  const { openBookingModal } = useBookingModal();
   return (
     <>
       <PageMeta />
@@ -210,11 +211,7 @@ const CaseStudies = () => {
           <p className="text-faint text-lg max-w-lg mx-auto leading-relaxed mb-10">
             Every project starts with a free 30-minute audit. We'll tell you honestly if we can help and what the fastest path looks like.
           </p>
-          <Button asChild size="lg">
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-              Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
+          <Button size="lg" onClick={openBookingModal}>Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
         </div>
       </section>
     </>
