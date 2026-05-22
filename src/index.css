@@ -32,8 +32,9 @@
     --color-border-strong: #D1D5DB;
     --color-surface-base: #FBFBF9;
     --color-surface-off: #F5F5F0;
-    --color-card-bg: rgba(255,255,255,0.85);
-    --color-card-border: rgba(229,231,235,0.8);
+    --color-surface-mid: #E8EDF0;
+    --color-card-bg: rgba(255,255,255,0.92);
+    --color-card-border: rgba(229,231,235,0.9);
     --background: 50 20% 97%;
     --foreground: 218 18% 26%;
     --card: 50 20% 98%;

@@ -2,22 +2,27 @@
 .section-dark {
   background: var(--color-dark);
   color: #fff;
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 .section-light {
   background: var(--color-surface-base);
-  color: var(--color-body);
-  padding: 5rem 0;
+  color: var(--color-dark);
+  padding: 4rem 0;
 }
 .section-off {
   background: var(--color-surface-off);
-  color: var(--color-body);
-  padding: 5rem 0;
+  color: var(--color-dark);
+  padding: 4rem 0;
+}
+.section-mid {
+  background: var(--color-surface-mid);
+  color: var(--color-dark);
+  padding: 4rem 0;
 }
 .section-primary {
   background: var(--color-primary);
   color: #fff;
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 
 /* Primary Button */

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Search, Code2, Target, TrendingUp, Users, Palette, FileText, BarChart3, ArrowRight } from 'lucide-react';
 
 const services = [
-  { num: '01', name: 'Growth Strategy & Consulting', desc: 'The diagnosis before the prescription. We map your funnel, your ICP, and your actual growth levers before touching a single ad account.' },
-  { num: '02', name: 'Website Design & Development', desc: 'Built to convert, not just to look good. Full builds in Next.js, Webflow, or Shopify with CRO and analytics infrastructure baked in from day one.' },
-  { num: '03', name: 'Google Ads', desc: 'Full-funnel Google Ads from keyword research to campaign architecture to weekly optimisation. We own the number.' },
-  { num: '04', name: 'Meta Ads', desc: 'Creative-led, data-backed Facebook and Instagram campaigns. Cold audiences to loyal customers — we build the whole funnel.' },
-  { num: '05', name: 'Lead Generation Systems', desc: 'End-to-end lead infrastructure: landing pages, CRM setup, nurture sequences, scoring logic. Not just a form — a system.' },
-  { num: '06', name: 'Conversion Rate Optimisation', desc: 'We treat your website like a product and improve it constantly. Qualitative research, quantitative analysis, and structured A/B testing.' },
-  { num: '07', name: 'UI/UX Design', desc: 'Research-grounded design in Figma. From user flows to component libraries to dev-ready handoffs. Every decision tied to a user or business reason.' },
-  { num: '08', name: 'Marketing Strategy & Content', desc: 'Brand messaging, email flows, SEO strategy, content architecture. The organic engine that makes your paid channels more efficient.' },
+  { num: '01', name: 'Growth Strategy', icon: Search, desc: 'Funnel audit, ICP, 90-day roadmap before touching a single ad account.' },
+  { num: '02', name: 'Website & Development', icon: Code2, desc: 'Full builds in Next.js, Webflow, or Shopify. CRO and analytics baked in from day one.' },
+  { num: '03', name: 'Ads', icon: Target, desc: 'Meta, Google, Amazon, LinkedIn — full-funnel campaigns with proper attribution.' },
+  { num: '04', name: 'Lead Systems', icon: Users, desc: 'Landing pages, CRM, nurture sequences, scoring. Not just a form — a system.' },
+  { num: '05', name: 'CRO', icon: TrendingUp, desc: 'Qualitative research, quantitative analysis, structured A/B testing.' },
+  { num: '06', name: 'UI/UX Design', icon: Palette, desc: 'Research-grounded design in Figma. Dev-ready handoffs.' },
+  { num: '07', name: 'Content & Email', icon: FileText, desc: 'Email flows, WhatsApp sequences, SEO strategy, content architecture.' },
+  { num: '08', name: 'Analytics & Reporting', icon: BarChart3, desc: 'Dashboards, attribution, GA4, CAPI — own your data.' },
 ];
 
 const ServicesOverview = () => {
@@ -19,26 +20,30 @@ const ServicesOverview = () => {
         <div className="section-eyebrow section-eyebrow-light">WHAT WE DO</div>
         <h2 className="text-white mb-4">The full stack, handled.</h2>
         <p className="text-faint text-lg max-w-[580px] mb-16">
-          From the first strategy call to the live campaign to the optimised checkout — we cover the entire growth surface. Pick what you need or let us build the whole engine.
+          From the first strategy call to the live campaign to the optimised checkout — we cover the entire growth surface.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-10">
-          {services.map((s) => (
-            <div key={s.num} className="group">
-              <div className="service-number mb-2">{s.num}</div>
-              <h3 className="text-white font-display text-xl font-bold mb-2">{s.name}</h3>
-              <p style={{ color: 'rgba(255,255,255,0.5)' }} className="text-sm leading-relaxed">{s.desc}</p>
-              <Link to="/services" className="link-arrow text-sm mt-2 opacity-100 transition-opacity" style={{ color: 'var(--color-primary)' }}>
-                Learn more &rarr;
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <Link
+                key={s.num}
+                to="/services"
+                className="card-dark group flex flex-col no-underline"
+              >
+                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3 group-hover:bg-primary/30 transition-colors">
+                  <Icon className="w-5 h-5 text-white" />
+                </div>
+                <div className="service-number mb-1 text-white/40">{s.num}</div>
+                <h3 className="text-white font-display font-bold text-sm mb-1">{s.name}</h3>
+                <p className="text-xs text-white/50 leading-relaxed flex-grow">{s.desc}</p>
+                <span className="text-xs text-primary font-medium mt-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ArrowRight className="w-3 h-3" />
+                </span>
               </Link>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <Link to="/services" className="btn-ghost-light no-underline">
-            See the full services breakdown &rarr;
-          </Link>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -3,15 +3,32 @@
   background: var(--color-card-bg);
   border: 1px solid var(--color-card-border);
   border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
   transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
   backdrop-filter: blur(4px);
 }
 .card-standard:hover {
-  box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1), 0 4px 8px -3px rgba(0, 0, 0, 0.04);
   transform: translateY(-2px);
-  border-color: rgba(26, 107, 60, 0.15);
+  border-color: rgba(26, 107, 60, 0.18);
+}
+
+/* Card with green top accent border */
+.card-accent-top {
+  background: var(--color-card-bg);
+  border-top: 3px solid var(--color-primary);
+  border-left: 1px solid var(--color-card-border);
+  border-right: 1px solid var(--color-card-border);
+  border-bottom: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-accent-top:hover {
+  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.1), 0 4px 8px -3px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
 }
 
 /* Highlighted Card (green left border) */
