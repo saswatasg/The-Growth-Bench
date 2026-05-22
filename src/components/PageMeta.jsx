@@ -91,11 +91,12 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
     items.push({ name: label === 'Work With Us' ? 'Work With Us' : label, path: accumulated });
   });
   items.forEach((item, i) => {
+    const itemUrl = item.path === '/' ? `${SITE_URL}/` : `${SITE_URL}${item.path}/`;
     breadcrumbSchema.itemListElement.push({
       "@type": "ListItem",
       "position": i + 1,
       "name": item.name,
-      "item": `${SITE_URL}${item.path}/`
+      "item": itemUrl
     });
   });
 
@@ -110,6 +111,8 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
       <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={finalUrl} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="The Growth Bench" />
 

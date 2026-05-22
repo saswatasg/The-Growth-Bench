@@ -6,8 +6,7 @@ import { WHATSAPP_URL } from '@/lib/constants';
 const services = [
   { label: 'Growth Strategy', to: '/services#strategy' },
   { label: 'Website & Development', to: '/services#website' },
-  { label: 'Google Ads', to: '/services#google-ads' },
-  { label: 'Meta Ads', to: '/services#meta-ads' },
+  { label: 'Ads', to: '/services#ads' },
   { label: 'Lead Systems', to: '/services#lead-systems' },
   { label: 'CRO', to: '/services#cro' },
   { label: 'UI/UX Design', to: '/services#ui-ux' },
@@ -58,7 +57,7 @@ const Footer = () => {
               <li><Link to="/about" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors">About</Link></li>
               <li><Link to="/case-studies" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors">Past Projects</Link></li>
               <li><Link to="/insights" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors">Insights</Link></li>
-              <li><Link to="/work-with-us" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors">Work With Us</Link></li>
+              <li><Link to="/work-with-us" className="text-sm text-white/50 hover:text-white/80 no-underline transition-colors">Pricing</Link></li>
             </ul>
           </div>
 

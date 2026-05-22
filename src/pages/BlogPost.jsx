@@ -61,8 +61,8 @@ const BlogPost = () => {
     "datePublished": dateToISO(post.date),
     "dateModified": dateToISO(post.date),
     "image": slugToCategoryImage[post.category] || "/assets/images/og-card.svg",
-    "author": { "@type": "Organization", "name": "The Growth Bench", "url": "https://thegrowthbench.com" },
-    "publisher": { "@type": "Organization", "name": "The Growth Bench", "url": "https://thegrowthbench.com" },
+    "author": { "@type": "Organization", "name": "The Growth Bench", "url": "https://www.thegrowthbench.com" },
+    "publisher": { "@type": "Organization", "name": "The Growth Bench", "url": "https://www.thegrowthbench.com" },
   };
 
   return (
