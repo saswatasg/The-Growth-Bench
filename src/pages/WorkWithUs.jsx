@@ -89,18 +89,18 @@ const WorkWithUs = () => {
     <>
       <PageMeta />
 
-      <section className="section-light pt-20 overflow-hidden">
+      <section className="section-light pt-20 overflow-hidden text-center">
         <div className="container-site relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="relative"
+            className="relative max-w-2xl mx-auto"
           >
-            <div className="section-eyebrow">NO COMMITMENT. JUST CLARITY.</div>
+            <div className="section-eyebrow justify-center">NO COMMITMENT. JUST CLARITY.</div>
             <h1 className="mb-4">Get a free 30-min audit of your growth funnel.</h1>
-            <p className="text-body text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="text-body text-lg leading-relaxed">
               Pick the channels you need help with, tell us about your business, and we'll hop on a call
               to diagnose your funnel — no pitch, no pressure.
             </p>
