@@ -56,57 +56,38 @@ We handle the full build: UX research, design in Figma, development (Next.js, We
     ],
   },
   {
-    id: 'google-ads',
-    eyebrow: '03 — GOOGLE ADS',
-    h2: 'We own the number. Not just the account.',
-    body: `Most Google Ads agencies manage the account. We manage the outcome. The difference is that we look upstream — at landing page quality, at offer clarity, at search intent alignment — not just at the bid strategy inside the ads dashboard.
+    id: 'ads',
+    eyebrow: '03 — ADS',
+    h2: 'Paid media that works because the funnel works.',
+    body: `We manage the full paid media stack — Meta Ads, Google Ads, Amazon Ads, and LinkedIn Ads — but we never treat ads as a standalone channel. The best campaign in the world won't perform if it lands on a page that doesn't convert. So we own the entire path: from creative and intent to landing page and attribution.
 
-We build campaigns from scratch or take over existing accounts, and we run them with the same level of rigour we'd apply to our own budget. Every week you know what's happening. Every month you know what's changing and why.`,
+Meta Ads: creative-led campaigns across Facebook, Instagram, and Reels with proper CAPI setup for post-iOS 14 accuracy. Google Ads: full account architecture across Search, Shopping, PMax, Display, and YouTube with search intent mapping at the core. Amazon Ads: Sponsored Products, Sponsored Brands, and DSP for D2C brands selling on Amazon. LinkedIn Ads: precision targeting for B2B lead generation and high-ticket conversions.
+
+Every platform gets the same rigour: weekly attention, monthly strategic review, and a consistent focus on what actually moves revenue — not just dashboard metrics.`,
     includes: [
-      'Full account audit (for takeovers)',
-      'Keyword research and search intent mapping',
-      'Campaign architecture: Search, Shopping, Display, YouTube, Demand Gen',
-      'Ad copy and creative brief',
+      'Full account audit and health check for any platform',
+      'Meta Ads: campaign structure, creative strategy, CAPI setup, audience architecture',
+      'Google Ads: Search, Shopping, PMax, Display, YouTube — keyword and intent mapping',
+      'Amazon Ads: Sponsored Products, Sponsored Brands, DSP campaign management',
+      'LinkedIn Ads: account targeting, lead gen forms, retargeting',
+      'Ad copy and creative brief development per platform',
+      'Conversion tracking, attribution setup, and GA4 integration',
+      'Landing page recommendations aligned to each platform\'s intent',
       'Bidding strategy and budget allocation framework',
-      'Conversion tracking and attribution setup',
-      'Landing page recommendations',
-      'Weekly performance summaries',
-      'Monthly strategy review and budget reallocation',
-      'A/B testing: ads, headlines, landing pages, CTAs',
+      'Weekly performance summaries with platform-level breakdowns',
+      'Monthly strategy review and budget reallocation across platforms',
+      'A/B testing: creative, audiences, landing pages, offers',
     ],
     rightFor: [
-      "You're running Google Ads with no clear attribution or ROAS tracking",
-      "You're starting paid search from scratch and want it done right the first time",
-      'Your CPAs are creeping up and no one knows how to fix it',
-    ],
-  },
-  {
-    id: 'meta-ads',
-    eyebrow: '04 — META ADS',
-    h2: 'Creative-led. Data-backed. Funnel-aware.',
-    body: `The best Meta ad in the world won't work if it lands on a broken checkout. The best offer in the world won't work if the creative doesn't stop the scroll. Meta Ads management, done right, means owning the whole funnel — not just the campaign dashboard.
-
-We design the creative strategy, build the audience architecture, set up attribution properly (including CAPI for post-iOS 14 accuracy), and manage the spend with weekly attention and monthly strategic review.`,
-    includes: [
-      'Account audit and Pixel health check',
-      'Campaign structure: Awareness, Consideration, Retargeting layers',
-      'Creative strategy: UGC, static, and video ad briefs',
-      'Audience research, custom and lookalike audience builds',
-      'Conversions API (CAPI) setup for accurate attribution',
-      'Budget allocation and scaling framework',
-      'Creative testing: hook tests, thumb-stop tests, offer tests',
-      'Weekly reporting with key metrics and recommendations',
-      'Monthly creative refresh planning',
-    ],
-    rightFor: [
-      'Your Meta ROAS has been declining and you\'re not sure if it\'s the ad or the funnel',
-      'You need someone who understands both the creative side and the data side',
-      "You're scaling from ₹50K/month ad spend to ₹5L+/month and need proper architecture",
+      'You want one team managing multiple ad platforms — not a separate agency for each',
+      'Your current ads are running but you have no clear attribution or ROAS tracking',
+      'You\'re scaling ad spend and need proper campaign architecture across channels',
+      'Your conversions are dropping and you need someone who looks at the whole funnel, not just the ad dashboard',
     ],
   },
   {
     id: 'lead-systems',
-    eyebrow: '05 — LEAD SYSTEMS',
+    eyebrow: '04 — LEAD SYSTEMS',
     h2: 'A form is not a lead system.',
     body: `Most businesses treat lead generation as a landing page and a spreadsheet. That's not a system — it's a starting point. We build the full infrastructure: the page that captures, the CRM that organises, the sequence that nurtures, and the scoring that tells your sales team who to call first.
 
@@ -130,7 +111,7 @@ Every piece connects. Every step is intentional. And the whole thing is measurab
   },
   {
     id: 'cro',
-    eyebrow: '06 — CRO',
+    eyebrow: '05 — CRO',
     h2: 'Your website is a product. Treat it like one.',
     body: `CRO is not an audit you do once and forget. It's an ongoing discipline of understanding user behaviour, forming hypotheses, running experiments, and implementing what works. Every page has a job to do — and our job is to make it do that job better.
 
@@ -154,7 +135,7 @@ We combine qualitative research (what are people actually confused by?) with qua
   },
   {
     id: 'ui-ux',
-    eyebrow: '07 — UI/UX DESIGN',
+    eyebrow: '06 — UI/UX DESIGN',
     h2: 'Design that reduces friction, not just ink on a screen.',
     body: `Good UI/UX design is not about making things pretty. It's about removing the moments where a user hesitates, gets confused, or decides to leave. Every layout decision is a hypothesis about user behaviour. We test those hypotheses with research, not assumptions.
 
@@ -178,7 +159,7 @@ We work in Figma from research to final design to developer handoff — with ful
   },
   {
     id: 'marketing-strategy',
-    eyebrow: '08 — MARKETING STRATEGY',
+    eyebrow: '07 — MARKETING STRATEGY',
     h2: 'The organic engine behind your paid performance.',
     body: `Paid ads work better when your organic presence builds trust. Your SEO works better when your content answers real questions. Your email works better when the segmentation and messaging are actually thought through. Marketing strategy is the connective tissue that makes every other channel more efficient.
 
