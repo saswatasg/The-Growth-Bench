@@ -25,7 +25,7 @@ const Insights = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="section-light">
+      <section className="section-light pt-20">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">

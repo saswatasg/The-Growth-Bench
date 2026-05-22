@@ -69,7 +69,8 @@ const BlogPost = () => {
     <>
       <PageMeta title={`${post.title} | The Growth Bench Insights`} description={post.description} articleSchema={articleSchema} ogImage={slugToCategoryImage[post.category] || "/assets/images/og-card.png"} />
 
-      <article className="section-light pt-32 pb-24">
+      <section className="section-light pt-20">
+        <div className="container-site max-w-3xl mx-auto">
         <div className="container-site max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
@@ -186,7 +187,7 @@ const BlogPost = () => {
             </div>
           </motion.div>
         </div>
-      </article>
+      </section>
     </>
   );
 };

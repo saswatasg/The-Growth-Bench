@@ -89,7 +89,7 @@ const WorkWithUs = () => {
     <>
       <PageMeta />
 
-      <section className="section-light overflow-hidden">
+      <section className="section-light pt-20 overflow-hidden">
         <div className="container-site relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
           <motion.div
