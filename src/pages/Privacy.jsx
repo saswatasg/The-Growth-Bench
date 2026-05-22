@@ -8,7 +8,7 @@ const Privacy = () => {
     <>
       <PageMeta />
 
-      <section className="section-light pt-32 pb-24">
+      <section className="section-light">
         <div className="container-site max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
@@ -20,7 +20,7 @@ const Privacy = () => {
             <h1 className="mb-8">Privacy Policy</h1>
             <p className="text-sm text-muted-foreground mb-12">Last updated: May 2026</p>
 
-            <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-dark prose-p:text-body prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
+            <div className="prose prose-lg max-w-none prose-content">
               <h2>1. Who We Are</h2>
               <p>
                 The Growth Bench ("we", "our", "us") is a growth consultancy founded by Saswata Sengupta, operating from India. 

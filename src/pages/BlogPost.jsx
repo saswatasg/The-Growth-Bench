@@ -36,7 +36,7 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <section className="section-light pt-32 pb-24">
+      <section className="section-light">
         <div className="container-site text-center">
           <h1>Post not found</h1>
           <Link to="/insights" className="link-arrow mt-4 inline-block">
@@ -91,7 +91,7 @@ const BlogPost = () => {
 
             <div className="border-t border-border pt-8" />
 
-            <div className="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-bold prose-headings:text-dark prose-p:text-body prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-strong:text-dark prose-code:font-mono prose-code:text-sm prose-code:bg-surface-grey prose-code:px-1 prose-code:rounded">
+            <div className="prose prose-lg max-w-none prose-content">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {post.body}
               </ReactMarkdown>

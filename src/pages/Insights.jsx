@@ -25,7 +25,7 @@ const Insights = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="section-light pt-32 pb-16">
+      <section className="section-light">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
@@ -40,7 +40,7 @@ const Insights = () => {
       </section>
 
       {/* Filter tabs */}
-      <section className="section-light pb-8">
+      <section className="section-light pt-0 pb-8">
         <div className="container-site">
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
@@ -61,7 +61,7 @@ const Insights = () => {
       </section>
 
       {/* Article Grid */}
-      <section className="section-off pb-24">
+      <section className="section-off">
         <div className="container-site">
           {filtered.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,7 +95,7 @@ const Insights = () => {
       </section>
 
       {/* Featured Case Studies */}
-      <section className="section-light pb-24">
+      <section className="section-light">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
             <h2 className="mb-8">Real results from the same frameworks</h2>

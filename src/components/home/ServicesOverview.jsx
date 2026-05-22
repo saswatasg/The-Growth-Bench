@@ -19,7 +19,7 @@ const ServicesOverview = () => {
       <div className="container-site">
         <div className="section-eyebrow section-eyebrow-light">WHAT WE DO</div>
         <h2 className="text-white mb-4">The full stack, handled.</h2>
-        <p className="text-faint text-lg max-w-[580px] mb-16">
+        <p className="text-faint text-lg max-w-xl mb-16">
           From the first strategy call to the live campaign to the optimised checkout — we cover the entire growth surface.
         </p>
 

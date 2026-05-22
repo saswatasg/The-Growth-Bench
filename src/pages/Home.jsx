@@ -262,7 +262,7 @@ const Home = () => {
         <div className="container-site text-center">
           <motion.div {...stagger}>
             <h2 className="text-white mb-4">Start with a free audit call.</h2>
-            <p className="text-faint text-lg max-w-[520px] mx-auto leading-relaxed mb-8">
+            <p className="text-faint text-lg max-w-lg mx-auto leading-relaxed mb-8">
               Book a free 30-minute call. We'll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
             </p>
             <Magnetic strength={0.4}>

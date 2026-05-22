@@ -90,8 +90,8 @@ const WorkWithUs = () => {
     <>
       <PageMeta />
 
-      <section className="section-light pt-28 pb-20 overflow-hidden">
-        <div className="container-site max-w-4xl mx-auto text-center relative">
+      <section className="section-light overflow-hidden">
+        <div className="container-site relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -109,7 +109,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="section-dark py-10">
+      <section className="section-dark py-8">
         <div className="container-site">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {STATS.map((s, i) => (
@@ -128,7 +128,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="section-off pb-24">
+      <section className="section-off">
         <div className="container-site max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -238,7 +238,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="section-light pb-24">
+      <section className="section-light">
         <div className="container-site">
           <h2 className="text-center mb-12">What happens on the call</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -265,7 +265,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="section-off text-center pb-24">
+      <section className="section-off text-center">
         <div className="container-site">
           <div className="max-w-md mx-auto">
             <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">

@@ -44,7 +44,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut', delay: 0.16 }}
-            className="text-base md:text-lg text-body max-w-[560px] mb-8 leading-relaxed"
+            className="text-base md:text-lg text-body max-w-xl mb-8 leading-relaxed"
           >
             One senior partner. Specialist bench. Full-stack capability across strategy, ads, CRO, web, and systems.
           </motion.p>

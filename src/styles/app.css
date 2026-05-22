@@ -301,6 +301,69 @@
 }
 
 /* prefers-reduced-motion */
+/* Missing utility classes */
+.text-body {
+  color: var(--color-body);
+}
+.text-faint {
+  color: var(--color-faint);
+}
+.text-accent-teal {
+  color: var(--color-accent-teal);
+}
+.bg-surface-off {
+  background: var(--color-surface-off);
+}
+.bg-surface-grey {
+  background: var(--color-surface-mid);
+}
+.bg-accent-teal\/10 {
+  background: rgba(13, 148, 136, 0.1);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+}
+
+/* Prose content overrides for blog and legal pages */
+.prose-content h1, .prose-content h2, .prose-content h3, .prose-content h4,
+.prose-content h5, .prose-content h6 {
+  color: var(--color-dark);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+}
+.prose-content p {
+  color: var(--color-body);
+  line-height: 1.625;
+}
+.prose-content a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.prose-content a:hover {
+  text-decoration: underline;
+}
+.prose-content strong {
+  color: var(--color-dark);
+}
+.prose-content code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  background: var(--color-surface-mid);
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+}
+.prose-content ol > li::marker,
+.prose-content ul > li::marker {
+  color: var(--color-primary);
+}
+
+/* Remove unused section-alt */
+/* .section-alt was removed — use section-off or section-mid instead */
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
