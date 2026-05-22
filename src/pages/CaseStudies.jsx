@@ -124,18 +124,18 @@ const CaseStudies = () => {
     <>
       <PageMeta />
 
-      <section className="section-light pt-20">
+      <section className="section-light pt-20 text-center">
         <div className="container-site">
           <motion.div {...stagger}>
-            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+            <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground mb-6">
               <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
               <span className="text-muted-foreground">/</span>
               <span className="text-foreground font-medium" aria-current="page">Past Projects</span>
             </nav>
           </motion.div>
-          <motion.div {...stagger} className="section-eyebrow">PAST PROJECTS</motion.div>
+          <motion.div {...stagger} className="section-eyebrow justify-center">PAST PROJECTS</motion.div>
           <motion.h1 {...stagger} transition={{ ...stagger.transition, delay: 0.08 }}>Work that speaks for itself.</motion.h1>
-          <motion.p {...stagger} transition={{ ...stagger.transition, delay: 0.16 }} className="text-body text-lg max-w-xl leading-relaxed">
+          <motion.p {...stagger} transition={{ ...stagger.transition, delay: 0.16 }} className="text-body text-lg max-w-xl mx-auto leading-relaxed">
             Every project starts with a diagnosis. Here's what we found, what we changed, and what happened.
           </motion.p>
         </div>

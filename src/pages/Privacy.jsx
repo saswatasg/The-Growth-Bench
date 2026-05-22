@@ -8,15 +8,15 @@ const Privacy = () => {
     <>
       <PageMeta />
 
-      <section className="section-light pt-20">
+      <section className="section-light pt-20 text-center">
         <div className="container-site max-w-3xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+            <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground mb-6">
               <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
               <span className="text-muted-foreground">/</span>
               <span className="text-foreground font-medium" aria-current="page">Privacy Policy</span>
             </nav>
-            <div className="section-eyebrow">LEGAL</div>
+            <div className="section-eyebrow justify-center">LEGAL</div>
             <h1 className="mb-8">Privacy Policy</h1>
             <p className="text-sm text-muted-foreground mb-12">Last updated: May 2026</p>
 

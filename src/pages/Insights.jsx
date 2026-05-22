@@ -25,16 +25,16 @@ const Insights = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="section-light pt-20">
+      <section className="section-light pt-20 text-center">
         <div className="container-site">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+            <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground mb-6">
               <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
               <span className="text-muted-foreground">/</span>
               <span className="text-foreground font-medium" aria-current="page">Insights</span>
             </nav>
-            <div className="section-eyebrow">INSIGHTS</div>
-            <h1 className="max-w-2xl">Frameworks. Teardowns. Things that actually work.</h1>
+            <div className="section-eyebrow justify-center">INSIGHTS</div>
+            <h1 className="max-w-2xl mx-auto">Frameworks. Teardowns. Things that actually work.</h1>
           </motion.div>
         </div>
       </section>

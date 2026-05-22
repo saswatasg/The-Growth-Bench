@@ -71,8 +71,8 @@ const BlogPost = () => {
 
       <section className="section-light pt-20">
         <div className="container-site max-w-3xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6">
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="text-center">
+            <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground mb-6">
               <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
               <ChevronRight className="w-3.5 h-3.5" />
               <Link to="/insights" className="hover:text-foreground transition-colors no-underline">Insights</Link>
@@ -80,14 +80,14 @@ const BlogPost = () => {
               <span className="text-foreground font-medium" aria-current="page">{post.title}</span>
             </nav>
 
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center justify-center gap-3 mb-4">
               <span className="tag tag-green">{post.category}</span>
               <span className="text-xs text-muted-foreground">{post.date}</span>
               <span className="text-xs text-muted-foreground">{post.readTime} min read</span>
             </div>
 
             <h1 className="mb-4">{post.title}</h1>
-            <p className="text-lg text-body leading-relaxed mb-8">{post.description}</p>
+            <p className="text-lg text-body leading-relaxed mb-8 max-w-2xl mx-auto">{post.description}</p>
 
             <div className="border-t border-border pt-8" />
 
