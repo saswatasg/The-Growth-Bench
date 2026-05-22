@@ -37,7 +37,7 @@ const pageSpecificMeta = {
     title: "Growth Frameworks & Teardowns | The Growth Bench Insights",
     description: "Actionable growth advice, CRO teardowns, and marketing strategy frameworks for D2C brands and early-stage startups."
   },
-  '/work-with-us': {
+  '/pricing': {
     title: "Pricing — Build Your Custom Growth Package | The Growth Bench",
     description: "Build your custom growth package around your needs. Select the services you need, share your challenge, and book a free audit call. No fixed prices — just what moves your funnel."
   }

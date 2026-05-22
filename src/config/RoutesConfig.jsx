@@ -36,7 +36,8 @@ const RoutesConfig = () => {
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<BlogPost />} />
-        <Route path="/work-with-us" element={<WorkWithUs />} />
+        <Route path="/pricing" element={<WorkWithUs />} />
+        <Route path="/work-with-us" element={<Navigate to="/pricing" replace />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/admin/login" element={<AdminLogin />} />
