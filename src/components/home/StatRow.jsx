@@ -19,7 +19,7 @@ const StatRow = () => {
                 <div className="hidden lg:block w-px bg-white/20" />
               )}
               <motion.div
-                className="text-center lg:text-left"
+                className="text-center"
                 initial={{ opacity: 0, y: 24, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: '-50px' }}
