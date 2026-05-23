@@ -191,15 +191,15 @@ const CaseStudies = () => {
                   transition={{ ...stagger.transition, delay: i * 0.06 }}
                 >
                   <TiltCard tiltFactor={6} glare={false} className="card-standard h-full">
-                    <div className="flex flex-wrap gap-1.5 mb-3">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
                       {project.tags.map((tag) => (
                         <span key={tag} className="tag">{tag}</span>
                       ))}
                     </div>
-                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">{project.client}</p>
-                    <div className="text-xl font-bold text-primary mb-2">{project.stat}</div>
-                    <p className="text-sm text-body leading-relaxed mb-3">{project.description}</p>
-                    <ul className="space-y-1">
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1.5">{project.client}</p>
+                    <div className="text-xl font-bold text-primary mb-3">{project.stat}</div>
+                    <p className="text-sm text-body leading-relaxed mb-4">{project.description}</p>
+                    <ul className="space-y-1.5">
                       {project.details.map((d) => (
                         <li key={d} className="text-sm text-body flex items-start gap-2">
                           <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2 bg-primary" />
