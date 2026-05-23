@@ -36,7 +36,10 @@ const STEPS = [
   { icon: Sparkles, title: 'You get a clear next step', body: 'Even if we\'re not the right fit, you\'ll leave with at least one concrete thing to try.' },
 ];
 
+const STEPS_COUNT = [1, 2, 3];
+
 const WorkWithUs = () => {
+  const [step, setStep] = useState(1);
   const [selectedModules, setSelectedModules] = useState(new Set());
   const [form, setForm] = useState({ name: '', email: '', company: '', challenge: '' });
   const [submitting, setSubmitting] = useState(false);
@@ -50,6 +53,14 @@ const WorkWithUs = () => {
   };
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const goStep = (s) => {
+    if (s === 2 && selectedModules.size === 0) {
+      toast.error('Pick at least one area you need help with');
+      return;
+    }
+    setStep(s);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -137,80 +148,121 @@ const WorkWithUs = () => {
           >
             {!submitted ? (
               <>
-                <div className="mb-8">
-                  <p className="text-sm font-display font-semibold mb-3 text-foreground">
-                    What do you need help with?
-                    <span className="text-muted-foreground font-normal"> (pick all that apply)</span>
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {MODULES.map((mod) => {
-                      const Icon = mod.icon;
-                      const isSelected = selectedModules.has(mod.id);
-                      return (
-                        <button
-                          key={mod.id}
-                          type="button"
-                          onClick={() => toggleModule(mod.id)}
-                          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-all border ${
-                            isSelected
-                              ? 'border-primary bg-primary text-white shadow-sm'
-                              : 'border-border bg-white hover:border-primary/30 text-muted-foreground hover:text-foreground'
-                          }`}
-                        >
-                          <Icon className="w-3.5 h-3.5" />
-                          {mod.label}
-                        </button>
-                      );
-                    })}
-                  </div>
+                {/* Step progress */}
+                <div className="flex items-center justify-center gap-3 mb-10">
+                  {STEPS_COUNT.map((s) => (
+                    <div key={s} className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+                        step === s
+                          ? 'bg-primary text-white'
+                          : step > s
+                            ? 'bg-primary-light text-primary'
+                            : 'bg-muted text-muted-foreground'
+                      }`}>
+                        {step > s ? <Check className="w-4 h-4" /> : s}
+                      </div>
+                      {s < 3 && <div className={`w-12 h-px transition-colors ${step > s ? 'bg-primary' : 'bg-border'}`} />}
+                    </div>
+                  ))}
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <p className="text-sm font-display font-semibold text-foreground">Your details</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Input
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Name *"
-                      required
-                    />
-                    <Input
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="Email *"
-                      required
-                    />
-                    <Input
-                      name="company"
-                      value={form.company}
-                      onChange={handleChange}
-                      placeholder="Company / Brand *"
-                      required
-                      className="sm:col-span-2"
-                    />
-                    <Textarea
-                      name="challenge"
-                      value={form.challenge}
-                      onChange={handleChange}
-                      rows={3}
-                      placeholder="What's the biggest growth challenge right now? *"
-                      required
-                      className="sm:col-span-2"
-                    />
-                  </div>
-                  <p className="text-xs text-muted-foreground text-center">
-                    By submitting, you agree to our{' '}
-                    <a href="/privacy" className="underline hover:text-foreground">
-                      Privacy Policy
-                    </a>.
-                  </p>
-                  <Button type="submit" disabled={submitting} size="lg" className="w-full sm:w-auto">
-                    {submitting ? 'Sending...' : 'Send & Book Your Free Call \u2192'}
-                  </Button>
-                </form>
+                {/* Step 1: Pick modules */}
+                {step === 1 && (
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+                    <p className="text-sm font-display font-semibold mb-3 text-foreground text-center">
+                      What do you need help with?
+                      <span className="text-muted-foreground font-normal"> (pick all that apply)</span>
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-2 mb-8">
+                      {MODULES.map((mod) => {
+                        const Icon = mod.icon;
+                        const isSelected = selectedModules.has(mod.id);
+                        return (
+                          <button
+                            key={mod.id}
+                            type="button"
+                            onClick={() => toggleModule(mod.id)}
+                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-all border ${
+                              isSelected
+                                ? 'border-primary bg-primary text-white shadow-sm'
+                                : 'border-border bg-white hover:border-primary/30 text-muted-foreground hover:text-foreground'
+                            }`}
+                          >
+                            <Icon className="w-3.5 h-3.5" />
+                            {mod.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="text-center">
+                      <Button onClick={() => goStep(2)} disabled={selectedModules.size === 0}>
+                        Next: Tell us about your business <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Step 2: Your details */}
+                {step === 2 && (
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+                    <div className="mb-6">
+                      <p className="text-xs text-muted-foreground mb-1">Selected: {[...selectedModules].join(', ')}</p>
+                      <button onClick={() => goStep(1)} className="text-xs text-primary underline underline-offset-2">Change</button>
+                    </div>
+                    <form onSubmit={(e) => { e.preventDefault(); goStep(3); }} className="space-y-4">
+                      <p className="text-sm font-display font-semibold text-foreground">Your details</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <Input name="name" value={form.name} onChange={handleChange} placeholder="Name *" required />
+                        <Input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email *" required />
+                        <Input name="company" value={form.company} onChange={handleChange} placeholder="Company / Brand *" required className="sm:col-span-2" />
+                        <Textarea name="challenge" value={form.challenge} onChange={handleChange} rows={3} placeholder="What's the biggest growth challenge right now? *" required className="sm:col-span-2" />
+                      </div>
+                      <div className="flex items-center justify-between gap-4 pt-2">
+                        <Button type="button" variant="outline" onClick={() => goStep(1)}>Back</Button>
+                        <Button type="submit">Review & Submit <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                      </div>
+                    </form>
+                  </motion.div>
+                )}
+
+                {/* Step 3: Review & Submit */}
+                {step === 3 && (
+                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+                    <div className="bg-white rounded-xl border border-border p-6 mb-6 space-y-3">
+                      <div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Modules selected</span>
+                        <p className="text-sm font-medium mt-0.5">{[...selectedModules].join(', ')}</p>
+                      </div>
+                      <div className="h-px bg-border" />
+                      <div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Name</span>
+                        <p className="text-sm font-medium mt-0.5">{form.name}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Email</span>
+                        <p className="text-sm font-medium mt-0.5">{form.email}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Company</span>
+                        <p className="text-sm font-medium mt-0.5">{form.company}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Challenge</span>
+                        <p className="text-sm text-body mt-0.5">{form.challenge}</p>
+                      </div>
+                    </div>
+                    <p className="text-xs text-muted-foreground text-center mb-4">
+                      By submitting, you agree to our{' '}
+                      <a href="/privacy" className="underline hover:text-foreground">Privacy Policy</a>.
+                    </p>
+                    <div className="flex items-center justify-between gap-4">
+                      <Button type="button" variant="outline" onClick={() => goStep(2)}>Back</Button>
+                      <Button onClick={handleSubmit} disabled={submitting}>
+                        {submitting ? 'Sending...' : 'Send & Book Your Free Call \u2192'}
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
               </>
             ) : (
               <div className="text-center py-12 px-6">

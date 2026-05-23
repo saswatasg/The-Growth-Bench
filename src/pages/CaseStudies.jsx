@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
@@ -118,8 +118,16 @@ const stagger = {
   transition: { duration: 0.4, ease: 'easeOut' },
 };
 
+const allTags = [...new Set(pastProjects.flatMap((p) => p.tags))].sort();
+
 const CaseStudies = () => {
   const { openBookingModal } = useBookingModal();
+  const [activeTag, setActiveTag] = useState('All');
+
+  const filtered = activeTag === 'All'
+    ? pastProjects
+    : pastProjects.filter((p) => p.tags.includes(activeTag));
+
   return (
     <>
       <PageMeta />
@@ -130,10 +138,10 @@ const CaseStudies = () => {
             <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground mb-6">
               <Link to="/" className="hover:text-foreground transition-colors no-underline">Home</Link>
               <span className="text-muted-foreground">/</span>
-              <span className="text-foreground font-medium" aria-current="page">Past Projects</span>
+              <span className="text-foreground font-medium" aria-current="page">Case Studies</span>
             </nav>
           </motion.div>
-          <motion.div {...stagger} className="section-eyebrow justify-center">PAST PROJECTS</motion.div>
+          <motion.div {...stagger} className="section-eyebrow justify-center">CASE STUDIES</motion.div>
           <motion.h1 {...stagger} transition={{ ...stagger.transition, delay: 0.08 }}>Work that speaks for itself.</motion.h1>
           <motion.p {...stagger} transition={{ ...stagger.transition, delay: 0.16 }} className="text-body text-lg max-w-xl mx-auto leading-relaxed">
             Every project starts with a diagnosis. Here's what we found, what we changed, and what happened.
@@ -141,32 +149,77 @@ const CaseStudies = () => {
         </div>
       </section>
 
-      <section className="section-mid">
+      {/* Filter bar */}
+      <section className="section-mid pt-0 pb-8">
         <div className="container-site">
-          <div className="space-y-6">
-            {pastProjects.map((project, i) => (
-              <motion.div key={project.client} {...stagger} transition={{ ...stagger.transition, delay: i * 0.06 }}>
-                <TiltCard tiltFactor={6} glare={false} className="card-standard">
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="tag">{tag}</span>
-                    ))}
-                  </div>
-                  <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">{project.client}</p>
-                  <div className="text-xl font-bold text-primary mb-2">{project.stat}</div>
-                  <p className="text-sm text-body leading-relaxed mb-3">{project.description}</p>
-                  <ul className="space-y-1">
-                    {project.details.map((d) => (
-                      <li key={d} className="text-sm text-body flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2 bg-primary" />
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </TiltCard>
-              </motion.div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              onClick={() => setActiveTag('All')}
+              className={`px-4 py-2 text-sm rounded-full border transition-colors ${
+                activeTag === 'All'
+                  ? 'bg-primary text-white border-primary shadow-sm'
+                  : 'bg-white text-muted-foreground border-border hover:border-primary/30 hover:text-primary'
+              }`}
+            >
+              All
+            </button>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveTag(tag)}
+                className={`px-4 py-2 text-sm rounded-full border transition-colors ${
+                  activeTag === tag
+                    ? 'bg-primary text-white border-primary shadow-sm'
+                    : 'bg-white text-muted-foreground border-border hover:border-primary/30 hover:text-primary'
+                }`}
+              >
+                {tag}
+              </button>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section-mid pt-0">
+        <div className="container-site">
+          {filtered.length > 0 ? (
+            <div className="grid md:grid-cols-2 gap-6">
+              {filtered.map((project, i) => (
+                <motion.div
+                  key={project.client}
+                  {...stagger}
+                  transition={{ ...stagger.transition, delay: i * 0.06 }}
+                >
+                  <TiltCard tiltFactor={6} glare={false} className="card-standard h-full">
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="tag">{tag}</span>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wide mb-1">{project.client}</p>
+                    <div className="text-xl font-bold text-primary mb-2">{project.stat}</div>
+                    <p className="text-sm text-body leading-relaxed mb-3">{project.description}</p>
+                    <ul className="space-y-1">
+                      {project.details.map((d) => (
+                        <li key={d} className="text-sm text-body flex items-start gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2 bg-primary" />
+                          {d}
+                        </li>
+                      ))}
+                    </ul>
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+                <Search className="w-5 h-5 text-muted-foreground" />
+              </div>
+              <p className="text-muted-foreground">No projects with this tag yet.</p>
+              <button onClick={() => setActiveTag('All')} className="link-arrow text-sm mt-2">View all projects</button>
+            </div>
+          )}
         </div>
       </section>
 

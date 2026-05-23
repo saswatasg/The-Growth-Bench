@@ -6,6 +6,12 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
 
+const deepDiveLinks = {
+  'ads': { to: '/insights?category=Meta%20Ads', label: 'See ad performance case studies' },
+  'cro': { to: '/case-studies', label: 'See CRO results in action' },
+  'website': { to: '/case-studies', label: 'See development projects' },
+};
+
 const services = [
   {
     id: 'strategy', icon: Search,
@@ -33,6 +39,7 @@ const services = [
     eyebrow: '02 — WEBSITE & DEVELOPMENT',
     h2: 'A website that works as hard as you do.',
     summary: 'We build conversion-first websites in Next.js, Webflow, or Shopify — fully tracked, tagged, and ready to optimise from day one. No expensive brochureware.',
+    deepDive: 'Every site we build ships with GA4, GTM, heatmaps, and CRO hooks baked in from the first commit. Your website is your biggest growth lever — we treat it like one.',
     includes: [
       'Full website build (Next.js / Webflow / Shopify / custom)',
       'Landing page design and development',
@@ -56,6 +63,7 @@ const services = [
     eyebrow: '03 — ADS',
     h2: 'Paid media that works because the funnel works.',
     summary: 'We manage Meta, Google, Amazon, and LinkedIn Ads — but we never treat ads as standalone. Every campaign is built with the landing page, attribution, and funnel in mind.',
+    deepDive: 'Most ad agencies optimise for CTR. We optimise for revenue. That means every campaign starts with the landing page, attribution model, and conversion tracking before we write a single headline. Our approach across Meta, Google, and Amazon consistently delivers 3-6x ROAS.',
     includes: [
       'Full account audit and health check for any platform',
       'Meta Ads: creative strategy, CAPI, audience architecture',
@@ -103,6 +111,7 @@ const services = [
     eyebrow: '05 — CRO',
     h2: 'Your website is a product. Treat it like one.',
     summary: 'We combine qualitative research with quantitative analysis, run structured experiments, and implement what works. Every page has a job — we make it do that job better.',
+    deepDive: 'In one engagement, a checkout flow redesign alone recovered $329K/month. Another lifted add-to-cart rates by 28.71%. CRO is not about changing button colours — it is about understanding user behaviour through recordings, surveys, analytics, and running structured experiments that compound over time.',
     includes: [
       'Funnel drop-off analysis (GA4, Shopify analytics)',
       'Session recording and heatmap analysis',
@@ -160,13 +169,14 @@ const services = [
     rightFor: [
       "Running paid ads without any organic presence",
       "Email flows haven't been updated since launch",
-      'You want a content strategy that serves your ICP, not just a calendar',
+      'You want a content strategy that serves your ICP, not a calendar',
     ],
   },
 ];
 
 const Section = ({ service, index }) => {
   const Icon = service.icon;
+  const link = deepDiveLinks[service.id];
   return (
     <section id={service.id} className={index % 2 === 0 ? 'section-light' : 'section-mid'}>
       <div className="container-site">
@@ -181,6 +191,12 @@ const Section = ({ service, index }) => {
         </div>
 
         <p className="text-body text-lg max-w-3xl leading-relaxed mb-8">{service.summary}</p>
+
+        {service.deepDive && (
+          <div className="bg-white border border-primary/10 rounded-xl p-5 mb-8 max-w-3xl shadow-sm">
+            <p className="text-sm text-body leading-relaxed">{service.deepDive}</p>
+          </div>
+        )}
 
         <div className="mt-10 mb-8">
           <h3 className="font-display font-bold text-sm mb-4 text-dark flex items-center gap-2">
@@ -197,7 +213,7 @@ const Section = ({ service, index }) => {
           </div>
         </div>
 
-        <div className="callout-box mb-12">
+        <div className="callout-box mb-8">
           <h4 className="font-display font-semibold text-sm mb-3 text-primary">This is right for you if...</h4>
           <ul className="space-y-1">
             {service.rightFor.map((item) => (
@@ -208,13 +224,18 @@ const Section = ({ service, index }) => {
           </ul>
         </div>
 
-        {index < services.length - 1 && (
-          <div className="text-right">
+        <div className="flex items-center justify-between gap-4">
+          {link ? (
+            <Link to={link.to} className="link-arrow text-sm">
+              {link.label} <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          ) : <span />}
+          {index < services.length - 1 && (
             <a href={`#${services[index + 1].id}`} className="link-arrow text-sm">
-              Next: {services[index + 1].eyebrow.replace(/^\d+ — /, '')} &rarr;
+              Next: {services[index + 1].eyebrow.replace(/^\d+ — /, '')}
             </a>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </section>
   );

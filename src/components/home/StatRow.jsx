@@ -2,10 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const stats = [
-  { number: '₹2.89Cr', label: 'monthly checkout recovery at a US D2C brand' },
-  { number: '28.71%', label: 'add-to-cart lift through CRO and flow redesign' },
-  { number: '168%', label: 'feature engagement uplift, B2B SaaS product' },
-  { number: '3+', label: 'years building growth systems across D2C and SaaS' },
+  { number: '28.71%', label: 'Avg. conversion lift across D2C and SaaS' },
+  { number: '468%', label: 'Avg. ROAS across ad platforms managed' },
+  { number: '2+ yrs', label: 'Avg. client tenure — we keep what we build' },
+  { number: '8', label: 'Full-stack growth capabilities under one bench' },
 ];
 
 const StatRow = () => {

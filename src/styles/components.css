@@ -93,6 +93,32 @@
   opacity: 0.8;
 }
 
+/* Bench Advantage badge — green pill with subtle glow */
+.bench-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 12px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.625rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(26, 107, 60, 0.2);
+}
+
+/* Section divider/connector between alternating sections */
+.section-connector {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border) 20%, var(--color-border) 80%, transparent);
+  margin: 0;
+  border: none;
+}
+
 /* Stat Block */
 .stat-number {
   font-family: 'Inter', sans-serif;
