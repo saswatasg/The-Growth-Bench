@@ -150,7 +150,7 @@ const CaseStudies = () => {
       </section>
 
       {/* Filter bar */}
-      <section className="section-mid pt-0 pb-8">
+      <section className="section-mid pt-6 pb-8">
         <div className="container-site">
           <div className="flex flex-wrap gap-2">
             <button
