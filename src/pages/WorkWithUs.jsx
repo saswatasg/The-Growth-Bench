@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import { ArrowRight, Check, Search, Target, Globe, Share2, TrendingUp, Code2, Palette, Users, FileText, BarChart3, Sparkles, Zap, MessageSquare, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,19 +14,12 @@ const MODULES = [
   { id: 'strategy', label: 'Strategy & Audit', icon: Search },
   { id: 'meta-ads', label: 'Meta Ads', icon: Target },
   { id: 'google-ads', label: 'Google Ads', icon: Globe },
-  { id: 'social', label: 'Social Media', icon: Share2 },
-  { id: 'cro', label: 'CRO & Experimentation', icon: TrendingUp },
+  { id: 'cro', label: 'CRO', icon: TrendingUp },
   { id: 'web-dev', label: 'Website & Development', icon: Code2 },
   { id: 'ui-ux', label: 'UI/UX Design', icon: Palette },
-  { id: 'lead-systems', label: 'Lead Systems & CRM', icon: Users },
-  { id: 'content', label: 'Content & Email Marketing', icon: FileText },
-  { id: 'analytics', label: 'Analytics & Reporting', icon: BarChart3 },
-];
-
-const STATS = [
-  { value: '28.71%', label: 'Avg. conversion lift' },
-  { value: '468%', label: 'Avg. ROAS' },
-  { value: '2+ yrs', label: 'Avg. client tenure' },
+  { id: 'lead-systems', label: 'Lead Systems', icon: Users },
+  { id: 'content', label: 'Content & Email', icon: FileText },
+  { id: 'analytics', label: 'Analytics', icon: BarChart3 },
 ];
 
 const STEPS = [
@@ -35,8 +27,6 @@ const STEPS = [
   { icon: Zap, title: 'We diagnose live', body: 'We ask sharp questions and share what we\'re seeing — we usually spot quick wins in 10 minutes.' },
   { icon: Sparkles, title: 'You get a clear next step', body: 'Even if we\'re not the right fit, you\'ll leave with at least one concrete thing to try.' },
 ];
-
-const STEPS_COUNT = [1, 2, 3];
 
 const WorkWithUs = () => {
   const [step, setStep] = useState(1);
@@ -75,12 +65,12 @@ const WorkWithUs = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: 'New pricing enquiry from The Growth Bench',
+          subject: 'New enquiry from The Growth Bench',
           name: form.name,
           email: form.email,
           company: form.company,
           challenge: form.challenge,
-          selected_modules: [...selectedModules].join(', ') || 'None selected',
+          selected_modules: [...selectedModules].join(', '),
         }),
       });
       const data = await res.json();
@@ -100,230 +90,164 @@ const WorkWithUs = () => {
     <>
       <PageMeta />
 
-      <section className="section-light pt-20 overflow-hidden text-center">
-        <div className="container-site relative">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/3 rounded-full blur-3xl pointer-events-none" />
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="relative max-w-2xl mx-auto"
-          >
-            <div className="section-eyebrow justify-center">NO COMMITMENT. JUST CLARITY.</div>
-            <h1 className="mb-4">Get a free 30-min audit of your growth funnel.</h1>
-            <p className="text-body text-lg leading-relaxed">
-              Pick the channels you need help with, tell us about your business, and we'll hop on a call
-              to diagnose your funnel — no pitch, no pressure.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="section-dark py-8">
+      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {STATS.map((s, i) => (
-              <motion.div
-                key={s.label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: i * 0.08 }}
-              >
-                <div className="text-2xl md:text-3xl font-display font-extrabold text-white">{s.value}</div>
-                <div className="text-xs text-white/50 mt-1">{s.label}</div>
-              </motion.div>
-            ))}
+          <div className="max-w-2xl">
+            <span className="text-label-xs text-mute uppercase tracking-wider">No Commitment. Just Clarity.</span>
+            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+              Get a free 30-min<br />audit of your funnel.
+            </h1>
+            <p className="text-body-md text-mute mt-4 max-w-lg leading-relaxed">
+              Pick the areas you need help with, tell us about your business, and we'll diagnose your funnel — no pitch, no pressure.
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="section-off">
+      <section className="bg-soft-cloud py-section-lg">
         <div className="container-site max-w-2xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-          >
-            {!submitted ? (
-              <>
-                {/* Step progress */}
-                <div className="flex items-center justify-center gap-3 mb-10">
-                  {STEPS_COUNT.map((s) => (
-                    <div key={s} className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
-                        step === s
-                          ? 'bg-primary text-white'
-                          : step > s
-                            ? 'bg-primary-light text-primary'
-                            : 'bg-muted text-muted-foreground'
-                      }`}>
-                        {step > s ? <Check className="w-4 h-4" /> : s}
-                      </div>
-                      {s < 3 && <div className={`w-12 h-px transition-colors ${step > s ? 'bg-primary' : 'bg-border'}`} />}
+          {!submitted ? (
+            <>
+              <div className="flex items-center gap-3 mb-10">
+                {[1, 2, 3].map((s) => (
+                  <div key={s} className="flex items-center gap-3">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-caption-sm font-bold ${
+                      step === s ? 'bg-ink text-canvas' : step > s ? 'bg-ink/20 text-ink' : 'bg-canvas text-mute border border-hairline'
+                    }`}>
+                      {step > s ? <Check className="w-4 h-4" /> : s}
                     </div>
-                  ))}
-                </div>
-
-                {/* Step 1: Pick modules */}
-                {step === 1 && (
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                    <p className="text-sm font-display font-semibold mb-3 text-foreground text-center">
-                      What do you need help with?
-                      <span className="text-muted-foreground font-normal"> (pick all that apply)</span>
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-2 mb-8">
-                      {MODULES.map((mod) => {
-                        const Icon = mod.icon;
-                        const isSelected = selectedModules.has(mod.id);
-                        return (
-                          <button
-                            key={mod.id}
-                            type="button"
-                            onClick={() => toggleModule(mod.id)}
-                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm transition-all border ${
-                              isSelected
-                                ? 'border-primary bg-primary text-white shadow-sm'
-                                : 'border-border bg-white hover:border-primary/30 text-muted-foreground hover:text-foreground'
-                            }`}
-                          >
-                            <Icon className="w-3.5 h-3.5" />
-                            {mod.label}
-                          </button>
-                        );
-                      })}
-                    </div>
-                    <div className="text-center">
-                      <Button onClick={() => goStep(2)} disabled={selectedModules.size === 0}>
-                        Next: Tell us about your business <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Step 2: Your details */}
-                {step === 2 && (
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                    <div className="mb-6">
-                      <p className="text-xs text-muted-foreground mb-1">Selected: {[...selectedModules].join(', ')}</p>
-                      <button onClick={() => goStep(1)} className="text-xs text-primary underline underline-offset-2">Change</button>
-                    </div>
-                    <form onSubmit={(e) => { e.preventDefault(); goStep(3); }} className="space-y-4">
-                      <p className="text-sm font-display font-semibold text-foreground">Your details</p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <Input name="name" value={form.name} onChange={handleChange} placeholder="Name *" required />
-                        <Input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email *" required />
-                        <Input name="company" value={form.company} onChange={handleChange} placeholder="Company / Brand *" required className="sm:col-span-2" />
-                        <Textarea name="challenge" value={form.challenge} onChange={handleChange} rows={3} placeholder="What's the biggest growth challenge right now? *" required className="sm:col-span-2" />
-                      </div>
-                      <div className="flex items-center justify-between gap-4 pt-2">
-                        <Button type="button" variant="outline" onClick={() => goStep(1)}>Back</Button>
-                        <Button type="submit">Review & Submit <ArrowRight className="w-4 h-4 ml-2" /></Button>
-                      </div>
-                    </form>
-                  </motion.div>
-                )}
-
-                {/* Step 3: Review & Submit */}
-                {step === 3 && (
-                  <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                    <div className="bg-white rounded-xl border border-border p-6 mb-6 space-y-3">
-                      <div>
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Modules selected</span>
-                        <p className="text-sm font-medium mt-0.5">{[...selectedModules].join(', ')}</p>
-                      </div>
-                      <div className="h-px bg-border" />
-                      <div>
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Name</span>
-                        <p className="text-sm font-medium mt-0.5">{form.name}</p>
-                      </div>
-                      <div>
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Email</span>
-                        <p className="text-sm font-medium mt-0.5">{form.email}</p>
-                      </div>
-                      <div>
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Company</span>
-                        <p className="text-sm font-medium mt-0.5">{form.company}</p>
-                      </div>
-                      <div>
-                        <span className="text-xs text-muted-foreground uppercase tracking-wide font-medium">Challenge</span>
-                        <p className="text-sm text-body mt-0.5">{form.challenge}</p>
-                      </div>
-                    </div>
-                    <p className="text-xs text-muted-foreground text-center mb-4">
-                      By submitting, you agree to our{' '}
-                      <a href="/privacy" className="underline hover:text-foreground">Privacy Policy</a>.
-                    </p>
-                    <div className="flex items-center justify-between gap-4">
-                      <Button type="button" variant="outline" onClick={() => goStep(2)}>Back</Button>
-                      <Button onClick={handleSubmit} disabled={submitting}>
-                        {submitting ? 'Sending...' : 'Send & Book Your Free Call \u2192'}
-                      </Button>
-                    </div>
-                  </motion.div>
-                )}
-              </>
-            ) : (
-              <div className="text-center py-12 px-6">
-                <div className="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-5">
-                  <Check className="w-7 h-7 text-primary" />
-                </div>
-                <h2 className="text-2xl font-display font-bold mb-2">You're on the list.</h2>
-                <p className="text-body mb-8 max-w-sm mx-auto">
-                  We've received your details. Now pick a time for your free audit call — it's 30 minutes, no
-                  commitment.
-                </p>
-                <Button onClick={openBookingModal} size="lg">
-                  Book Your Free Call \u2192
-                </Button>
-                <p className="text-xs text-muted-foreground mt-6">
-                  Prefer email?{' '}
-                  <a href="mailto:hi@saswatasg.com" className="text-primary underline">
-                    hi@saswatasg.com
-                  </a>
-                </p>
+                    {s < 3 && <div className={`w-12 h-px ${step > s ? 'bg-ink' : 'bg-hairline'}`} />}
+                  </div>
+                ))}
               </div>
-            )}
-          </motion.div>
+
+              {step === 1 && (
+                <div>
+                  <p className="text-heading-md text-ink mb-4">What do you need help with?</p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {MODULES.map((mod) => {
+                      const Icon = mod.icon;
+                      const isSelected = selectedModules.has(mod.id);
+                      return (
+                        <button
+                          key={mod.id}
+                          type="button"
+                          onClick={() => toggleModule(mod.id)}
+                          className={`inline-flex items-center gap-1.5 px-4 py-2 text-button-sm rounded-full border transition-colors ${
+                            isSelected ? 'border-ink bg-ink text-canvas' : 'border-hairline bg-canvas text-mute hover:border-ink hover:text-ink'
+                          }`}
+                        >
+                          <Icon className="w-3.5 h-3.5" />
+                          {mod.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <Button onClick={() => goStep(2)} disabled={selectedModules.size === 0} size="lg">
+                    Next <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              )}
+
+              {step === 2 && (
+                <div>
+                  <div className="mb-4">
+                    <p className="text-caption-sm text-mute">Selected: {[...selectedModules].join(', ')}</p>
+                    <button onClick={() => goStep(1)} className="text-caption-sm text-ink underline underline-offset-2">Change</button>
+                  </div>
+                  <form onSubmit={(e) => { e.preventDefault(); goStep(3); }} className="space-y-4">
+                    <p className="text-heading-md text-ink">Your details</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <Input name="name" value={form.name} onChange={handleChange} placeholder="Name *" required />
+                      <Input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email *" required />
+                      <Input name="company" value={form.company} onChange={handleChange} placeholder="Company / Brand *" required className="sm:col-span-2" />
+                      <Textarea name="challenge" value={form.challenge} onChange={handleChange} rows={3} placeholder="What's the biggest growth challenge right now? *" required className="sm:col-span-2" />
+                    </div>
+                    <div className="flex items-center gap-4 pt-2">
+                      <Button type="button" variant="outline" onClick={() => goStep(1)}>Back</Button>
+                      <Button type="submit">Review & Submit <ArrowRight className="w-4 h-4 ml-2" /></Button>
+                    </div>
+                  </form>
+                </div>
+              )}
+
+              {step === 3 && (
+                <div>
+                  <div className="bg-canvas border border-hairline-soft p-6 mb-6 space-y-3">
+                    <div>
+                      <span className="text-caption-sm text-mute uppercase">Modules</span>
+                      <p className="text-body-sm font-medium text-ink mt-0.5">{[...selectedModules].join(', ')}</p>
+                    </div>
+                    <div className="h-px bg-hairline-soft" />
+                    <div>
+                      <span className="text-caption-sm text-mute uppercase">Name</span>
+                      <p className="text-body-sm font-medium text-ink mt-0.5">{form.name}</p>
+                    </div>
+                    <div>
+                      <span className="text-caption-sm text-mute uppercase">Email</span>
+                      <p className="text-body-sm font-medium text-ink mt-0.5">{form.email}</p>
+                    </div>
+                    <div>
+                      <span className="text-caption-sm text-mute uppercase">Company</span>
+                      <p className="text-body-sm font-medium text-ink mt-0.5">{form.company}</p>
+                    </div>
+                    <div>
+                      <span className="text-caption-sm text-mute uppercase">Challenge</span>
+                      <p className="text-body-sm text-mute mt-0.5">{form.challenge}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <Button variant="outline" onClick={() => goStep(2)}>Back</Button>
+                    <Button onClick={handleSubmit} disabled={submitting}>
+                      {submitting ? 'Sending...' : 'Send & Book Call \u2192'}
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <div className="w-14 h-14 rounded-full bg-ink flex items-center justify-center mx-auto mb-5">
+                <Check className="w-7 h-7 text-canvas" />
+              </div>
+              <h2 className="font-display text-heading-xl text-ink mb-2">You're on the list.</h2>
+              <p className="text-body-md text-mute mb-8">Now pick a time for your free 30-minute call.</p>
+              <Button onClick={openBookingModal} size="lg">
+                Book Your Free Call &rarr;
+              </Button>
+              <p className="text-caption-sm text-mute mt-6">
+                Prefer email? <a href="mailto:hi@saswatasg.com" className="text-ink underline">hi@saswatasg.com</a>
+              </p>
+            </div>
+          )}
         </div>
       </section>
 
-      <section className="section-light">
+      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
-          <h2 className="text-center mb-12">What happens on the call</h2>
+          <h2 className="font-display text-display-md text-ink text-center leading-none mb-12">What happens on the call</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {STEPS.map((s, i) => {
               const Icon = s.icon;
               return (
-                <motion.div
-                  key={s.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-primary-light flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-primary" />
+                <div key={s.title} className="text-center">
+                  <div className="w-14 h-14 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-6 h-6 text-ink" />
                   </div>
-                  <h3 className="font-display font-bold mb-2">{s.title}</h3>
-                  <p className="text-sm text-body leading-relaxed">{s.body}</p>
-                </motion.div>
+                  <h3 className="text-heading-md text-ink mb-2">{s.title}</h3>
+                  <p className="text-body-sm text-mute leading-relaxed">{s.body}</p>
+                </div>
               );
             })}
           </div>
         </div>
       </section>
 
-      <section className="section-off text-center">
+      <section className="bg-soft-cloud py-section-lg text-center">
         <div className="container-site">
           <div className="max-w-md mx-auto">
-            <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
-              <Phone className="w-5 h-5 text-muted-foreground" />
-            </div>
-            <p className="text-muted-foreground mb-2">Prefer to chat right away?</p>
-            <Button asChild variant="outline">
+            <p className="text-body-sm text-mute mb-4">Prefer to chat right away?</p>
+            <Button asChild variant="outline" size="lg">
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
                 Message us on WhatsApp <ArrowRight className="w-4 h-4 ml-2" />
               </a>

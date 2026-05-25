@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
-  { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
-  { to: '/case-studies', label: 'Past Projects' },
+  { to: '/case-studies', label: 'Work' },
   { to: '/insights', label: 'Insights' },
-  { to: '/pricing', label: 'Pricing' },
+  { to: '/about', label: 'About' },
 ];
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { openBookingModal } = useBookingModal();
-  const overlayRef = React.useRef(null);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   React.useEffect(() => {
     if (!isOpen) return;
@@ -30,67 +31,77 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border">
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-0.5 bg-ink origin-left z-[60]"
+        style={{ scaleX }}
+      />
+      <header className="sticky top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur border-b border-hairline-soft">
         <div className="container-site flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-1 no-underline">
-            <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: 'var(--color-dark)' }}>
-              The Growth
-            </span>
-            <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: 'var(--color-primary)' }}>
-              Bench
+          <Link to="/" className="flex items-center gap-2 no-underline group">
+            <div className="w-8 h-8 bg-ink rounded-full flex items-center justify-center">
+              <span className="text-caption-sm text-canvas font-bold leading-none">G</span>
+            </div>
+            <span className="font-display text-lg tracking-wide text-ink">
+              THE GROWTH BENCH
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
-                  `text-sm font-medium tracking-wide uppercase no-underline transition-colors duration-200 ${
-                    isActive ? 'text-primary' : 'text-foreground/70 hover:text-foreground'
+                  `text-body-sm font-medium no-underline transition-colors ${
+                    isActive ? 'text-ink' : 'text-mute hover:text-ink'
                   }`
                 }
               >
                 {link.label}
               </NavLink>
             ))}
-            <Button size="sm" onClick={openBookingModal}>Book a Call</Button>
+            <Button size="sm" onClick={openBookingModal}>
+              Book a Call
+            </Button>
           </nav>
 
-          {/* Mobile Hamburger */}
           <button
-            className="md:hidden p-3 text-foreground"
+            className="md:hidden p-2 text-ink"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5" />
           </button>
         </div>
       </header>
 
-      {/* Mobile Overlay — separate from <header> to avoid fixed-in-fixed stacking issues */}
       {isOpen && (
-        <div ref={overlayRef} className="fixed inset-0 z-[60] bg-gray-900/95 flex flex-col items-center justify-center gap-8 md:hidden">
-          <button
-            className="absolute top-4 right-4 p-2 text-white"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close menu"
-          >
-            <X className="w-6 h-6" />
-          </button>
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              onClick={() => setIsOpen(false)}
-              className="text-white text-2xl font-display font-semibold no-underline hover:text-primary transition-colors"
-            >
-              {link.label}
-            </NavLink>
-          ))}
-          <Button size="lg" className="mt-4" onClick={() => { openBookingModal(); setIsOpen(false); }}>Book a Call</Button>
+        <div className="fixed inset-0 z-[60] bg-canvas flex flex-col md:hidden">
+          <div className="container-site flex items-center justify-between h-16 border-b border-hairline-soft">
+            <span className="font-display text-lg tracking-wide text-ink">THE GROWTH BENCH</span>
+            <button className="p-2 text-ink" onClick={() => setIsOpen(false)} aria-label="Close menu">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+          <nav className="flex flex-col container-site py-8 gap-6">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `text-heading-lg no-underline ${isActive ? 'text-ink' : 'text-mute'}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            <div className="pt-4">
+              <Button size="lg" className="w-full" onClick={() => { openBookingModal(); setIsOpen(false); }}>
+                Book a Call
+              </Button>
+            </div>
+          </nav>
         </div>
       )}
     </>

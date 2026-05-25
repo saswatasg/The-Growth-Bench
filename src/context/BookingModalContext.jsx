@@ -43,7 +43,7 @@ export function BookingModalProvider({ children }) {
                 src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3wx11wN9wr9kdE7TBGU3impXZ4_MkcsGh6NsUD7F854Fnr5XsJnsR2mnPQ-K1IFLGydbxR_KKZ?gv=true"
                 style={{ border: 0, width: '100%', height: '100%', opacity: loading ? 0 : 1 }}
                 frameBorder="0"
-                sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
+                sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
                 title="Book a call with The Growth Bench"
                 onLoad={() => setLoading(false)}
               />

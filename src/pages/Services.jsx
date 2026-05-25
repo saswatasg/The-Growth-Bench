@@ -1,21 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-
-const deepDiveLinks = {
-  'ads': { to: '/insights?category=Meta%20Ads', label: 'See ad performance case studies' },
-  'cro': { to: '/case-studies', label: 'See CRO results in action' },
-  'website': { to: '/case-studies', label: 'See development projects' },
-};
+import PageMeta from '@/components/PageMeta';
+import { fadeUp, fadeIn, stagger } from '@/lib/motion';
 
 const services = [
   {
     id: 'strategy', icon: Search,
-    eyebrow: '01 — GROWTH STRATEGY',
+    title: 'Growth Strategy',
+    summary: 'Funnel audit, ICP, 90-day roadmap before touching a single ad account.',
+  },
+  {
+    id: 'website', icon: Code2,
+    title: 'Website & Development',
+    summary: 'Full builds in Next.js, Webflow, or Shopify. CRO and analytics baked in from day one.',
+  },
+  {
+    id: 'ads', icon: Target,
+    title: 'Ads',
+    summary: 'Meta, Google, Amazon, LinkedIn — full-funnel campaigns with proper attribution.',
+  },
+  {
+    id: 'lead-systems', icon: Users,
+    title: 'Lead Systems',
+    summary: 'Landing pages, CRM, nurture sequences, scoring. Not just a form — a system.',
+  },
+  {
+    id: 'cro', icon: TrendingUp,
+    title: 'CRO',
+    summary: 'Qualitative research, quantitative analysis, structured A/B testing that compounds.',
+  },
+  {
+    id: 'ui-ux', icon: Palette,
+    title: 'UI/UX Design',
+    summary: 'Research-grounded design in Figma. Dev-ready handoffs.',
+  },
+  {
+    id: 'marketing-strategy', icon: FileText,
+    title: 'Marketing Strategy',
+    summary: 'Messaging, content, email, SEO — the organic engine behind paid performance.',
+  },
+];
+
+const sections = [
+  {
+    id: 'strategy', icon: Search,
+    eyebrow: '01 — Growth Strategy',
     h2: 'The diagnosis before the prescription.',
     summary: 'We audit your funnel, find the fastest path to more revenue, and give you a prioritised 90-day roadmap. No 50-slide decks — a working plan tied to real outcomes.',
     includes: [
@@ -28,18 +61,12 @@ const services = [
       'OKR and KPI framework setup',
       'Monthly strategy reviews and recalibration',
     ],
-    rightFor: [
-      'You have budget but aren\'t sure where to put it next',
-      'Revenue grows inconsistently — spikes and dips without clear reason',
-      "You're launching a new product or entering a new market",
-    ],
   },
   {
     id: 'website', icon: Code2,
-    eyebrow: '02 — WEBSITE & DEVELOPMENT',
+    eyebrow: '02 — Website & Development',
     h2: 'A website that works as hard as you do.',
     summary: 'We build conversion-first websites in Next.js, Webflow, or Shopify — fully tracked, tagged, and ready to optimise from day one. No expensive brochureware.',
-    deepDive: 'Every site we build ships with GA4, GTM, heatmaps, and CRO hooks baked in from the first commit. Your website is your biggest growth lever — we treat it like one.',
     includes: [
       'Full website build (Next.js / Webflow / Shopify / custom)',
       'Landing page design and development',
@@ -52,18 +79,12 @@ const services = [
       'Mobile-first responsive design',
       'Dev handoff or fully managed deployment',
     ],
-    rightFor: [
-      "You're launching for the first time or your site is 3+ years old",
-      "Current conversion rates are poor and you don't know why",
-      'You want one team to design, build, and track — not three vendors',
-    ],
   },
   {
     id: 'ads', icon: Target,
-    eyebrow: '03 — ADS',
+    eyebrow: '03 — Ads',
     h2: 'Paid media that works because the funnel works.',
     summary: 'We manage Meta, Google, Amazon, and LinkedIn Ads — but we never treat ads as standalone. Every campaign is built with the landing page, attribution, and funnel in mind.',
-    deepDive: 'Most ad agencies optimise for CTR. We optimise for revenue. That means every campaign starts with the landing page, attribution model, and conversion tracking before we write a single headline. Our approach across Meta, Google, and Amazon consistently delivers 3-6x ROAS.',
     includes: [
       'Full account audit and health check for any platform',
       'Meta Ads: creative strategy, CAPI, audience architecture',
@@ -77,16 +98,10 @@ const services = [
       'Weekly performance summaries, monthly strategy reviews',
       'A/B testing: creative, audiences, landing pages, offers',
     ],
-    rightFor: [
-      'You want one team managing multiple ad platforms',
-      'Current ads have no clear attribution or ROAS tracking',
-      'You\'re scaling spend and need proper campaign architecture',
-      'Conversions dropping — need someone who looks at the whole funnel',
-    ],
   },
   {
     id: 'lead-systems', icon: Users,
-    eyebrow: '04 — LEAD SYSTEMS',
+    eyebrow: '04 — Lead Systems',
     h2: 'A form is not a lead system.',
     summary: 'We build the full infrastructure: landing pages that capture, CRMs that organise, sequences that nurture, and scoring that tells you who to call first.',
     includes: [
@@ -100,18 +115,12 @@ const services = [
       'Lead quality feedback loop to ad campaigns',
       'Reporting dashboard: volume, quality, source attribution',
     ],
-    rightFor: [
-      "Running ads but leads aren't converting downstream",
-      'No CRM, or your CRM is a spreadsheet nobody updates',
-      'You want to build a B2B inbound system from scratch',
-    ],
   },
   {
     id: 'cro', icon: TrendingUp,
     eyebrow: '05 — CRO',
     h2: 'Your website is a product. Treat it like one.',
     summary: 'We combine qualitative research with quantitative analysis, run structured experiments, and implement what works. Every page has a job — we make it do that job better.',
-    deepDive: 'In one engagement, a checkout flow redesign alone recovered $329K/month. Another lifted add-to-cart rates by 28.71%. CRO is not about changing button colours — it is about understanding user behaviour through recordings, surveys, analytics, and running structured experiments that compound over time.',
     includes: [
       'Funnel drop-off analysis (GA4, Shopify analytics)',
       'Session recording and heatmap analysis',
@@ -123,15 +132,10 @@ const services = [
       'Post-test analysis and rollout decisions',
       'Monthly CRO sprint report with next priorities',
     ],
-    rightFor: [
-      'You have traffic but conversions are low or inconsistent',
-      "You've made gut-feeling changes without knowing if they worked",
-      'You want a repeatable optimisation process that compounds',
-    ],
   },
   {
     id: 'ui-ux', icon: Palette,
-    eyebrow: '06 — UI/UX DESIGN',
+    eyebrow: '06 — UI/UX Design',
     h2: 'Design that reduces friction.',
     summary: 'Good UI/UX removes the moments where a user hesitates or leaves. We work in Figma from research to final design to dev handoff — every decision tied to a user or business reason.',
     includes: [
@@ -145,15 +149,10 @@ const services = [
       'Handoff-ready specs with developer annotations',
       'Design QA during development',
     ],
-    rightFor: [
-      "Building a new product, app, or website from scratch",
-      "UI was designed by a developer or hasn't been updated in 3+ years",
-      'You want design backed by user research, not aesthetics alone',
-    ],
   },
   {
     id: 'marketing-strategy', icon: FileText,
-    eyebrow: '07 — MARKETING STRATEGY',
+    eyebrow: '07 — Marketing Strategy',
     h2: 'The organic engine behind paid performance.',
     summary: 'Paid ads work better when your organic presence builds trust. We build the messaging framework, content architecture, and channel strategy that makes every channel more efficient.',
     includes: [
@@ -166,150 +165,99 @@ const services = [
       'UGC and creator sourcing strategy for D2C',
       'Competitor content analysis',
     ],
-    rightFor: [
-      "Running paid ads without any organic presence",
-      "Email flows haven't been updated since launch",
-      'You want a content strategy that serves your ICP, not a calendar',
-    ],
   },
 ];
 
-const Section = ({ service, index }) => {
-  const Icon = service.icon;
-  const link = deepDiveLinks[service.id];
-  return (
-    <section id={service.id} className={index % 2 === 0 ? 'section-light' : 'section-mid'}>
-      <div className="container-site">
-        <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 rounded-xl bg-primary-light flex items-center justify-center flex-shrink-0 mt-1">
-            <Icon className="w-6 h-6 text-primary" />
-          </div>
-          <div>
-            <span className="section-eyebrow">{service.eyebrow}</span>
-            <h2 className="max-w-2xl">{service.h2}</h2>
-          </div>
-        </div>
-
-        <p className="text-body text-lg max-w-3xl leading-relaxed mb-8">{service.summary}</p>
-
-        {service.deepDive && (
-          <div className="bg-white border border-primary/10 rounded-xl p-5 mb-8 max-w-3xl shadow-sm">
-            <p className="text-sm text-body leading-relaxed">{service.deepDive}</p>
-          </div>
-        )}
-
-        <div className="mt-10 mb-8">
-          <h3 className="font-display font-bold text-sm mb-4 text-dark flex items-center gap-2">
-            <Check className="w-4 h-4 text-primary" /> What's included
-            <span className="text-xs text-muted-foreground font-normal ml-1">({service.includes.length})</span>
-          </h3>
-          <div className="grid md:grid-cols-2 gap-2.5">
-            {service.includes.map((item) => (
-              <div key={item} className="flex items-start gap-2.5 text-body text-sm p-2.5 rounded-lg bg-white/60">
-                <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-primary" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="callout-box mb-8">
-          <h4 className="font-display font-semibold text-sm mb-3 text-primary">This is right for you if...</h4>
-          <ul className="space-y-1">
-            {service.rightFor.map((item) => (
-              <li key={item} className="text-sm flex items-start gap-2">
-                <span className="text-primary mt-0.5">&rarr;</span> {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex items-center justify-between gap-4">
-          {link ? (
-            <Link to={link.to} className="link-arrow text-sm">
-              {link.label} <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          ) : <span />}
-          {index < services.length - 1 && (
-            <a href={`#${services[index + 1].id}`} className="link-arrow text-sm">
-              Next: {services[index + 1].eyebrow.replace(/^\d+ — /, '')}
-            </a>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const Services = () => {
   const { openBookingModal } = useBookingModal();
-  const [activeId, setActiveId] = useState('');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
-        });
-      },
-      { rootMargin: '-80px 0px -60% 0px' }
-    );
-    services.forEach((s) => {
-      const el = document.getElementById(s.id);
-      if (el) observer.observe(el);
-    });
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
       <PageMeta />
-      <section className="section-dark pt-20 text-center">
-        <div className="container-site">
-          <nav aria-label="breadcrumb" className="flex items-center justify-center gap-1.5 text-sm text-white/50 mb-6">
-            <Link to="/" className="hover:text-white/80 transition-colors no-underline text-white/50">Home</Link>
-            <span className="text-white/50">/</span>
-            <span className="text-white font-medium" aria-current="page">Services</span>
-          </nav>
-          <div className="section-eyebrow section-eyebrow-light justify-center before:hidden">WHAT WE DO</div>
-          <h1 className="text-white max-w-3xl mx-auto mb-6">The full growth stack. Not parts of it.</h1>
-          <p className="text-faint text-lg max-w-2xl mx-auto leading-relaxed">
-            Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn't live in a lane.
-          </p>
-        </div>
-      </section>
 
-      <div className="sticky top-16 z-40 bg-white/95 backdrop-blur border-b border-border">
-        <div className="container-site overflow-x-auto hide-scrollbar">
-          <div className="flex gap-0 py-3 text-sm min-w-max">
-            {services.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
-                className={`px-4 py-1 no-underline whitespace-nowrap transition-colors rounded-md ${
-                  activeId === s.id ? 'bg-primary-light text-primary font-medium' : 'text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                {s.eyebrow.replace(/^\d+ — /, '')}
-              </a>
-            ))}
+      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+        <div className="container-site">
+          <div className="max-w-2xl">
+            <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
+            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+              The full growth stack.<br />Not parts of it.
+            </h1>
+            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
+              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn't live in a lane.
+            </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      {services.map((service, i) => (
-        <Section key={service.id} service={service} index={i} />
-      ))}
-
-      <section className="section-dark text-center">
+      <motion.section {...fadeUp} className="bg-canvas py-section-lg">
         <div className="container-site">
-          <h2 className="text-white mb-4">Not sure which services you need?</h2>
-          <p className="text-faint text-lg max-w-xl mx-auto leading-relaxed mb-10">
+          <div className="grid md:grid-cols-3 gap-4">
+            {services.map((s) => {
+              const Icon = s.icon;
+              return (
+                <a
+                  key={s.id}
+                  href={`#${s.id}`}
+                  className="flex items-start gap-4 p-5 border border-hairline-soft bg-canvas no-underline group hover:border-ink transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center flex-shrink-0 group-hover:bg-ink transition-colors">
+                    <Icon className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+                  </div>
+                  <div>
+                    <h3 className="text-heading-md text-ink">{s.title}</h3>
+                    <p className="text-body-sm text-mute mt-1 leading-relaxed">{s.summary}</p>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </motion.section>
+
+      {sections.map((service, i) => {
+        const Icon = service.icon;
+        return (
+          <motion.section key={service.id} id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft' : 'bg-soft-cloud border-t border-hairline-soft'}>
+            <div className="container-site py-section-lg">
+              <div className="grid md:grid-cols-2 gap-12">
+                <div>
+                  <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
+                    <Icon className="w-4 h-4 text-canvas" />
+                  </div>
+                  <span className="text-label-xs text-mute uppercase tracking-wider">{service.eyebrow}</span>
+                  <h2 className="font-display text-display-md text-ink mt-2 leading-none">{service.h2}</h2>
+                  <p className="text-body-md text-mute mt-4 leading-relaxed">{service.summary}</p>
+                </div>
+                <div>
+                  <h3 className="text-heading-md text-ink mb-4">What's included</h3>
+                  <ul className="space-y-2">
+                    {service.includes.map((item) => (
+                      <li key={item} className="text-body-sm text-mute flex items-start gap-2">
+                        <span className="w-1 h-1 rounded-full bg-ink mt-2.5 flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </motion.section>
+        );
+      })}
+
+      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+        <div className="container-site max-w-2xl mx-auto">
+          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
+            Not sure which<br />services you need?
+          </h2>
+          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
             That's what the audit call is for. We'll look at your current setup, identify the highest-impact gaps, and tell you honestly where we'd start.
           </p>
-          <Button size="lg" onClick={openBookingModal}>Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" /></Button>
+          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
         </div>
-      </section>
+      </motion.section>
     </>
   );
 };

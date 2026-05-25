@@ -284,9 +284,7 @@ export default defineConfig({
 	],
 	server: {
 		cors: true,
-		headers: {
-			'Cross-Origin-Embedder-Policy': 'credentialless',
-		},
+		headers: {},
 		allowedHosts: [
 			'.app-preview.com',
 			'.app-preview.io',

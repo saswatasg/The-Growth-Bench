@@ -15,11 +15,11 @@ const services = [
 
 const ServicesOverview = () => {
   return (
-    <section className="section-dark">
+    <section className="bg-ink py-section">
       <div className="container-site">
-        <div className="section-eyebrow section-eyebrow-light">WHAT WE DO</div>
-        <h2 className="text-white mb-4">The full stack, handled.</h2>
-        <p className="text-faint text-lg max-w-xl mb-16">
+        <span className="text-caption-sm text-stone tracking-wider uppercase mb-3 block">WHAT WE DO</span>
+        <h2 className="font-display text-heading-xl text-canvas mb-2">The full stack, handled.</h2>
+        <p className="text-body-md text-stone max-w-xl mb-section">
           From the first strategy call to the live campaign to the optimised checkout — we cover the entire growth surface.
         </p>
 
@@ -30,15 +30,15 @@ const ServicesOverview = () => {
               <Link
                 key={s.num}
                 to="/services"
-                className="card-dark group flex flex-col no-underline"
+                className="group block p-6 no-underline border border-stone/20 hover:border-stone/50 transition-colors"
               >
-                <div className="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center mb-3 group-hover:bg-primary/30 transition-colors">
-                  <Icon className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 rounded-full bg-canvas/10 flex items-center justify-center mb-3">
+                  <Icon className="w-5 h-5 text-canvas" />
                 </div>
-                <div className="service-number mb-1 text-white/40">{s.num}</div>
-                <h3 className="text-white font-display font-bold text-sm mb-1">{s.name}</h3>
-                <p className="text-xs text-white/50 leading-relaxed flex-grow">{s.desc}</p>
-                <span className="text-xs text-primary font-medium mt-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-caption-sm text-stone font-mono">{s.num}</span>
+                <h3 className="text-body-strong text-canvas mt-1 mb-1">{s.name}</h3>
+                <p className="text-caption-md text-stone leading-relaxed">{s.desc}</p>
+                <span className="text-caption-sm text-stone mt-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                   Learn more <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>

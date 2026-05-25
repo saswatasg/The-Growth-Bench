@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, ChevronRight, Send, Sparkles } from 'lucide-react';
+import { MessageCircle, X, ChevronRight, Send, Sparkles, Mail, MessageCircle as WhatsApp } from 'lucide-react';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { WHATSAPP_URL } from '@/lib/constants';
 const CASESTUDIES_URL = '/case-studies';
 
 const FAQ_GROUPS = [
@@ -63,7 +64,7 @@ const TypewriterText = ({ text, speed = 25, onComplete }) => {
   return (
     <span>
       {displayed}
-      {!isComplete && <span className="inline-block w-0.5 h-4 bg-primary/50 ml-0.5 animate-pulse" />}
+      {!isComplete && <span className="inline-block w-0.5 h-4 bg-ink/50 ml-0.5 animate-pulse" />}
     </span>
   );
 };
@@ -178,11 +179,20 @@ const ChatWidget = () => {
             setMessages([{ type: 'bot', text: "Hey! 👋 How can we help you grow today?", key: Date.now() }]);
           }
         }}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95"
-        style={{ background: 'var(--color-primary)' }}
+        className="fixed bottom-6 right-6 z-50 relative flex items-center justify-center"
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
-        {isOpen ? <X className="w-6 h-6 text-white" /> : <MessageCircle className="w-6 h-6 text-white" />}
+        {!isOpen && (
+          <motion.span
+            className="absolute inset-0 rounded-full bg-ink/15"
+            initial={{ scale: 1, opacity: 0.4 }}
+            animate={{ scale: [1, 1.4], opacity: [0.4, 0] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeOut' }}
+          />
+        )}
+        <div className="w-14 h-14 rounded-full bg-ink text-canvas shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-105 active:scale-95">
+          {isOpen ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6" />}
+        </div>
       </button>
 
       {/* Chat Window */}
@@ -193,36 +203,33 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl border border-border/80 overflow-hidden"
-            style={{ maxHeight: '620px', height: 'calc(100vh - 200px)', background: 'var(--color-card-bg)', backdropFilter: 'blur(12px)' }}
+            className="fixed bottom-24 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] rounded-2xl shadow-2xl border border-hairline-soft bg-canvas flex flex-col overflow-hidden"
+            style={{ maxHeight: '620px', height: 'calc(100vh - 200px)' }}
           >
             {/* Header */}
-            <div className="p-4 text-white flex items-center gap-3" style={{ background: 'linear-gradient(135deg, var(--color-primary), var(--color-primary-dark))' }}>
-              <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
+            <div className="p-4 bg-ink text-canvas flex items-center gap-3 flex-shrink-0">
+              <div className="w-9 h-9 rounded-full bg-canvas/20 flex items-center justify-center flex-shrink-0">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
-                  <span className="font-semibold text-sm font-display">The Growth Bench</span>
-                  <button onClick={() => setIsOpen(false)} className="text-white/70 hover:text-white -mr-1 p-1">
+                  <span className="font-semibold text-sm font-display tracking-wide">The Growth Bench</span>
+                  <button onClick={() => setIsOpen(false)} className="text-canvas/70 hover:text-canvas -mr-1 p-1">
                     <X className="w-4 h-4" />
                   </button>
                 </div>
-                <p className="text-[11px] text-white/70">Usually replies in a few minutes</p>
+                <p className="text-[11px] text-canvas/70 mt-1">Usually replies in a few minutes</p>
               </div>
             </div>
 
             {/* Messages */}
-            <div className="overflow-y-auto p-4 space-y-3" style={{ maxHeight: 'calc(100% - 130px)', scrollBehavior: 'smooth' }}>
+            <div className="overflow-y-auto flex-1 p-4 space-y-3" style={{ scrollBehavior: 'smooth' }}>
               {messages.map((msg) => (
                 <div key={msg.key} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
-                      msg.type === 'user' ? 'text-white' : 'text-foreground'
+                      msg.type === 'user' ? 'bg-ink text-canvas' : 'bg-soft-cloud text-ink'
                     }`}
-                    style={{
-                      background: msg.type === 'user' ? 'var(--color-primary)' : '#F3F4F6',
-                    }}
                   >
                     {msg.typing ? (
                       <TypewriterText text={msg.text} speed={20} />
@@ -243,7 +250,7 @@ const ChatWidget = () => {
                 >
                   {FAQ_GROUPS.map((group, gi) => (
                     <div key={gi} className="mb-3">
-                      <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider mb-1.5 px-1">{group.category}</p>
+                      <p className="text-[10px] text-mute font-semibold uppercase tracking-wider mb-1.5 px-1">{group.category}</p>
                       <div className="space-y-1.5">
                         {group.items.map((faq, i) => (
                           <motion.button
@@ -252,15 +259,45 @@ const ChatWidget = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.4 + (gi * group.items.length + i) * 0.05 }}
                             onClick={() => handleFAQClick(faq)}
-                            className="w-full text-left text-sm px-3.5 py-3 rounded-xl border border-border/70 hover:border-primary/30 transition-all text-foreground flex items-center justify-between gap-2 hover:bg-primary/5"
+                            className="w-full text-left text-sm px-3.5 py-3 rounded-xl border border-hairline-soft hover:border-ink/30 transition-all text-ink flex items-center justify-between gap-2 hover:bg-ink/5"
                           >
                             <span className="flex-1 text-[13px]">{faq.q}</span>
-                            <ChevronRight className="w-3 h-3 flex-shrink-0 text-muted-foreground" />
+                            <ChevronRight className="w-3 h-3 flex-shrink-0 text-mute" />
                           </motion.button>
                         ))}
                       </div>
                     </div>
                   ))}
+
+                  {/* Contact Buttons Row */}
+                  <div className="pt-3 border-t border-hairline-soft mt-3">
+                    <p className="text-[10px] text-mute font-semibold uppercase tracking-wider mb-2 px-1">Get in touch</p>
+                    <div className="grid grid-cols-3 gap-2">
+                      <a
+                        href="mailto:hi@saswatasg.com"
+                        className="flex flex-col items-center gap-1 px-2 py-2.5 rounded-xl border border-hairline-soft text-ink hover:bg-soft-cloud transition-colors no-underline"
+                      >
+                        <Mail className="w-4 h-4" />
+                        <span className="text-[10px] font-medium">Email</span>
+                      </a>
+                      <a
+                        href={WHATSAPP_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex flex-col items-center gap-1 px-2 py-2.5 rounded-xl border border-hairline-soft text-ink hover:bg-soft-cloud transition-colors no-underline"
+                      >
+                        <WhatsApp className="w-4 h-4" />
+                        <span className="text-[10px] font-medium">WhatsApp</span>
+                      </a>
+                      <button
+                        onClick={handleBookCall}
+                        className="flex flex-col items-center gap-1 px-2 py-2.5 rounded-xl bg-ink text-canvas hover:bg-ink/90 transition-colors"
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        <span className="text-[10px] font-medium">Book a Call</span>
+                      </button>
+                    </div>
+                  </div>
                 </motion.div>
               )}
 
@@ -271,10 +308,10 @@ const ChatWidget = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="pt-1"
                 >
-                  <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider mb-1.5 px-1">You might also want to know:</p>
+                  <p className="text-[10px] text-mute font-semibold uppercase tracking-wider mb-1.5 px-1">You might also want to know:</p>
                   <button
                     onClick={handleFollowUpClick}
-                    className="w-full text-left text-sm px-3.5 py-2.5 rounded-xl border border-primary/30 hover:border-primary/60 transition-all text-primary flex items-center justify-between gap-2 bg-primary/5"
+                    className="w-full text-left text-sm px-3.5 py-2.5 rounded-xl border border-ink/20 hover:border-ink/40 transition-all text-ink flex items-center justify-between gap-2 bg-ink/5"
                   >
                     <span className="flex-1 text-[13px] font-medium">{followUp.q}</span>
                     <ChevronRight className="w-3 h-3 flex-shrink-0" />
@@ -287,24 +324,23 @@ const ChatWidget = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="pt-3 space-y-2 border-t border-border/60"
+                  className="pt-3 space-y-2 border-t border-hairline-soft"
                 >
                   <button
                     onClick={handleBookCall}
-                    className="w-full text-center text-sm font-medium py-3 rounded-xl text-white transition-all hover:shadow-md"
-                    style={{ background: 'var(--color-primary)' }}
+                    className="w-full text-center text-sm font-medium py-3 rounded-xl bg-ink text-canvas hover:bg-ink/90 transition-all"
                   >
                     Book a Free Audit Call
                   </button>
                   <button
                     onClick={handleTalkToAgent}
-                    className="w-full text-center text-sm py-3 rounded-xl border border-border text-foreground font-medium hover:bg-surface-off transition-all"
+                    className="w-full text-center text-sm py-3 rounded-xl border border-hairline-soft text-ink font-medium hover:bg-soft-cloud transition-all"
                   >
                     Talk to an Agent
                   </button>
                   <button
                     onClick={resetChat}
-                    className="w-full text-center text-xs text-muted-foreground hover:text-foreground transition-colors pt-1"
+                    className="w-full text-center text-xs text-mute hover:text-ink transition-colors pt-1"
                   >
                     Start over
                   </button>
@@ -313,11 +349,11 @@ const ChatWidget = () => {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-[#F3F4F6] rounded-2xl px-4 py-3">
+                  <div className="bg-soft-cloud rounded-2xl px-4 py-3">
                     <div className="flex gap-1">
-                      <span className="w-2 h-2 rounded-full bg-muted-foreground/40 animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-2 h-2 rounded-full bg-muted-foreground/40 animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-2 h-2 rounded-full bg-muted-foreground/40 animate-bounce" style={{ animationDelay: '300ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-mute/40 animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-mute/40 animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-mute/40 animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
@@ -327,20 +363,19 @@ const ChatWidget = () => {
             </div>
 
             {/* Input */}
-            <form onSubmit={handleCustomSubmit} className="border-t border-border/60 p-3 flex gap-2 bg-white/50 backdrop-blur-sm">
+            <form onSubmit={handleCustomSubmit} className="border-t border-hairline-soft p-3 pb-5 flex gap-2 bg-canvas flex-shrink-0">
               <input
                 type="text"
                 value={customInput}
                 onChange={(e) => setCustomInput(e.target.value)}
                 placeholder="Type your question..."
                 disabled={isTyping}
-                className="flex-1 text-sm px-3 py-2.5 rounded-lg border border-border/70 bg-surface-off outline-none focus:border-primary/30 transition-colors disabled:opacity-50"
+                className="flex-1 text-sm px-3 py-2.5 rounded-lg border border-hairline-soft bg-soft-cloud outline-none focus:border-ink/30 transition-colors disabled:opacity-50 text-ink placeholder:text-mute"
               />
               <button
                 type="submit"
                 disabled={isTyping || !customInput.trim()}
-                className="w-11 h-11 rounded-lg flex items-center justify-center text-white flex-shrink-0 transition-all disabled:opacity-50"
-                style={{ background: 'var(--color-primary)' }}
+                className="w-11 h-11 rounded-lg bg-ink text-canvas flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-50 hover:bg-ink/90"
               >
                 <Send className="w-4 h-4" />
               </button>

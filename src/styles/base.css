@@ -1,34 +1,17 @@
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    @apply text-foreground antialiased;
-    background: transparent;
-    font-family: 'Inter', sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  main {
-    flex-grow: 1;
-  }
-  #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+html {
+  scroll-behavior: smooth;
 }
-
-@layer utilities {
-  .skip-link {
-    @apply absolute p-3 bg-background text-foreground shadow-md;
-    left: -9999px;
-    top: 1rem;
-    z-index: 9999;
-  }
-  .skip-link:focus {
-    @apply left-4 ring-2 ring-ring ring-offset-2 ring-offset-background;
-  }
+body {
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+}
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
