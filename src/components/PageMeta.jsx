@@ -5,7 +5,7 @@ import { SITE_URL } from '@/lib/constants';
 
 const defaultMeta = {
   title: "The Growth Bench — Full-Stack Growth Partner for D2C Brands & Startups",
-  description: "Full-stack growth partner for D2C brands and early-stage startups. Strategy, performance marketing, CRO, website development, lead systems, and UI/UX — under one roof. Book a free audit call.",
+  description: "Strategy, performance marketing, CRO, website development, lead systems, and UI/UX — under one roof with one lead who owns your full funnel. Book a free audit call.",
 };
 
 const pageSpecificMeta = {
@@ -19,11 +19,11 @@ const pageSpecificMeta = {
   },
   '/about': {
     title: "About The Growth Bench — Who We Are and How We Work",
-    description: "The Growth Bench is a full-stack growth consultancy built on a bench model — senior-led, specialist-backed, with one point of contact for the complete growth stack."
+    description: "We're a senior-led growth consultancy with specialists on demand — built for D2C brands and startups that outgrew freelancers but don't want agency overhead."
   },
   '/case-studies': {
     title: "Past Projects & Client Results | The Growth Bench",
-    description: "Real outcomes with real numbers from The Growth Bench clients. Strategy, CRO, performance marketing, and growth systems for D2C brands and startups."
+    description: "Real outcomes with real numbers from clients across D2C, B2B SaaS, education, and more. CRO, ads, web development, and full-funnel strategy."
   },
   '/privacy': {
     title: "Privacy Policy | The Growth Bench",

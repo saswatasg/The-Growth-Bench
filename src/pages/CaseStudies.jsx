@@ -81,7 +81,7 @@ const CaseStudies = () => {
       <section className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
           <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Our Work</span>
+            <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
             <h1 className="font-display text-display-md text-ink mt-2 leading-none">
               Work that speaks<br />for itself.
             </h1>

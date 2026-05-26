@@ -76,8 +76,8 @@ const HeroSection = () => {
             transition={{ delay: descDelay, duration: 0.7, ease: smoothEase }}
             className="text-body-lg text-mute mt-6 leading-relaxed max-w-xl mx-auto"
           >
-            One senior partner who owns the full picture. Specialist bench on demand.
-            Full-stack capability across strategy, ads, CRO, web, and systems — without the overhead of an agency.
+            Strategy, ads, CRO, web, and systems — connected by one lead who sees the entire funnel.
+            No handoffs between specialists who don't talk. No overhead from layers that don't build.
           </motion.p>
 
           <motion.div

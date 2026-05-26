@@ -7,7 +7,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
   { to: '/services', label: 'Services' },
-  { to: '/case-studies', label: 'Work' },
+  { to: '/case-studies', label: 'Case Studies' },
   { to: '/insights', label: 'Insights' },
   { to: '/about', label: 'About' },
 ];

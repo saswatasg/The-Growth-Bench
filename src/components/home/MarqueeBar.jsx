@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 const items = [
   '$329K/mo recovered', '5.7x ROAS', '13.7x ROAS', '154.5% sales lift',
-  '468% avg. ROAS', '28.71% conv. lift', '2+ yrs avg. tenure', '8 growth capabilities',
+  '26% checkout drop cut', '47% mobile lift', '118% Europe growth', '8 growth capabilities',
   'Strategy & Audit', 'Growth Ads', 'CRO', 'Web Development',
   'Lead Systems', 'UI/UX Design', 'Performance Marketing', 'SEO'
 ];

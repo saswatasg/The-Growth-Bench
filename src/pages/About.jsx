@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Search, Users, Zap, Heart, Mail, MessageCircle } from 'lucide-react';
+import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
@@ -36,53 +36,34 @@ const About = () => {
               "I just wanted one person who understood my whole business and could build the whole thing properly."
             </p>
             <p className="text-caption-sm text-mute mt-2">— What founders told us</p>
-          </div>
-
-          <div className="grid grid-cols-3 gap-5 mt-12 items-stretch">
-            <div className="p-5 border border-hairline-soft bg-soft-cloud flex flex-col">
-              <span className="text-label-xs text-sale uppercase tracking-wider mb-2">Freelancer</span>
-              <p className="text-body-sm text-mute leading-relaxed flex-grow">Good people, limited scope. No systems, no strategy ownership.</p>
-              <div className="mt-3 pt-3 border-t border-hairline-soft text-body-sm text-sale font-medium">No full funnel view</div>
-            </div>
-            <div className="p-5 border-2 border-ink bg-canvas flex flex-col relative">
-              <div className="absolute -top-3 left-5 bg-ink text-canvas text-label-xs uppercase tracking-wider px-4 py-1.5 rounded-full">The Bench</div>
-              <span className="text-label-xs text-ink uppercase tracking-wider mt-2 mb-2">One partner + specialists</span>
-              <p className="text-body-sm text-mute leading-relaxed flex-grow">Senior partner who owns the full picture. Specialists on demand. No overhead.</p>
-              <div className="mt-3 pt-3 border-t border-ink/10 text-body-sm text-ink font-medium">Full context, no layers</div>
-            </div>
-            <div className="p-5 border border-hairline-soft bg-soft-cloud flex flex-col">
-              <span className="text-label-xs text-sale uppercase tracking-wider mb-2">Agency</span>
-              <p className="text-body-sm text-mute leading-relaxed flex-grow">Expensive retainers, slow onboarding, layers between you and the work.</p>
-              <div className="mt-3 pt-3 border-t border-hairline-soft text-body-sm text-sale font-medium">Paying for what you don't use</div>
-            </div>
+            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-2xl">
+              That person is your Growth Bench lead — a senior partner who owns the full picture, with the right specialists on call when the work demands it. No handoffs, no layers, no overhead you don't need.
+            </p>
           </div>
         </div>
       </motion.section>
 
       <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">How the Bench Works</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">One senior partner. Specialists on demand. No middlemen.</h2>
+          <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
+          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">The same person who sees the full picture builds it.</h2>
 
           <div className="grid md:grid-cols-3 gap-8 mt-10 max-w-4xl">
             {[
-              { num: '01', icon: Users, title: 'You (Founder)', desc: 'Direct line to the person doing the work. No account managers, no briefings.' },
-              { num: '02', icon: Search, title: 'Growth Bench Lead', desc: 'One senior partner with complete context on your business. Leads every engagement.' },
-              { num: '03', icon: Zap, title: 'Bench Specialists', desc: 'Brought in as needed — CRO, ads, web dev, design. Agency depth without retainer overhead.' },
-            ].map((step) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.num} className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-ink flex items-center justify-center flex-shrink-0">
-                    <span className="text-caption-sm text-canvas font-bold">{step.num}</span>
-                  </div>
-                  <div>
-                    <h3 className="text-heading-md text-ink">{step.title}</h3>
-                    <p className="text-body-sm text-mute mt-1 leading-relaxed">{step.desc}</p>
-                  </div>
+              { num: '01', title: 'One lead, end to end', desc: 'The person who audits your funnel leads execution across every channel and every sprint. No handoffs, no context lost between strategy and delivery.' },
+              { num: '02', title: 'Specialists who scale', desc: 'CRO, ads, dev, design — deployed for what\'s needed, never burning hours on a retainer bench. You pay for depth, not occupancy.' },
+              { num: '03', title: 'Direct to the source', desc: 'Your lead works directly with you. No account managers routing messages, no briefings lost in translation. Decisions in hours, not days.' },
+            ].map((step) => (
+              <div key={step.num} className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-ink flex items-center justify-center flex-shrink-0">
+                  <span className="text-caption-sm text-canvas font-bold">{step.num}</span>
                 </div>
-              );
-            })}
+                <div>
+                  <h3 className="text-heading-md text-ink">{step.title}</h3>
+                  <p className="text-body-sm text-mute mt-1 leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </motion.section>
@@ -111,9 +92,9 @@ const About = () => {
         <div className="container-site text-center">
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { stat: '28.71%', label: 'Add-to-cart lift via CRO' },
-              { stat: '468%', label: 'Avg. ROAS' },
-              { stat: '2+ yrs', label: 'Building growth systems' },
+              { stat: '6', label: 'Industries served — D2C, B2B SaaS, education' },
+              { stat: '9', label: 'Bench specialists across every growth function' },
+              { stat: '25+', label: 'Projects delivered for brands and startups' },
             ].map((s) => (
               <div key={s.stat}>
                 <motion.span
