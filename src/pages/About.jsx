@@ -93,7 +93,7 @@ const About = () => {
           <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
               { stat: '6', label: 'Industries served — D2C, B2B SaaS, education' },
-              { stat: '9', label: 'Bench specialists across every growth function' },
+              { stat: '9', label: 'Growth capabilities under one bench' },
               { stat: '25+', label: 'Projects delivered for brands and startups' },
             ].map((s) => (
               <div key={s.stat}>
@@ -108,6 +108,7 @@ const About = () => {
               </div>
             ))}
           </div>
+          <p className="text-caption-sm text-stone/70 mt-8">Representative outcomes across client engagements; individual results vary.</p>
         </div>
       </motion.section>
 
@@ -121,10 +122,16 @@ const About = () => {
               <span className="text-label-xs text-mute uppercase tracking-wider">The Founder</span>
               <h2 className="font-display text-display-md text-ink mt-1 leading-none">Saswata Sengupta</h2>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                I started The Growth Bench after years inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). I've managed ad accounts spending crores per month, fixed checkout flows that recovered lakhs in lost revenue, and built growth systems for brands that started with nothing but a Shopify store.
+                I started The Growth Bench after years inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). I&apos;ve managed ad accounts spending crores per month, fixed checkout flows that recovered lakhs in lost revenue, and built growth systems for brands that started with nothing but a Shopify store.
               </p>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                What I learned is that most brands don't need a bigger agency or a cheaper freelancer. They need one person who owns the full picture — with the right specialists on call when the work demands it.
+                What I learned is that most brands don&apos;t need a bigger agency or a cheaper freelancer. They need one person who owns the full picture — with the right specialists on call when the work demands it. That&apos;s how we run: founder-led, with a specialist engaged per project on a contract basis. No account layers, no overhead you don&apos;t need.
+              </p>
+              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+                Background: MBA in Marketing &amp; Analytics (IIT Jodhpur) and B.Tech in Mechanical Engineering — analytics and systems thinking applied to growth. Recent independent client work includes Sierra Living Concepts (checkout recovery) and Caffena (D2C coffee scale-up).
+              </p>
+              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+                We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind Sierra-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-6">
                 <a href="mailto:hi@saswatasg.com" className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-ink text-canvas text-button-sm no-underline hover:bg-ink/90 transition-colors">
@@ -152,7 +159,7 @@ const About = () => {
             <div>
               <h3 className="text-heading-md text-ink mb-4">The full bench</h3>
               <div className="flex flex-wrap gap-2">
-                {['Product Manager', 'UI/UX Designer', 'SEO Specialist', 'Growth Consultant', 'Web Developer', 'Video Editor', 'Performance Marketer', 'CRO Specialist', 'AI Consultant'].map((role) => (
+                {['Product Manager', 'UI/UX Designer', 'SEO Specialist', 'Growth Consultant', 'Web Developer', 'Video Editor', 'Performance Marketer', 'CRO Specialist', 'AI Automation'].map((role) => (
                   <span key={role} className="text-body-sm text-mute bg-canvas border border-hairline-soft px-3 py-1.5 rounded-full">{role}</span>
                 ))}
               </div>
@@ -170,7 +177,12 @@ const About = () => {
             Book a 30-Minute Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <p className="text-caption-md text-stone italic mt-4">
-            We'll tell you in the first 10 minutes if we're the right fit.
+            We&apos;ll tell you in the first 10 minutes if we&apos;re the right fit.
+          </p>
+          <p className="mt-4">
+            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
+              Prefer self-serve? Take the 60-second AI scorecard
+            </Link>
           </p>
         </div>
       </motion.section>

@@ -64,9 +64,9 @@ export default async function handler(req, res) {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const path = url.pathname;
 
-  // Non-www → www redirect
+  // Non-www → www redirect (skip local + preview deployments)
   const host = req.headers.host;
-  if (host && !host.startsWith('www.') && !host.startsWith('localhost') && !host.includes('127.0.0.1')) {
+  if (host && !host.startsWith('www.') && !host.startsWith('localhost') && !host.includes('127.0.0.1') && !host.includes('.vercel.app') && !host.includes('.app-preview.')) {
     const dest = `https://www.${host}${req.url}`;
     res.writeHead(301, { Location: dest });
     res.end();

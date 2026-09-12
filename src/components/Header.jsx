@@ -69,6 +69,7 @@ const Header = () => {
             className="md:hidden p-2 text-ink"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
+            aria-expanded={isOpen}
           >
             <Menu className="w-5 h-5" />
           </button>

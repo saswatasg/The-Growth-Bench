@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <loc>https://www.thegrowthbench.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <loc>https://www.thegrowthbench.com/services/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <loc>https://www.thegrowthbench.com/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <loc>https://www.thegrowthbench.com/case-studies/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <loc>https://www.thegrowthbench.com/insights/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <loc>https://www.thegrowthbench.com/pricing/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <lastmod>2026-09-12</lastmod>
+    <loc>https://www.thegrowthbench.com/compare/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <lastmod>2026-09-12</lastmod>
+    <loc>https://www.thegrowthbench.com/solutions/recover-abandoned-carts/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <lastmod>2026-09-12</lastmod>
+    <loc>https://www.thegrowthbench.com/ai-scorecard/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

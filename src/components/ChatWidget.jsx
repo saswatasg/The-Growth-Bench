@@ -9,9 +9,9 @@ const FAQ_GROUPS = [
   {
     category: 'Getting Started',
     items: [
-      { q: 'What does The Growth Bench do?', a: "We're a full-stack growth partner for D2C brands & early-stage startups. Strategy, ads, CRO, websites, lead systems, UI/UX — all under one roof. One senior partner who owns the full picture, with specialists on the bench for every function.", followUp: { q: "I'm interested — how do I start?", a: "Book a free 30-minute audit call. We'll look at your funnel, give you one concrete recommendation, and tell you honestly if we're a fit." } },
-      { q: 'How much does it cost?', a: 'Pricing depends on scope. We start with a free 30-minute audit — no commitment. If we\'re a fit, we\'ll scope a plan based on your needs. Most engagements range from ₹75K–₹3L/month depending on complexity.', followUp: { q: 'What determines the price?', a: 'Scope of work (ads management, CRO, web dev, or full-stack), number of channels, and whether you need ongoing management vs project-based delivery.' } },
-      { q: 'Is there a free trial?', a: 'Yes — 7 days free, no commitment. If you don\'t see value in the first week, you walk away. No questions. No fine print.' },
+      { q: 'What does The Growth Bench do?', a: "We're a full-stack growth partner for D2C brands & early-stage startups. Strategy, ads, CRO, websites, lead systems, UI/UX, analytics, and AI implementation — all under one roof. One senior partner who owns the full picture, with specialists on the bench for every function.", followUp: { q: "I'm interested — how do I start?", a: "Book a free 30-minute audit call. We'll look at your funnel, give you one concrete recommendation, and tell you honestly if we're a fit." } },
+      { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\'re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.', followUp: { q: 'What determines the price?', a: 'Scope of work (ads management, CRO, web dev, AI implementation, or full-stack), number of channels, and whether you need ongoing management vs project-based delivery.' } },
+      { q: 'Is there a free trial?', a: 'We start with a free 30-minute audit call — one concrete recommendation, no commitment. If we\u2019re a fit, first deliverables land within the first week. No fine print.' },
       { q: 'How does onboarding work?', a: 'Step 1: Free 30-min audit. Step 2: If we\'re a fit, we scope the plan. Step 3: Kickoff call + access setup. Step 4: First deliverables within the first week. Full strategy doc by day 14.' },
     ],
   },
@@ -19,16 +19,17 @@ const FAQ_GROUPS = [
     category: 'Services & Specialisation',
     items: [
       { q: 'Do you work with startups?', a: 'Absolutely. Early-stage startups are our bread and butter. We work best with founders who are still in the room — people who want a high-trust partner that thinks like an owner, not a vendor.' },
-      { q: 'What industries do you specialise in?', a: 'D2C e-commerce (furniture, coffee, auto parts, building materials), B2B SaaS, education enrollment, and professional services. We work best where the founder is hands-on and growth is the priority.' },
-      { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, Mailchimp, Google Analytics, Search Console, Power BI, n8n, and more. We pick the right stack for each client.' },
+      { q: 'What industries do you specialise in?', a: 'D2C e-commerce (furniture, coffee, auto parts, building materials), B2B SaaS, and education enrollment. We work best where the founder is hands-on and growth is the priority.' },
+      { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, Mailchimp, Google Analytics, Search Console, Power BI, WhatsApp/Instagram automation, AI-assisted copy and follow-up systems, and more. We pick the right stack for each client.' },
+      { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Agents check state, act inside your tools, verify, and escalate hard exceptions with full context. Nothing goes live without a human-review period.' },
     ],
   },
   {
     category: 'Results & Proof',
     items: [
       { q: 'How soon can I see results?', a: 'Most clients see their first meaningful improvement within 30-60 days. Quick wins (tracking fixes, UX tweaks, ad optimisations) show impact in the first two weeks. Compound results build over 3-6 months.' },
-      { q: 'Can you share case studies?', a: 'Yes! We have detailed case studies across D2C, B2B SaaS, education, social impact, and more. You can view them all on our Case Studies page.', link: CASESTUDIES_URL },
-      { q: 'What results have you delivered?', a: '$329K/month recovered for a D2C brand. 5.7x ROAS for a coffee brand. 13.7x ROAS for building materials. 118% Europe growth for auto parts. 154.5% sales lift in education. And more.' },
+      { q: 'Can you share case studies?', a: 'Yes! Our published case studies cover D2C furniture checkout recovery and D2C coffee scale-up. You can view them on our Case Studies page.', link: CASESTUDIES_URL },
+      { q: 'What results have you delivered?', a: '$345K/month recovered for a US D2C furniture brand. 5.7x ROAS (from 1.8x) for a coffee brand. See the Case Studies page for the full breakdown.' },
     ],
   },
 ];

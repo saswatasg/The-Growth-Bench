@@ -9,6 +9,9 @@ const About = React.lazy(() => import('@/pages/About'));
 const CaseStudies = React.lazy(() => import('@/pages/CaseStudies'));
 const Insights = React.lazy(() => import('@/pages/Insights'));
 const BlogPost = React.lazy(() => import('@/pages/BlogPost'));
+const Compare = React.lazy(() => import('@/pages/Compare'));
+const CartRecovery = React.lazy(() => import('@/pages/solutions/CartRecovery'));
+const AIScorecard = React.lazy(() => import('@/pages/AIScorecard'));
 const WorkWithUs = React.lazy(() => import('@/pages/WorkWithUs'));
 const Privacy = React.lazy(() => import('@/pages/Privacy'));
 const Terms = React.lazy(() => import('@/pages/Terms'));
@@ -36,6 +39,9 @@ const RoutesConfig = () => {
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/insights" element={<Insights />} />
         <Route path="/insights/:slug" element={<BlogPost />} />
+        <Route path="/compare" element={<Compare />} />
+        <Route path="/solutions/recover-abandoned-carts" element={<CartRecovery />} />
+        <Route path="/ai-scorecard" element={<AIScorecard />} />
         <Route path="/pricing" element={<WorkWithUs />} />
         <Route path="/work-with-us" element={<Navigate to="/pricing" replace />} />
         <Route path="/privacy" element={<Privacy />} />

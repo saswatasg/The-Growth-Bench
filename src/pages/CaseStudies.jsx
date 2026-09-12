@@ -9,58 +9,19 @@ import { fadeUp, fadeIn } from '@/lib/motion';
 
 const pastProjects = [
   {
-    client: 'US D2C Furniture Brand',
-    stat: '$329K / month recovered',
-    description: 'Complete cart & checkout flow redesign. Cut checkout abandonment by 26%, lifted mobile conversion by 47%. Automated Salesforce journeys drove +$113K/month.',
+    client: 'Sierra Living Concepts — US D2C Furniture Brand',
+    stat: '₹2.89 Cr / month recovered',
+    description: 'The problem: a 73.1% checkout abandonment rate across 480,000 monthly sessions — the kind of leak that swallows ad spend before it converts. What we did: rebuilt the checkout flow, fixed mobile-specific friction points, and replaced one-off redesign guesses with a systematic conversion-testing process. The result: in a 22-day A/B test on 10% traffic, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate. Mobile conversion rate ended up ahead of Wayfair\u2019s.',
     tags: ['CRO', 'E-Commerce', 'UX'],
   },
+  // PLACEHOLDER — only the 357% figure and the homepage testimonial are confirmed for Caffena.
+  // Confirm actual channels/interventions before publishing rather than inventing a narrative.
+  // Confirmed testimonial (src/data/testimonials.js): "Saswata helped us scale our D2C coffee brand from the ground up. In just 3 months, he revamped our entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. The result? Our ROAS skyrocketed to 5.7x from 1.8x with sustainable CAC."
   {
-    client: 'Premium D2C Coffee Brand',
-    stat: '5.7x ROAS (from 1.8x)',
-    description: 'Full-funnel rebuild from scratch. Redesigned website, set up tracking infrastructure, and launched high-converting campaigns across Google and Meta. Revenue scaled 3x in the first quarter.',
-    tags: ['Web Development', 'Google Ads', 'Meta Ads'],
-  },
-  {
-    client: 'Building Materials Brand',
-    stat: '13.7x ROAS',
-    description: 'End-to-end digital transformation. Designed the website, implemented conversion tracking, and launched Search, PMax, and call-focused campaigns. Qualified leads surged within weeks.',
-    tags: ['Web Development', 'Google Ads'],
-  },
-  {
-    client: 'Vintage Auto Parts E-Commerce',
-    stat: '118% Europe · 95% US growth',
-    description: 'Multi-market expansion across US and Europe with profitable growth. Balanced CAC across markets and built scalable ad infrastructure.',
-    tags: ['Performance Marketing', 'Meta Ads'],
-  },
-  {
-    client: 'B2B SaaS Compliance Platform',
-    stat: '17:1 adoption gap → closed',
-    description: 'Diagnosed and closed a massive product adoption gap. Redesigned notification strategy and built the case to prioritise the fix.',
-    tags: ['Product Strategy', 'B2B SaaS', 'UX'],
-  },
-  {
-    client: 'Education Enrollment Platform',
-    stat: '154.5% sales lift',
-    description: 'Full-stack growth overhaul. Redesigned acquisition funnels, optimised ad spend, and built a lead nurturing system that reduced CAC while scaling volume.',
-    tags: ['Performance Marketing', 'CRO', 'Strategy'],
-  },
-  {
-    client: 'Social Impact Organization',
-    stat: '122% traffic · 158% engagement',
-    description: 'Meta-driven campaign strategy on a limited budget. Targeted creatives, lookalike audiences, optimised delivery for maximum impact per rupee.',
-    tags: ['Meta Ads', 'Creative Strategy'],
-  },
-  {
-    client: 'Commercial Studio',
-    stat: '58+ projects · 95%+ satisfaction',
-    description: 'Built and scaled a commercial creative studio from scratch. Led a 6-person team delivering 58+ projects across events and commercial work.',
-    tags: ['Team Leadership', 'Creative Direction'],
-  },
-  {
-    client: 'Enterprise Technology Group',
-    stat: '30-day AI agent deployment',
-    description: 'Led discovery engagements for enterprise clients exploring AI agent adoption. Mapped workflows, diagnosed bottlenecks, identified top automation opportunities.',
-    tags: ['AI Strategy', 'Product Discovery'],
+    client: 'Caffena Coffee — D2C Coffee Brand',
+    stat: '357% revenue growth in 3 months',
+    description: 'Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
+    tags: ['E-Commerce', 'Web Development', 'Ads'],
   },
 ];
 
@@ -99,7 +60,8 @@ const CaseStudies = () => {
               <button
                 key={tag}
                 onClick={() => setActiveTag(tag)}
-                className={`px-5 py-2.5 text-button-sm rounded-full border transition-colors ${
+                aria-pressed={activeTag === tag}
+                className={`px-5 py-2.5 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
                   activeTag === tag
                     ? 'bg-ink text-canvas border-ink'
                     : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
@@ -135,6 +97,27 @@ const CaseStudies = () => {
 
       <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
+          <div className="p-6 md:p-8 border-2 border-ink bg-canvas max-w-4xl">
+            <span className="text-label-xs text-mute uppercase tracking-wider">AI Implementation</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The Sierra engine, productized.</h2>
+            <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">
+              The content and SEO automation pipeline behind Sierra-scale catalog work is one example — our agents now also run ops, support, and follow-ups end-to-end. Nothing goes live without a human-review period.
+            </p>
+            <div className="flex flex-wrap items-center gap-4 mt-6">
+              <Link to="/services#ai-implementation" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+                See AI Implementation <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+                Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Button size="sm" onClick={openBookingModal}>Book a Free Audit Call</Button>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+        <div className="container-site">
           <h2 className="font-display text-display-md text-ink leading-none mb-8">From the same playbook</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
@@ -159,6 +142,12 @@ const CaseStudies = () => {
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
+          <p className="text-caption-md text-stone mt-4">
+            Prefer self-serve?{' '}
+            <Link to="/ai-scorecard" className="text-stone underline underline-offset-2 hover:text-canvas transition-colors">
+              Take the 60-second AI scorecard
+            </Link>
+          </p>
         </div>
       </motion.section>
     </>

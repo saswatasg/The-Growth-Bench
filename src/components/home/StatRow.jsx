@@ -4,7 +4,7 @@ const stats = [
   { number: '28.71%', label: 'Avg. conversion lift across D2C and SaaS' },
   { number: '468%', label: 'Avg. ROAS across ad platforms managed' },
   { number: '2+ yrs', label: 'Avg. client tenure — we keep what we build' },
-  { number: '8', label: 'Full-stack growth capabilities under one bench' },
+  { number: '9', label: 'Full-stack growth capabilities under one bench' },
 ];
 
 const StatRow = () => {

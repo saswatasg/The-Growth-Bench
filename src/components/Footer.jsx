@@ -5,15 +5,22 @@ import { WHATSAPP_URL } from '@/lib/constants';
 
 const footerLinks = {
   Services: [
+    { label: 'AI Implementation', to: '/services#ai-implementation' },
     { label: 'Growth Strategy', to: '/services#strategy' },
     { label: 'Website & Development', to: '/services#website' },
     { label: 'Ads', to: '/services#ads' },
+    { label: 'Lead Systems', to: '/services#lead-systems' },
     { label: 'CRO', to: '/services#cro' },
     { label: 'UI/UX Design', to: '/services#ui-ux' },
+    { label: 'Content & Email', to: '/services#content-email' },
+    { label: 'Analytics & Reporting', to: '/services#analytics' },
   ],
   Company: [
     { label: 'About', to: '/about' },
     { label: 'Case Studies', to: '/case-studies' },
+    { label: 'Compare Models', to: '/compare' },
+    { label: 'Cart Recovery', to: '/solutions/recover-abandoned-carts' },
+    { label: 'AI Scorecard', to: '/ai-scorecard' },
     { label: 'Insights', to: '/insights' },
   ],
 };

@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3 } from 'lucide-react';
+import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
 import { fadeUp, fadeIn, stagger } from '@/lib/motion';
 
 const services = [
+  {
+    id: 'ai-implementation', icon: Workflow,
+    title: 'AI Implementation',
+    summary: 'Agentic AI for anything repeatable: ops, support, content, follow-ups, reviews.',
+  },
   {
     id: 'strategy', icon: Search,
     title: 'Growth Strategy',
@@ -39,16 +44,46 @@ const services = [
     summary: 'Research-grounded design in Figma. Dev-ready handoffs.',
   },
   {
-    id: 'marketing-strategy', icon: FileText,
-    title: 'Marketing Strategy',
-    summary: 'Messaging, content, email, SEO — the organic engine behind paid performance.',
+    id: 'content-email', icon: FileText,
+    title: 'Content & Email',
+    summary: 'Email flows, WhatsApp sequences, SEO strategy, content architecture.',
+  },
+  {
+    id: 'analytics', icon: BarChart3,
+    title: 'Analytics & Reporting',
+    summary: 'Dashboards, attribution, GA4, CAPI — own your data.',
   },
 ];
 
 const sections = [
   {
+    id: 'ai-implementation', icon: Workflow,
+    eyebrow: '01 — AI Implementation',
+    h2: 'Agents that run your repetitive work end-to-end.',
+    summary: 'Most D2C teams are drowning in repeatable work: the same sizing question forty times a week, COD calls nobody has time for, product descriptions written one at a time, silence after checkout. We build agentic AI systems that take this off your plate — not a chatbot demo, but agents that check state, act inside your WhatsApp, Instagram, Shopify, and ops stack, verify the outcome, and escalate the hard exceptions with full context.',
+    includes: [
+      'Auto-replies for repeat customer questions (sizing, fabric, delivery, returns) across WhatsApp and Instagram',
+      'COD verification calls + failed-delivery (NDR) follow-up across WhatsApp, SMS, and voice',
+      'Returns triage: eligibility, pickup scheduling, refund briefs — exceptions land with full context',
+      'AI-assisted product and catalog copy at scale, tuned for SEO',
+      'Post-purchase and abandoned-cart follow-up sequences',
+      'Review and UGC request automation',
+      'Human-review period before anything goes live; money-moving actions need your approval',
+      'Scoped roadmap with fixed-timeline build — same Diagnosis → Team Assembly → Execute & Iterate process',
+    ],
+    benchmarksNote: 'Industry benchmarks behind this build — category data, not our client results.',
+    proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the Sierra catalog pipeline.',
+    boundaries: 'What we don\u2019t promise: a specific ROAS, platform approvals, inbox placement, or overnight results — automation compounds after the human-review period, and money-moving actions always need your approval.',
+    benchmarks: [
+      { num: '18–23%', label: 'WhatsApp cart-recovery in optimized flows vs 5–8% via email (Chatarmin 2026, 450+ brands)' },
+      { num: '64–74%', label: 'Re-delivery on auto NDR outreach within 2 hours vs 28–36% with none (Base 2026, India D2C)' },
+      { num: '4x', label: 'Shoppers who engage AI chat buy vs those who don\u2019t (Rep AI 2025, 17M shoppers)' },
+      { num: '270%', label: 'Higher purchase likelihood with five reviews vs none (Northwestern Spiegel)' },
+    ],
+  },
+  {
     id: 'strategy', icon: Search,
-    eyebrow: '01 — Growth Strategy',
+    eyebrow: '02 — Growth Strategy',
     h2: 'The diagnosis before the prescription.',
     summary: 'We audit your funnel, find the fastest path to more revenue, and give you a prioritised 90-day roadmap. No 50-slide decks — a working plan tied to real outcomes.',
     includes: [
@@ -64,7 +99,7 @@ const sections = [
   },
   {
     id: 'website', icon: Code2,
-    eyebrow: '02 — Website & Development',
+    eyebrow: '03 — Website & Development',
     h2: 'A website that works as hard as you do.',
     summary: 'We build conversion-first websites in Next.js, Webflow, or Shopify — fully tracked, tagged, and ready to optimise from day one. No expensive brochureware.',
     includes: [
@@ -82,7 +117,7 @@ const sections = [
   },
   {
     id: 'ads', icon: Target,
-    eyebrow: '03 — Ads',
+    eyebrow: '04 — Ads',
     h2: 'Paid media that works because the funnel works.',
     summary: 'We manage Meta, Google, Amazon, and LinkedIn Ads — but we never treat ads as standalone. Every campaign is built with the landing page, attribution, and funnel in mind.',
     includes: [
@@ -101,7 +136,7 @@ const sections = [
   },
   {
     id: 'lead-systems', icon: Users,
-    eyebrow: '04 — Lead Systems',
+    eyebrow: '05 — Lead Systems',
     h2: 'A form is not a lead system.',
     summary: 'We build the full infrastructure: landing pages that capture, CRMs that organise, sequences that nurture, and scoring that tells you who to call first.',
     includes: [
@@ -118,9 +153,9 @@ const sections = [
   },
   {
     id: 'cro', icon: TrendingUp,
-    eyebrow: '05 — CRO',
+    eyebrow: '06 — CRO',
     h2: 'Your website is a product. Treat it like one.',
-    summary: 'We combine qualitative research with quantitative analysis, run structured experiments, and implement what works. Every page has a job — we make it do that job better.',
+    summary: 'Same leaks, different stores: forced accounts, surprise shipping costs, missing trust signals, painful mobile flows. We combine qualitative research with quantitative analysis, run structured experiments, and implement what works. Every page has a job — we make it do that job better.',
     includes: [
       'Funnel drop-off analysis (GA4, Shopify analytics)',
       'Session recording and heatmap analysis',
@@ -135,7 +170,7 @@ const sections = [
   },
   {
     id: 'ui-ux', icon: Palette,
-    eyebrow: '06 — UI/UX Design',
+    eyebrow: '07 — UI/UX Design',
     h2: 'Design that reduces friction.',
     summary: 'Good UI/UX removes the moments where a user hesitates or leaves. We work in Figma from research to final design to dev handoff — every decision tied to a user or business reason.',
     includes: [
@@ -151,8 +186,8 @@ const sections = [
     ],
   },
   {
-    id: 'marketing-strategy', icon: FileText,
-    eyebrow: '07 — Marketing Strategy',
+    id: 'content-email', icon: FileText,
+    eyebrow: '08 — Content & Email',
     h2: 'The organic engine behind paid performance.',
     summary: 'Paid ads work better when your organic presence builds trust. We build the messaging framework, content architecture, and channel strategy that makes every channel more efficient.',
     includes: [
@@ -164,6 +199,20 @@ const sections = [
       'Social media content strategy (direction, not daily posting)',
       'UGC and creator sourcing strategy for D2C',
       'Competitor content analysis',
+    ],
+  },
+  {
+    id: 'analytics', icon: BarChart3,
+    eyebrow: '09 — Analytics & Reporting',
+    h2: 'Own your data before you scale spend.',
+    summary: 'We wire up clean tracking and reporting so every decision ties to revenue — no conflicting dashboards, no blind spots between ad platforms and Shopify or GA4.',
+    includes: [
+      'GA4 implementation with custom events and key-event mapping',
+      'Google Tag Manager setup and tagging health check',
+      'Meta Pixel + CAPI and Google Ads enhanced conversions',
+      'UTM governance and source/medium attribution cleanup',
+      'Reporting dashboard: spend, revenue, CAC, ROAS by channel',
+      'Monthly reporting cadence tied to the experiment backlog',
     ],
   },
 ];
@@ -183,7 +232,7 @@ const Services = () => {
               The full growth stack.<br />Not parts of it.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn't live in a lane.
+              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn&apos;t live in a lane. Start with <a href="#ai-implementation" className="text-ink underline underline-offset-2">AI Implementation, our newest capability</a> — or any layer of the stack.
             </p>
           </div>
         </div>
@@ -227,6 +276,12 @@ const Services = () => {
                   <span className="text-label-xs text-mute uppercase tracking-wider">{service.eyebrow}</span>
                   <h2 className="font-display text-display-md text-ink mt-2 leading-none">{service.h2}</h2>
                   <p className="text-body-md text-mute mt-4 leading-relaxed">{service.summary}</p>
+                  {service.proof && (
+                    <p className="text-body-sm text-ink mt-4 leading-relaxed">{service.proof}</p>
+                  )}
+                  {service.boundaries && (
+                    <p className="text-caption-md text-mute mt-4 leading-relaxed border-l-2 border-hairline pl-4">{service.boundaries}</p>
+                  )}
                 </div>
                 <div>
                   <h3 className="text-heading-md text-ink mb-4">What's included</h3>
@@ -240,6 +295,22 @@ const Services = () => {
                   </ul>
                 </div>
               </div>
+              {service.benchmarks && (
+                <div className="mt-12 border-t border-hairline-soft pt-8">
+                  <span className="text-label-xs text-mute uppercase tracking-wider">{service.benchmarksNote}</span>
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
+                    {service.benchmarks.map((b) => (
+                      <div key={b.num}>
+                        <div className="font-display text-display-md text-ink leading-none">{b.num}</div>
+                        <p className="text-caption-md text-mute mt-2 leading-relaxed">{b.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-8">
+                    Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              )}
             </div>
           </motion.section>
         );
@@ -256,6 +327,11 @@ const Services = () => {
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
+          <p className="mt-6">
+            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
+              Prefer self-serve? Take the 60-second AI scorecard
+            </Link>
+          </p>
         </div>
       </motion.section>
     </>

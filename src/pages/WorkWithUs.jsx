@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, Search, Target, Globe, Share2, TrendingUp, Code2, Palette, Users, FileText, BarChart3, Sparkles, Zap, MessageSquare, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Check, Search, Target, TrendingUp, Code2, Palette, Users, FileText, BarChart3, Sparkles, Zap, MessageSquare, Workflow } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -11,9 +12,9 @@ import { WHATSAPP_URL } from '@/lib/constants';
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const MODULES = [
+  { id: 'ai-implementation', label: 'AI Implementation', icon: Workflow },
   { id: 'strategy', label: 'Strategy & Audit', icon: Search },
-  { id: 'meta-ads', label: 'Meta Ads', icon: Target },
-  { id: 'google-ads', label: 'Google Ads', icon: Globe },
+  { id: 'ads', label: 'Ads', icon: Target },
   { id: 'cro', label: 'CRO', icon: TrendingUp },
   { id: 'web-dev', label: 'Website & Development', icon: Code2 },
   { id: 'ui-ux', label: 'UI/UX Design', icon: Palette },
@@ -124,6 +125,12 @@ const WorkWithUs = () => {
               {step === 1 && (
                 <div>
                   <p className="text-heading-md text-ink mb-4">What do you need help with?</p>
+                  <p className="text-caption-sm text-mute mb-4">
+                    Not sure?{' '}
+                    <Link to="/ai-scorecard" className="text-ink underline underline-offset-2">
+                      Take the 60-second AI scorecard first
+                    </Link>
+                  </p>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {MODULES.map((mod) => {
                       const Icon = mod.icon;
@@ -133,7 +140,8 @@ const WorkWithUs = () => {
                           key={mod.id}
                           type="button"
                           onClick={() => toggleModule(mod.id)}
-                          className={`inline-flex items-center gap-1.5 px-4 py-2 text-button-sm rounded-full border transition-colors ${
+                          aria-pressed={isSelected}
+                          className={`inline-flex items-center gap-1.5 px-4 py-2 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
                             isSelected ? 'border-ink bg-ink text-canvas' : 'border-hairline bg-canvas text-mute hover:border-ink hover:text-ink'
                           }`}
                         >

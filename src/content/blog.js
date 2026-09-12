@@ -321,9 +321,10 @@ We redesigned the complete cart and checkout experience:
 
 **The results**
 
-After implementation and A/B testing over 4 weeks across 480K sessions:
+After implementation and A/B testing over 22 days on 10% traffic (480K sessions in the period):
 
-- Checkout abandonment: 84.47% → 58.2% (26% reduction)
+- Cart abandonment: 84.47% → 58.2% (26-point drop site-wide after rollout)
+- Checkout abandonment in-test: 73.1% (control) → 53.9% (variant) — a 26% relative drop
 - Mobile conversion: 1.2% → 1.76% (47% lift)
 - Average checkout time: 4.2 min → 2.8 min (34% reduction)
 - Monthly recovered revenue: approximately $345K/month

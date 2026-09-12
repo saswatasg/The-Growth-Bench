@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import HeroSection from '@/components/home/HeroSection';
 import MarqueeBar from '@/components/home/MarqueeBar';
+import ServicesOverview from '@/components/home/ServicesOverview';
 import { loadPosts } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { testimonialsData } from '@/data/testimonials';
@@ -32,6 +33,7 @@ const Home = () => {
       <PageMeta />
       <HeroSection />
       <MarqueeBar />
+      <ServicesOverview />
 
       <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
@@ -56,7 +58,7 @@ const Home = () => {
               <span className="text-label-xs text-ink uppercase tracking-wider mt-2 mb-2">The Growth Bench</span>
               <p className="text-body-sm text-mute leading-relaxed flex-grow">One senior partner who owns the full picture. Specialists on demand. Depth without overhead.</p>
               <div className="mt-4 pt-4 border-t border-ink/10 space-y-2">
-                {['One partner, full context', 'Specialists on demand', 'No middlemen'].map(item => (
+                {['One partner, full context', 'Specialists on demand', 'First wins in weeks, not quarters', 'No middlemen'].map(item => (
                   <div key={item} className="text-body-sm text-ink flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-success" /> {item}
                   </div>
@@ -71,6 +73,11 @@ const Home = () => {
                 Paying for what you don't use
               </div>
             </div>
+          </div>
+          <div className="mt-10">
+            <Link to="/compare" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+              Read the full comparison <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </motion.section>
@@ -120,9 +127,9 @@ const Home = () => {
                 { num: '28.71%', label: 'Avg. conversion lift' },
                 { num: '468%', label: 'Avg. ROAS' },
                 { num: '2+ yrs', label: 'Avg. client tenure' },
-                { num: '8', label: 'Growth capabilities' },
+                { num: '9', label: 'Growth capabilities' },
               ].map((s) => (
-                <motion.div key={s.num} {...stagger} className="text-center border-r border-stone/20 last:border-r-0">
+                <motion.div key={s.num} {...stagger} className="text-center md:border-r md:border-stone/20 md:last:border-r-0">
                   <motion.span
                     className="font-display text-display-lg text-canvas leading-none block"
                     animate={{ scale: [1, 1.02, 1] }}
@@ -134,6 +141,7 @@ const Home = () => {
                 </motion.div>
               ))}
           </div>
+          <p className="text-caption-sm text-stone/70 text-center mt-8">Representative outcomes across client engagements; individual results vary.</p>
         </div>
       </motion.section>
 
@@ -206,8 +214,9 @@ const Home = () => {
               <button
                 key={i}
                 onClick={() => setCurrentTestimonial(i)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  i === currentTestimonial ? 'bg-ink w-6' : 'bg-hairline hover:bg-mute/30'
+                aria-label={`Show testimonial ${i + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                  i === currentTestimonial ? 'bg-ink w-6' : 'bg-hairline hover:bg-mute/30 w-2'
                 }`}
               />
             ))}
@@ -264,6 +273,11 @@ const Home = () => {
           </Button>
           <p className="text-caption-md text-stone mt-4">
             No retainer commitment. Cancel anytime.
+          </p>
+          <p className="mt-4">
+            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
+              Prefer self-serve? Take the 60-second AI scorecard
+            </Link>
           </p>
         </div>
       </motion.section>

@@ -155,6 +155,11 @@ const BlogPost = () => {
                   </Button>
                 )}
               </div>
+              <p className="mt-5">
+                <Link to="/ai-scorecard" className="text-caption-sm text-mute underline underline-offset-2 hover:text-ink transition-colors">
+                  Or take the 60-second AI scorecard
+                </Link>
+              </p>
             </div>
           )}
 

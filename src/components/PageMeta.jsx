@@ -5,17 +5,17 @@ import { SITE_URL } from '@/lib/constants';
 
 const defaultMeta = {
   title: "The Growth Bench — Full-Stack Growth Partner for D2C Brands & Startups",
-  description: "Strategy, performance marketing, CRO, website development, lead systems, and UI/UX — under one roof with one lead who owns your full funnel. Book a free audit call.",
+  description: "Strategy, performance marketing, CRO, website development, lead systems, UI/UX, and AI implementation — under one roof with one lead who owns your full funnel. Book a free audit call.",
 };
 
 const pageSpecificMeta = {
   '/': {
-    title: "The Growth Bench — Full-Stack Growth Partner for D2C Brands & Startups",
-    description: "Full-stack growth partner for D2C brands and early-stage startups. Strategy, performance marketing, CRO, website development, lead systems, and UI/UX — under one roof. Book a free audit call."
+    title: "The Growth Bench — Agentic AI + Full-Stack Growth for D2C",
+    description: "Full-stack growth partner for D2C brands and early-stage startups. Agentic AI for ops, support, content and follow-ups, plus strategy, performance marketing, CRO, and web — under one roof. Book a free audit call."
   },
   '/services': {
-    title: "Growth Services — Strategy, Ads, CRO, Web & More | The Growth Bench",
-    description: "Explore The Growth Bench's full service stack: growth strategy, Google Ads, Meta Ads, CRO, website development, lead systems, and UI/UX design. Built for D2C brands and startups."
+    title: "Growth Services — Strategy, Ads, CRO, Web, AI & More | The Growth Bench",
+    description: "Explore The Growth Bench's full service stack: growth strategy, Google Ads, Meta Ads, CRO, website development, lead systems, UI/UX design, analytics, and AI implementation. Built for D2C brands and startups."
   },
   '/about': {
     title: "About The Growth Bench — Who We Are and How We Work",
@@ -23,7 +23,7 @@ const pageSpecificMeta = {
   },
   '/case-studies': {
     title: "Past Projects & Client Results | The Growth Bench",
-    description: "Real outcomes with real numbers from clients across D2C, B2B SaaS, education, and more. CRO, ads, web development, and full-funnel strategy."
+    description: "Real outcomes with real numbers from clients across D2C, B2B SaaS, education, and more. CRO, ads, web development, AI implementation, and full-funnel strategy."
   },
   '/privacy': {
     title: "Privacy Policy | The Growth Bench",
@@ -40,6 +40,18 @@ const pageSpecificMeta = {
   '/pricing': {
     title: "Pricing — Build Your Custom Growth Package | The Growth Bench",
     description: "Build your custom growth package around your needs. Select the services you need, share your challenge, and book a free audit call. No fixed prices — just what moves your funnel."
+  },
+  '/compare': {
+    title: "Freelancer vs Agency vs Growth Bench — Which Fits? | The Growth Bench",
+    description: "Compare freelancers, agencies, and the Growth Bench bench model on context, speed, and overhead. Built for D2C brands doing ₹10L–₹10Cr/month."
+  },
+  '/solutions/recover-abandoned-carts': {
+    title: "Cart & Checkout Recovery — Recover Leaking Revenue | The Growth Bench",
+    description: "Checkout abandonment 73.1% to 53.9% in a 22-day A/B test, ~$345K/month recovered. The exact cart and checkout recovery playbook for D2C brands."
+  },
+  '/ai-scorecard': {
+    title: "Automation Readiness Scorecard — How Automatable Is Your Store? | The Growth Bench",
+    description: "A few taps, a minute, instant readout. Score how much agentic AI can take off your plate — support, ops, content, follow-ups, creative — with recoverable hours and a ₹ range."
   }
 };
 
@@ -65,7 +77,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
     "serviceType": [
       "Growth Strategy", "Performance Marketing", "CRO",
       "Web Development", "UI/UX Design", "Lead Generation",
-      "Google Ads", "Meta Ads", "Marketing Strategy"
+      "Google Ads", "Meta Ads", "AI Implementation"
     ]
   };
 

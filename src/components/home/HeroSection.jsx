@@ -61,7 +61,20 @@ const HeroSection = () => {
     <section className="bg-canvas py-section-lg border-b border-hairline-soft min-h-[70vh] flex items-center">
       <div className="container-site w-full">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="font-display text-display-xl text-ink leading-none">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: smoothEase }}
+          >
+            <Link
+              to="/services#ai-implementation"
+              className="inline-flex items-center gap-2 text-label-xs uppercase tracking-wider border border-ink/20 rounded-full px-4 py-2 text-ink no-underline hover:bg-soft-cloud transition-colors"
+            >
+              Drowning in repeatable work? · Agentic AI for ops, support, content <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </motion.div>
+
+          <h1 className="font-display text-display-xl text-ink leading-none mt-6">
             {words.map((word, wi) => (
               <React.Fragment key={word}>
                 {wi > 0 && <span className="inline-block w-[0.15em]" />}
@@ -76,7 +89,7 @@ const HeroSection = () => {
             transition={{ delay: descDelay, duration: 0.7, ease: smoothEase }}
             className="text-body-lg text-mute mt-6 leading-relaxed max-w-xl mx-auto"
           >
-            Strategy, ads, CRO, web, and systems — connected by one lead who sees the entire funnel.
+            Strategy, ads, CRO, web, and AI agents — connected by one lead who sees the entire funnel.
             No handoffs between specialists who don't talk. No overhead from layers that don't build.
           </motion.p>
 
@@ -96,6 +109,18 @@ const HeroSection = () => {
               See Our Services
             </Link>
           </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: ctaDelay + 0.3, duration: 0.5 }}
+            className="text-body-sm text-mute mt-6"
+          >
+            Not sure where AI fits your store?{' '}
+            <Link to="/ai-scorecard" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
+              Take the 60-second AI scorecard
+            </Link>
+          </motion.p>
         </div>
       </div>
     </section>
