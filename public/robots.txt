@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /*?*
 
 Sitemap: https://www.thegrowthbench.com/sitemap.xml

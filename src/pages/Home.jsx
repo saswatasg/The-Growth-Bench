@@ -7,6 +7,7 @@ import PageMeta from '@/components/PageMeta';
 import HeroSection from '@/components/home/HeroSection';
 import MarqueeBar from '@/components/home/MarqueeBar';
 import ServicesOverview from '@/components/home/ServicesOverview';
+import CtaPaths from '@/components/CtaPaths';
 import { loadPosts } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { testimonialsData } from '@/data/testimonials';
@@ -19,10 +20,10 @@ const Home = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentTestimonial(prev => (prev + 1) % 2);
+      setCurrentTestimonial(prev => (prev + 1) % testimonialsData.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentTestimonial]);
+  }, []);
 
   useEffect(() => {
     setPosts(loadPosts());
@@ -46,14 +47,14 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-5 items-stretch">
             <div className="p-6 border border-hairline-soft bg-canvas flex flex-col">
-              <span className="text-label-xs text-sale uppercase tracking-wider mb-2">Freelancer</span>
+              <span className="text-label-xs text-mute uppercase tracking-wider mb-2">Freelancer</span>
               <p className="text-body-sm text-mute leading-relaxed flex-grow">Good people, limited scope. No systems, no strategy ownership. You outgrow them fast.</p>
               <div className="mt-4 pt-4 border-t border-hairline-soft text-body-sm text-sale font-medium">
                 No full funnel view
               </div>
             </div>
 
-            <div className="p-6 border-2 border-ink bg-canvas flex flex-col relative">
+            <div className="p-6 border-2 border-ink bg-canvas flex flex-col relative order-first md:order-none">
               <div className="absolute -top-3 left-6 bg-ink text-canvas text-label-xs uppercase tracking-wider px-4 py-1.5 rounded-full">Best of both</div>
               <span className="text-label-xs text-ink uppercase tracking-wider mt-2 mb-2">The Growth Bench</span>
               <p className="text-body-sm text-mute leading-relaxed flex-grow">One senior partner who owns the full picture. Specialists on demand. Depth without overhead.</p>
@@ -67,7 +68,7 @@ const Home = () => {
             </div>
 
             <div className="p-6 border border-hairline-soft bg-canvas flex flex-col">
-              <span className="text-label-xs text-sale uppercase tracking-wider mb-2">Agency</span>
+              <span className="text-label-xs text-mute uppercase tracking-wider mb-2">Agency</span>
               <p className="text-body-sm text-mute leading-relaxed flex-grow">Expensive retainers, slow onboarding, layers between you and the people doing the work.</p>
               <div className="mt-4 pt-4 border-t border-hairline-soft text-body-sm text-sale font-medium">
                 Paying for what you don't use
@@ -94,12 +95,12 @@ const Home = () => {
               { icon: Search, title: 'Diagnosis', desc: 'Free audit call to understand your funnel' },
               { icon: Users, title: 'Team Assembly', desc: 'Right specialists for what you need' },
               { icon: Zap, title: 'Execute & Iterate', desc: 'Weekly check-ins, continuous improvement' },
-            ].map((step, i) => {
+            ].map((step) => {
               const Icon = step.icon;
               return (
                 <div key={step.title} className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-canvas border border-hairline-soft flex items-center justify-center flex-shrink-0">
-                    <span className="text-body-sm font-bold text-mute">{i + 1}</span>
+                    <Icon className="w-5 h-5 text-ink" />
                   </div>
                   <div>
                     <h3 className="text-heading-md text-ink">{step.title}</h3>
@@ -131,7 +132,7 @@ const Home = () => {
               ].map((s) => (
                 <motion.div key={s.num} {...stagger} className="text-center md:border-r md:border-stone/20 md:last:border-r-0">
                   <motion.span
-                    className="font-display text-display-lg text-canvas leading-none block"
+                    className="font-display text-heading-xl md:text-display-lg text-canvas leading-none block"
                     animate={{ scale: [1, 1.02, 1] }}
                     transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
                   >
@@ -191,7 +192,7 @@ const Home = () => {
             <h2 className="font-display text-display-md text-ink mt-2">Results that speak plainly.</h2>
           </div>
 
-          <div className="relative min-h-[180px] mb-8">
+          <div className="relative min-h-[260px] md:min-h-[220px] mb-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial}
@@ -201,7 +202,7 @@ const Home = () => {
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="p-8 md:p-10 border border-hairline-soft bg-canvas relative max-w-2xl mx-auto"
               >
-                <span className="font-display text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
+                <span aria-hidden="true" className="font-display text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
                 <p className="text-body-md text-mute leading-relaxed mb-6 relative z-10">{testimonialsData[currentTestimonial].text}</p>
                 <p className="text-body-sm font-medium text-ink">— {testimonialsData[currentTestimonial].name}</p>
                 <p className="text-caption-sm text-mute">{testimonialsData[currentTestimonial].title}</p>
@@ -210,7 +211,7 @@ const Home = () => {
           </div>
 
           <div className="flex justify-center gap-2 mb-10">
-            {testimonialsData.slice(0, 2).map((_, i) => (
+            {testimonialsData.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentTestimonial(i)}
@@ -244,8 +245,9 @@ const Home = () => {
             {posts.slice(0, 3).map((post) => (
               <Link key={post.slug} to={`/insights/${post.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group h-full">
                 <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-3 uppercase">{post.category}</span>
-                <h3 className="text-heading-md text-ink mb-3 group-hover:text-mute transition-colors">{post.title}</h3>
-                <p className="text-body-sm text-ink flex items-center gap-1">
+                <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">{post.title}</h3>
+                <p className="text-body-sm text-mute leading-relaxed mb-3 line-clamp-2">{post.description}</p>
+                <p className="text-body-sm text-mute flex items-center gap-1">
                   Read more <ArrowRight className="w-3.5 h-3.5" />
                 </p>
               </Link>
@@ -274,11 +276,9 @@ const Home = () => {
           <p className="text-caption-md text-stone mt-4">
             No retainer commitment. Cancel anytime.
           </p>
-          <p className="mt-4">
-            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
-              Prefer self-serve? Take the 60-second AI scorecard
-            </Link>
-          </p>
+          <div className="mt-6">
+            <CtaPaths tone="dark" />
+          </div>
         </div>
       </motion.section>
     </>

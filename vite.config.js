@@ -1,6 +1,6 @@
 import path from 'node:path';
 import react from '@vitejs/plugin-react';
-import { createLogger, defineConfig } from 'vite';
+import { defineConfig } from 'vite';
 import inlineEditPlugin from './plugins/visual-editor/vite-plugin-react-inline-editor.js';
 import editModeDevPlugin from './plugins/visual-editor/vite-plugin-edit-mode.js';
 import iframeRouteRestorationPlugin from './plugins/vite-plugin-iframe-route-restoration.js';
@@ -264,23 +264,10 @@ const addTransformIndexHtml = {
 	},
 };
 
-const logger = createLogger()
-const loggerError = logger.error
-
-logger.error = (msg, options) => {
-	if (options?.error?.toString().includes('CssSyntaxError: [postcss]')) {
-		return;
-	}
-
-	loggerError(msg, options);
-}
-
 export default defineConfig({
-	customLogger: logger,
 	plugins: [
-		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), selectionModePlugin()] : []),
+		...(isDev ? [inlineEditPlugin(), editModeDevPlugin(), iframeRouteRestorationPlugin(), selectionModePlugin(), addTransformIndexHtml] : []),
 		react(),
-		addTransformIndexHtml
 	],
 	server: {
 		cors: true,
@@ -308,6 +295,7 @@ export default defineConfig({
 				manualChunks: {
 					'vendor-react': ['react', 'react-dom', 'react-router-dom'],
 					'vendor-ui': ['framer-motion', 'lucide-react', 'react-helmet-async'],
+					'vendor-markdown': ['react-markdown', 'remark-gfm'],
 					'vendor-radix': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-popover', '@radix-ui/react-select', '@radix-ui/react-tabs', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
 				},
 			},

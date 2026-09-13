@@ -1,26 +1,29 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import { MotionConfig } from 'framer-motion';
 import { AuthProvider } from '@/context/AuthContext';
 import { BookingModalProvider } from '@/context/BookingModalContext';
 import Layout from '@/components/Layout';
 import RoutesConfig from '@/config/RoutesConfig';
 import ScrollToTop from '@/components/ScrollToTop';
+import CookieConsent from '@/components/CookieConsent';
 import { Toaster } from '@/components/ui/sonner';
-import PageMeta from '@/components/PageMeta';
 
 function App() {
   return (
     <HelmetProvider>
+      <MotionConfig reducedMotion="user">
       <AuthProvider>
         <BookingModalProvider>
         <ScrollToTop />
-        <PageMeta />
         <Layout>
           <RoutesConfig />
         </Layout>
+        <CookieConsent />
         <Toaster />
         </BookingModalProvider>
       </AuthProvider>
+      </MotionConfig>
     </HelmetProvider>
   );
 }

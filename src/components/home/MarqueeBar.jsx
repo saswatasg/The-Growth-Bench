@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
 
 const items = [
-  'AI Implementation for D2C', 'Agentic AI: ops + support + content', '$345K/mo recovered', '5.7x ROAS', '13.7x ROAS',
-  '26% checkout drop cut', '47% mobile lift', '118% Europe growth', '9 growth capabilities',
+  'AI Implementation for D2C', 'Agentic AI: ops + support + content', '$345K/mo recovered', '5.7x ROAS',
+  '26% checkout drop cut', '47% mobile lift', '9 growth capabilities',
   'Strategy & Audit', 'Growth Ads', 'CRO', 'Web Development',
   'Lead Systems', 'UI/UX Design', 'Performance Marketing', 'SEO'
 ];
@@ -18,13 +18,13 @@ const MarqueeBar = () => {
       <div className="overflow-hidden">
         <div className="marquee-track">
           {items.map((s, i) => (
-            <span key={`a-${i}`} className="flex-shrink-0 text-caption-sm text-stone/70 whitespace-nowrap">
+            <span key={`a-${i}`} className="flex-shrink-0 text-caption-sm text-stone whitespace-nowrap">
               {s}
               <span className="mx-6 text-stone/30">·</span>
             </span>
           ))}
           {items.map((s, i) => (
-            <span key={`b-${i}`} aria-hidden="true" className="flex-shrink-0 text-caption-sm text-stone/70 whitespace-nowrap">
+            <span key={`b-${i}`} aria-hidden="true" className="flex-shrink-0 text-caption-sm text-stone whitespace-nowrap">
               {s}
               <span className="mx-6 text-stone/30">·</span>
             </span>

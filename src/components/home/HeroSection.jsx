@@ -74,7 +74,7 @@ const HeroSection = () => {
             </Link>
           </motion.div>
 
-          <h1 className="font-display text-display-xl text-ink leading-none mt-6">
+          <h1 className="font-display text-display-md md:text-display-xl text-ink leading-none mt-6">
             {words.map((word, wi) => (
               <React.Fragment key={word}>
                 {wi > 0 && <span className="inline-block w-[0.15em]" />}
@@ -102,12 +102,11 @@ const HeroSection = () => {
             <Button size="lg" onClick={openBookingModal}>
               Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Link
-              to="/services"
-              className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-hairline text-body-sm font-medium text-ink no-underline hover:bg-soft-cloud transition-colors"
-            >
-              See Our Services
-            </Link>
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/services" className="no-underline">
+                See Our Services
+              </Link>
+            </Button>
           </motion.div>
 
           <motion.p

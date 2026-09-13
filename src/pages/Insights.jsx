@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { loadPosts } from '@/lib/blogUtils';
+import { useBookingModal } from '@/context/BookingModalContext';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
 const Insights = () => {
+  const { openBookingModal } = useBookingModal();
   const [posts, setPosts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCategory = searchParams.get('category') || 'All';
@@ -26,7 +28,7 @@ const Insights = () => {
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Insights</span>
-            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               Frameworks. Teardowns.<br />Things that actually work.
             </h1>
           </div>
@@ -41,7 +43,7 @@ const Insights = () => {
                 key={cat}
                 onClick={() => setSearchParams(cat === 'All' ? {} : { category: cat })}
                 aria-pressed={activeCategory === cat}
-                className={`px-5 py-2.5 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                className={`px-5 py-3 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
                   activeCategory === cat
                     ? 'bg-ink text-canvas border-ink'
                     : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
@@ -84,9 +86,14 @@ const Insights = () => {
                 60 seconds, instant readout — recoverable hours, a ₹ range, and exactly where to start.
               </p>
             </div>
-            <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors flex-shrink-0">
-              Take the scorecard <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4 flex-shrink-0">
+              <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors flex-shrink-0">
+                Take the scorecard <ArrowRight className="w-4 h-4" />
+              </Link>
+              <button onClick={openBookingModal} className="inline-flex items-center gap-1 text-body-sm font-medium text-mute no-underline hover:text-ink transition-colors flex-shrink-0">
+                Book a free audit call <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </motion.section>
@@ -102,7 +109,7 @@ const Insights = () => {
             </Link>
             <Link to="/case-studies" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
               <div className="font-display text-display-md text-ink mb-2">357% revenue growth in 3 months</div>
-              <p className="text-body-sm text-mute leading-relaxed mb-3">Full-funnel e-commerce overhaul for a D2C coffee brand — website revamp, precise tracking, and high-converting ad campaigns. ROAS went from 1.8x to 5.7x.</p>
+              <p className="text-body-sm text-mute leading-relaxed mb-3">Early-win snapshot (full teardown pending) for a D2C coffee brand — website revamp, precise tracking, and high-converting ad campaigns. ROAS went from 1.8x to 5.7x.</p>
               <span className="text-body-sm text-ink flex items-center gap-1">See case study <ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
             </Link>
           </div>

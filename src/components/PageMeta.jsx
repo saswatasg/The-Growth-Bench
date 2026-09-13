@@ -14,15 +14,15 @@ const pageSpecificMeta = {
     description: "Full-stack growth partner for D2C brands and early-stage startups. Agentic AI for ops, support, content and follow-ups, plus strategy, performance marketing, CRO, and web — under one roof. Book a free audit call."
   },
   '/services': {
-    title: "Growth Services — Strategy, Ads, CRO, Web, AI & More | The Growth Bench",
-    description: "Explore The Growth Bench's full service stack: growth strategy, Google Ads, Meta Ads, CRO, website development, lead systems, UI/UX design, analytics, and AI implementation. Built for D2C brands and startups."
+    title: "Growth Services for D2C Brands | The Growth Bench",
+    description: "Growth strategy, ads, CRO, web, AI implementation, analytics and more — the full stack for D2C brands and startups."
   },
   '/about': {
     title: "About The Growth Bench — Who We Are and How We Work",
     description: "We're a senior-led growth consultancy with specialists on demand — built for D2C brands and startups that outgrew freelancers but don't want agency overhead."
   },
   '/case-studies': {
-    title: "Past Projects & Client Results | The Growth Bench",
+    title: "Case Studies & Client Results | The Growth Bench",
     description: "Real outcomes with real numbers from clients across D2C, B2B SaaS, education, and more. CRO, ads, web development, AI implementation, and full-funnel strategy."
   },
   '/privacy': {
@@ -34,23 +34,23 @@ const pageSpecificMeta = {
     description: "The Growth Bench terms of service — the terms and conditions that govern your use of our website and growth consulting services."
   },
   '/insights': {
-    title: "Growth Frameworks & Teardowns | The Growth Bench Insights",
+    title: "Growth Frameworks & Teardowns | The Growth Bench",
     description: "Actionable growth advice, CRO teardowns, and marketing strategy frameworks for D2C brands and early-stage startups."
   },
   '/pricing': {
-    title: "Pricing — Build Your Custom Growth Package | The Growth Bench",
-    description: "Build your custom growth package around your needs. Select the services you need, share your challenge, and book a free audit call. No fixed prices — just what moves your funnel."
+    title: "Work With Us — Start With a Free Funnel Audit | The Growth Bench",
+    description: "Tell us where growth hurts, then get a scoped plan after a free 30-minute audit call. No fixed prices — just what moves your funnel."
   },
   '/compare': {
-    title: "Freelancer vs Agency vs Growth Bench — Which Fits? | The Growth Bench",
+    title: "Freelancer vs Agency vs Bench | The Growth Bench",
     description: "Compare freelancers, agencies, and the Growth Bench bench model on context, speed, and overhead. Built for D2C brands doing ₹10L–₹10Cr/month."
   },
   '/solutions/recover-abandoned-carts': {
-    title: "Cart & Checkout Recovery — Recover Leaking Revenue | The Growth Bench",
+    title: "Cart Recovery Service for D2C | The Growth Bench",
     description: "Checkout abandonment 73.1% to 53.9% in a 22-day A/B test, ~$345K/month recovered. The exact cart and checkout recovery playbook for D2C brands."
   },
   '/ai-scorecard': {
-    title: "Automation Readiness Scorecard — How Automatable Is Your Store? | The Growth Bench",
+    title: "Automation Readiness Scorecard | The Growth Bench",
     description: "A few taps, a minute, instant readout. Score how much agentic AI can take off your plate — support, ops, content, follow-ups, creative — with recoverable hours and a ₹ range."
   }
 };
@@ -66,7 +66,8 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
   const siteUrl = SITE_URL.endsWith('/') ? SITE_URL : `${SITE_URL}/`;
   const cleanPath = currentPath === '/' ? '' : currentPath.replace(/^\//, '').replace(/\/$/, '');
   const finalUrl = `${siteUrl}${cleanPath ? cleanPath + '/' : ''}`;
-  const ogImage = customOgImage || "/assets/images/og-card.png";
+  const absImage = (p) => (p && p.startsWith('http') ? p : `${SITE_URL}${p && p.startsWith('/') ? '' : '/'}${p || ''}`);
+  const ogImage = absImage(customOgImage || '/assets/images/og-card.png');
 
   const orgSchema = {
     "@context": "https://schema.org",
@@ -127,6 +128,8 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
       <meta property="og:image:height" content="630" />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content="The Growth Bench" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:image:alt" content={finalTitle} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={finalTitle} />

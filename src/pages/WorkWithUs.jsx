@@ -6,8 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import PageMeta from '@/components/PageMeta';
+import CtaPaths from '@/components/CtaPaths';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { WHATSAPP_URL } from '@/lib/constants';
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
@@ -78,6 +78,7 @@ const WorkWithUs = () => {
       if (data.success) {
         setSubmitted(true);
         toast.success('Details sent! Now pick a time for your free call.');
+        openBookingModal();
       } else {
         toast.error('Something went wrong. Please email us at hi@saswatasg.com.');
       }
@@ -95,7 +96,7 @@ const WorkWithUs = () => {
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">No Commitment. Just Clarity.</span>
-            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               Get a free 30-min<br />audit of your funnel.
             </h1>
             <p className="text-body-md text-mute mt-4 max-w-lg leading-relaxed">
@@ -141,7 +142,7 @@ const WorkWithUs = () => {
                           type="button"
                           onClick={() => toggleModule(mod.id)}
                           aria-pressed={isSelected}
-                          className={`inline-flex items-center gap-1.5 px-4 py-2 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                          className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
                             isSelected ? 'border-ink bg-ink text-canvas' : 'border-hairline bg-canvas text-mute hover:border-ink hover:text-ink'
                           }`}
                         >
@@ -251,15 +252,32 @@ const WorkWithUs = () => {
         </div>
       </section>
 
+      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+        <div className="container-site">
+          <div className="max-w-4xl mx-auto">
+            <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">What founders ask first.</h2>
+            <div className="grid md:grid-cols-3 gap-8 mt-8">
+              {[
+                { q: 'How much does it cost?', a: 'Scoped after a free 30-minute audit — no public pricing, no retainer commitment upfront. Fixed-timeline scope based on your funnel.' },
+                { q: 'How does onboarding work?', a: 'Audit, scoped plan, kickoff + access, first deliverables within week one, strategy doc by day 14.' },
+                { q: 'How soon do results show?', a: 'First meaningful improvement in 30–60 days, quick wins in the first two weeks.' },
+              ].map((item) => (
+                <div key={item.q}>
+                  <h3 className="text-heading-md text-ink mb-2">{item.q}</h3>
+                  <p className="text-body-sm text-mute leading-relaxed">{item.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-soft-cloud py-section-lg text-center">
         <div className="container-site">
-          <div className="max-w-md mx-auto">
-            <p className="text-body-sm text-mute mb-4">Prefer to chat right away?</p>
-            <Button asChild variant="outline" size="lg">
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-                Message us on WhatsApp <ArrowRight className="w-4 h-4 ml-2" />
-              </a>
-            </Button>
+          <div className="max-w-xl mx-auto">
+            <p className="text-body-sm text-mute mb-6">Three ways in — pick yours.</p>
+            <CtaPaths tone="light" />
           </div>
         </div>
       </section>

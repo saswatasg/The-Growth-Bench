@@ -13,8 +13,8 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem(TOKEN_KEY);
     if (token) {
       try {
-        const { expiry } = JSON.parse(atob(token.split('.')[1]));
-        if (Date.now() < expiry * 1000) {
+        const { exp } = JSON.parse(atob(token.split('.')[1]));
+        if (exp && Date.now() < exp * 1000) {
           setIsAuthenticated(true);
         } else {
           localStorage.removeItem(TOKEN_KEY);

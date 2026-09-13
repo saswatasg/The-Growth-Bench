@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogOut, Plus, Save, Eye, Trash2 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import PageMeta from '@/components/PageMeta';
 import { blogPosts as defaultPosts } from '@/content/blog';
 import { fetchPosts, savePosts as apiSavePosts, fetchCTAs, saveCTAs as apiSaveCTAs } from '@/lib/api';
 
@@ -125,6 +126,8 @@ const AdminDashboard = () => {
   const categories = ['Growth Strategy', 'CRO', 'Google Ads', 'Meta Ads', 'Lead Systems', 'UI/UX', 'Website Dev', 'Marketing Strategy'];
 
   return (
+    <>
+      <PageMeta title="Admin Dashboard | The Growth Bench" description="Blog content management." noindex={true} />
     <section className="section-light min-h-screen pt-20">
       <div className="container-site">
         {/* Header */}
@@ -270,6 +273,7 @@ const AdminDashboard = () => {
         )}
       </div>
     </section>
+    </>
   );
 };
 

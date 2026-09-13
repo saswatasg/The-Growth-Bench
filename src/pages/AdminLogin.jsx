@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import PageMeta from '@/components/PageMeta';
 
 const AdminLogin = () => {
   const [password, setPassword] = useState('');
@@ -22,6 +23,8 @@ const AdminLogin = () => {
   };
 
   return (
+    <>
+      <PageMeta title="Admin | The Growth Bench" description="Admin sign-in." noindex={true} />
     <section className="section-light min-h-screen flex items-center justify-center pt-16">
       <div className="container-site">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="max-w-sm mx-auto">
@@ -47,6 +50,7 @@ const AdminLogin = () => {
         </motion.div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -21,6 +21,7 @@ const footerLinks = {
     { label: 'Compare Models', to: '/compare' },
     { label: 'Cart Recovery', to: '/solutions/recover-abandoned-carts' },
     { label: 'AI Scorecard', to: '/ai-scorecard' },
+    { label: 'Start — Free Audit', to: '/pricing' },
     { label: 'Insights', to: '/insights' },
   ],
 };
@@ -80,7 +81,7 @@ const Footer = () => {
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="text-caption-sm text-stone no-underline hover:text-canvas transition-colors">Privacy</Link>
             <Link to="/terms" className="text-caption-sm text-stone no-underline hover:text-canvas transition-colors">Terms</Link>
-            <Link to="/admin/login" className="text-caption-sm text-stone/50 no-underline hover:text-stone transition-colors">Admin</Link>
+            <Link to="/admin/login" className="text-caption-sm text-stone/70 no-underline hover:text-stone transition-colors">Admin</Link>
           </div>
         </div>
       </div>

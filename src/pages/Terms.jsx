@@ -19,7 +19,7 @@ const Terms = () => {
 
           <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
             <h2>1. Introduction</h2>
-            <p>These Terms govern your use of <a href="https://thegrowthbench.com">thegrowthbench.com</a> and the services provided by The Growth Bench. By using our Site or submitting an enquiry, you agree to these Terms.</p>
+            <p>These Terms govern your use of <a href="https://www.thegrowthbench.com">thegrowthbench.com</a> and the services provided by The Growth Bench. By using our Site or submitting an enquiry, you agree to these Terms.</p>
 
             <h2>2. Services</h2>
             <p>We provide growth consulting services including strategy, performance marketing, CRO, website development, lead systems, UI/UX design, and marketing strategy. Specific scope is defined in a separate engagement agreement.</p>

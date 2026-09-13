@@ -1,10 +1,17 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from 'fs';
-import { join, extname } from 'path';
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
+import { join } from 'path';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'tgb-change-this-in-production';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'growthbench2024';
+// Fail closed: no committed fallbacks. Set JWT_SECRET + ADMIN_PASSWORD
+// as environment variables (see .env.example). Without them the admin
+// API answers 503 instead of accepting a known password.
+const JWT_SECRET = process.env.JWT_SECRET;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+const AUTH_CONFIGURED = Boolean(JWT_SECRET && ADMIN_PASSWORD);
+if (!AUTH_CONFIGURED) {
+  console.error('Missing JWT_SECRET or ADMIN_PASSWORD env vars — admin API disabled.');
+}
 const DATA_DIR = '/tmp/data';
 const POSTS_FILE = join(DATA_DIR, 'posts.json');
 const CTAS_FILE = join(DATA_DIR, 'ctas.json');
@@ -24,26 +31,20 @@ const writeJSON = (file, data) => {
   try { writeFileSync(file, JSON.stringify(data, null, 2)); } catch {}
 };
 
-const hash = bcrypt.hashSync(ADMIN_PASSWORD, 10);
-
-const MIME_TYPES = {
-  '.js': 'application/javascript; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.html': 'text/html; charset=utf-8',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
-  '.webp': 'image/webp',
-  '.woff': 'font/woff',
-  '.woff2': 'font/woff2',
-  '.ttf': 'font/ttf',
-  '.json': 'application/json',
-  '.xml': 'application/xml',
-  '.txt': 'text/plain',
-  '.vcf': 'text/vcard',
-};
+// Best-effort per-instance login throttle (10 tries / 15 min / IP).
+// NOTE: serverless instances don't share memory, so this slows casual
+// brute force but is not a substitute for a strong password + short TTL.
+const loginAttempts = new Map();
+function loginAllowed(ip) {
+  const now = Date.now();
+  const rec = loginAttempts.get(ip);
+  if (!rec || now > rec.reset) {
+    loginAttempts.set(ip, { count: 1, reset: now + 15 * 60 * 1000 });
+    return true;
+  }
+  rec.count += 1;
+  return rec.count <= 10;
+}
 
 function parseBody(req) {
   return new Promise((resolve) => {
@@ -85,6 +86,7 @@ export default async function handler(req, res) {
 
   // API routes
   if (path.startsWith('/api/')) {
+    if (!AUTH_CONFIGURED) return json(res, 503, { error: 'Admin API not configured' });
     const apiPath = path.replace(/^\/api/, '') || '/';
 
     function getUser() {
@@ -95,12 +97,15 @@ export default async function handler(req, res) {
 
     try {
       if (apiPath === '/login' && req.method === 'POST') {
+        const ip = req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+        if (!loginAllowed(ip)) return json(res, 429, { error: 'Too many attempts. Try again in 15 minutes.' });
         const body = await parseBody(req);
         if (!body.password) return json(res, 400, { error: 'Password required' });
 
+        const hash = bcrypt.hashSync(ADMIN_PASSWORD, 10);
         const match = await bcrypt.compare(body.password, hash);
         if (!match) return json(res, 401, { error: 'Invalid password' });
-        const token = jwt.sign({ role: 'admin' }, JWT_SECRET, { expiresIn: '24h' });
+        const token = jwt.sign({ role: 'admin' }, JWT_SECRET, { expiresIn: '8h' });
         return json(res, 200, { token });
       }
 
@@ -133,31 +138,8 @@ export default async function handler(req, res) {
     }
   }
 
-  // Serve static files from dist/
-  const distDir = join(process.cwd(), 'dist');
-  const requestPath = path === '/' ? '/index.html' : path;
-  const filePath = join(distDir, requestPath);
-
-  if (filePath.startsWith(distDir)) {
-    try {
-      if (statSync(filePath).isFile()) {
-        const content = readFileSync(filePath);
-        const ext = extname(filePath).toLowerCase();
-        const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-        res.writeHead(200, { 'Content-Type': contentType });
-        res.end(content);
-        return;
-      }
-    } catch {}
-  }
-
-  // SPA fallback — serve index.html for all non-file routes
-  try {
-    const indexPath = join(distDir, 'index.html');
-    const content = readFileSync(indexPath, 'utf-8');
-    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-    res.end(content);
-  } catch (e) {
-    json(res, 404, { error: 'Not found: ' + e.message });
-  }
+  // This function only serves /api/* — static assets and the SPA fallback
+  // are handled by the platform (see vercel.json rewrites). Anything else
+  // reaching here is a miss.
+  return json(res, 404, { error: 'Not found' });
 }

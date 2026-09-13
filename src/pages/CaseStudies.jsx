@@ -5,6 +5,7 @@ import { ArrowRight, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
+import CtaPaths from '@/components/CtaPaths';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
 const pastProjects = [
@@ -14,14 +15,14 @@ const pastProjects = [
     description: 'The problem: a 73.1% checkout abandonment rate across 480,000 monthly sessions — the kind of leak that swallows ad spend before it converts. What we did: rebuilt the checkout flow, fixed mobile-specific friction points, and replaced one-off redesign guesses with a systematic conversion-testing process. The result: in a 22-day A/B test on 10% traffic, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate. Mobile conversion rate ended up ahead of Wayfair\u2019s.',
     tags: ['CRO', 'E-Commerce', 'UX'],
   },
-  // PLACEHOLDER — only the 357% figure and the homepage testimonial are confirmed for Caffena.
-  // Confirm actual channels/interventions before publishing rather than inventing a narrative.
-  // Confirmed testimonial (src/data/testimonials.js): "Saswata helped us scale our D2C coffee brand from the ground up. In just 3 months, he revamped our entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. The result? Our ROAS skyrocketed to 5.7x from 1.8x with sustainable CAC."
+  // SNAPSHOT — only the 357% figure and the homepage testimonial are confirmed for Caffena.
+  // Framed publicly as an early-win snapshot until traffic, test window, and
+  // attribution reach Sierra-level methodology. Do not expand without source.
   {
     client: 'Caffena Coffee — D2C Coffee Brand',
     stat: '357% revenue growth in 3 months',
-    description: 'Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
-    tags: ['E-Commerce', 'Web Development', 'Ads'],
+    description: 'Early-win snapshot (full teardown pending). Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
+    tags: ['E-Commerce', 'Web Development', 'Ads', 'Snapshot'],
   },
 ];
 
@@ -43,7 +44,7 @@ const CaseStudies = () => {
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
-            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               Work that speaks<br />for itself.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
@@ -61,7 +62,7 @@ const CaseStudies = () => {
                 key={tag}
                 onClick={() => setActiveTag(tag)}
                 aria-pressed={activeTag === tag}
-                className={`px-5 py-2.5 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                className={`px-5 py-3 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
                   activeTag === tag
                     ? 'bg-ink text-canvas border-ink'
                     : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
@@ -142,12 +143,9 @@ const CaseStudies = () => {
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <p className="text-caption-md text-stone mt-4">
-            Prefer self-serve?{' '}
-            <Link to="/ai-scorecard" className="text-stone underline underline-offset-2 hover:text-canvas transition-colors">
-              Take the 60-second AI scorecard
-            </Link>
-          </p>
+          <div className="mt-6">
+            <CtaPaths tone="dark" />
+          </div>
         </div>
       </motion.section>
     </>

@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { WHATSAPP_URL } from '@/lib/constants';
 
 const BookingModalContext = createContext();
 
@@ -63,6 +64,12 @@ export function BookingModalProvider({ children }) {
                 onLoad={() => setLoading(false)}
               />
             </div>
+            <p className="text-center text-caption-sm text-mute py-3 bg-white border-t border-hairline-soft">
+              Calendar not loading?{' '}
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">
+                WhatsApp us instead
+              </a>
+            </p>
           </div>
         </div>
       )}

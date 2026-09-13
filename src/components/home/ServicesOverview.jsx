@@ -16,11 +16,11 @@ const services = [
 
 const ServicesOverview = () => {
   return (
-    <section className="bg-ink py-section">
+    <section className="bg-ink py-section-lg">
       <div className="container-site">
-        <span className="text-caption-sm text-stone tracking-wider uppercase mb-3 block">WHAT WE DO</span>
+        <span className="text-label-xs text-stone uppercase tracking-wider mb-3 block">WHAT WE DO</span>
         <h2 className="font-display text-heading-xl text-canvas mb-2">The full stack, handled.</h2>
-        <p className="text-body-md text-stone max-w-xl mb-section">
+        <p className="text-body-md text-stone max-w-xl mb-10">
           From the first strategy call to the live campaign to the optimised checkout — plus the AI systems that take repetitive work off your plate. We cover the entire growth surface.
         </p>
 
@@ -41,7 +41,7 @@ const ServicesOverview = () => {
                   <span className="text-caption-sm text-mute font-mono">{s.num}</span>
                   <h3 className="text-body-strong text-ink mt-1 mb-1">{s.name}</h3>
                   <p className="text-caption-md text-mute leading-relaxed">{s.desc}</p>
-                  <span className="text-caption-sm text-ink mt-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-caption-sm text-ink mt-3 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                     See how it works <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
@@ -59,7 +59,7 @@ const ServicesOverview = () => {
                 <span className="text-caption-sm text-stone font-mono">{s.num}</span>
                 <h3 className="text-body-strong text-canvas mt-1 mb-1">{s.name}</h3>
                 <p className="text-caption-md text-stone leading-relaxed">{s.desc}</p>
-                <span className="text-caption-sm text-stone mt-3 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="text-caption-sm text-stone mt-3 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   Learn more <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>

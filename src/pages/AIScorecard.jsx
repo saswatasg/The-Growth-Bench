@@ -18,6 +18,7 @@ const NODES = {
   q1: {
     arm: null,
     q: 'What eats most of your team\u2019s week?',
+    hint: 'Solo founder? Pick wherever you personally lose hours.',
     options: [
       { label: 'Answering repeat questions', icon: MessageCircle, points: 0, next: 'A1', arm: 'support' },
       { label: 'Firefighting orders, COD & returns', icon: Truck, points: 0, next: 'B0', arm: 'ops' },
@@ -136,7 +137,7 @@ const NODES = {
   // ---- CONTENT arm ----
   C1: {
     arm: 'content',
-    q: 'How big is the catalog?',
+    q: 'How many products (SKUs) are in the catalog?',
     options: [
       { label: 'Under 25 SKUs', points: 0, next: 'C2' },
       { label: '25–150 SKUs', points: 1, next: 'C2' },
@@ -186,7 +187,7 @@ const NODES = {
   },
   D2: {
     arm: 'followups',
-    q: 'How do you collect reviews and UGC?',
+    q: 'How do you collect reviews and UGC (customer photos & videos)?',
     options: [
       { label: 'Automated requests', points: 0, next: 'FIT' },
       { label: 'Post-purchase emails', points: 1, next: 'FIT' },
@@ -467,7 +468,7 @@ const AIScorecard = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-section-lg border-b border-hairline-soft overflow-x-clip">
         <div className="container-site max-w-2xl mx-auto">
           {step !== 'hook' && !isResult && (
             <div className="mb-8">
@@ -498,7 +499,7 @@ const AIScorecard = () => {
                       <Workflow className="w-7 h-7 text-canvas" />
                     </div>
                     <span className="text-label-xs text-mute uppercase tracking-wider">Free · About a minute · Instant readout</span>
-                    <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+                    <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
                       How much of your<br />week is repeatable?
                     </h1>
                     <p className="text-body-md text-mute mt-6 max-w-xl mx-auto leading-relaxed">
@@ -525,7 +526,7 @@ const AIScorecard = () => {
                 {step === 'gate' && (
                   <div>
                     <span className="text-label-xs text-mute uppercase tracking-wider">Almost there — you&apos;re 2 answers in</span>
-                    <h2 className="font-display text-display-md text-ink mt-2 leading-none">Where should we send your readout?</h2>
+                    <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Where should we send your readout?</h2>
                     <p className="text-body-md text-mute mt-4 leading-relaxed">
                       Your readiness score, recoverable hours, and the two systems to automate first. One email, no sequence, no spam.
                     </p>
@@ -607,7 +608,8 @@ const AIScorecard = () => {
 
 const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
   <div>
-    <h2 className="font-display text-display-md text-ink leading-none max-w-xl">{node.q}</h2>
+    <h2 className="font-display text-heading-xl md:text-display-md text-ink leading-none max-w-xl">{node.q}</h2>
+    {node.hint && <p className="text-body-sm text-mute mt-3">{node.hint}</p>}
     <div className="grid gap-3 mt-8">
       {node.options.map((opt, i) => {
         const Icon = opt.icon;
@@ -617,7 +619,7 @@ const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
             type="button"
             onClick={() => onPick(i)}
             aria-pressed={selected === i}
-            className={`text-left px-5 py-4 rounded-xl border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 flex items-center gap-3 ${
+            className={`text-left px-5 py-4 rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 flex items-center gap-3 ${
               selected === i
                 ? 'border-ink bg-ink text-canvas'
                 : 'border-hairline bg-canvas text-ink hover:border-ink/40'
@@ -630,7 +632,7 @@ const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
         );
       })}
     </div>
-    <p className="text-caption-sm text-mute mt-4">Tip: press 1–{node.options.length} to answer instantly.</p>
+    <p className="text-caption-sm text-mute mt-4 hidden md:block">Tip: press 1–{node.options.length} to answer instantly.</p>
     <button onClick={onBack} className="inline-flex items-center gap-1 text-caption-sm text-mute hover:text-ink transition-colors mt-2">
       <ArrowLeft className="w-3.5 h-3.5" /> Back
     </button>
@@ -656,6 +658,7 @@ const CopyButton = ({ text }) => {
   return (
     <button
       onClick={copy}
+      aria-live="polite"
       className="text-caption-sm text-ink underline underline-offset-2 hover:text-mute transition-colors"
     >
       {copied ? 'Copied — share it anywhere' : 'Copy my readout'}
@@ -696,11 +699,13 @@ const EmailCapture = ({ postLead, mailCtx }) => {
 const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow, inrHigh, waScore, openBookingModal, onRetake, skipped, postLead, mailCtx }) => {
   const copy = TIER_COPY[tier];
   const seq = SEQUENCE[arm] || SEQUENCE.support;
+  const shownLevers = tier === 'cold' ? (levers.length ? levers.slice(0, 1) : ['Cart + post-purchase sequences']) : levers;
+  const leverTitle = tier === 'cold' ? 'Lowest-effort starting point' : 'Automate first → next';
   const annualHrs = recHrs * 12;
   return (
     <div className="text-center">
       <span className="text-label-xs text-mute uppercase tracking-wider">Your Automation Readiness</span>
-      <div className="font-display text-display-xl text-ink leading-none mt-2">
+      <div className="font-display text-display-md md:text-display-xl text-ink leading-none mt-2">
         {displayPct}<span className="text-stone">%</span>
       </div>
       <h2 className="font-display text-display-md text-ink mt-4 leading-none">{copy.headline}</h2>
@@ -719,11 +724,11 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
         </p>
       </div>
 
-      {levers.length > 0 && tier !== 'cold' && (
+      {shownLevers.length > 0 && (
         <div className="mt-8 text-left max-w-xl mx-auto bg-soft-cloud border border-hairline-soft p-6">
-          <span className="text-label-xs text-mute uppercase tracking-wider">Automate first → next</span>
+          <span className="text-label-xs text-mute uppercase tracking-wider">{leverTitle}</span>
           <ul className="mt-3 space-y-4">
-            {levers.map((lever, i) => (
+            {shownLevers.map((lever, i) => (
               <li key={lever} className="flex items-start gap-2">
                 <span className="w-5 h-5 rounded-full bg-ink text-canvas text-caption-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
                 <span>

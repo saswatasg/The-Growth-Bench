@@ -10,6 +10,7 @@ const navLinks = [
   { to: '/case-studies', label: 'Case Studies' },
   { to: '/insights', label: 'Insights' },
   { to: '/about', label: 'About' },
+  { to: '/pricing', label: 'Start' },
 ];
 
 const Header = () => {
@@ -66,7 +67,7 @@ const Header = () => {
           </nav>
 
           <button
-            className="md:hidden p-2 text-ink"
+            className="md:hidden p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
             aria-expanded={isOpen}
@@ -80,7 +81,7 @@ const Header = () => {
         <div className="fixed inset-0 z-[60] bg-canvas flex flex-col md:hidden">
           <div className="container-site flex items-center justify-between h-16 border-b border-hairline-soft">
             <span className="font-display text-lg tracking-wide text-ink">THE GROWTH BENCH</span>
-            <button className="p-2 text-ink" onClick={() => setIsOpen(false)} aria-label="Close menu">
+            <button className="p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full" onClick={() => setIsOpen(false)} aria-label="Close menu">
               <X className="w-5 h-5" />
             </button>
           </div>

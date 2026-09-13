@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
+import CtaPaths from '@/components/CtaPaths';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
@@ -18,7 +19,7 @@ const CartRecovery = () => {
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Solutions · Cart &amp; Checkout Recovery</span>
-            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               Recover the revenue<br />leaking at checkout.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
@@ -61,7 +62,7 @@ const CartRecovery = () => {
               { num: '$345K/mo', label: 'Recovered revenue (≈₹2.89 Cr at the time)' },
             ].map((s) => (
               <div key={s.num} className="text-center md:text-left">
-                <div className="font-display text-display-md text-ink leading-none">{s.num}</div>
+                <div className="font-display text-heading-xl md:text-display-md text-ink leading-none break-words">{s.num}</div>
                 <p className="text-caption-md text-mute mt-2 leading-relaxed">{s.label}</p>
               </div>
             ))}
@@ -117,11 +118,9 @@ const CartRecovery = () => {
           <p className="text-caption-md text-stone mt-4">
             No retainer commitment. Cancel anytime.
           </p>
-          <p className="mt-4">
-            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
-              Or score your automation readiness in 60 seconds
-            </Link>
-          </p>
+          <div className="mt-6">
+            <CtaPaths tone="dark" />
+          </div>
         </div>
       </motion.section>
     </>

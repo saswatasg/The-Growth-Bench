@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { WHATSAPP_URL } from '@/lib/constants';
+import CtaPaths from '@/components/CtaPaths';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
 const About = () => {
@@ -18,7 +19,7 @@ const About = () => {
         <div className="container-site">
           <div className="max-w-3xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">About</span>
-            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               We're not an agency.<br />We're the growth partner<br />you actually wanted.
             </h1>
           </div>
@@ -80,7 +81,7 @@ const About = () => {
             ].map((p) => (
               <div key={p.num}>
                 <span className="text-label-xs text-mute font-mono">{p.num}</span>
-                <h3 className="font-display text-display-md text-ink leading-none mt-1">{p.title}</h3>
+                <h3 className="font-display text-heading-xl text-ink leading-none mt-1">{p.title}</h3>
                 <p className="text-body-sm text-mute mt-3 leading-relaxed max-w-md">{p.body}</p>
               </div>
             ))}
@@ -90,7 +91,7 @@ const About = () => {
 
       <motion.section {...fadeIn} className="bg-ink py-section-lg">
         <div className="container-site text-center">
-          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
               { stat: '6', label: 'Industries served — D2C, B2B SaaS, education' },
               { stat: '9', label: 'Growth capabilities under one bench' },
@@ -98,7 +99,7 @@ const About = () => {
             ].map((s) => (
               <div key={s.stat}>
                 <motion.span
-                  className="font-display text-display-lg text-canvas leading-none block"
+                  className="font-display text-heading-xl md:text-display-lg text-canvas leading-none block"
                   animate={{ scale: [1, 1.02, 1] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
                 >
@@ -133,13 +134,20 @@ const About = () => {
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
                 We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind Sierra-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
               </p>
+              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+                And if the lead is ever unavailable, a briefed specialist covers the sprint — your context lives in shared docs and weekly notes, never in one head.
+              </p>
               <div className="flex flex-wrap items-center gap-3 mt-6">
-                <a href="mailto:hi@saswatasg.com" className="inline-flex items-center gap-2 h-10 px-5 rounded-full bg-ink text-canvas text-button-sm no-underline hover:bg-ink/90 transition-colors">
-                  <Mail className="w-4 h-4" /> Email Saswata
-                </a>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 h-10 px-5 rounded-full border border-hairline text-mute text-button-sm no-underline hover:bg-soft-cloud hover:text-ink transition-colors">
-                  <MessageCircle className="w-4 h-4" /> WhatsApp
-                </a>
+                <Button asChild size="sm" className="gap-2">
+                  <a href="mailto:hi@saswatasg.com" className="no-underline">
+                    <Mail className="w-4 h-4" /> Email Saswata
+                  </a>
+                </Button>
+                <Button asChild size="sm" variant="outline" className="gap-2">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
+                    <MessageCircle className="w-4 h-4" /> WhatsApp
+                  </a>
+                </Button>
                 <Button size="sm" variant="secondary" onClick={openBookingModal}>Book a Call</Button>
               </div>
             </div>
@@ -179,11 +187,9 @@ const About = () => {
           <p className="text-caption-md text-stone italic mt-4">
             We&apos;ll tell you in the first 10 minutes if we&apos;re the right fit.
           </p>
-          <p className="mt-4">
-            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
-              Prefer self-serve? Take the 60-second AI scorecard
-            </Link>
-          </p>
+          <div className="mt-6">
+            <CtaPaths tone="dark" />
+          </div>
         </div>
       </motion.section>
     </>

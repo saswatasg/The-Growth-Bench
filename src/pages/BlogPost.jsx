@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { loadPosts, loadCTAs } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { WHATSAPP_URL } from '@/lib/constants';
+import { WHATSAPP_URL, SITE_URL } from '@/lib/constants';
 
 const slugToCategoryImage = {
   'Growth Strategy': '/assets/images/og-growth-strategy.png',
@@ -45,21 +45,30 @@ const BlogPost = () => {
   }
 
   const dateToISO = (dateStr) => {
-    const months = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
-    const [month, year] = dateStr.split(' ');
-    return `${year}-${months[month]}-01`;
+    try {
+      const months = { Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12' };
+      const [month, year] = String(dateStr || '').split(' ');
+      if (!months[month] || !year) return undefined;
+      return `${year}-${months[month]}-01`;
+    } catch {
+      return undefined;
+    }
   };
 
+  const postUrl = `${SITE_URL}/insights/${slug}/`;
+  const postImage = `${SITE_URL}${slugToCategoryImage[post.category] || '/assets/images/og-card.png'}`;
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
+    "mainEntityOfPage": postUrl,
+    "inLanguage": "en",
     "datePublished": dateToISO(post.date),
     "dateModified": dateToISO(post.date),
-    "image": slugToCategoryImage[post.category] || "/assets/images/og-card.png",
-    "author": { "@type": "Organization", "name": "The Growth Bench" },
-    "publisher": { "@type": "Organization", "name": "The Growth Bench" },
+    "image": postImage,
+    "author": { "@type": "Person", "name": "Saswata Sengupta", "url": `${SITE_URL}/about/` },
+    "publisher": { "@type": "Organization", "name": "The Growth Bench", "logo": { "@type": "ImageObject", "url": `${SITE_URL}/assets/images/og-card.png` } },
   };
 
   return (
@@ -164,7 +173,7 @@ const BlogPost = () => {
           )}
 
           <div className="mt-16 pt-8 border-t border-hairline-soft">
-            <h3 className="font-display text-heading-lg text-ink mb-6">Related posts</h3>
+            <h2 className="font-display text-heading-lg text-ink mb-6">Related posts</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {posts
                 .filter((p) => p.slug !== post.slug && p.category === post.category)
@@ -172,7 +181,7 @@ const BlogPost = () => {
                 .map((related) => (
                   <Link key={related.slug} to={`/insights/${related.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group">
                     <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-2 uppercase">{related.category}</span>
-                    <h4 className="text-heading-md text-ink mb-1 group-hover:text-mute transition-colors">{related.title}</h4>
+                    <h3 className="text-heading-md text-ink mb-1 group-hover:text-mute transition-colors">{related.title}</h3>
                     <p className="text-caption-sm text-mute">{related.readTime} min read</p>
                   </Link>
                 ))}

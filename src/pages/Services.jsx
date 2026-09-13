@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
+import { ArrowRight, Check, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
+import CtaPaths from '@/components/CtaPaths';
 import { fadeUp, fadeIn, stagger } from '@/lib/motion';
 
 const services = [
@@ -73,7 +74,14 @@ const sections = [
     ],
     benchmarksNote: 'Industry benchmarks behind this build — category data, not our client results.',
     proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the Sierra catalog pipeline.',
-    boundaries: 'What we don\u2019t promise: a specific ROAS, platform approvals, inbox placement, or overnight results — automation compounds after the human-review period, and money-moving actions always need your approval.',
+    boundariesNote: 'The honest boundaries — what we don\u2019t promise',
+    boundaries: [
+      'A specific ROAS',
+      'Platform approvals',
+      'Inbox placement',
+      'Overnight results',
+    ],
+    boundariesFoot: 'Money-moving actions always need your approval. Automation compounds after the human-review period.',
     benchmarks: [
       { num: '18–23%', label: 'WhatsApp cart-recovery in optimized flows vs 5–8% via email (Chatarmin 2026, 450+ brands)' },
       { num: '64–74%', label: 'Re-delivery on auto NDR outreach within 2 hours vs 28–36% with none (Base 2026, India D2C)' },
@@ -108,7 +116,7 @@ const sections = [
       'UI/UX design with conversion-first wireframes',
       'Google Tag Manager setup and full event tagging',
       'GA4 implementation with custom event tracking',
-      'Meta Pixel and CAPI integration',
+      'Meta Pixel and CAPI integration (server-side tracking)',
       'Heatmap and session recording setup',
       'Core Web Vitals optimisation (Lighthouse 90+)',
       'Mobile-first responsive design',
@@ -160,7 +168,7 @@ const sections = [
       'Funnel drop-off analysis (GA4, Shopify analytics)',
       'Session recording and heatmap analysis',
       'Qualitative research: user interviews, on-page surveys',
-      'Hypothesis generation with ICE/PIE prioritisation',
+      'Hypothesis generation with ICE/PIE prioritisation (impact-first ranking)',
       'A/B and multivariate test design and execution',
       'Copy, layout, CTA, UX, offer experiment frameworks',
       'Statistical significance monitoring',
@@ -228,7 +236,7 @@ const Services = () => {
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
-            <h1 className="font-display text-display-md text-ink mt-2 leading-none">
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               The full growth stack.<br />Not parts of it.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
@@ -238,7 +246,7 @@ const Services = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg">
+      <motion.section {...fadeUp} className="bg-canvas py-section">
         <div className="container-site">
           <div className="grid md:grid-cols-3 gap-4">
             {services.map((s) => {
@@ -266,7 +274,7 @@ const Services = () => {
       {sections.map((service, i) => {
         const Icon = service.icon;
         return (
-          <motion.section key={service.id} id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft' : 'bg-soft-cloud border-t border-hairline-soft'}>
+          <motion.section key={service.id} id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft scroll-mt-16' : 'bg-soft-cloud border-t border-hairline-soft scroll-mt-16'}>
             <div className="container-site py-section-lg">
               <div className="grid md:grid-cols-2 gap-12">
                 <div>
@@ -279,16 +287,13 @@ const Services = () => {
                   {service.proof && (
                     <p className="text-body-sm text-ink mt-4 leading-relaxed">{service.proof}</p>
                   )}
-                  {service.boundaries && (
-                    <p className="text-caption-md text-mute mt-4 leading-relaxed border-l-2 border-hairline pl-4">{service.boundaries}</p>
-                  )}
                 </div>
                 <div>
                   <h3 className="text-heading-md text-ink mb-4">What's included</h3>
                   <ul className="space-y-2">
                     {service.includes.map((item) => (
                       <li key={item} className="text-body-sm text-mute flex items-start gap-2">
-                        <span className="w-1 h-1 rounded-full bg-ink mt-2.5 flex-shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-success flex-shrink-0 mt-0.5" />
                         {item}
                       </li>
                     ))}
@@ -301,7 +306,7 @@ const Services = () => {
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
                     {service.benchmarks.map((b) => (
                       <div key={b.num}>
-                        <div className="font-display text-display-md text-ink leading-none">{b.num}</div>
+                        <div className="font-display text-heading-xl md:text-display-md text-ink leading-none">{b.num}</div>
                         <p className="text-caption-md text-mute mt-2 leading-relaxed">{b.label}</p>
                       </div>
                     ))}
@@ -309,12 +314,49 @@ const Services = () => {
                   <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-8">
                     Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
                   </Link>
+                  {service.boundaries && (
+                    <div className="mt-8 border border-hairline-soft p-6 max-w-2xl">
+                      <span className="text-label-xs text-mute uppercase tracking-wider">{service.boundariesNote}</span>
+                      <ul className="mt-3 space-y-2">
+                        {service.boundaries.map((item) => (
+                          <li key={item} className="text-body-sm text-mute flex items-start gap-2.5">
+                            <span className="text-mute mt-0.5 flex-shrink-0">✕</span>
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                      <p className="text-caption-md text-mute mt-4 leading-relaxed">{service.boundariesFoot}</p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           </motion.section>
         );
       })}
+
+      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-t border-hairline-soft">
+        <div className="container-site">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
+          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">What founders ask first.</h2>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl">
+            {[
+              { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\u2019re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.' },
+              { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\u2019re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
+              { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30–60 days. Quick wins land in the first two weeks; compound results build over 3–6 months.' },
+              { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Nothing goes live without a human-review period.' },
+              { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, analytics, and WhatsApp/Instagram automation — picked per client, never one-size-fits-all.' },
+              { q: 'What do you need from us to start?', a: 'Access to the tools involved (Shopify, ad accounts, WhatsApp Business), plus a few hours a week from your side for reviews and approvals. We handle everything else.' },
+              { q: 'What if the AI makes a mistake?', a: 'Every system ships with a human-review period, and money or promise-moving actions always need sign-off first. Exceptions land with full context — and if a flow misbehaves, we pause it and fix it before it touches another customer.' },
+            ].map((item) => (
+              <div key={item.q}>
+                <h3 className="text-heading-md text-ink">{item.q}</h3>
+                <p className="text-body-sm text-mute mt-2 leading-relaxed max-w-md">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
 
       <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
         <div className="container-site max-w-2xl mx-auto">
@@ -327,11 +369,9 @@ const Services = () => {
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <p className="mt-6">
-            <Link to="/ai-scorecard" className="text-caption-md text-stone underline underline-offset-2 hover:text-canvas transition-colors">
-              Prefer self-serve? Take the 60-second AI scorecard
-            </Link>
-          </p>
+          <div className="mt-6">
+            <CtaPaths tone="dark" />
+          </div>
         </div>
       </motion.section>
     </>
