@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Search, Target, TrendingUp, Code2, Palette, Users, FileText, BarChart3, Sparkles, Zap, MessageSquare, Workflow } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -36,6 +37,25 @@ const WorkWithUs = () => {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { openBookingModal } = useBookingModal();
+
+  const faqItems = [
+    { q: 'How much does it cost?', a: 'Scoped after a free 30-minute audit — no public pricing, no retainer commitment upfront. Fixed-timeline scope based on your funnel.' },
+    { q: 'How does onboarding work?', a: 'Audit, scoped plan, kickoff + access, first deliverables within week one, strategy doc by day 14.' },
+    { q: 'How soon do results show?', a: 'First meaningful improvement in 30–60 days, quick wins in the first two weeks.' },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
 
   const toggleModule = (id) => {
     const next = new Set(selectedModules);
@@ -80,10 +100,10 @@ const WorkWithUs = () => {
         toast.success('Details sent! Now pick a time for your free call.');
         openBookingModal();
       } else {
-        toast.error('Something went wrong. Please email us at saswatasg@gmail.com.');
+        toast.error('Something went wrong. Please email us at hello@thegrowthbench.com.');
       }
     } catch {
-      toast.error('Network error. Please email us at saswatasg@gmail.com.');
+      toast.error('Network error. Please email us at hello@thegrowthbench.com.');
     }
     setSubmitting(false);
   };
@@ -91,6 +111,9 @@ const WorkWithUs = () => {
   return (
     <>
       <PageMeta />
+      <Helmet>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      </Helmet>
 
       <section className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
@@ -225,7 +248,7 @@ const WorkWithUs = () => {
                 Book Your Free Call &rarr;
               </Button>
               <p className="text-caption-sm text-mute mt-6">
-                Prefer email? <a href="mailto:saswatasg@gmail.com" className="text-ink underline">saswatasg@gmail.com</a>
+                Prefer email? <a href="mailto:hello@thegrowthbench.com" className="text-ink underline">hello@thegrowthbench.com</a>
               </p>
             </div>
           )}
@@ -258,11 +281,7 @@ const WorkWithUs = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">What founders ask first.</h2>
             <div className="grid md:grid-cols-3 gap-8 mt-8">
-              {[
-                { q: 'How much does it cost?', a: 'Scoped after a free 30-minute audit — no public pricing, no retainer commitment upfront. Fixed-timeline scope based on your funnel.' },
-                { q: 'How does onboarding work?', a: 'Audit, scoped plan, kickoff + access, first deliverables within week one, strategy doc by day 14.' },
-                { q: 'How soon do results show?', a: 'First meaningful improvement in 30–60 days, quick wins in the first two weeks.' },
-              ].map((item) => (
+              {faqItems.map((item) => (
                 <div key={item.q}>
                   <h3 className="text-heading-md text-ink mb-2">{item.q}</h3>
                   <p className="text-body-sm text-mute leading-relaxed">{item.a}</p>

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, Search, Users, Zap } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import CtaPaths from '@/components/CtaPaths';
+import HowItWorks from '@/components/HowItWorks';
+import FitFilter from '@/components/FitFilter';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
@@ -70,7 +72,7 @@ const Compare = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">Side by side</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same job, three ways.</h2>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <thead>
                 <tr className="border-b border-hairline">
@@ -107,79 +109,9 @@ const Compare = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
-        <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="text-label-xs text-mute uppercase tracking-wider">How It Works</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">One partner.<br />The right team.<br />No layers.</h2>
-          </div>
+      <HowItWorks className="bg-soft-cloud" />
 
-          <div className="grid md:grid-cols-3 gap-8 items-start max-w-4xl">
-            {[
-              { icon: Search, title: 'Diagnosis', desc: 'Free audit call to understand your funnel' },
-              { icon: Users, title: 'Team Assembly', desc: 'Right specialists for what you need' },
-              { icon: Zap, title: 'Execute & Iterate', desc: 'Weekly check-ins, continuous improvement' },
-            ].map((step) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.title} className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-canvas border border-hairline-soft flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-ink" />
-                  </div>
-                  <div>
-                    <h3 className="text-heading-md text-ink">{step.title}</h3>
-                    <p className="text-body-sm text-mute mt-1">{step.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <p className="text-body-sm text-mute max-w-2xl mt-10 leading-relaxed">
-            Every engagement is led by the founder — one person with complete context on your business.
-            Specialist bench members are brought in based on what the work actually needs. No account managers, no briefing layers.
-          </p>
-        </div>
-      </motion.section>
-
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
-        <div className="container-site">
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div>
-              <span className="text-label-xs text-success uppercase tracking-wider mb-3 block">Good fit</span>
-              <ul className="space-y-3">
-                {[
-                  "D2C brand doing ₹10L–₹10Cr/month with inconsistent growth",
-                  "Tried agencies or freelancers — something always falls through",
-                  "Want one partner who understands your entire funnel",
-                  "Building from scratch and need systems, not just execution",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute">
-                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-success" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <span className="text-label-xs text-sale uppercase tracking-wider mb-3 block">Not the right fit</span>
-              <ul className="space-y-3">
-                {[
-                  "Need daily social media posting or community management",
-                  "Want cheapest execution with no strategic input",
-                  "Brief changes weekly, not ready to commit to direction",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute">
-                    <span className="text-sale mt-0.5 flex-shrink-0">✕</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </motion.section>
+      <FitFilter className="bg-canvas" />
 
       <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
         <div className="container-site max-w-2xl mx-auto">

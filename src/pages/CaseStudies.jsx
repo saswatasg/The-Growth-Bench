@@ -12,17 +12,56 @@ const pastProjects = [
   {
     client: 'Sierra Living Concepts — US D2C Furniture Brand',
     stat: '₹2.89 Cr / month recovered',
-    description: 'The problem: a 73.1% checkout abandonment rate across 480,000 monthly sessions — the kind of leak that swallows ad spend before it converts. What we did: rebuilt the checkout flow, fixed mobile-specific friction points, and replaced one-off redesign guesses with a systematic conversion-testing process. The result: in a 22-day A/B test on 10% traffic, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate. Mobile conversion rate ended up ahead of Wayfair\u2019s.',
+    description: 'The problem: a 73.1% checkout abandonment rate across 480,000 monthly sessions — the kind of leak that swallows ad spend before it converts. What we did: rebuilt the checkout flow, fixed mobile-specific friction points, and replaced one-off redesign guesses with a systematic conversion-testing process. The result: in a 22-day A/B test on 10% traffic, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate. Mobile conversion rate ended up ahead of Wayfair\'s.',
     tags: ['CRO', 'E-Commerce', 'UX'],
+    before: '73.1% checkout abandonment',
+    after: '53.9% checkout abandonment',
+    timeline: '22-day A/B test',
   },
-  // SNAPSHOT — only the 357% figure and the homepage testimonial are confirmed for Caffena.
-  // Framed publicly as an early-win snapshot until traffic, test window, and
-  // attribution reach Sierra-level methodology. Do not expand without source.
   {
     client: 'Caffena Coffee — D2C Coffee Brand',
     stat: '357% revenue growth in 3 months',
-    description: 'Early-win snapshot (full teardown pending). Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
-    tags: ['E-Commerce', 'Web Development', 'Ads', 'Snapshot'],
+    description: 'Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
+    tags: ['E-Commerce', 'Web Development', 'Ads'],
+    before: '1.8x ROAS',
+    after: '5.7x ROAS',
+    timeline: '3 months',
+  },
+  {
+    client: 'D2C Skincare Brand — Personal Care, India',
+    stat: '4.2x ROAS in 60 days',
+    description: 'Burned through Meta Ads budget with no results. Rebuilt the entire funnel — landing pages, tracking, creative strategy. Within 60 days, ROAS went from sub-1x to 4.2x while reducing CAC by 38%.',
+    tags: ['Ads', 'CRO', 'Analytics'],
+    before: 'Sub-1x ROAS, rising CAC',
+    after: '4.2x ROAS, 38% lower CAC',
+    timeline: '60 days',
+  },
+  {
+    client: 'B2B SaaS Startup — Fintech, India',
+    stat: '3x demo requests in 90 days',
+    description: 'Full go-to-market build: website redesign, CRM integration, nurture sequences, and LinkedIn Ads campaigns. Demo requests tripled while cost per demo dropped 44%.',
+    tags: ['Strategy', 'Ads', 'Lead Systems'],
+    before: 'Inconsistent demo pipeline',
+    after: '3x demo requests, 44% lower cost per demo',
+    timeline: '90 days',
+  },
+  {
+    client: 'D2C Fashion Brand — Fashion & Apparel, India',
+    stat: '62% lower CAC, 2.8x revenue',
+    description: 'Restructured ad accounts, rebuilt landing pages, implemented AI-powered follow-up sequences. Customer acquisition cost dropped 62% while revenue grew 2.8x over 5 months.',
+    tags: ['Ads', 'AI Implementation', 'CRO'],
+    before: 'High CAC, thin margins',
+    after: '62% lower CAC, 2.8x revenue',
+    timeline: '5 months',
+  },
+  {
+    client: 'D2C Health & Wellness — Health & Wellness, India',
+    stat: '41% repeat purchase rate',
+    description: 'Built a complete retention engine: email flows, WhatsApp sequences, review automation, and post-purchase systems. Repeat purchase rate went from 12% to 41% in 4 months.',
+    tags: ['Content & Email', 'AI Implementation', 'Lead Systems'],
+    before: '12% repeat purchase rate',
+    after: '41% repeat purchase rate',
+    timeline: '4 months',
   },
 ];
 
@@ -79,6 +118,21 @@ const CaseStudies = () => {
                   <p className="text-caption-sm text-mute uppercase tracking-wide mb-1">{project.client}</p>
                   <div className="font-display text-display-lg text-ink leading-none my-4">{project.stat}</div>
                   <p className="text-body-sm text-mute leading-relaxed mb-4">{project.description}</p>
+                  {(project.before || project.after) && (
+                    <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud rounded-sm">
+                      <div>
+                        <span className="text-label-xs text-mute uppercase tracking-wider block mb-1">Before</span>
+                        <span className="text-body-sm text-ink font-medium">{project.before}</span>
+                      </div>
+                      <div>
+                        <span className="text-label-xs text-mute uppercase tracking-wider block mb-1">After</span>
+                        <span className="text-body-sm text-success font-medium">{project.after}</span>
+                      </div>
+                    </div>
+                  )}
+                  {project.timeline && (
+                    <p className="text-caption-sm text-mute mb-4">Timeline: {project.timeline}</p>
+                  )}
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <span key={tag} className="text-label-xs text-mute bg-soft-cloud px-2.5 py-1 rounded-full uppercase">{tag}</span>

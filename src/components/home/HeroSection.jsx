@@ -102,11 +102,6 @@ const HeroSection = () => {
             <Button size="lg" onClick={openBookingModal}>
               Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link to="/services" className="no-underline">
-                See Our Services
-              </Link>
-            </Button>
           </motion.div>
 
           <motion.p
@@ -115,9 +110,13 @@ const HeroSection = () => {
             transition={{ delay: ctaDelay + 0.3, duration: 0.5 }}
             className="text-body-sm text-mute mt-6"
           >
-            Not sure where AI fits your store?{' '}
+            Or see{' '}
+            <Link to="/services" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
+              our services
+            </Link>
+            {' '}· take the{' '}
             <Link to="/ai-scorecard" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
-              Take the 60-second AI scorecard
+              60-second AI scorecard
             </Link>
           </motion.p>
         </div>

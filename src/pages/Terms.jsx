@@ -43,7 +43,7 @@ const Terms = () => {
             <p>These Terms are governed by the laws of India.</p>
 
             <h2>9. Contact</h2>
-            <p><a href="mailto:saswatasg@gmail.com">saswatasg@gmail.com</a></p>
+            <p><a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a></p>
           </div>
         </div>
       </section>

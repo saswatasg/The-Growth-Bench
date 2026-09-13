@@ -7,6 +7,8 @@ import Layout from '@/components/Layout';
 import RoutesConfig from '@/config/RoutesConfig';
 import ScrollToTop from '@/components/ScrollToTop';
 import CookieConsent from '@/components/CookieConsent';
+import ExitIntent from '@/components/ExitIntent';
+import StickyMobileCTA from '@/components/StickyMobileCTA';
 import { Toaster } from '@/components/ui/sonner';
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <RoutesConfig />
         </Layout>
         <CookieConsent />
+        <ExitIntent />
+        <StickyMobileCTA />
         <Toaster />
         </BookingModalProvider>
       </AuthProvider>

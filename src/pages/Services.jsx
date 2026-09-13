@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
 import CtaPaths from '@/components/CtaPaths';
 import { fadeUp, fadeIn, stagger } from '@/lib/motion';
+import { SITE_URL } from '@/lib/constants';
 
 const services = [
   {
@@ -228,9 +230,35 @@ const sections = [
 const Services = () => {
   const { openBookingModal } = useBookingModal();
 
+  const faqItems = [
+    { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\u2019re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.' },
+    { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\u2019re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
+    { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30\u201360 days. Quick wins land in the first two weeks; compound results build over 3\u20136 months.' },
+    { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Nothing goes live without a human-review period.' },
+    { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, analytics, and WhatsApp/Instagram automation — picked per client, never one-size-fits-all.' },
+    { q: 'What do you need from us to start?', a: 'Access to the tools involved (Shopify, ad accounts, WhatsApp Business), plus a few hours a week from your side for reviews and approvals. We handle everything else.' },
+    { q: 'What if the AI makes a mistake?', a: 'Every system ships with a human-review period, and money or promise-moving actions always need sign-off first. Exceptions land with full context — and if a flow misbehaves, we pause it and fix it before it touches another customer.' },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }))
+  };
+
   return (
     <>
       <PageMeta />
+      <Helmet>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      </Helmet>
 
       <section className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
@@ -274,64 +302,81 @@ const Services = () => {
       {sections.map((service, i) => {
         const Icon = service.icon;
         return (
-          <motion.section key={service.id} id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft scroll-mt-16' : 'bg-soft-cloud border-t border-hairline-soft scroll-mt-16'}>
-            <div className="container-site py-section-lg">
-              <div className="grid md:grid-cols-2 gap-12">
-                <div>
-                  <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
-                    <Icon className="w-4 h-4 text-canvas" />
-                  </div>
-                  <span className="text-label-xs text-mute uppercase tracking-wider">{service.eyebrow}</span>
-                  <h2 className="font-display text-display-md text-ink mt-2 leading-none">{service.h2}</h2>
-                  <p className="text-body-md text-mute mt-4 leading-relaxed">{service.summary}</p>
-                  {service.proof && (
-                    <p className="text-body-sm text-ink mt-4 leading-relaxed">{service.proof}</p>
-                  )}
-                </div>
-                <div>
-                  <h3 className="text-heading-md text-ink mb-4">What's included</h3>
-                  <ul className="space-y-2">
-                    {service.includes.map((item) => (
-                      <li key={item} className="text-body-sm text-mute flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-success flex-shrink-0 mt-0.5" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              {service.benchmarks && (
-                <div className="mt-12 border-t border-hairline-soft pt-8">
-                  <span className="text-label-xs text-mute uppercase tracking-wider">{service.benchmarksNote}</span>
-                  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
-                    {service.benchmarks.map((b) => (
-                      <div key={b.num}>
-                        <div className="font-display text-heading-xl md:text-display-md text-ink leading-none">{b.num}</div>
-                        <p className="text-caption-md text-mute mt-2 leading-relaxed">{b.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-8">
-                    Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  {service.boundaries && (
-                    <div className="mt-8 border border-hairline-soft p-6 max-w-2xl">
-                      <span className="text-label-xs text-mute uppercase tracking-wider">{service.boundariesNote}</span>
-                      <ul className="mt-3 space-y-2">
-                        {service.boundaries.map((item) => (
-                          <li key={item} className="text-body-sm text-mute flex items-start gap-2.5">
-                            <span className="text-mute mt-0.5 flex-shrink-0">✕</span>
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                      <p className="text-caption-md text-mute mt-4 leading-relaxed">{service.boundariesFoot}</p>
+          <React.Fragment key={service.id}>
+            <motion.section id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft scroll-mt-16' : 'bg-soft-cloud border-t border-hairline-soft scroll-mt-16'}>
+              <div className="container-site py-section-lg">
+                <div className="grid md:grid-cols-2 gap-12">
+                  <div>
+                    <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
+                      <Icon className="w-4 h-4 text-canvas" />
                     </div>
-                  )}
+                    <span className="text-label-xs text-mute uppercase tracking-wider">{service.eyebrow}</span>
+                    <h2 className="font-display text-display-md text-ink mt-2 leading-none">{service.h2}</h2>
+                    <p className="text-body-md text-mute mt-4 leading-relaxed">{service.summary}</p>
+                    {service.proof && (
+                      <p className="text-body-sm text-ink mt-4 leading-relaxed">{service.proof}</p>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-heading-md text-ink mb-4">What's included</h3>
+                    <ul className="space-y-2">
+                      {service.includes.map((item) => (
+                        <li key={item} className="text-body-sm text-mute flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 text-success flex-shrink-0 mt-0.5" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              )}
-            </div>
-          </motion.section>
+                {service.benchmarks && (
+                  <div className="mt-12 border-t border-hairline-soft pt-8">
+                    <span className="text-label-xs text-mute uppercase tracking-wider">{service.benchmarksNote}</span>
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
+                      {service.benchmarks.map((b) => (
+                        <div key={b.num}>
+                          <div className="font-display text-heading-xl md:text-display-md text-ink leading-none">{b.num}</div>
+                          <p className="text-caption-md text-mute mt-2 leading-relaxed">{b.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-8">
+                      Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
+                    </Link>
+                    {service.boundaries && (
+                      <div className="mt-8 border border-hairline-soft p-6 max-w-2xl">
+                        <span className="text-label-xs text-mute uppercase tracking-wider">{service.boundariesNote}</span>
+                        <ul className="mt-3 space-y-2">
+                          {service.boundaries.map((item) => (
+                            <li key={item} className="text-body-sm text-mute flex items-start gap-2.5">
+                              <span className="text-mute mt-0.5 flex-shrink-0">✕</span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="text-caption-md text-mute mt-4 leading-relaxed">{service.boundariesFoot}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </motion.section>
+            {i === 2 && (
+              <motion.section {...fadeUp} className="bg-ink py-section text-center">
+                <div className="container-site">
+                  <h3 className="font-display text-heading-xl text-canvas leading-none mb-4">
+                    Not sure which services you need?
+                  </h3>
+                  <p className="text-body-sm text-stone mb-6 max-w-md mx-auto">
+                    That's what the audit call is for. We'll identify the highest-impact gaps and tell you honestly where we'd start.
+                  </p>
+                  <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+                    Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </motion.section>
+            )}
+          </React.Fragment>
         );
       })}
 
@@ -340,15 +385,7 @@ const Services = () => {
           <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">What founders ask first.</h2>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl">
-            {[
-              { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\u2019re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.' },
-              { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\u2019re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
-              { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30–60 days. Quick wins land in the first two weeks; compound results build over 3–6 months.' },
-              { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Nothing goes live without a human-review period.' },
-              { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, analytics, and WhatsApp/Instagram automation — picked per client, never one-size-fits-all.' },
-              { q: 'What do you need from us to start?', a: 'Access to the tools involved (Shopify, ad accounts, WhatsApp Business), plus a few hours a week from your side for reviews and approvals. We handle everything else.' },
-              { q: 'What if the AI makes a mistake?', a: 'Every system ships with a human-review period, and money or promise-moving actions always need sign-off first. Exceptions land with full context — and if a flow misbehaves, we pause it and fix it before it touches another customer.' },
-            ].map((item) => (
+            {faqItems.map((item) => (
               <div key={item.q}>
                 <h3 className="text-heading-md text-ink">{item.q}</h3>
                 <p className="text-body-sm text-mute mt-2 leading-relaxed max-w-md">{item.a}</p>

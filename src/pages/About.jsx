@@ -116,8 +116,14 @@ const About = () => {
       <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
         <div className="container-site">
           <div className="grid md:grid-cols-[auto_1fr] gap-8 max-w-4xl items-start">
-            <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0">
-              <span className="font-display text-display-md text-canvas">S</span>
+            <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <img
+                src="/assets/images/founder.jpg"
+                alt="Saswata Sengupta, Founder of The Growth Bench"
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+              />
+              <span className="font-display text-display-md text-canvas hidden">S</span>
             </div>
             <div>
               <span className="text-label-xs text-mute uppercase tracking-wider">The Founder</span>
@@ -139,7 +145,7 @@ const About = () => {
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-6">
                 <Button asChild size="sm" className="gap-2">
-                  <a href="mailto:saswatasg@gmail.com" className="no-underline">
+                  <a href="mailto:hello@thegrowthbench.com" className="no-underline">
                     <Mail className="w-4 h-4" /> Email Saswata
                   </a>
                 </Button>

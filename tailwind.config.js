@@ -20,7 +20,7 @@ module.exports = {
         charcoal: '#39393b',
         ash: '#4b4b4d',
         mute: '#707072',
-        stone: '#9e9ea0',
+        stone: '#767676',
         hairline: '#cacacb',
         'hairline-soft': '#e5e5e5',
         sale: '#d30005',
