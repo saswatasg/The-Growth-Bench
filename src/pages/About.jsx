@@ -139,7 +139,7 @@ const About = () => {
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-6">
                 <Button asChild size="sm" className="gap-2">
-                  <a href="mailto:hi@saswatasg.com" className="no-underline">
+                  <a href="mailto:saswatasg@gmail.com" className="no-underline">
                     <Mail className="w-4 h-4" /> Email Saswata
                   </a>
                 </Button>

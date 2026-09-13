@@ -80,10 +80,10 @@ const WorkWithUs = () => {
         toast.success('Details sent! Now pick a time for your free call.');
         openBookingModal();
       } else {
-        toast.error('Something went wrong. Please email us at hi@saswatasg.com.');
+        toast.error('Something went wrong. Please email us at saswatasg@gmail.com.');
       }
     } catch {
-      toast.error('Network error. Please email us at hi@saswatasg.com.');
+      toast.error('Network error. Please email us at saswatasg@gmail.com.');
     }
     setSubmitting(false);
   };
@@ -225,7 +225,7 @@ const WorkWithUs = () => {
                 Book Your Free Call &rarr;
               </Button>
               <p className="text-caption-sm text-mute mt-6">
-                Prefer email? <a href="mailto:hi@saswatasg.com" className="text-ink underline">hi@saswatasg.com</a>
+                Prefer email? <a href="mailto:saswatasg@gmail.com" className="text-ink underline">saswatasg@gmail.com</a>
               </p>
             </div>
           )}

@@ -59,7 +59,7 @@ const Footer = () => {
             <h4 className="text-caption-sm text-canvas font-medium mb-4">Contact</h4>
             <ul className="space-y-2">
               <li>
-                <a href="mailto:hi@saswatasg.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
+                <a href="mailto:saswatasg@gmail.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5" /> Email
                 </a>
               </li>
