@@ -18,14 +18,14 @@ const badFit = [
 
 const FitFilter = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section-lg border-b border-hairline-soft ${className}`}>
+    <motion.section {...fadeUp} className={`py-section-lg border-b border-hairline-soft dark:border-charcoal ${className}`}>
       <div className="container-site">
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <div>
             <span className="text-label-xs text-success uppercase tracking-wider mb-3 block">Good fit</span>
             <ul className="space-y-3">
               {goodFit.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute">
+                <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute dark:text-stone">
                   <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-success" />
                   {item}
                 </li>
@@ -37,7 +37,7 @@ const FitFilter = ({ className = '' }) => {
             <span className="text-label-xs text-sale uppercase tracking-wider mb-3 block">Not the right fit</span>
             <ul className="space-y-3">
               {badFit.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute">
+                <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute dark:text-stone">
                   <span className="text-sale mt-0.5 flex-shrink-0">✕</span>
                   {item}
                 </li>

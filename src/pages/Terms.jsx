@@ -6,18 +6,18 @@ const Terms = () => {
   return (
     <>
       <PageMeta />
-      <section className="bg-canvas py-section-lg">
+      <section className="bg-canvas dark:bg-ink py-section-lg">
         <div className="container-site max-w-3xl mx-auto">
-          <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">
-            <Link to="/" className="hover:text-ink transition-colors no-underline text-mute">Home</Link>
-            <span className="text-mute">/</span>
-            <span className="text-ink font-medium">Terms of Service</span>
+          <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute dark:text-stone mb-6">
+            <Link to="/" className="hover:text-ink dark:hover:text-canvas transition-colors no-underline text-mute dark:text-stone">Home</Link>
+            <span className="text-mute dark:text-stone">/</span>
+            <span className="text-ink dark:text-canvas font-medium">Terms of Service</span>
           </nav>
-          <span className="text-label-xs text-mute uppercase tracking-wider">Legal</span>
-          <h1 className="font-display text-display-md text-ink mt-2 mb-3 leading-none">Terms of Service</h1>
-          <p className="text-caption-sm text-mute mb-10">Last updated: May 2026</p>
+          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Legal</span>
+          <h1 className="font-display text-display-md text-ink dark:text-canvas mt-2 mb-3 leading-none">Terms of Service</h1>
+          <p className="text-caption-sm text-mute dark:text-stone mb-10">Last updated: May 2026</p>
 
-          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
+          <div className="text-body-md text-mute dark:text-stone leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:dark:text-canvas [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:dark:text-accent [&_a]:underline [&_strong]:text-ink [&_strong]:dark:text-canvas [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
             <h2>1. Introduction</h2>
             <p>These Terms govern your use of <a href="https://www.thegrowthbench.com">thegrowthbench.com</a> and the services provided by The Growth Bench. By using our Site or submitting an enquiry, you agree to these Terms.</p>
 

@@ -7,18 +7,18 @@ const NotFound = () => {
   return (
     <>
       <PageMeta title="404 - Page Not Found | The Growth Bench" description="The page you are looking for does not exist or has been moved." noindex={true} />
-      <section className="bg-canvas">
+      <section className="bg-canvas dark:bg-ink">
         <div className="container-site min-h-[70vh] flex flex-col items-center justify-center py-16 text-center">
-          <h1 className="font-display text-display-md md:text-display-xl text-hairline leading-none mb-6">404</h1>
-          <h2 className="font-display text-display-md text-ink mb-4">Page Not Found</h2>
-          <p className="text-body-md text-mute max-w-md mb-8">
+          <h1 className="font-display text-display-md md:text-display-xl text-hairline dark:text-charcoal leading-none mb-6">404</h1>
+          <h2 className="font-display text-display-md text-ink dark:text-canvas mb-4">Page Not Found</h2>
+          <p className="text-body-md text-mute dark:text-stone max-w-md mb-8">
             The page you're looking for doesn't exist, has been removed, or is temporarily unavailable.
           </p>
           <Button asChild size="lg">
             <Link to="/">Back to Home</Link>
           </Button>
           <p className="mt-6">
-            <Link to="/ai-scorecard" className="text-body-sm text-mute underline underline-offset-2 hover:text-ink transition-colors">
+            <Link to="/ai-scorecard" className="text-body-sm text-mute dark:text-stone underline underline-offset-2 hover:text-ink dark:hover:text-canvas transition-colors">
               Or take the 60-second AI scorecard
             </Link>
           </p>

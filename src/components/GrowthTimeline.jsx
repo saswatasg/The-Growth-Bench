@@ -62,14 +62,14 @@ const GrowthTimeline = () => {
   const current = phases.find(p => p.id === activePhase);
 
   return (
-    <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+    <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
       <div className="container-site">
         <div className="max-w-2xl mb-12">
-          <span className="text-label-xs text-mute uppercase tracking-wider">The Bench Method</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">The Bench Method</span>
+          <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">
             What happens in your<br />first 90 days.
           </h2>
-          <p className="text-body-md text-mute mt-4 leading-relaxed max-w-xl">
+          <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed max-w-xl">
             A structured sprint, not an open-ended retainer. Every phase has clear deliverables and measurable outcomes.
           </p>
         </div>
@@ -79,10 +79,10 @@ const GrowthTimeline = () => {
             <button
               key={phase.id}
               onClick={() => setActivePhase(phase.id)}
-              className={`px-6 py-3 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+              className={`px-6 py-3 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 dark:focus-visible:ring-accent/40 ${
                 activePhase === phase.id
-                  ? 'bg-ink text-canvas border-ink'
-                  : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
+                  ? 'bg-ink text-canvas border-ink dark:bg-accent dark:text-ink dark:border-accent'
+                  : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink dark:bg-transparent dark:text-stone dark:border-charcoal dark:hover:border-canvas dark:hover:text-canvas'
               }`}
             >
               {phase.title}
@@ -105,24 +105,24 @@ const GrowthTimeline = () => {
                   <current.icon className="w-5 h-5 text-canvas" />
                 </div>
                 <div>
-                  <h3 className="font-display text-heading-xl text-ink">{current.subtitle}</h3>
-                  <p className="text-caption-sm text-mute">{current.title}</p>
+                  <h3 className="font-display text-heading-xl text-ink dark:text-canvas">{current.subtitle}</h3>
+                  <p className="text-caption-sm text-mute dark:text-stone">{current.title}</p>
                 </div>
               </div>
               <ul className="space-y-3">
                 {current.deliverables.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute">
+                  <li key={item} className="flex items-start gap-2.5 text-body-sm text-mute dark:text-stone">
                     <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-success" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-soft-cloud p-6 border border-hairline-soft self-start">
-              <span className="text-label-xs text-mute uppercase tracking-wider block mb-2">Expected by day {current.id}</span>
-              <p className="text-heading-md text-ink leading-snug">{current.metrics}</p>
-              <div className="mt-6 pt-6 border-t border-hairline-soft">
-                <p className="text-body-sm text-mute leading-relaxed">
+            <div className="bg-soft-cloud dark:bg-charcoal p-6 border border-hairline-soft dark:border-ash self-start">
+              <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider block mb-2">Expected by day {current.id}</span>
+              <p className="text-heading-md text-ink dark:text-canvas leading-snug">{current.metrics}</p>
+              <div className="mt-6 pt-6 border-t border-hairline-soft dark:border-ash">
+                <p className="text-body-sm text-mute dark:text-stone leading-relaxed">
                   Every phase includes weekly check-ins, continuous optimisation, and transparent reporting. You see exactly what's working and what's next.
                 </p>
               </div>

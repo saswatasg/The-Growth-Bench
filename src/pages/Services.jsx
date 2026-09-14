@@ -260,21 +260,21 @@ const Services = () => {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </Helmet>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">What We Do</span>
+            <h1 className="font-display text-display-md md:text-display-lg text-ink dark:text-canvas mt-2 leading-none">
               The full growth stack.<br />Not parts of it.
             </h1>
-            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn&apos;t live in a lane. Start with <a href="#ai-implementation" className="text-ink underline underline-offset-2">AI Implementation, our newest capability</a> — or any layer of the stack.
+            <p className="text-body-md text-mute dark:text-stone mt-6 max-w-xl leading-relaxed">
+              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn&apos;t live in a lane. Start with <a href="#ai-implementation" className="text-ink dark:text-accent underline underline-offset-2">AI Implementation, our newest capability</a> — or any layer of the stack.
             </p>
           </div>
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section">
+      <motion.section {...fadeUp} className="bg-canvas dark:bg-ink py-section">
         <div className="container-site">
           <div className="grid md:grid-cols-3 gap-4">
             {services.map((s) => {
@@ -283,14 +283,14 @@ const Services = () => {
                 <a
                   key={s.id}
                   href={`#${s.id}`}
-                  className="flex items-start gap-4 p-5 border border-hairline-soft bg-canvas no-underline group hover:border-ink transition-colors"
+                  className="flex items-start gap-4 p-5 border border-hairline-soft dark:border-charcoal bg-canvas dark:bg-charcoal no-underline group hover:border-ink dark:hover:border-accent transition-colors"
                 >
-                  <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center flex-shrink-0 group-hover:bg-ink transition-colors">
-                    <Icon className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+                  <div className="w-10 h-10 rounded-full bg-soft-cloud dark:bg-ink flex items-center justify-center flex-shrink-0 group-hover:bg-ink dark:group-hover:bg-accent transition-colors">
+                    <Icon className="w-4 h-4 text-ink group-hover:text-canvas dark:text-canvas dark:group-hover:text-ink transition-colors" />
                   </div>
                   <div>
-                    <h3 className="text-heading-md text-ink">{s.title}</h3>
-                    <p className="text-body-sm text-mute mt-1 leading-relaxed">{s.summary}</p>
+                    <h3 className="text-heading-md text-ink dark:text-canvas">{s.title}</h3>
+                    <p className="text-body-sm text-mute dark:text-stone mt-1 leading-relaxed">{s.summary}</p>
                   </div>
                 </a>
               );
@@ -303,25 +303,25 @@ const Services = () => {
         const Icon = service.icon;
         return (
           <React.Fragment key={service.id}>
-            <motion.section id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft scroll-mt-16' : 'bg-soft-cloud border-t border-hairline-soft scroll-mt-16'}>
+            <motion.section id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas dark:bg-ink border-t border-hairline-soft dark:border-charcoal scroll-mt-16' : 'bg-soft-cloud dark:bg-charcoal border-t border-hairline-soft dark:border-ash scroll-mt-16'}>
               <div className="container-site py-section-lg">
                 <div className="grid md:grid-cols-2 gap-12">
                   <div>
-                    <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
-                      <Icon className="w-4 h-4 text-canvas" />
+                    <div className="w-10 h-10 rounded-full bg-ink dark:bg-accent flex items-center justify-center mb-4">
+                      <Icon className="w-4 h-4 text-canvas dark:text-ink" />
                     </div>
-                    <span className="text-label-xs text-mute uppercase tracking-wider">{service.eyebrow}</span>
-                    <h2 className="font-display text-display-md text-ink mt-2 leading-none">{service.h2}</h2>
-                    <p className="text-body-md text-mute mt-4 leading-relaxed">{service.summary}</p>
+                    <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">{service.eyebrow}</span>
+                    <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">{service.h2}</h2>
+                    <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed">{service.summary}</p>
                     {service.proof && (
-                      <p className="text-body-sm text-ink mt-4 leading-relaxed">{service.proof}</p>
+                      <p className="text-body-sm text-ink dark:text-accent mt-4 leading-relaxed">{service.proof}</p>
                     )}
                   </div>
                   <div>
-                    <h3 className="text-heading-md text-ink mb-4">What's included</h3>
+                    <h3 className="text-heading-md text-ink dark:text-canvas mb-4">What's included</h3>
                     <ul className="space-y-2">
                       {service.includes.map((item) => (
-                        <li key={item} className="text-body-sm text-mute flex items-start gap-2">
+                        <li key={item} className="text-body-sm text-mute dark:text-stone flex items-start gap-2">
                           <Check className="w-3.5 h-3.5 text-success flex-shrink-0 mt-0.5" />
                           {item}
                         </li>
@@ -330,31 +330,31 @@ const Services = () => {
                   </div>
                 </div>
                 {service.benchmarks && (
-                  <div className="mt-12 border-t border-hairline-soft pt-8">
-                    <span className="text-label-xs text-mute uppercase tracking-wider">{service.benchmarksNote}</span>
+                  <div className="mt-12 border-t border-hairline-soft dark:border-ash pt-8">
+                    <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">{service.benchmarksNote}</span>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
                       {service.benchmarks.map((b) => (
                         <div key={b.num}>
-                          <div className="font-display text-heading-xl md:text-display-md text-ink leading-none">{b.num}</div>
-                          <p className="text-caption-md text-mute mt-2 leading-relaxed">{b.label}</p>
+                          <div className="font-display text-heading-xl md:text-display-md text-ink dark:text-canvas leading-none">{b.num}</div>
+                          <p className="text-caption-md text-mute dark:text-stone mt-2 leading-relaxed">{b.label}</p>
                         </div>
                       ))}
                     </div>
-                    <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-8">
+                    <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink dark:text-accent no-underline hover:text-mute dark:hover:text-accent/80 transition-colors mt-8">
                       Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
                     </Link>
                     {service.boundaries && (
-                      <div className="mt-8 border border-hairline-soft p-6 max-w-2xl">
-                        <span className="text-label-xs text-mute uppercase tracking-wider">{service.boundariesNote}</span>
+                      <div className="mt-8 border border-hairline-soft dark:border-charcoal p-6 max-w-2xl">
+                        <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">{service.boundariesNote}</span>
                         <ul className="mt-3 space-y-2">
                           {service.boundaries.map((item) => (
-                            <li key={item} className="text-body-sm text-mute flex items-start gap-2.5">
-                              <span className="text-mute mt-0.5 flex-shrink-0">✕</span>
+                            <li key={item} className="text-body-sm text-mute dark:text-stone flex items-start gap-2.5">
+                              <span className="text-mute dark:text-stone mt-0.5 flex-shrink-0">✕</span>
                               {item}
                             </li>
                           ))}
                         </ul>
-                        <p className="text-caption-md text-mute mt-4 leading-relaxed">{service.boundariesFoot}</p>
+                        <p className="text-caption-md text-mute dark:text-stone mt-4 leading-relaxed">{service.boundariesFoot}</p>
                       </div>
                     )}
                   </div>
@@ -362,15 +362,15 @@ const Services = () => {
               </div>
             </motion.section>
             {i === 2 && (
-              <motion.section {...fadeUp} className="bg-ink py-section text-center">
+              <motion.section {...fadeUp} className="bg-ink dark:bg-canvas py-section text-center">
                 <div className="container-site">
-                  <h3 className="font-display text-heading-xl text-canvas leading-none mb-4">
+                  <h3 className="font-display text-heading-xl text-canvas dark:text-ink leading-none mb-4">
                     Not sure which services you need?
                   </h3>
-                  <p className="text-body-sm text-stone mb-6 max-w-md mx-auto">
+                  <p className="text-body-sm text-stone dark:text-mute mb-6 max-w-md mx-auto">
                     That's what the audit call is for. We'll identify the highest-impact gaps and tell you honestly where we'd start.
                   </p>
-                  <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+                  <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud dark:bg-ink dark:text-canvas dark:hover:bg-charcoal" onClick={openBookingModal}>
                     Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
@@ -380,30 +380,30 @@ const Services = () => {
         );
       })}
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-t border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud dark:bg-charcoal py-section-lg border-t border-hairline-soft dark:border-ash">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">What founders ask first.</h2>
+          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Questions, answered</span>
+          <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none max-w-2xl">What founders ask first.</h2>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl">
             {faqItems.map((item) => (
               <div key={item.q}>
-                <h3 className="text-heading-md text-ink">{item.q}</h3>
-                <p className="text-body-sm text-mute mt-2 leading-relaxed max-w-md">{item.a}</p>
+                <h3 className="text-heading-md text-ink dark:text-canvas">{item.q}</h3>
+                <p className="text-body-sm text-mute dark:text-stone mt-2 leading-relaxed max-w-md">{item.a}</p>
               </div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink dark:bg-canvas py-section-lg text-center">
         <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
+          <h2 className="font-display text-display-md text-canvas dark:text-ink leading-none mb-6">
             Not sure which<br />services you need?
           </h2>
-          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
+          <p className="text-body-md text-stone dark:text-mute leading-relaxed mb-8 max-w-lg mx-auto">
             That's what the audit call is for. We'll look at your current setup, identify the highest-impact gaps, and tell you honestly where we'd start.
           </p>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud dark:bg-ink dark:text-canvas dark:hover:bg-charcoal" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <div className="mt-6">

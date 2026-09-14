@@ -115,21 +115,21 @@ const WorkWithUs = () => {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </Helmet>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">No Commitment. Just Clarity.</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">No Commitment. Just Clarity.</span>
+            <h1 className="font-display text-display-md md:text-display-lg text-ink dark:text-canvas mt-2 leading-none">
               Get a free 30-min<br />audit of your funnel.
             </h1>
-            <p className="text-body-md text-mute mt-4 max-w-lg leading-relaxed">
+            <p className="text-body-md text-mute dark:text-stone mt-4 max-w-lg leading-relaxed">
               Pick the areas you need help with, tell us about your business, and we'll diagnose your funnel — no pitch, no pressure.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-soft-cloud py-section-lg">
+      <section className="bg-soft-cloud dark:bg-charcoal py-section-lg">
         <div className="container-site max-w-2xl mx-auto">
           {!submitted ? (
             <>
@@ -137,21 +137,21 @@ const WorkWithUs = () => {
                 {[1, 2, 3].map((s) => (
                   <div key={s} className="flex items-center gap-3">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-caption-sm font-bold ${
-                      step === s ? 'bg-ink text-canvas' : step > s ? 'bg-ink/20 text-ink' : 'bg-canvas text-mute border border-hairline'
+                      step === s ? 'bg-ink text-canvas dark:bg-accent dark:text-ink' : step > s ? 'bg-ink/20 text-ink dark:bg-accent/20 dark:text-accent' : 'bg-canvas text-mute border border-hairline dark:bg-ink dark:text-stone dark:border-charcoal'
                     }`}>
                       {step > s ? <Check className="w-4 h-4" /> : s}
                     </div>
-                    {s < 3 && <div className={`w-12 h-px ${step > s ? 'bg-ink' : 'bg-hairline'}`} />}
+                    {s < 3 && <div className={`w-12 h-px ${step > s ? 'bg-ink dark:bg-accent' : 'bg-hairline dark:bg-charcoal'}`} />}
                   </div>
                 ))}
               </div>
 
               {step === 1 && (
                 <div>
-                  <p className="text-heading-md text-ink mb-4">What do you need help with?</p>
-                  <p className="text-caption-sm text-mute mb-4">
+                  <p className="text-heading-md text-ink dark:text-canvas mb-4">What do you need help with?</p>
+                  <p className="text-caption-sm text-mute dark:text-stone mb-4">
                     Not sure?{' '}
-                    <Link to="/ai-scorecard" className="text-ink underline underline-offset-2">
+                    <Link to="/ai-scorecard" className="text-ink dark:text-accent underline underline-offset-2">
                       Take the 60-second AI scorecard first
                     </Link>
                   </p>
@@ -165,8 +165,8 @@ const WorkWithUs = () => {
                           type="button"
                           onClick={() => toggleModule(mod.id)}
                           aria-pressed={isSelected}
-                          className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
-                            isSelected ? 'border-ink bg-ink text-canvas' : 'border-hairline bg-canvas text-mute hover:border-ink hover:text-ink'
+                          className={`inline-flex items-center gap-1.5 px-4 py-2.5 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 dark:focus-visible:ring-accent/40 ${
+                            isSelected ? 'border-ink bg-ink text-canvas dark:border-accent dark:bg-accent dark:text-ink' : 'border-hairline bg-canvas text-mute hover:border-ink hover:text-ink dark:border-charcoal dark:bg-ink dark:text-stone dark:hover:border-canvas dark:hover:text-canvas'
                           }`}
                         >
                           <Icon className="w-3.5 h-3.5" />
@@ -184,11 +184,11 @@ const WorkWithUs = () => {
               {step === 2 && (
                 <div>
                   <div className="mb-4">
-                    <p className="text-caption-sm text-mute">Selected: {[...selectedModules].join(', ')}</p>
-                    <button onClick={() => goStep(1)} className="text-caption-sm text-ink underline underline-offset-2">Change</button>
+                    <p className="text-caption-sm text-mute dark:text-stone">Selected: {[...selectedModules].join(', ')}</p>
+                    <button onClick={() => goStep(1)} className="text-caption-sm text-ink dark:text-accent underline underline-offset-2">Change</button>
                   </div>
                   <form onSubmit={(e) => { e.preventDefault(); goStep(3); }} className="space-y-4">
-                    <p className="text-heading-md text-ink">Your details</p>
+                    <p className="text-heading-md text-ink dark:text-canvas">Your details</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <Input name="name" value={form.name} onChange={handleChange} placeholder="Name *" required />
                       <Input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email *" required />
@@ -205,27 +205,27 @@ const WorkWithUs = () => {
 
               {step === 3 && (
                 <div>
-                  <div className="bg-canvas border border-hairline-soft p-6 mb-6 space-y-3">
+                  <div className="bg-canvas dark:bg-ink border border-hairline-soft dark:border-charcoal p-6 mb-6 space-y-3">
                     <div>
-                      <span className="text-caption-sm text-mute uppercase">Modules</span>
-                      <p className="text-body-sm font-medium text-ink mt-0.5">{[...selectedModules].join(', ')}</p>
+                      <span className="text-caption-sm text-mute dark:text-stone uppercase">Modules</span>
+                      <p className="text-body-sm font-medium text-ink dark:text-canvas mt-0.5">{[...selectedModules].join(', ')}</p>
                     </div>
-                    <div className="h-px bg-hairline-soft" />
+                    <div className="h-px bg-hairline-soft dark:bg-charcoal" />
                     <div>
-                      <span className="text-caption-sm text-mute uppercase">Name</span>
-                      <p className="text-body-sm font-medium text-ink mt-0.5">{form.name}</p>
-                    </div>
-                    <div>
-                      <span className="text-caption-sm text-mute uppercase">Email</span>
-                      <p className="text-body-sm font-medium text-ink mt-0.5">{form.email}</p>
+                      <span className="text-caption-sm text-mute dark:text-stone uppercase">Name</span>
+                      <p className="text-body-sm font-medium text-ink dark:text-canvas mt-0.5">{form.name}</p>
                     </div>
                     <div>
-                      <span className="text-caption-sm text-mute uppercase">Company</span>
-                      <p className="text-body-sm font-medium text-ink mt-0.5">{form.company}</p>
+                      <span className="text-caption-sm text-mute dark:text-stone uppercase">Email</span>
+                      <p className="text-body-sm font-medium text-ink dark:text-canvas mt-0.5">{form.email}</p>
                     </div>
                     <div>
-                      <span className="text-caption-sm text-mute uppercase">Challenge</span>
-                      <p className="text-body-sm text-mute mt-0.5">{form.challenge}</p>
+                      <span className="text-caption-sm text-mute dark:text-stone uppercase">Company</span>
+                      <p className="text-body-sm font-medium text-ink dark:text-canvas mt-0.5">{form.company}</p>
+                    </div>
+                    <div>
+                      <span className="text-caption-sm text-mute dark:text-stone uppercase">Challenge</span>
+                      <p className="text-body-sm text-mute dark:text-stone mt-0.5">{form.challenge}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -239,35 +239,35 @@ const WorkWithUs = () => {
             </>
           ) : (
             <div className="text-center py-12">
-              <div className="w-14 h-14 rounded-full bg-ink flex items-center justify-center mx-auto mb-5">
-                <Check className="w-7 h-7 text-canvas" />
+              <div className="w-14 h-14 rounded-full bg-ink dark:bg-accent flex items-center justify-center mx-auto mb-5">
+                <Check className="w-7 h-7 text-canvas dark:text-ink" />
               </div>
-              <h2 className="font-display text-heading-xl text-ink mb-2">You're on the list.</h2>
-              <p className="text-body-md text-mute mb-8">Now pick a time for your free 30-minute call.</p>
+              <h2 className="font-display text-heading-xl text-ink dark:text-canvas mb-2">You're on the list.</h2>
+              <p className="text-body-md text-mute dark:text-stone mb-8">Now pick a time for your free 30-minute call.</p>
               <Button onClick={openBookingModal} size="lg">
                 Book Your Free Call &rarr;
               </Button>
-              <p className="text-caption-sm text-mute mt-6">
-                Prefer email? <a href="mailto:hello@thegrowthbench.com" className="text-ink underline">hello@thegrowthbench.com</a>
+              <p className="text-caption-sm text-mute dark:text-stone mt-6">
+                Prefer email? <a href="mailto:hello@thegrowthbench.com" className="text-ink dark:text-accent underline">hello@thegrowthbench.com</a>
               </p>
             </div>
           )}
         </div>
       </section>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
-          <h2 className="font-display text-display-md text-ink text-center leading-none mb-12">What happens on the call</h2>
+          <h2 className="font-display text-display-md text-ink dark:text-canvas text-center leading-none mb-12">What happens on the call</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {STEPS.map((s, i) => {
               const Icon = s.icon;
               return (
                 <div key={s.title} className="text-center">
-                  <div className="w-14 h-14 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-ink" />
+                  <div className="w-14 h-14 rounded-full bg-soft-cloud dark:bg-charcoal border border-hairline-soft dark:border-ash flex items-center justify-center mx-auto mb-4">
+                    <Icon className="w-6 h-6 text-ink dark:text-canvas" />
                   </div>
-                  <h3 className="text-heading-md text-ink mb-2">{s.title}</h3>
-                  <p className="text-body-sm text-mute leading-relaxed">{s.body}</p>
+                  <h3 className="text-heading-md text-ink dark:text-canvas mb-2">{s.title}</h3>
+                  <p className="text-body-sm text-mute dark:text-stone leading-relaxed">{s.body}</p>
                 </div>
               );
             })}
@@ -275,16 +275,16 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="max-w-4xl mx-auto">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">What founders ask first.</h2>
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Questions, answered</span>
+            <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">What founders ask first.</h2>
             <div className="grid md:grid-cols-3 gap-8 mt-8">
               {faqItems.map((item) => (
                 <div key={item.q}>
-                  <h3 className="text-heading-md text-ink mb-2">{item.q}</h3>
-                  <p className="text-body-sm text-mute leading-relaxed">{item.a}</p>
+                  <h3 className="text-heading-md text-ink dark:text-canvas mb-2">{item.q}</h3>
+                  <p className="text-body-sm text-mute dark:text-stone leading-relaxed">{item.a}</p>
                 </div>
               ))}
             </div>
@@ -292,10 +292,10 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-soft-cloud py-section-lg text-center">
+      <section className="bg-soft-cloud dark:bg-charcoal py-section-lg text-center">
         <div className="container-site">
           <div className="max-w-xl mx-auto">
-            <p className="text-body-sm text-mute mb-6">Three ways in — pick yours.</p>
+            <p className="text-body-sm text-mute dark:text-stone mb-6">Three ways in — pick yours.</p>
             <CtaPaths tone="light" />
           </div>
         </div>

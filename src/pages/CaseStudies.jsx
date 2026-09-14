@@ -79,21 +79,21 @@ const CaseStudies = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Case Studies</span>
+            <h1 className="font-display text-display-md md:text-display-lg text-ink dark:text-canvas mt-2 leading-none">
               Work that speaks<br />for itself.
             </h1>
-            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
+            <p className="text-body-md text-mute dark:text-stone mt-6 max-w-xl leading-relaxed">
               Every project starts with a diagnosis. Here's what we found, what we changed, and what happened.
             </p>
           </div>
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud">
+      <motion.section {...fadeUp} className="bg-soft-cloud dark:bg-charcoal">
         <div className="container-site py-section-lg">
           <div className="flex flex-wrap gap-3 mb-10">
             {['All', ...allTags].map((tag) => (
@@ -101,10 +101,10 @@ const CaseStudies = () => {
                 key={tag}
                 onClick={() => setActiveTag(tag)}
                 aria-pressed={activeTag === tag}
-                className={`px-5 py-3 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                className={`px-5 py-3 text-button-sm rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 dark:focus-visible:ring-accent/40 ${
                   activeTag === tag
-                    ? 'bg-ink text-canvas border-ink'
-                    : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
+                    ? 'bg-ink text-canvas border-ink dark:bg-accent dark:text-ink dark:border-accent'
+                    : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink dark:bg-transparent dark:text-stone dark:border-charcoal dark:hover:border-canvas dark:hover:text-canvas'
                 }`}
               >
                 {tag}
@@ -114,28 +114,28 @@ const CaseStudies = () => {
           {filtered.length > 0 ? (
             <div className="grid md:grid-cols-2 gap-6">
               {filtered.map((project) => (
-                <div key={project.client} className="p-6 border border-hairline-soft bg-canvas">
-                  <p className="text-caption-sm text-mute uppercase tracking-wide mb-1">{project.client}</p>
-                  <div className="font-display text-display-lg text-ink leading-none my-4">{project.stat}</div>
-                  <p className="text-body-sm text-mute leading-relaxed mb-4">{project.description}</p>
+                <div key={project.client} className="p-6 border border-hairline-soft dark:border-charcoal bg-canvas dark:bg-ink">
+                  <p className="text-caption-sm text-mute dark:text-stone uppercase tracking-wide mb-1">{project.client}</p>
+                  <div className="font-display text-display-lg text-ink dark:text-canvas leading-none my-4">{project.stat}</div>
+                  <p className="text-body-sm text-mute dark:text-stone leading-relaxed mb-4">{project.description}</p>
                   {(project.before || project.after) && (
-                    <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud rounded-sm">
+                    <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud dark:bg-charcoal rounded-sm">
                       <div>
-                        <span className="text-label-xs text-mute uppercase tracking-wider block mb-1">Before</span>
-                        <span className="text-body-sm text-ink font-medium">{project.before}</span>
+                        <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider block mb-1">Before</span>
+                        <span className="text-body-sm text-ink dark:text-canvas font-medium">{project.before}</span>
                       </div>
                       <div>
-                        <span className="text-label-xs text-mute uppercase tracking-wider block mb-1">After</span>
+                        <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider block mb-1">After</span>
                         <span className="text-body-sm text-success font-medium">{project.after}</span>
                       </div>
                     </div>
                   )}
                   {project.timeline && (
-                    <p className="text-caption-sm text-mute mb-4">Timeline: {project.timeline}</p>
+                    <p className="text-caption-sm text-mute dark:text-stone mb-4">Timeline: {project.timeline}</p>
                   )}
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
-                      <span key={tag} className="text-label-xs text-mute bg-soft-cloud px-2.5 py-1 rounded-full uppercase">{tag}</span>
+                      <span key={tag} className="text-label-xs text-mute dark:text-stone bg-soft-cloud dark:bg-charcoal px-2.5 py-1 rounded-full uppercase">{tag}</span>
                     ))}
                   </div>
                 </div>
@@ -143,26 +143,26 @@ const CaseStudies = () => {
             </div>
           ) : (
             <div className="text-center py-16">
-              <p className="text-body-sm text-mute">No projects with this tag yet.</p>
-              <button onClick={() => setActiveTag('All')} className="text-body-sm text-ink underline underline-offset-2 mt-2">View all projects</button>
+              <p className="text-body-sm text-mute dark:text-stone">No projects with this tag yet.</p>
+              <button onClick={() => setActiveTag('All')} className="text-body-sm text-ink dark:text-accent underline underline-offset-2 mt-2">View all projects</button>
             </div>
           )}
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
-          <div className="p-6 md:p-8 border-2 border-ink bg-canvas max-w-4xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">AI Implementation</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The Sierra engine, productized.</h2>
-            <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">
+          <div className="p-6 md:p-8 border-2 border-ink dark:border-accent bg-canvas dark:bg-charcoal max-w-4xl">
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">AI Implementation</span>
+            <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">The Sierra engine, productized.</h2>
+            <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed max-w-2xl">
               The content and SEO automation pipeline behind Sierra-scale catalog work is one example — our agents now also run ops, support, and follow-ups end-to-end. Nothing goes live without a human-review period.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-6">
-              <Link to="/services#ai-implementation" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+              <Link to="/services#ai-implementation" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink dark:text-accent no-underline hover:text-mute dark:hover:text-accent/80 transition-colors">
                 See AI Implementation <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+              <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink dark:text-accent no-underline hover:text-mute dark:hover:text-accent/80 transition-colors">
                 Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
               </Link>
               <Button size="sm" onClick={openBookingModal}>Book a Free Audit Call</Button>
@@ -171,30 +171,30 @@ const CaseStudies = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
-          <h2 className="font-display text-display-md text-ink leading-none mb-8">From the same playbook</h2>
+          <h2 className="font-display text-display-md text-ink dark:text-canvas leading-none mb-8">From the same playbook</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
-              <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-2 uppercase">CRO</span>
-              <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">We fixed a checkout flow. Recovered ₹2.89Cr/month.</h3>
-              <span className="text-body-sm text-ink flex items-center gap-1">Read <ArrowRight className="w-3.5 h-3.5" /></span>
+            <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft dark:border-charcoal bg-canvas dark:bg-charcoal no-underline group">
+              <span className="inline-block text-label-xs text-mute dark:text-stone bg-soft-cloud dark:bg-ink px-3 py-1 rounded-full mb-2 uppercase">CRO</span>
+              <h3 className="text-heading-md text-ink dark:text-canvas mb-2 group-hover:text-mute dark:group-hover:text-stone transition-colors">We fixed a checkout flow. Recovered ₹2.89Cr/month.</h3>
+              <span className="text-body-sm text-ink dark:text-accent flex items-center gap-1">Read <ArrowRight className="w-3.5 h-3.5" /></span>
             </Link>
-            <Link to="/insights/funnel-audit-101-find-the-leak-before-spending-more-on-ads" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
-              <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-2 uppercase">CRO</span>
-              <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">Funnel Audit 101: Find the leak before spending more on ads</h3>
-              <span className="text-body-sm text-ink flex items-center gap-1">Read <ArrowRight className="w-3.5 h-3.5" /></span>
+            <Link to="/insights/funnel-audit-101-find-the-leak-before-spending-more-on-ads" className="block p-6 border border-hairline-soft dark:border-charcoal bg-canvas dark:bg-charcoal no-underline group">
+              <span className="inline-block text-label-xs text-mute dark:text-stone bg-soft-cloud dark:bg-ink px-3 py-1 rounded-full mb-2 uppercase">CRO</span>
+              <h3 className="text-heading-md text-ink dark:text-canvas mb-2 group-hover:text-mute dark:group-hover:text-stone transition-colors">Funnel Audit 101: Find the leak before spending more on ads</h3>
+              <span className="text-body-sm text-ink dark:text-accent flex items-center gap-1">Read <ArrowRight className="w-3.5 h-3.5" /></span>
             </Link>
           </div>
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink dark:bg-canvas py-section-lg text-center">
         <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
+          <h2 className="font-display text-display-md text-canvas dark:text-ink leading-none mb-6">
             Want results<br />like these?
           </h2>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud dark:bg-ink dark:text-canvas dark:hover:bg-charcoal" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <div className="mt-6">

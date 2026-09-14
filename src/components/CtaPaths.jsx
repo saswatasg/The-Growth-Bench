@@ -8,7 +8,7 @@ import { WHATSAPP_URL } from '@/lib/constants';
 // Book (ready) · Scorecard (diagnose) · WhatsApp (quick question)
 const CtaPaths = ({ tone = 'light', align = 'center' }) => {
   const { openBookingModal } = useBookingModal();
-  const cls = tone === 'dark' ? 'text-stone hover:text-canvas' : 'text-mute hover:text-ink';
+  const cls = tone === 'dark' ? 'text-stone hover:text-canvas dark:text-mute dark:hover:text-ink' : 'text-mute hover:text-ink dark:text-stone dark:hover:text-canvas';
   const justify = align === 'center' ? 'justify-center' : 'justify-start';
   return (
     <div className={`flex flex-wrap items-center gap-x-5 gap-y-2 text-body-sm ${justify}`}>

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminRoute from '@/components/AdminRoute';
+import PageTransition from '@/components/PageTransition';
 
 const Home = React.lazy(() => import('@/pages/Home'));
 const Services = React.lazy(() => import('@/pages/Services'));
@@ -31,6 +32,7 @@ const RoutesConfig = () => {
   return (
     <ErrorBoundary>
     <Suspense fallback={<PageLoader />}>
+      <PageTransition>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -50,6 +52,7 @@ const RoutesConfig = () => {
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </PageTransition>
     </Suspense>
     </ErrorBoundary>
   );

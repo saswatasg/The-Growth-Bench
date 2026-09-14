@@ -15,39 +15,39 @@ const About = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="max-w-3xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">About</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">About</span>
+            <h1 className="font-display text-display-md md:text-display-lg text-ink dark:text-canvas mt-2 leading-none">
               We're not an agency.<br />We're the growth partner<br />you actually wanted.
             </h1>
           </div>
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="max-w-4xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">The Problem</span>
-            <p className="text-body-md text-mute leading-relaxed mt-4 max-w-2xl">
+            <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">The Problem</span>
+            <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4 max-w-2xl">
               Most growing brands end up choosing between talented freelancers stretched too thin and large agencies with too many layers.
             </p>
-            <p className="text-heading-md text-ink leading-snug mt-6 border-l-4 border-ink pl-5">
+            <p className="text-heading-md text-ink dark:text-canvas leading-snug mt-6 border-l-4 border-ink dark:border-accent pl-5">
               "I just wanted one person who understood my whole business and could build the whole thing properly."
             </p>
-            <p className="text-caption-sm text-mute mt-2">— What founders told us</p>
-            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-2xl">
+            <p className="text-caption-sm text-mute dark:text-stone mt-2">— What founders told us</p>
+            <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-6 max-w-2xl">
               That person is your Growth Bench lead — a senior partner who owns the full picture, with the right specialists on call when the work demands it. No handoffs, no layers, no overhead you don't need.
             </p>
           </div>
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud dark:bg-charcoal py-section-lg border-b border-hairline-soft dark:border-ash">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">The same person who sees the full picture builds it.</h2>
+          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">The Operating Model</span>
+          <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none max-w-2xl">The same person who sees the full picture builds it.</h2>
 
           <div className="grid md:grid-cols-3 gap-8 mt-10 max-w-4xl">
             {[
@@ -56,12 +56,12 @@ const About = () => {
               { num: '03', title: 'Direct to the source', desc: 'Your lead works directly with you. No account managers routing messages, no briefings lost in translation. Decisions in hours, not days.' },
             ].map((step) => (
               <div key={step.num} className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-ink flex items-center justify-center flex-shrink-0">
-                  <span className="text-caption-sm text-canvas font-bold">{step.num}</span>
+                <div className="w-12 h-12 rounded-full bg-ink dark:bg-accent flex items-center justify-center flex-shrink-0">
+                  <span className="text-caption-sm text-canvas dark:text-ink font-bold">{step.num}</span>
                 </div>
                 <div>
-                  <h3 className="text-heading-md text-ink">{step.title}</h3>
-                  <p className="text-body-sm text-mute mt-1 leading-relaxed">{step.desc}</p>
+                  <h3 className="text-heading-md text-ink dark:text-canvas">{step.title}</h3>
+                  <p className="text-body-sm text-mute dark:text-stone mt-1 leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -69,9 +69,9 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
+          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">How We Think</span>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
             {[
               { num: '01', title: 'Diagnosis before prescription.', body: "We don't recommend a channel until we understand the business. Every engagement starts with a thorough audit." },
@@ -80,16 +80,16 @@ const About = () => {
               { num: '04', title: 'Honest over impressive.', body: "We'd rather tell you something uncomfortable early than send a polished slide that turns out to be wrong." },
             ].map((p) => (
               <div key={p.num}>
-                <span className="text-label-xs text-mute font-mono">{p.num}</span>
-                <h3 className="font-display text-heading-xl text-ink leading-none mt-1">{p.title}</h3>
-                <p className="text-body-sm text-mute mt-3 leading-relaxed max-w-md">{p.body}</p>
+                <span className="text-label-xs text-mute dark:text-stone font-mono">{p.num}</span>
+                <h3 className="font-display text-heading-xl text-ink dark:text-canvas leading-none mt-1">{p.title}</h3>
+                <p className="text-body-sm text-mute dark:text-stone mt-3 leading-relaxed max-w-md">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg">
+      <motion.section {...fadeIn} className="bg-ink dark:bg-canvas py-section-lg">
         <div className="container-site text-center">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
@@ -99,24 +99,24 @@ const About = () => {
             ].map((s) => (
               <div key={s.stat}>
                 <motion.span
-                  className="font-display text-heading-xl md:text-display-lg text-canvas leading-none block"
+                  className="font-display text-heading-xl md:text-display-lg text-canvas dark:text-ink leading-none block"
                   animate={{ scale: [1, 1.02, 1] }}
                   transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
                 >
                   {s.stat}
                 </motion.span>
-                <div className="text-caption-md text-stone mt-2">{s.label}</div>
+                <div className="text-caption-md text-stone dark:text-mute mt-2">{s.label}</div>
               </div>
             ))}
           </div>
-          <p className="text-caption-sm text-stone/70 mt-8">Representative outcomes across client engagements; individual results vary.</p>
+          <p className="text-caption-sm text-stone/70 dark:text-mute/70 mt-8">Representative outcomes across client engagements; individual results vary.</p>
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal">
         <div className="container-site">
           <div className="grid md:grid-cols-[auto_1fr] gap-8 max-w-4xl items-start">
-            <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
+            <div className="w-20 h-20 rounded-full bg-ink dark:bg-charcoal flex items-center justify-center flex-shrink-0 overflow-hidden">
               <img
                 src="/assets/images/founder.jpg"
                 alt="Saswata Sengupta, Founder of The Growth Bench"
@@ -126,21 +126,21 @@ const About = () => {
               <span className="font-display text-display-md text-canvas hidden">S</span>
             </div>
             <div>
-              <span className="text-label-xs text-mute uppercase tracking-wider">The Founder</span>
-              <h2 className="font-display text-display-md text-ink mt-1 leading-none">Saswata Sengupta</h2>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+              <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">The Founder</span>
+              <h2 className="font-display text-display-md text-ink dark:text-canvas mt-1 leading-none">Saswata Sengupta</h2>
+              <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4 max-w-xl">
                 I started The Growth Bench after years inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). I&apos;ve managed ad accounts spending crores per month, fixed checkout flows that recovered lakhs in lost revenue, and built growth systems for brands that started with nothing but a Shopify store.
               </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+              <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4 max-w-xl">
                 What I learned is that most brands don&apos;t need a bigger agency or a cheaper freelancer. They need one person who owns the full picture — with the right specialists on call when the work demands it. That&apos;s how we run: founder-led, with a specialist engaged per project on a contract basis. No account layers, no overhead you don&apos;t need.
               </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+              <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4 max-w-xl">
                 Background: MBA in Marketing &amp; Analytics (IIT Jodhpur) and B.Tech in Mechanical Engineering — analytics and systems thinking applied to growth. Recent independent client work includes Sierra Living Concepts (checkout recovery) and Caffena (D2C coffee scale-up).
               </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind Sierra-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
+              <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4 max-w-xl">
+                We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink dark:text-accent underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind Sierra-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
               </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
+              <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4 max-w-xl">
                 And if the lead is ever unavailable, a briefed specialist covers the sprint — your context lives in shared docs and weekly notes, never in one head.
               </p>
               <div className="flex flex-wrap items-center gap-3 mt-6">
@@ -161,20 +161,20 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud dark:bg-charcoal py-section-lg border-b border-hairline-soft dark:border-ash">
         <div className="container-site">
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
             <div>
-              <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
-              <p className="text-body-md text-mute leading-relaxed mt-4">
+              <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">What We Don't Do</span>
+              <p className="text-body-md text-mute dark:text-stone leading-relaxed mt-4">
                 We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
               </p>
             </div>
             <div>
-              <h3 className="text-heading-md text-ink mb-4">The full bench</h3>
+              <h3 className="text-heading-md text-ink dark:text-canvas mb-4">The full bench</h3>
               <div className="flex flex-wrap gap-2">
                 {['Product Manager', 'UI/UX Designer', 'SEO Specialist', 'Growth Consultant', 'Web Developer', 'Video Editor', 'Performance Marketer', 'CRO Specialist', 'AI Automation'].map((role) => (
-                  <span key={role} className="text-body-sm text-mute bg-canvas border border-hairline-soft px-3 py-1.5 rounded-full">{role}</span>
+                  <span key={role} className="text-body-sm text-mute dark:text-stone bg-canvas dark:bg-ink border border-hairline-soft dark:border-charcoal px-3 py-1.5 rounded-full">{role}</span>
                 ))}
               </div>
             </div>
@@ -182,15 +182,15 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink dark:bg-canvas py-section-lg text-center">
         <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
+          <h2 className="font-display text-display-md text-canvas dark:text-ink leading-none mb-6">
             Sound like what<br />you've been looking for?
           </h2>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud dark:bg-ink dark:text-canvas dark:hover:bg-charcoal" onClick={openBookingModal}>
             Book a 30-Minute Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <p className="text-caption-md text-stone italic mt-4">
+          <p className="text-caption-md text-stone dark:text-mute italic mt-4">
             We&apos;ll tell you in the first 10 minutes if we&apos;re the right fit.
           </p>
           <div className="mt-6">

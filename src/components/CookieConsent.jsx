@@ -50,7 +50,7 @@ const CookieConsent = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Analytics consent"
-      className="fixed bottom-4 inset-x-4 md:left-auto md:right-6 md:max-w-sm z-[90] bg-ink text-canvas p-5 shadow-2xl"
+      className="fixed bottom-4 inset-x-4 md:left-auto md:right-6 md:max-w-sm z-[90] bg-ink dark:bg-canvas text-canvas dark:text-ink p-5 shadow-2xl"
     >
       <p className="text-body-sm leading-relaxed">
         We measure visits to improve the site — only if you agree.
@@ -58,13 +58,13 @@ const CookieConsent = () => {
       <div className="flex items-center gap-3 mt-4">
         <button
           onClick={() => choose('accepted')}
-          className="h-9 px-5 rounded-full bg-canvas text-ink text-button-sm font-medium hover:bg-soft-cloud transition-colors"
+          className="h-9 px-5 rounded-full bg-canvas text-ink text-button-sm font-medium hover:bg-soft-cloud dark:bg-ink dark:text-canvas dark:hover:bg-charcoal transition-colors"
         >
           Accept
         </button>
         <button
           onClick={() => choose('declined')}
-          className="text-caption-sm text-stone underline underline-offset-2 hover:text-canvas transition-colors"
+          className="text-caption-sm text-stone dark:text-mute underline underline-offset-2 hover:text-canvas dark:hover:text-ink transition-colors"
         >
           Decline
         </button>

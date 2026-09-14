@@ -8,12 +8,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-ink text-canvas hover:bg-ink/90',
-        destructive: 'bg-sale text-canvas hover:bg-sale-deep',
-        outline: 'border border-hairline bg-canvas text-ink hover:bg-soft-cloud',
-        secondary: 'bg-soft-cloud text-ink hover:bg-hairline',
-        ghost: 'text-ink hover:bg-soft-cloud',
-        link: 'text-ink underline-offset-4 hover:underline'
+        default: 'bg-ink text-canvas hover:bg-ink/90 dark:bg-accent dark:text-ink dark:hover:bg-accent/90',
+        destructive: 'bg-sale text-canvas hover:bg-sale/90',
+        outline: 'border border-hairline bg-canvas text-ink hover:bg-soft-cloud dark:bg-transparent dark:border-charcoal dark:text-canvas dark:hover:bg-charcoal',
+        secondary: 'bg-soft-cloud text-ink hover:bg-hairline dark:bg-charcoal dark:text-canvas dark:hover:bg-ash',
+        ghost: 'text-ink hover:bg-soft-cloud dark:text-canvas dark:hover:bg-charcoal',
+        link: 'text-ink underline-offset-4 hover:underline dark:text-accent'
       },
       size: {
         default: 'h-10 px-5 py-2 rounded-full',
