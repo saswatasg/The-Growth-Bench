@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -12,86 +12,74 @@ const wordConfig = {
     fallDistance: -140,
     startRotation: -6,
     staggerMs: 140,
-    spring: { damping: 11, stiffness: 180, mass: 0.7 },
     squashScale: { x: 1.12, y: 0.82 },
   },
   THAT: {
     fallDistance: -110,
     startRotation: 4,
     staggerMs: 100,
-    spring: { damping: 12, stiffness: 200, mass: 0.6 },
     squashScale: { x: 1.08, y: 0.88 },
   },
   STICKS: {
     fallDistance: -160,
     startRotation: -8,
     staggerMs: 80,
-    spring: { damping: 10, stiffness: 160, mass: 0.8 },
     squashScale: { x: 1.15, y: 0.78 },
   },
 };
 
-function StickyLetter({ char, delay, config, onLanded }) {
-  const [phase, setPhase] = useState('waiting');
+function StickyLetter({ char, delay, config }) {
+  const landedRef = React.useRef(false);
+
+  const handleComplete = useCallback(() => {
+    landedRef.current = true;
+  }, []);
 
   return (
     <motion.span
-      className="inline-block will-change-transform"
+      className="inline-block"
       initial={{
         opacity: 0,
         y: config.fallDistance,
         rotateZ: config.startRotation,
         scale: 0.5,
       }}
-      animate={
-        phase === 'waiting'
-          ? {
-              opacity: [0, 1, 1],
-              y: [
-                config.fallDistance,
-                0,
-                config.squashScale.y * -8,
-                0,
-                -3,
-                0,
-              ],
-              rotateZ: [
-                config.startRotation,
-                config.startRotation * -0.3,
-                0,
-                config.startRotation * 0.1,
-                0,
-              ],
-              scale: [
-                0.5,
-                1.05,
-                config.squashScale.x,
-                1.02,
-                1,
-              ],
-            }
-          : {}
-      }
-      transition={
-        phase === 'waiting'
-          ? {
-              delay: delay / 1000,
-              duration: 1.4,
-              times: [0, 0.35, 0.5, 0.65, 0.82, 1],
-              ease: [0.22, 0.03, 0.36, 1],
-              opacity: {
-                delay: delay / 1000,
-                duration: 0.3,
-              },
-            }
-          : {}
-      }
-      onAnimationComplete={() => {
-        if (phase === 'waiting') {
-          setPhase('landed');
-          onLanded?.();
-        }
+      animate={{
+        opacity: [0, 1, 1],
+        y: [
+          config.fallDistance,
+          0,
+          config.squashScale.y * -8,
+          0,
+          -3,
+          0,
+        ],
+        rotateZ: [
+          config.startRotation,
+          config.startRotation * -0.3,
+          0,
+          config.startRotation * 0.1,
+          0,
+        ],
+        scale: [
+          0.5,
+          1.05,
+          config.squashScale.x,
+          1.02,
+          1,
+        ],
       }}
+      transition={{
+        delay: delay / 1000,
+        duration: 1.4,
+        times: [0, 0.35, 0.5, 0.65, 0.82, 1],
+        ease: [0.22, 0.03, 0.36, 1],
+        opacity: {
+          delay: delay / 1000,
+          duration: 0.3,
+        },
+      }}
+      onAnimationComplete={handleComplete}
     >
       {char}
     </motion.span>
@@ -99,32 +87,81 @@ function StickyLetter({ char, delay, config, onLanded }) {
 }
 
 function StickyWord({ word, wordOffset, onAllLanded }) {
-  const [landedCount, setLandedCount] = useState(0);
+  const landedRef = React.useRef(0);
   const config = wordConfig[word];
   const letters = word.split('');
 
-  const handleLanded = () => {
-    setLandedCount((prev) => {
-      const next = prev + 1;
-      if (next === letters.length) {
-        onAllLanded?.();
-      }
-      return next;
-    });
-  };
+  const handleLanded = React.useCallback(() => {
+    landedRef.current += 1;
+    if (landedRef.current === letters.length) {
+      onAllLanded?.();
+    }
+  }, [letters.length, onAllLanded]);
 
   return (
     <span className="inline-block">
       {letters.map((char, i) => (
-        <StickyLetter
+        <StickyLetterWithCallback
           key={`${word}-${i}`}
           char={char}
           delay={wordOffset + i * config.staggerMs}
           config={config}
-          onLanded={i === letters.length - 1 ? handleLanded : undefined}
+          onComplete={i === letters.length - 1 ? handleLanded : undefined}
         />
       ))}
     </span>
+  );
+}
+
+function StickyLetterWithCallback({ char, delay, config, onComplete }) {
+  return (
+    <motion.span
+      className="inline-block"
+      initial={{
+        opacity: 0,
+        y: config.fallDistance,
+        rotateZ: config.startRotation,
+        scale: 0.5,
+      }}
+      animate={{
+        opacity: [0, 1, 1],
+        y: [
+          config.fallDistance,
+          0,
+          config.squashScale.y * -8,
+          0,
+          -3,
+          0,
+        ],
+        rotateZ: [
+          config.startRotation,
+          config.startRotation * -0.3,
+          0,
+          config.startRotation * 0.1,
+          0,
+        ],
+        scale: [
+          0.5,
+          1.05,
+          config.squashScale.x,
+          1.02,
+          1,
+        ],
+      }}
+      transition={{
+        delay: delay / 1000,
+        duration: 1.4,
+        times: [0, 0.35, 0.5, 0.65, 0.82, 1],
+        ease: [0.22, 0.03, 0.36, 1],
+        opacity: {
+          delay: delay / 1000,
+          duration: 0.3,
+        },
+      }}
+      onAnimationComplete={onComplete}
+    >
+      {char}
+    </motion.span>
   );
 }
 
@@ -157,9 +194,6 @@ const HeroSection = () => {
   }
 
   const totalAnimMs = offset;
-  const underlineDelay = totalAnimMs / 1000 + 0.2;
-  const descDelay = underlineDelay + 0.6;
-  const ctaDelay = descDelay + 0.6;
 
   return (
     <section ref={ref} className="bg-canvas py-[100px] md:py-[140px] overflow-hidden">
