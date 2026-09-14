@@ -5,7 +5,6 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import HeroSection from '@/components/home/HeroSection';
-import SocialProofBar from '@/components/home/SocialProofBar';
 import MarqueeBar from '@/components/home/MarqueeBar';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import HowItWorks from '@/components/HowItWorks';
@@ -40,7 +39,6 @@ const Home = () => {
     <>
       <PageMeta />
       <HeroSection />
-      <SocialProofBar />
       <MarqueeBar />
       <ServicesOverview />
       <GrowthTimeline />
