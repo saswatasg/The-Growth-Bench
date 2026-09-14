@@ -1,70 +1,174 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 
-const growEase = [0.34, 1.56, 0.64, 1];
 const smoothEase = [0.25, 0.1, 0.25, 1];
 
 const wordConfig = {
-  GROWTH: { startY: 80, startScale: 0.6, staggerMs: 80, dur: 0.6 },
-  THAT: { startY: 60, startScale: 0.7, staggerMs: 50, dur: 0.5 },
-  STICKS: { startY: 40, startScale: 0.8, staggerMs: 35, dur: 0.4 },
+  GROWTH: {
+    fallDistance: -140,
+    startRotation: -6,
+    staggerMs: 140,
+    spring: { damping: 11, stiffness: 180, mass: 0.7 },
+    squashScale: { x: 1.12, y: 0.82 },
+  },
+  THAT: {
+    fallDistance: -110,
+    startRotation: 4,
+    staggerMs: 100,
+    spring: { damping: 12, stiffness: 200, mass: 0.6 },
+    squashScale: { x: 1.08, y: 0.88 },
+  },
+  STICKS: {
+    fallDistance: -160,
+    startRotation: -8,
+    staggerMs: 80,
+    spring: { damping: 10, stiffness: 160, mass: 0.8 },
+    squashScale: { x: 1.15, y: 0.78 },
+  },
 };
 
-function AnimatedWord({ word, wordOffset }) {
+function StickyLetter({ char, delay, config, onLanded }) {
+  const [phase, setPhase] = useState('waiting');
+
+  return (
+    <motion.span
+      className="inline-block will-change-transform"
+      initial={{
+        opacity: 0,
+        y: config.fallDistance,
+        rotateZ: config.startRotation,
+        scale: 0.5,
+      }}
+      animate={
+        phase === 'waiting'
+          ? {
+              opacity: [0, 1, 1],
+              y: [
+                config.fallDistance,
+                0,
+                config.squashScale.y * -8,
+                0,
+                -3,
+                0,
+              ],
+              rotateZ: [
+                config.startRotation,
+                config.startRotation * -0.3,
+                0,
+                config.startRotation * 0.1,
+                0,
+              ],
+              scale: [
+                0.5,
+                1.05,
+                config.squashScale.x,
+                1.02,
+                1,
+              ],
+            }
+          : {}
+      }
+      transition={
+        phase === 'waiting'
+          ? {
+              delay: delay / 1000,
+              duration: 1.4,
+              times: [0, 0.35, 0.5, 0.65, 0.82, 1],
+              ease: [0.22, 0.03, 0.36, 1],
+              opacity: {
+                delay: delay / 1000,
+                duration: 0.3,
+              },
+            }
+          : {}
+      }
+      onAnimationComplete={() => {
+        if (phase === 'waiting') {
+          setPhase('landed');
+          onLanded?.();
+        }
+      }}
+    >
+      {char}
+    </motion.span>
+  );
+}
+
+function StickyWord({ word, wordOffset, onAllLanded }) {
+  const [landedCount, setLandedCount] = useState(0);
   const config = wordConfig[word];
   const letters = word.split('');
 
+  const handleLanded = () => {
+    setLandedCount((prev) => {
+      const next = prev + 1;
+      if (next === letters.length) {
+        onAllLanded?.();
+      }
+      return next;
+    });
+  };
+
   return (
     <span className="inline-block">
-      {letters.map((char, i) => {
-        const delay = wordOffset + i * config.staggerMs;
-        return (
-          <motion.span
-            key={i}
-            className="inline-block"
-            initial={{ opacity: 0, y: config.startY, scale: config.startScale }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{
-              delay: delay / 1000,
-              duration: config.dur,
-              ease: growEase,
-            }}
-          >
-            {char}
-          </motion.span>
-        );
-      })}
+      {letters.map((char, i) => (
+        <StickyLetter
+          key={`${word}-${i}`}
+          char={char}
+          delay={wordOffset + i * config.staggerMs}
+          config={config}
+          onLanded={i === letters.length - 1 ? handleLanded : undefined}
+        />
+      ))}
     </span>
   );
 }
 
+const UnderlineReveal = ({ delay }) => (
+  <motion.span
+    className="block mx-auto mt-2 h-[3px] bg-ink origin-left"
+    initial={{ scaleX: 0, opacity: 0 }}
+    animate={{ scaleX: 1, opacity: 1 }}
+    transition={{
+      delay,
+      duration: 0.8,
+      ease: [0.22, 0.03, 0.36, 1],
+    }}
+    style={{ maxWidth: '280px' }}
+  />
+);
+
 const HeroSection = () => {
   const { openBookingModal } = useBookingModal();
   const words = ['GROWTH', 'THAT', 'STICKS'];
+  const [allLanded, setAllLanded] = useState(false);
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true });
 
   const wordOffsets = [];
-  let offset = 0;
+  let offset = 400;
   for (const word of words) {
     wordOffsets.push(offset);
-    offset += word.length * wordConfig[word].staggerMs + 200;
+    offset += word.length * wordConfig[word].staggerMs + 260;
   }
 
   const totalAnimMs = offset;
-  const descDelay = totalAnimMs / 1000 + 0.3;
-  const ctaDelay = descDelay + 0.5;
+  const underlineDelay = totalAnimMs / 1000 + 0.2;
+  const descDelay = underlineDelay + 0.6;
+  const ctaDelay = descDelay + 0.6;
 
   return (
-    <section className="bg-canvas py-[100px] md:py-[140px]">
+    <section ref={ref} className="bg-canvas py-[100px] md:py-[140px] overflow-hidden">
       <div className="container-site w-full">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: smoothEase }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, ease: smoothEase }}
           >
             <Link
               to="/services#ai-implementation"
@@ -74,20 +178,25 @@ const HeroSection = () => {
             </Link>
           </motion.div>
 
-          <h1 className="font-display text-display-lg md:text-display-xl lg:text-[80px] text-ink leading-[0.95] mt-8">
+          <h1 className="font-display text-display-lg md:text-display-xl lg:text-[80px] text-ink leading-[0.92] mt-8 select-none">
             {words.map((word, wi) => (
               <React.Fragment key={word}>
-                {wi > 0 && <span className="inline-block w-[0.15em]" />}
-                <AnimatedWord word={word} wordOffset={wordOffsets[wi]} />
+                {wi > 0 && <span className="inline-block w-[0.12em]" />}
+                <StickyWord
+                  word={word}
+                  wordOffset={wordOffsets[wi]}
+                  onAllLanded={wi === words.length - 1 ? () => setAllLanded(true) : undefined}
+                />
               </React.Fragment>
             ))}
+            {allLanded && <UnderlineReveal delay={0} />}
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: descDelay, duration: 0.7, ease: smoothEase }}
-            className="text-body-lg text-mute mt-8 leading-relaxed max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30, filter: 'blur(4px)' }}
+            animate={allLanded ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
+            transition={{ duration: 0.8, ease: smoothEase }}
+            className="text-body-lg text-mute mt-10 leading-relaxed max-w-2xl mx-auto"
           >
             Strategy, ads, CRO, web, and AI agents — connected by one lead who sees the entire funnel.
             No handoffs between specialists who don't talk. No overhead from layers that don't build.
@@ -95,8 +204,8 @@ const HeroSection = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: ctaDelay, duration: 0.5, ease: growEase }}
+            animate={allLanded ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 0.03, 0.36, 1] }}
             className="flex flex-wrap justify-center gap-4 mt-12"
           >
             <Button size="lg" onClick={openBookingModal}>
@@ -106,8 +215,8 @@ const HeroSection = () => {
 
           <motion.p
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: ctaDelay + 0.3, duration: 0.5 }}
+            animate={allLanded ? { opacity: 1 } : {}}
+            transition={{ delay: 0.7, duration: 0.5 }}
             className="text-body-sm text-mute mt-6"
           >
             Or see{' '}
