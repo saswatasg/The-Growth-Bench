@@ -11,25 +11,25 @@ const stats = [
 
 const ActivityProof = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section border-b border-hairline-soft dark:border-charcoal ${className}`}>
+    <motion.section {...fadeUp} className={`py-section border-b border-hairline-soft ${className}`}>
       <div className="container-site">
         <div className="text-center mb-10">
-          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Across The Bench</span>
-          <h2 className="font-display text-heading-xl text-ink dark:text-canvas mt-2">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Across The Bench</span>
+          <h2 className="font-display text-heading-xl text-ink mt-2">
             The work compounds.
           </h2>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           {stats.map((s) => (
-            <div key={s.num} className="text-center p-4 border border-hairline-soft dark:border-charcoal bg-canvas dark:bg-ink">
-              <span className="font-display text-heading-xl md:text-display-md text-ink dark:text-canvas leading-none block">
+            <div key={s.num} className="text-center p-4 border border-hairline-soft bg-canvas">
+              <span className="font-display text-heading-xl md:text-display-md text-ink leading-none block">
                 {s.num}
               </span>
-              <p className="text-caption-sm text-mute dark:text-stone mt-2 leading-relaxed">{s.label}</p>
+              <p className="text-caption-sm text-mute mt-2 leading-relaxed">{s.label}</p>
             </div>
           ))}
         </div>
-        <p className="text-caption-sm text-mute/60 dark:text-stone/60 text-center mt-6">
+        <p className="text-caption-sm text-mute/60 text-center mt-6">
           Aggregate metrics across all client engagements and internal projects. Individual results vary.
         </p>
       </div>

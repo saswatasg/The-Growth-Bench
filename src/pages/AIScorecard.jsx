@@ -468,18 +468,18 @@ const AIScorecard = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal overflow-x-clip">
+      <section className="bg-canvas py-section-lg border-b border-hairline-soft overflow-x-clip">
         <div className="container-site max-w-2xl mx-auto">
           {step !== 'hook' && !isResult && (
             <div className="mb-8">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-caption-sm text-mute dark:text-stone">
+                <span className="text-caption-sm text-mute">
                   {answeredCount} answered · about a minute
                 </span>
-                <span className="text-caption-sm text-mute dark:text-stone font-mono">{progress}%</span>
+                <span className="text-caption-sm text-mute font-mono">{progress}%</span>
               </div>
-              <div className="h-1 bg-hairline-soft dark:bg-charcoal rounded-full overflow-hidden">
-                <div className="h-full bg-ink dark:bg-accent transition-all duration-300" style={{ width: `${progress}%` }} />
+              <div className="h-1 bg-hairline-soft rounded-full overflow-hidden">
+                <div className="h-full bg-ink transition-all duration-300" style={{ width: `${progress}%` }} />
               </div>
             </div>
           )}
@@ -495,21 +495,21 @@ const AIScorecard = () => {
               >
                 {step === 'hook' && (
                   <div className="text-center">
-                    <div className="w-14 h-14 rounded-full bg-ink dark:bg-accent flex items-center justify-center mx-auto mb-6">
-                      <Workflow className="w-7 h-7 text-canvas dark:text-ink" />
+                    <div className="w-14 h-14 rounded-full bg-ink flex items-center justify-center mx-auto mb-6">
+                      <Workflow className="w-7 h-7 text-canvas" />
                     </div>
-                    <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Free · About a minute · Instant readout</span>
-                    <h1 className="font-display text-display-md md:text-display-lg text-ink dark:text-canvas mt-2 leading-none">
+                    <span className="text-label-xs text-mute uppercase tracking-wider">Free · About a minute · Instant readout</span>
+                    <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
                       How much of your<br />week is repeatable?
                     </h1>
-                    <p className="text-body-md text-mute dark:text-stone mt-6 max-w-xl mx-auto leading-relaxed">
+                    <p className="text-body-md text-mute mt-6 max-w-xl mx-auto leading-relaxed">
                       A few taps about your store. We&apos;ll score how much agentic AI can take off your plate —
                       support, ops, content, follow-ups, creative — with recoverable hours, a ₹ range, and exactly where to start.
                     </p>
                     <Button size="lg" className="mt-8" onClick={() => { setHistory([...history, step]); setStep('q1'); }}>
                       Start the scorecard <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
-                    <p className="text-caption-sm text-mute dark:text-stone mt-4">No signup. No pitch. Just your number.</p>
+                    <p className="text-caption-sm text-mute mt-4">No signup. No pitch. Just your number.</p>
                   </div>
                 )}
 
@@ -525,9 +525,9 @@ const AIScorecard = () => {
 
                 {step === 'gate' && (
                   <div>
-                    <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Almost there — you&apos;re 2 answers in</span>
-                    <h2 className="font-display text-heading-xl md:text-display-md text-ink dark:text-canvas mt-2 leading-none">Where should we send your readout?</h2>
-                    <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed">
+                    <span className="text-label-xs text-mute uppercase tracking-wider">Almost there — you&apos;re 2 answers in</span>
+                    <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Where should we send your readout?</h2>
+                    <p className="text-body-md text-mute mt-4 leading-relaxed">
                       Your readiness score, recoverable hours, and the two systems to automate first. One email, no sequence, no spam.
                     </p>
                     <form onSubmit={submitGate} className="mt-6 flex flex-col sm:flex-row gap-3">
@@ -543,10 +543,10 @@ const AIScorecard = () => {
                     </form>
                     {gateError && <p className="text-body-sm text-sale mt-3">{gateError}</p>}
                     <div className="flex items-center gap-4 mt-4">
-                      <button onClick={goBack} className="inline-flex items-center gap-1 text-caption-sm text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors">
+                      <button onClick={goBack} className="inline-flex items-center gap-1 text-caption-sm text-mute hover:text-ink transition-colors">
                         <ArrowLeft className="w-3.5 h-3.5" /> Back
                       </button>
-                      <button onClick={skipGate} className="text-caption-sm text-ink dark:text-accent underline underline-offset-2">
+                      <button onClick={skipGate} className="text-caption-sm text-ink underline underline-offset-2">
                         Just show me — skip
                       </button>
                     </div>
@@ -578,26 +578,26 @@ const AIScorecard = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud dark:bg-charcoal py-section-lg border-b border-hairline-soft dark:border-ash">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
         <div className="container-site max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-display-md text-ink dark:text-canvas leading-none">What the readout is based on</h2>
-          <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed">
+          <h2 className="font-display text-display-md text-ink leading-none">What the readout is based on</h2>
+          <p className="text-body-md text-mute mt-4 leading-relaxed">
             Real automation economics: WhatsApp flows read 70–90% vs ~20% email; auto NDR outreach within
             2 hours re-delivers 64–74% vs 28–36%; optimized cart-recovery runs 18–23% vs 5–8% email.
-            Category benchmarks — <Link to="/services#ai-implementation" className="text-ink dark:text-accent underline underline-offset-2">see the systems</Link>.
+            Category benchmarks — <Link to="/services#ai-implementation" className="text-ink underline underline-offset-2">see the systems</Link>.
           </p>
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink dark:bg-canvas py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
         <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas dark:text-ink leading-none mb-6">
+          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Want it exact, not<br />directional?
           </h2>
-          <p className="text-body-md text-stone dark:text-mute leading-relaxed mb-8 max-w-lg mx-auto">
+          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
             The scorecard points at the leak. The free audit call measures it — one concrete recommendation, no pitch.
           </p>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud dark:bg-ink dark:text-canvas dark:hover:bg-charcoal" onClick={openBookingModal}>
+          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book Your Free Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
@@ -608,8 +608,8 @@ const AIScorecard = () => {
 
 const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
   <div>
-    <h2 className="font-display text-heading-xl md:text-display-md text-ink dark:text-canvas leading-none max-w-xl">{node.q}</h2>
-    {node.hint && <p className="text-body-sm text-mute dark:text-stone mt-3">{node.hint}</p>}
+    <h2 className="font-display text-heading-xl md:text-display-md text-ink leading-none max-w-xl">{node.q}</h2>
+    {node.hint && <p className="text-body-sm text-mute mt-3">{node.hint}</p>}
     <div className="grid gap-3 mt-8">
       {node.options.map((opt, i) => {
         const Icon = opt.icon;
@@ -619,10 +619,10 @@ const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
             type="button"
             onClick={() => onPick(i)}
             aria-pressed={selected === i}
-            className={`text-left px-5 py-4 rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 dark:focus-visible:ring-accent/40 flex items-center gap-3 ${
+            className={`text-left px-5 py-4 rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 flex items-center gap-3 ${
               selected === i
-                ? 'border-ink bg-ink text-canvas dark:border-accent dark:bg-accent dark:text-ink'
-                : 'border-hairline bg-canvas text-ink hover:border-ink/40 dark:border-charcoal dark:bg-charcoal dark:text-canvas dark:hover:border-canvas'
+                ? 'border-ink bg-ink text-canvas'
+                : 'border-hairline bg-canvas text-ink hover:border-ink/40'
             }`}
           >
             {Icon && <Icon className="w-5 h-5 flex-shrink-0" />}
@@ -632,8 +632,8 @@ const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
         );
       })}
     </div>
-    <p className="text-caption-sm text-mute dark:text-stone mt-4 hidden md:block">Tip: press 1–{node.options.length} to answer instantly.</p>
-    <button onClick={onBack} className="inline-flex items-center gap-1 text-caption-sm text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors mt-2">
+    <p className="text-caption-sm text-mute mt-4 hidden md:block">Tip: press 1–{node.options.length} to answer instantly.</p>
+    <button onClick={onBack} className="inline-flex items-center gap-1 text-caption-sm text-mute hover:text-ink transition-colors mt-2">
       <ArrowLeft className="w-3.5 h-3.5" /> Back
     </button>
   </div>
@@ -659,7 +659,7 @@ const CopyButton = ({ text }) => {
     <button
       onClick={copy}
       aria-live="polite"
-      className="text-caption-sm text-ink dark:text-accent underline underline-offset-2 hover:text-mute dark:hover:text-accent/80 transition-colors"
+      className="text-caption-sm text-ink underline underline-offset-2 hover:text-mute transition-colors"
     >
       {copied ? 'Copied — share it anywhere' : 'Copy my readout'}
     </button>
@@ -704,36 +704,36 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
   const annualHrs = recHrs * 12;
   return (
     <div className="text-center">
-      <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Your Automation Readiness</span>
-      <div className="font-display text-display-md md:text-display-xl text-ink dark:text-canvas leading-none mt-2">
-        {displayPct}<span className="text-stone dark:text-mute">%</span>
+      <span className="text-label-xs text-mute uppercase tracking-wider">Your Automation Readiness</span>
+      <div className="font-display text-display-md md:text-display-xl text-ink leading-none mt-2">
+        {displayPct}<span className="text-stone">%</span>
       </div>
-      <h2 className="font-display text-display-md text-ink dark:text-canvas mt-4 leading-none">{copy.headline}</h2>
-      <p className="text-body-md text-mute dark:text-stone mt-4 max-w-xl mx-auto leading-relaxed">{copy.sub}</p>
-      {recall && <p className="text-caption-md text-mute dark:text-stone mt-3 italic">{recall}</p>}
+      <h2 className="font-display text-display-md text-ink mt-4 leading-none">{copy.headline}</h2>
+      <p className="text-body-md text-mute mt-4 max-w-xl mx-auto leading-relaxed">{copy.sub}</p>
+      {recall && <p className="text-caption-md text-mute mt-3 italic">{recall}</p>}
 
-      <div className="mt-8 max-w-xl mx-auto bg-ink dark:bg-accent text-canvas dark:text-ink p-6 md:p-8">
-        <span className="text-label-xs text-stone dark:text-ink/70 uppercase tracking-wider">Recoverable every month</span>
+      <div className="mt-8 max-w-xl mx-auto bg-ink text-canvas p-6 md:p-8">
+        <span className="text-label-xs text-stone uppercase tracking-wider">Recoverable every month</span>
         <div className="font-display text-display-lg leading-none mt-2">~{fmtIN(recHrs)} hrs</div>
         <div className="text-body-md mt-2">worth roughly ₹{fmtIN(inrLow)} – ₹{fmtIN(inrHigh)}</div>
-        <p className="text-caption-sm text-stone/70 dark:text-ink/70 mt-3 leading-relaxed">
+        <p className="text-caption-sm text-stone/70 mt-3 leading-relaxed">
           That&apos;s ~{fmtIN(annualHrs)} hours a year — about {fmtIN(annualHrs / 40)} working weeks handed to agents.
         </p>
-        <p className="text-caption-sm text-stone/70 dark:text-ink/70 mt-2 leading-relaxed">
+        <p className="text-caption-sm text-stone/70 mt-2 leading-relaxed">
           At a typical ₹600–1,200/hr fully-loaded ops cost — bring your number and we&apos;ll re-run it on the audit call.
         </p>
       </div>
 
       {shownLevers.length > 0 && (
-        <div className="mt-8 text-left max-w-xl mx-auto bg-soft-cloud dark:bg-ink border border-hairline-soft dark:border-charcoal p-6">
-          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">{leverTitle}</span>
+        <div className="mt-8 text-left max-w-xl mx-auto bg-soft-cloud border border-hairline-soft p-6">
+          <span className="text-label-xs text-mute uppercase tracking-wider">{leverTitle}</span>
           <ul className="mt-3 space-y-4">
             {shownLevers.map((lever, i) => (
               <li key={lever} className="flex items-start gap-2">
-                <span className="w-5 h-5 rounded-full bg-ink dark:bg-accent text-canvas dark:text-ink text-caption-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                <span className="w-5 h-5 rounded-full bg-ink text-canvas text-caption-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
                 <span>
-                  <span className="text-body-sm text-ink dark:text-canvas block">{lever}</span>
-                  <span className="text-caption-sm text-mute dark:text-stone">{effortFor(lever)}</span>
+                  <span className="text-body-sm text-ink block">{lever}</span>
+                  <span className="text-caption-sm text-mute">{effortFor(lever)}</span>
                 </span>
               </li>
             ))}
@@ -742,12 +742,12 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
       )}
 
       {tier !== 'cold' && (
-        <div className="mt-8 text-left max-w-xl mx-auto border border-hairline-soft dark:border-charcoal p-6">
-          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Your 90 days</span>
+        <div className="mt-8 text-left max-w-xl mx-auto border border-hairline-soft p-6">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Your 90 days</span>
           <ul className="mt-3 space-y-3">
             {['Weeks 1–2', 'Days 30–60', 'Days 60–90'].map((when, i) => (
-              <li key={when} className="text-body-sm text-mute dark:text-stone leading-relaxed">
-                <span className="text-ink dark:text-canvas font-medium">{when}:</span> {seq[i]}
+              <li key={when} className="text-body-sm text-mute leading-relaxed">
+                <span className="text-ink font-medium">{when}:</span> {seq[i]}
               </li>
             ))}
           </ul>
@@ -755,9 +755,9 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
       )}
 
       <div className="mt-8 text-left max-w-xl mx-auto">
-        <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Behind this readout</span>
-        <p className="text-caption-md text-mute dark:text-stone mt-2 leading-relaxed">{BENCH[arm] || BENCH.support}</p>
-        <p className="text-caption-md text-mute dark:text-stone mt-3 leading-relaxed">
+        <span className="text-label-xs text-mute uppercase tracking-wider">Behind this readout</span>
+        <p className="text-caption-md text-mute mt-2 leading-relaxed">{BENCH[arm] || BENCH.support}</p>
+        <p className="text-caption-md text-mute mt-3 leading-relaxed">
           Working shown: conservative volume midpoints × stated handle-times (4 min/reply · 2 min/order ops · 30 min/SKU spread over 6 mo · 2 min/cart · 3 hrs/asset), 70% automation cap.
           What shrinks it: thin or bad-fit traffic, no one to take the 5% exceptions. Challenge every line on the audit call.
         </p>
@@ -795,7 +795,7 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
         </Button>
       </div>
       {tier !== 'hot' && (
-        <button onClick={openBookingModal} className="text-caption-sm text-ink dark:text-accent underline underline-offset-2 mt-4">
+        <button onClick={openBookingModal} className="text-caption-sm text-ink underline underline-offset-2 mt-4">
           or book the free audit directly
         </button>
       )}
@@ -804,11 +804,11 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
           text={`My Automation Readiness: ${pct}% (${tier}) — ~${fmtIN(recHrs)} hrs/mo recoverable (~₹${fmtIN(inrLow)}–${fmtIN(inrHigh)}/mo). Automate first: ${levers.join('; ') || 'n/a'}. Scored at thegrowthbench.com/ai-scorecard`}
         />
         {skipped && <EmailCapture postLead={postLead} mailCtx={mailCtx} />}
-        <button onClick={onRetake} className="text-caption-sm text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors underline underline-offset-2">
+        <button onClick={onRetake} className="text-caption-sm text-mute hover:text-ink transition-colors underline underline-offset-2">
           Retake the scorecard
         </button>
       </div>
-      <p className="text-caption-sm text-mute dark:text-stone mt-4 max-w-md mx-auto leading-relaxed">
+      <p className="text-caption-sm text-mute mt-4 max-w-md mx-auto leading-relaxed">
         Directional estimate from your answers + category benchmarks — your audit call makes it exact.
       </p>
     </div>

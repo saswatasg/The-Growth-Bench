@@ -1,7 +1,6 @@
 import React from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { MotionConfig } from 'framer-motion';
-import { ThemeProvider } from '@/context/ThemeContext';
 import { AuthProvider } from '@/context/AuthContext';
 import { BookingModalProvider } from '@/context/BookingModalContext';
 import { SoundProvider } from '@/components/SoundManager';
@@ -18,7 +17,6 @@ import { Toaster } from '@/components/ui/sonner';
 function App() {
   return (
     <HelmetProvider>
-      <ThemeProvider>
       <SoundProvider>
       <MotionConfig reducedMotion="user">
       <AuthProvider>
@@ -37,7 +35,6 @@ function App() {
       </AuthProvider>
       </MotionConfig>
       </SoundProvider>
-      </ThemeProvider>
     </HelmetProvider>
   );
 }

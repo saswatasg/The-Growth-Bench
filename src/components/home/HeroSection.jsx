@@ -58,7 +58,7 @@ const HeroSection = () => {
   const ctaDelay = descDelay + 0.5;
 
   return (
-    <section className="bg-canvas dark:bg-ink py-section-lg border-b border-hairline-soft dark:border-charcoal min-h-[70vh] flex items-center">
+    <section className="bg-canvas py-section-lg border-b border-hairline-soft min-h-[70vh] flex items-center">
       <div className="container-site w-full">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
@@ -68,13 +68,13 @@ const HeroSection = () => {
           >
             <Link
               to="/services#ai-implementation"
-              className="inline-flex items-center gap-2 text-label-xs uppercase tracking-wider border border-ink/20 dark:border-canvas/20 rounded-full px-4 py-2 text-ink dark:text-canvas no-underline hover:bg-soft-cloud dark:hover:bg-charcoal transition-colors"
+              className="inline-flex items-center gap-2 text-label-xs uppercase tracking-wider border border-ink/20 rounded-full px-4 py-2 text-ink no-underline hover:bg-soft-cloud transition-colors"
             >
               Drowning in repeatable work? · Agentic AI for ops, support, content <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </motion.div>
 
-          <h1 className="font-display text-display-md md:text-display-xl text-ink dark:text-canvas leading-none mt-6">
+          <h1 className="font-display text-display-md md:text-display-xl text-ink leading-none mt-6">
             {words.map((word, wi) => (
               <React.Fragment key={word}>
                 {wi > 0 && <span className="inline-block w-[0.15em]" />}
@@ -87,7 +87,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: descDelay, duration: 0.7, ease: smoothEase }}
-            className="text-body-lg text-mute dark:text-stone mt-6 leading-relaxed max-w-xl mx-auto"
+            className="text-body-lg text-mute mt-6 leading-relaxed max-w-xl mx-auto"
           >
             Strategy, ads, CRO, web, and AI agents — connected by one lead who sees the entire funnel.
             No handoffs between specialists who don't talk. No overhead from layers that don't build.
@@ -108,14 +108,14 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: ctaDelay + 0.3, duration: 0.5 }}
-            className="text-body-sm text-mute dark:text-stone mt-6"
+            className="text-body-sm text-mute mt-6"
           >
             Or see{' '}
-            <Link to="/services" className="text-ink dark:text-accent font-medium underline underline-offset-2 hover:text-mute dark:hover:text-accent/80 transition-colors">
+            <Link to="/services" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
               our services
             </Link>
             {' '}· take the{' '}
-            <Link to="/ai-scorecard" className="text-ink dark:text-accent font-medium underline underline-offset-2 hover:text-mute dark:hover:text-accent/80 transition-colors">
+            <Link to="/ai-scorecard" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
               60-second AI scorecard
             </Link>
           </motion.p>

@@ -56,14 +56,14 @@ const ROICalculator = () => {
   const canShow = revenue && channels.size > 0;
 
   return (
-    <section className="bg-soft-cloud dark:bg-charcoal py-section-lg border-b border-hairline-soft dark:border-ash">
+    <section className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
       <div className="container-site">
         <div className="max-w-2xl mb-10">
-          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">ROI Estimator</span>
-          <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">
+          <span className="text-label-xs text-mute uppercase tracking-wider">ROI Estimator</span>
+          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
             Estimate your growth potential.
           </h2>
-          <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed max-w-xl">
+          <p className="text-body-md text-mute mt-4 leading-relaxed max-w-xl">
             Get a rough range of what a growth partner could unlock for your brand. Real numbers come from the audit call.
           </p>
         </div>
@@ -71,7 +71,7 @@ const ROICalculator = () => {
         <div className="grid md:grid-cols-2 gap-10 max-w-4xl">
           <div className="space-y-8">
             <div>
-              <p className="text-heading-md text-ink dark:text-canvas mb-4">What's your monthly revenue?</p>
+              <p className="text-heading-md text-ink mb-4">What's your monthly revenue?</p>
               <div className="grid grid-cols-2 gap-2">
                 {REVENUE_OPTIONS.map((opt) => (
                   <button
@@ -79,8 +79,8 @@ const ROICalculator = () => {
                     onClick={() => setRevenue(opt)}
                     className={`px-4 py-3 text-button-sm rounded-full border text-left transition-colors ${
                       revenue === opt
-                        ? 'bg-ink text-canvas border-ink dark:bg-accent dark:text-ink dark:border-accent'
-                        : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink dark:bg-transparent dark:text-stone dark:border-charcoal dark:hover:border-canvas dark:hover:text-canvas'
+                        ? 'bg-ink text-canvas border-ink'
+                        : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
                     }`}
                   >
                     {opt}
@@ -90,7 +90,7 @@ const ROICalculator = () => {
             </div>
 
             <div>
-              <p className="text-heading-md text-ink dark:text-canvas mb-4">Which channels do you use?</p>
+              <p className="text-heading-md text-ink mb-4">Which channels do you use?</p>
               <div className="flex flex-wrap gap-2">
                 {CHANNEL_OPTIONS.map((ch) => (
                   <button
@@ -98,8 +98,8 @@ const ROICalculator = () => {
                     onClick={() => toggleChannel(ch)}
                     className={`px-4 py-2.5 text-button-sm rounded-full border transition-colors ${
                       channels.has(ch)
-                        ? 'bg-ink text-canvas border-ink dark:bg-accent dark:text-ink dark:border-accent'
-                        : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink dark:bg-transparent dark:text-stone dark:border-charcoal dark:hover:border-canvas dark:hover:text-canvas'
+                        ? 'bg-ink text-canvas border-ink'
+                        : 'bg-canvas text-mute border-hairline hover:border-ink hover:text-ink'
                     }`}
                   >
                     {ch}
@@ -122,17 +122,17 @@ const ROICalculator = () => {
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-canvas dark:bg-ink border border-hairline-soft dark:border-charcoal p-8 self-start"
+              className="bg-canvas border border-hairline-soft p-8 self-start"
             >
-              <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider block mb-2">Estimated monthly revenue lift</span>
-              <div className="font-display text-display-lg text-ink dark:text-canvas leading-none my-4">
+              <span className="text-label-xs text-mute uppercase tracking-wider block mb-2">Estimated monthly revenue lift</span>
+              <div className="font-display text-display-lg text-ink leading-none my-4">
                 ₹{estimate.low}L – ₹{estimate.high}L
               </div>
-              <p className="text-body-sm text-mute dark:text-stone leading-relaxed mb-6">
-                Based on your current revenue and channel mix. Mid-point estimate: <strong className="text-ink dark:text-accent">₹{estimate.mid}L/month</strong> additional revenue within 90 days.
+              <p className="text-body-sm text-mute leading-relaxed mb-6">
+                Based on your current revenue and channel mix. Mid-point estimate: <strong className="text-ink">₹{estimate.mid}L/month</strong> additional revenue within 90 days.
               </p>
-              <div className="border-t border-hairline-soft dark:border-charcoal pt-4 mb-6">
-                <p className="text-caption-sm text-mute dark:text-stone leading-relaxed">
+              <div className="border-t border-hairline-soft pt-4 mb-6">
+                <p className="text-caption-sm text-mute leading-relaxed">
                   This is a rough estimate based on representative outcomes across D2C clients. Actual results depend on your market, product, and current funnel efficiency.
                 </p>
               </div>

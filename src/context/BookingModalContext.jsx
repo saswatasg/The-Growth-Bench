@@ -34,7 +34,7 @@ export function BookingModalProvider({ children }) {
           onClick={closeBookingModal}
         >
           <div
-            className="relative w-full max-w-3xl bg-canvas dark:bg-ink rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-3xl bg-canvas rounded-2xl overflow-hidden shadow-2xl"
             style={{ maxHeight: '90vh' }}
             onClick={(e) => e.stopPropagation()}
             role="dialog"
@@ -44,7 +44,7 @@ export function BookingModalProvider({ children }) {
             <button
               onClick={closeBookingModal}
               aria-label="Close booking dialog"
-              className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-canvas/90 dark:bg-ink/90 flex items-center justify-center shadow-sm hover:bg-canvas dark:hover:bg-ink transition-colors"
+              className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-canvas/90 flex items-center justify-center shadow-sm hover:bg-canvas transition-colors"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
@@ -64,7 +64,7 @@ export function BookingModalProvider({ children }) {
                 onLoad={() => setLoading(false)}
               />
             </div>
-            <p className="text-center text-caption-sm text-mute dark:text-stone py-3 bg-canvas dark:bg-ink border-t border-hairline-soft dark:border-charcoal">
+            <p className="text-center text-caption-sm text-mute py-3 bg-canvas border-t border-hairline-soft">
               Calendar not loading?{' '}
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">
                 WhatsApp us instead

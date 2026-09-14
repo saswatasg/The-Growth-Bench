@@ -11,11 +11,11 @@ const steps = [
 
 const HowItWorks = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section-lg border-b border-hairline-soft dark:border-charcoal ${className}`}>
+    <motion.section {...fadeUp} className={`py-section-lg border-b border-hairline-soft ${className}`}>
       <div className="container-site">
         <div className="max-w-2xl mb-12">
-          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">The Bench Method</span>
-          <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">One partner.<br />The right team.<br />No layers.</h2>
+          <span className="text-label-xs text-mute uppercase tracking-wider">The Bench Method</span>
+          <h2 className="font-display text-display-md text-ink mt-2 leading-none">One partner.<br />The right team.<br />No layers.</h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 items-start max-w-4xl">
@@ -23,19 +23,19 @@ const HowItWorks = ({ className = '' }) => {
             const Icon = step.icon;
             return (
               <div key={step.title} className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-canvas dark:bg-soft-cloud border border-hairline-soft dark:border-hairline flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-ink dark:text-ink" />
+                <div className="w-12 h-12 rounded-full bg-canvas border border-hairline-soft flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-5 h-5 text-ink" />
                 </div>
                 <div>
-                  <h3 className="text-heading-md text-ink dark:text-canvas">{step.title}</h3>
-                  <p className="text-body-sm text-mute dark:text-stone mt-1">{step.desc}</p>
+                  <h3 className="text-heading-md text-ink">{step.title}</h3>
+                  <p className="text-body-sm text-mute mt-1">{step.desc}</p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        <p className="text-body-sm text-mute dark:text-stone max-w-2xl mt-10 leading-relaxed">
+        <p className="text-body-sm text-mute max-w-2xl mt-10 leading-relaxed">
           Every engagement is led by the founder — one person with complete context on your business.
           Specialist bench members are brought in based on what the work actually needs. No account managers, no briefing layers.
         </p>

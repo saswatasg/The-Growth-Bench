@@ -49,22 +49,22 @@ const ExitIntent = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3 }}
-          className="bg-canvas dark:bg-ink p-8 md:p-10 max-w-lg w-full relative"
+          className="bg-canvas p-8 md:p-10 max-w-lg w-full relative"
           onClick={(e) => e.stopPropagation()}
         >
           <button
             onClick={dismiss}
-            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors"
+            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-mute hover:text-ink transition-colors"
             aria-label="Close"
           >
             <X className="w-4 h-4" />
           </button>
 
-          <span className="text-label-xs text-mute dark:text-stone uppercase tracking-wider">Before you go</span>
-          <h2 className="font-display text-display-md text-ink dark:text-canvas mt-2 leading-none">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Before you go</span>
+          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
             Get your free growth audit
           </h2>
-          <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed">
+          <p className="text-body-md text-mute mt-4 leading-relaxed">
             Book a free 30-minute call. We'll look at your funnel, find the biggest leak, and give you one concrete thing to fix — even if we never work together.
           </p>
 
@@ -72,12 +72,12 @@ const ExitIntent = () => {
             <Button size="lg" onClick={() => { dismiss(); openBookingModal(); }} className="w-full sm:w-auto">
               Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <button onClick={dismiss} className="text-body-sm text-mute dark:text-stone underline underline-offset-2 hover:text-ink dark:hover:text-canvas transition-colors">
+            <button onClick={dismiss} className="text-body-sm text-mute underline underline-offset-2 hover:text-ink transition-colors">
               No thanks
             </button>
           </div>
 
-          <p className="text-caption-sm text-mute dark:text-stone mt-4">
+          <p className="text-caption-sm text-mute mt-4">
             No retainer commitment. No pitch. Just a clear recommendation.
           </p>
         </motion.div>

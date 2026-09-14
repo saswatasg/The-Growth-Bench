@@ -35,10 +35,10 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <section className="bg-canvas dark:bg-ink">
+      <section className="bg-canvas">
         <div className="container-site py-section-lg text-center">
-          <h1 className="font-display text-display-md text-ink dark:text-canvas">Post not found</h1>
-          <Link to="/insights" className="text-body-sm text-ink dark:text-accent underline mt-4 inline-block">Back to Insights</Link>
+          <h1 className="font-display text-display-md text-ink">Post not found</h1>
+          <Link to="/insights" className="text-body-sm text-ink underline mt-4 inline-block">Back to Insights</Link>
         </div>
       </section>
     );
@@ -75,40 +75,40 @@ const BlogPost = () => {
     <>
       <PageMeta title={`${post.title} | The Growth Bench Insights`} description={post.description} articleSchema={articleSchema} ogImage={slugToCategoryImage[post.category] || "/assets/images/og-card.png"} />
 
-      <article className="bg-canvas dark:bg-ink py-section-lg">
+      <article className="bg-canvas py-section-lg">
         <div className="container-site max-w-3xl mx-auto">
           <div className="mb-8">
-            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute dark:text-stone mb-6">
-              <Link to="/" className="hover:text-ink dark:hover:text-canvas transition-colors no-underline text-mute dark:text-stone">Home</Link>
+            <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">
+              <Link to="/" className="hover:text-ink transition-colors no-underline text-mute">Home</Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <Link to="/insights" className="hover:text-ink dark:hover:text-canvas transition-colors no-underline text-mute dark:text-stone">Insights</Link>
+              <Link to="/insights" className="hover:text-ink transition-colors no-underline text-mute">Insights</Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <span className="text-ink dark:text-canvas font-medium">{post.title}</span>
+              <span className="text-ink font-medium">{post.title}</span>
             </nav>
 
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-label-xs text-mute dark:text-stone bg-soft-cloud dark:bg-charcoal px-3 py-1 rounded-full uppercase">{post.category}</span>
-              <span className="text-caption-sm text-mute dark:text-stone">{post.date}</span>
-              <span className="text-caption-sm text-mute dark:text-stone">{post.readTime} min read</span>
+              <span className="text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full uppercase">{post.category}</span>
+              <span className="text-caption-sm text-mute">{post.date}</span>
+              <span className="text-caption-sm text-mute">{post.readTime} min read</span>
             </div>
 
-            <h1 className="font-display text-display-md text-ink dark:text-canvas leading-none">{post.title}</h1>
-            <p className="text-body-md text-mute dark:text-stone mt-4 leading-relaxed max-w-2xl">{post.description}</p>
+            <h1 className="font-display text-display-md text-ink leading-none">{post.title}</h1>
+            <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">{post.description}</p>
           </div>
 
-          <div className="border-t border-hairline-soft dark:border-charcoal pt-8" />
+          <div className="border-t border-hairline-soft pt-8" />
 
-          <div className="text-body-md text-mute dark:text-stone leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink [&_h2]:dark:text-canvas [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink [&_h3]:dark:text-canvas [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink [&_a]:dark:text-accent [&_a]:underline [&_strong]:text-ink [&_strong]:dark:text-canvas [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4">
+          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink -canvas [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink -canvas [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink -accent [&_a]:underline [&_strong]:text-ink -canvas [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.body}
             </ReactMarkdown>
           </div>
 
           {ctas?.midArticle && (
-            <div className="bg-soft-cloud dark:bg-charcoal border border-hairline-soft dark:border-ash p-6 my-10">
-              <p className="text-body-sm text-mute dark:text-stone">
+            <div className="bg-soft-cloud border border-hairline-soft p-6 my-10">
+              <p className="text-body-sm text-mute">
                 <strong>{ctas.midArticle.text}</strong>{' '}
-                <button onClick={openBookingModal} className="text-ink dark:text-accent font-medium underline ml-1">
+                <button onClick={openBookingModal} className="text-ink font-medium underline ml-1">
                   {ctas.midArticle.button}
                 </button>
                 {ctas.midArticle.note && <> — {ctas.midArticle.note}.</>}
@@ -117,13 +117,13 @@ const BlogPost = () => {
           )}
 
           {post.faq && post.faq.length > 0 && (
-            <div className="mt-12 pt-8 border-t border-hairline-soft dark:border-charcoal">
-              <h2 className="font-display text-heading-xl text-ink dark:text-canvas mb-6">FAQs</h2>
+            <div className="mt-12 pt-8 border-t border-hairline-soft">
+              <h2 className="font-display text-heading-xl text-ink mb-6">FAQs</h2>
               <div className="space-y-6">
                 {post.faq.map((item, i) => (
                   <div key={i}>
-                    <h3 className="text-heading-md text-ink dark:text-canvas mb-2">{item.q}</h3>
-                    <p className="text-body-sm text-mute dark:text-stone leading-relaxed">{item.a}</p>
+                    <h3 className="text-heading-md text-ink mb-2">{item.q}</h3>
+                    <p className="text-body-sm text-mute leading-relaxed">{item.a}</p>
                   </div>
                 ))}
               </div>
@@ -139,19 +139,19 @@ const BlogPost = () => {
             </div>
           )}
 
-          <div className="mt-8 pt-6 border-t border-hairline-soft dark:border-charcoal flex items-center gap-3">
-            <span className="text-label-xs text-mute dark:text-stone uppercase">Share</span>
-            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors p-1" aria-label="Share on LinkedIn">
+          <div className="mt-8 pt-6 border-t border-hairline-soft flex items-center gap-3">
+            <span className="text-label-xs text-mute uppercase">Share</span>
+            <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="text-mute hover:text-ink transition-colors p-1" aria-label="Share on LinkedIn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors p-1" aria-label="Share on Twitter/X">
+            <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" className="text-mute hover:text-ink transition-colors p-1" aria-label="Share on Twitter/X">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
           </div>
 
           {ctas?.bottomCTA && (
-            <div className="mt-12 pt-8 border-t border-hairline-soft dark:border-charcoal text-center">
-              <p className="text-body-md text-mute dark:text-stone mb-4">
+            <div className="mt-12 pt-8 border-t border-hairline-soft text-center">
+              <p className="text-body-md text-mute mb-4">
                 <strong>{ctas.bottomCTA.text}</strong>
               </p>
               <div className="flex flex-wrap justify-center gap-4">
@@ -165,24 +165,24 @@ const BlogPost = () => {
                 )}
               </div>
               <p className="mt-5">
-                <Link to="/ai-scorecard" className="text-caption-sm text-mute dark:text-stone underline underline-offset-2 hover:text-ink dark:hover:text-canvas transition-colors">
+                <Link to="/ai-scorecard" className="text-caption-sm text-mute underline underline-offset-2 hover:text-ink transition-colors">
                   Or take the 60-second AI scorecard
                 </Link>
               </p>
             </div>
           )}
 
-          <div className="mt-16 pt-8 border-t border-hairline-soft dark:border-charcoal">
-            <h2 className="font-display text-heading-lg text-ink dark:text-canvas mb-6">Related posts</h2>
+          <div className="mt-16 pt-8 border-t border-hairline-soft">
+            <h2 className="font-display text-heading-lg text-ink mb-6">Related posts</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {posts
                 .filter((p) => p.slug !== post.slug && p.category === post.category)
                 .slice(0, 2)
                 .map((related) => (
-                  <Link key={related.slug} to={`/insights/${related.slug}`} className="block p-6 border border-hairline-soft dark:border-charcoal bg-canvas dark:bg-ink no-underline group">
-                    <span className="inline-block text-label-xs text-mute dark:text-stone bg-soft-cloud dark:bg-charcoal px-3 py-1 rounded-full mb-2 uppercase">{related.category}</span>
-                    <h3 className="text-heading-md text-ink dark:text-canvas mb-1 group-hover:text-mute dark:group-hover:text-stone transition-colors">{related.title}</h3>
-                    <p className="text-caption-sm text-mute dark:text-stone">{related.readTime} min read</p>
+                  <Link key={related.slug} to={`/insights/${related.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group">
+                    <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-2 uppercase">{related.category}</span>
+                    <h3 className="text-heading-md text-ink mb-1 group-hover:text-mute transition-colors">{related.title}</h3>
+                    <p className="text-caption-sm text-mute">{related.readTime} min read</p>
                   </Link>
                 ))}
             </div>

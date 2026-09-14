@@ -1,5 +1,4 @@
 module.exports = {
-  darkMode: 'class',
   content: [
     './pages/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
@@ -27,7 +26,6 @@ module.exports = {
         sale: '#d30005',
         success: '#007d48',
         info: '#1151ff',
-        accent: '#10b981',
         border: '#e5e5e5',
         ring: '#111111',
         background: '#ffffff',

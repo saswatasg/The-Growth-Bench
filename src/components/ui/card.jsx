@@ -24,7 +24,7 @@ const Card = React.forwardRef(({ className, children, custom, hoverable = false,
     custom={custom}
     className={cn(
       'card-accent bg-card text-card-foreground',
-      hoverable && 'hover:-translate-y-0.5 hover:border-primary/30 dark:hover:border-accent/30 cursor-pointer',
+      hoverable && 'hover:-translate-y-0.5 hover:border-primary/30 cursor-pointer',
       className
     )}
     {...props}
