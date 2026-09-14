@@ -12,6 +12,8 @@ import HowItWorks from '@/components/HowItWorks';
 import FitFilter from '@/components/FitFilter';
 import GrowthTimeline from '@/components/GrowthTimeline';
 import ROICalculator from '@/components/ROICalculator';
+import AsSeenIn from '@/components/AsSeenIn';
+import ActivityProof from '@/components/ActivityProof';
 import CtaPaths from '@/components/CtaPaths';
 import { loadPosts } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';
@@ -43,6 +45,7 @@ const Home = () => {
       <ServicesOverview />
       <GrowthTimeline />
       <ROICalculator />
+      <AsSeenIn className="bg-canvas" />
 
       <HowItWorks className="bg-soft-cloud" />
 
@@ -75,6 +78,7 @@ const Home = () => {
       </motion.section>
 
       <FitFilter className="bg-canvas" />
+      <ActivityProof className="bg-soft-cloud" />
 
       <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
         <div className="container-site max-w-4xl mx-auto">

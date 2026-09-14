@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 import CookieConsent from '@/components/CookieConsent';
 import ExitIntent from '@/components/ExitIntent';
 import StickyMobileCTA from '@/components/StickyMobileCTA';
+import GrowthChat from '@/components/GrowthChat';
 import { Toaster } from '@/components/ui/sonner';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <CookieConsent />
         <ExitIntent />
         <StickyMobileCTA />
+        <GrowthChat />
         <Toaster />
         </BookingModalProvider>
       </AuthProvider>
