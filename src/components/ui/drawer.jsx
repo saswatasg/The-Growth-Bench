@@ -60,7 +60,7 @@ const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("fixed inset-0 z-50 bg-black/50", className)}
+      className={cn("fixed inset-0 z-50 bg-ink/50", className)}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

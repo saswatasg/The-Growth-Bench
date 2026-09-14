@@ -35,7 +35,7 @@ const Footer = () => {
             <div className="w-8 h-8 bg-canvas dark:bg-ink rounded-full flex items-center justify-center mb-3">
               <span className="text-caption-sm text-ink dark:text-canvas font-bold">G</span>
             </div>
-            <p className="text-body-sm text-stone dark:text-mute leading-relaxed max-w-xs">
+            <p className="text-body-sm text-mute dark:text-stone leading-relaxed max-w-xs">
               Full-stack growth partner for D2C brands and early-stage startups. Strategy, systems, scale.
             </p>
           </div>
@@ -46,7 +46,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.to} className="text-body-sm text-stone dark:text-mute no-underline hover:text-canvas dark:hover:text-ink transition-colors">
+                    <Link to={link.to} className="text-body-sm text-mute dark:text-stone no-underline hover:text-canvas dark:hover:text-ink transition-colors">
                       {link.label}
                     </Link>
                   </li>
@@ -59,12 +59,12 @@ const Footer = () => {
             <h4 className="text-caption-sm text-canvas dark:text-ink font-medium mb-4">Contact</h4>
             <ul className="space-y-2">
               <li>
-                <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-stone dark:text-mute no-underline hover:text-canvas dark:hover:text-ink transition-colors flex items-center gap-2">
+                <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-mute dark:text-stone no-underline hover:text-canvas dark:hover:text-ink transition-colors flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5" /> Email
                 </a>
               </li>
               <li>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-body-sm text-stone dark:text-mute no-underline hover:text-canvas dark:hover:text-ink transition-colors flex items-center gap-2">
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-body-sm text-mute dark:text-stone no-underline hover:text-canvas dark:hover:text-ink transition-colors flex items-center gap-2">
                   <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
                 </a>
               </li>
@@ -73,14 +73,14 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="border-t border-stone/20 dark:border-hairline-soft">
+      <div className="border-t border-hairline-soft dark:border-charcoal">
         <div className="container-site flex flex-col md:flex-row items-center justify-between py-6 gap-4">
-          <p className="text-caption-sm text-stone dark:text-mute">
+          <p className="text-caption-sm text-mute dark:text-stone">
             &copy; 2026 The Growth Bench. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link to="/privacy" className="text-caption-sm text-stone dark:text-mute no-underline hover:text-canvas dark:hover:text-ink transition-colors">Privacy</Link>
-            <Link to="/terms" className="text-caption-sm text-stone dark:text-mute no-underline hover:text-canvas dark:hover:text-ink transition-colors">Terms</Link>
+            <Link to="/privacy" className="text-caption-sm text-mute dark:text-stone no-underline hover:text-canvas dark:hover:text-ink transition-colors">Privacy</Link>
+            <Link to="/terms" className="text-caption-sm text-mute dark:text-stone no-underline hover:text-canvas dark:hover:text-ink transition-colors">Terms</Link>
           </div>
         </div>
       </div>

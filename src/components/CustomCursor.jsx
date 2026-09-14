@@ -79,7 +79,7 @@ const CustomCursor = () => {
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       >
         <div
-          className="w-full h-full rounded-full bg-white"
+          className="w-full h-full rounded-full bg-canvas"
           style={{ mixBlendMode: config.blend }}
         />
       </motion.div>

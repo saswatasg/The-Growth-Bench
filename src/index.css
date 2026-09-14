@@ -3,6 +3,50 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 0% 7%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 44%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 84% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 160 84% 39%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 0% 22%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 22%;
+    --muted-foreground: 0 0% 46%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 84% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 160 84% 39%;
+  }
+
   body {
     @apply bg-canvas text-ink font-body antialiased;
   }
@@ -10,30 +54,6 @@
   .dark {
     @apply bg-ink text-canvas;
   }
-}
-
-/* Custom cursor */
-.custom-cursor {
-  pointer-events: none;
-  position: fixed;
-  z-index: [9999];
-  mix-blend-mode: difference;
-}
-
-/* View Transitions */
-::view-transition-old(root) {
-  animation: fade-out 0.15s ease-in;
-}
-::view-transition-new(root) {
-  animation: fade-in 0.15s ease-out;
-}
-@keyframes fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 @layer utilities {

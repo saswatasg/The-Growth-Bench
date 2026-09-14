@@ -143,7 +143,7 @@ export function SoundProvider({ children }) {
       {children}
       <button
         onClick={toggleMute}
-        className="fixed bottom-4 left-4 z-[80] p-2 rounded-full bg-ink/10 dark:bg-canvas/10 text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors backdrop-blur-sm"
+        className="fixed bottom-4 left-4 z-[80] p-2 rounded-full bg-ink/10 dark:bg-canvas/10 text-mute dark:text-stone hover:text-ink dark:hover:text-canvas transition-colors backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 dark:focus-visible:ring-accent/40"
         aria-label={muted ? 'Unmute sounds' : 'Mute sounds'}
       >
         {muted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
