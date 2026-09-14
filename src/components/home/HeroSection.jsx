@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
@@ -29,12 +29,6 @@ const wordConfig = {
 };
 
 function StickyLetter({ char, delay, config }) {
-  const landedRef = React.useRef(false);
-
-  const handleComplete = useCallback(() => {
-    landedRef.current = true;
-  }, []);
-
   return (
     <motion.span
       className="inline-block"
@@ -79,99 +73,36 @@ function StickyLetter({ char, delay, config }) {
           duration: 0.3,
         },
       }}
-      onAnimationComplete={handleComplete}
     >
       {char}
     </motion.span>
   );
 }
 
-function StickyWord({ word, wordOffset, onAllLanded }) {
-  const landedRef = React.useRef(0);
+function StickyWord({ word, wordOffset }) {
   const config = wordConfig[word];
   const letters = word.split('');
-
-  const handleLanded = React.useCallback(() => {
-    landedRef.current += 1;
-    if (landedRef.current === letters.length) {
-      onAllLanded?.();
-    }
-  }, [letters.length, onAllLanded]);
 
   return (
     <span className="inline-block">
       {letters.map((char, i) => (
-        <StickyLetterWithCallback
+        <StickyLetter
           key={`${word}-${i}`}
           char={char}
           delay={wordOffset + i * config.staggerMs}
           config={config}
-          onComplete={i === letters.length - 1 ? handleLanded : undefined}
         />
       ))}
     </span>
   );
 }
 
-function StickyLetterWithCallback({ char, delay, config, onComplete }) {
-  return (
-    <motion.span
-      className="inline-block"
-      initial={{
-        opacity: 0,
-        y: config.fallDistance,
-        rotateZ: config.startRotation,
-        scale: 0.5,
-      }}
-      animate={{
-        opacity: [0, 1, 1],
-        y: [
-          config.fallDistance,
-          0,
-          config.squashScale.y * -8,
-          0,
-          -3,
-          0,
-        ],
-        rotateZ: [
-          config.startRotation,
-          config.startRotation * -0.3,
-          0,
-          config.startRotation * 0.1,
-          0,
-        ],
-        scale: [
-          0.5,
-          1.05,
-          config.squashScale.x,
-          1.02,
-          1,
-        ],
-      }}
-      transition={{
-        delay: delay / 1000,
-        duration: 1.4,
-        times: [0, 0.35, 0.5, 0.65, 0.82, 1],
-        ease: [0.22, 0.03, 0.36, 1],
-        opacity: {
-          delay: delay / 1000,
-          duration: 0.3,
-        },
-      }}
-      onAnimationComplete={onComplete}
-    >
-      {char}
-    </motion.span>
-  );
-}
-
-const UnderlineReveal = ({ delay }) => (
+const UnderlineReveal = () => (
   <motion.span
     className="block mx-auto mt-2 h-[3px] bg-ink origin-left"
     initial={{ scaleX: 0, opacity: 0 }}
     animate={{ scaleX: 1, opacity: 1 }}
     transition={{
-      delay,
       duration: 0.8,
       ease: [0.22, 0.03, 0.36, 1],
     }}
@@ -194,6 +125,12 @@ const HeroSection = () => {
   }
 
   const totalAnimMs = offset;
+
+  useEffect(() => {
+    if (!isInView) return;
+    const timer = setTimeout(() => setAllLanded(true), totalAnimMs + 200);
+    return () => clearTimeout(timer);
+  }, [isInView, totalAnimMs]);
 
   return (
     <section ref={ref} className="bg-canvas py-[100px] md:py-[140px] overflow-hidden">
@@ -219,11 +156,10 @@ const HeroSection = () => {
                 <StickyWord
                   word={word}
                   wordOffset={wordOffsets[wi]}
-                  onAllLanded={wi === words.length - 1 ? () => setAllLanded(true) : undefined}
                 />
               </React.Fragment>
             ))}
-            {allLanded && <UnderlineReveal delay={0} />}
+            {allLanded && <UnderlineReveal />}
           </h1>
 
           <motion.p
