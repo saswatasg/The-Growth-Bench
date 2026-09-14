@@ -38,10 +38,8 @@ const Header = () => {
       />
       <header className="sticky top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur border-b border-hairline-soft">
         <div className="container-site flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 no-underline group">
-            <div className="w-8 h-8 bg-ink rounded-full flex items-center justify-center">
-              <span className="text-caption-sm text-canvas font-bold leading-none">G</span>
-            </div>
+          <Link to="/" className="flex items-center gap-2.5 no-underline group">
+            <img src="/favicon.png" alt="" className="w-8 h-8 rounded-full" />
             <span className="font-display text-lg tracking-wide text-ink">
               THE GROWTH BENCH
             </span>
@@ -80,7 +78,7 @@ const Header = () => {
       {isOpen && (
         <div className="fixed inset-0 z-[60] bg-canvas flex flex-col md:hidden">
           <div className="container-site flex items-center justify-between h-16 border-b border-hairline-soft">
-            <span className="font-display text-lg tracking-wide text-ink">THE GROWTH BENCH</span>
+            <img src="/favicon.png" alt="" className="w-8 h-8 rounded-full" />
             <button className="p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full" onClick={() => setIsOpen(false)} aria-label="Close menu">
               <X className="w-5 h-5" />
             </button>

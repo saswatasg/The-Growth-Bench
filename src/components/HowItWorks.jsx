@@ -11,7 +11,7 @@ const steps = [
 
 const HowItWorks = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section-lg border-b border-hairline-soft ${className}`}>
+    <motion.section {...fadeUp} className={`py-[80px] md:py-[100px] ${className}`}>
       <div className="container-site">
         <div className="max-w-2xl mb-12">
           <span className="text-label-xs text-mute uppercase tracking-wider">The Bench Method</span>

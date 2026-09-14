@@ -12,7 +12,7 @@ const publications = [
 
 const AsSeenIn = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section border-b border-hairline-soft ${className}`}>
+    <motion.section {...fadeUp} className={`py-[60px] md:py-[80px] ${className}`}>
       <div className="container-site">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex-shrink-0">

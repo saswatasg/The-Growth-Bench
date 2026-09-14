@@ -36,7 +36,7 @@ const BlogPost = () => {
   if (!post) {
     return (
       <section className="bg-canvas">
-        <div className="container-site py-section-lg text-center">
+        <div className="container-site py-[80px] md:py-[100px] text-center">
           <h1 className="font-display text-display-md text-ink">Post not found</h1>
           <Link to="/insights" className="text-body-sm text-ink underline mt-4 inline-block">Back to Insights</Link>
         </div>
@@ -75,7 +75,7 @@ const BlogPost = () => {
     <>
       <PageMeta title={`${post.title} | The Growth Bench Insights`} description={post.description} articleSchema={articleSchema} ogImage={slugToCategoryImage[post.category] || "/assets/images/og-card.png"} />
 
-      <article className="bg-canvas py-section-lg">
+      <article className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site max-w-3xl mx-auto">
           <div className="mb-8">
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">

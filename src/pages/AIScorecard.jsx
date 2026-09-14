@@ -468,7 +468,7 @@ const AIScorecard = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft overflow-x-clip">
+      <section className="bg-canvas py-[80px] md:py-[100px] overflow-x-clip">
         <div className="container-site max-w-2xl mx-auto">
           {step !== 'hook' && !isResult && (
             <div className="mb-8">
@@ -578,7 +578,7 @@ const AIScorecard = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site max-w-2xl mx-auto text-center">
           <h2 className="font-display text-display-md text-ink leading-none">What the readout is based on</h2>
           <p className="text-body-md text-mute mt-4 leading-relaxed">
@@ -589,7 +589,7 @@ const AIScorecard = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Want it exact, not<br />directional?

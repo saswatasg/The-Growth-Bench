@@ -115,7 +115,7 @@ const WorkWithUs = () => {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </Helmet>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">No Commitment. Just Clarity.</span>
@@ -129,7 +129,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-soft-cloud py-section-lg">
+      <section className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site max-w-2xl mx-auto">
           {!submitted ? (
             <>
@@ -255,7 +255,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <h2 className="font-display text-display-md text-ink text-center leading-none mb-12">What happens on the call</h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -275,7 +275,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-4xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
@@ -292,7 +292,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-soft-cloud py-section-lg text-center">
+      <section className="bg-soft-cloud py-[80px] md:py-[100px] text-center">
         <div className="container-site">
           <div className="max-w-xl mx-auto">
             <p className="text-body-sm text-mute mb-6">Three ways in — pick yours.</p>

@@ -62,10 +62,7 @@ module.exports = {
         'caption-sm': ['12px', { lineHeight: '1.5', fontWeight: '500', letterSpacing: '0' }],
         'label-xs': ['11px', { lineHeight: '1', fontWeight: '600', letterSpacing: '0.05em' }],
       },
-      spacing: {
-        'section': '64px',
-        'section-lg': '96px',
-      },
+      spacing: {},
       keyframes: {
         "accordion-down": {
           from: { height: 0 },

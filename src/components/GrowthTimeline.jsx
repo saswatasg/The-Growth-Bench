@@ -62,7 +62,7 @@ const GrowthTimeline = () => {
   const current = phases.find(p => p.id === activePhase);
 
   return (
-    <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+    <section className="bg-canvas py-[80px] md:py-[100px]">
       <div className="container-site">
         <div className="max-w-2xl mb-12">
           <span className="text-label-xs text-mute uppercase tracking-wider">The Bench Method</span>

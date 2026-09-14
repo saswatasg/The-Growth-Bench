@@ -15,7 +15,7 @@ const About = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-3xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">About</span>
@@ -26,7 +26,7 @@ const About = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-4xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">The Problem</span>
@@ -44,7 +44,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">The same person who sees the full picture builds it.</h2>
@@ -69,7 +69,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
@@ -89,7 +89,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px]">
         <div className="container-site text-center">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
@@ -113,7 +113,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="grid md:grid-cols-[auto_1fr] gap-8 max-w-4xl items-start">
             <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -161,7 +161,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
             <div>
@@ -182,7 +182,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Sound like what<br />you've been looking for?

@@ -58,9 +58,9 @@ const HeroSection = () => {
   const ctaDelay = descDelay + 0.5;
 
   return (
-    <section className="bg-canvas py-section-lg border-b border-hairline-soft min-h-[70vh] flex items-center">
+    <section className="bg-canvas py-[100px] md:py-[140px]">
       <div className="container-site w-full">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
@@ -74,7 +74,7 @@ const HeroSection = () => {
             </Link>
           </motion.div>
 
-          <h1 className="font-display text-display-md md:text-display-xl text-ink leading-none mt-6">
+          <h1 className="font-display text-display-lg md:text-display-xl lg:text-[80px] text-ink leading-[0.95] mt-8">
             {words.map((word, wi) => (
               <React.Fragment key={word}>
                 {wi > 0 && <span className="inline-block w-[0.15em]" />}
@@ -87,7 +87,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: descDelay, duration: 0.7, ease: smoothEase }}
-            className="text-body-lg text-mute mt-6 leading-relaxed max-w-xl mx-auto"
+            className="text-body-lg text-mute mt-8 leading-relaxed max-w-2xl mx-auto"
           >
             Strategy, ads, CRO, web, and AI agents — connected by one lead who sees the entire funnel.
             No handoffs between specialists who don't talk. No overhead from layers that don't build.
@@ -97,7 +97,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: ctaDelay, duration: 0.5, ease: growEase }}
-            className="flex flex-wrap justify-center gap-4 mt-10"
+            className="flex flex-wrap justify-center gap-4 mt-12"
           >
             <Button size="lg" onClick={openBookingModal}>
               Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />

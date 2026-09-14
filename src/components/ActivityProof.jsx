@@ -11,7 +11,7 @@ const stats = [
 
 const ActivityProof = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section border-b border-hairline-soft ${className}`}>
+    <motion.section {...fadeUp} className={`py-[80px] md:py-[100px] ${className}`}>
       <div className="container-site">
         <div className="text-center mb-10">
           <span className="text-label-xs text-mute uppercase tracking-wider">Across The Bench</span>

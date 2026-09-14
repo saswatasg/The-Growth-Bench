@@ -79,7 +79,7 @@ const CaseStudies = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
@@ -94,7 +94,7 @@ const CaseStudies = () => {
       </section>
 
       <motion.section {...fadeUp} className="bg-soft-cloud">
-        <div className="container-site py-section-lg">
+        <div className="container-site py-[80px] md:py-[100px]">
           <div className="flex flex-wrap gap-3 mb-10">
             {['All', ...allTags].map((tag) => (
               <button
@@ -150,7 +150,7 @@ const CaseStudies = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="p-6 md:p-8 border-2 border-ink bg-canvas max-w-4xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">AI Implementation</span>
@@ -171,7 +171,7 @@ const CaseStudies = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <h2 className="font-display text-display-md text-ink leading-none mb-8">From the same playbook</h2>
           <div className="grid md:grid-cols-2 gap-6">
@@ -189,7 +189,7 @@ const CaseStudies = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Want results<br />like these?

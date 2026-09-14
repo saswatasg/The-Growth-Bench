@@ -17,7 +17,7 @@ const Compare = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Compare</span>
@@ -31,7 +31,7 @@ const Compare = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-3 gap-5 items-stretch">
             <div className="p-6 border border-hairline-soft bg-canvas flex flex-col">
@@ -66,7 +66,7 @@ const Compare = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-2xl mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Side by side</span>
@@ -113,7 +113,7 @@ const Compare = () => {
 
       <FitFilter className="bg-canvas" />
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Start with a free<br />audit call.

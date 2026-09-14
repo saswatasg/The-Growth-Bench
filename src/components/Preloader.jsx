@@ -41,9 +41,7 @@ const Preloader = () => {
         transition={{ duration: 0.4 }}
         className="fixed inset-0 z-[200] bg-ink flex flex-col items-center justify-center"
       >
-        <div className="w-12 h-12 rounded-full bg-canvas flex items-center justify-center mb-8">
-          <span className="font-display text-heading-lg text-ink leading-none">G</span>
-        </div>
+        <img src="/favicon.png" alt="" className="w-12 h-12 rounded-full mb-8" />
         <div className="w-48 h-0.5 bg-charcoal rounded-full overflow-hidden mb-4">
           <motion.div
             className="h-full bg-canvas rounded-full"

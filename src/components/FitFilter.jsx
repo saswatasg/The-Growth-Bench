@@ -18,7 +18,7 @@ const badFit = [
 
 const FitFilter = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-section-lg border-b border-hairline-soft ${className}`}>
+    <motion.section {...fadeUp} className={`py-[80px] md:py-[100px] ${className}`}>
       <div className="container-site">
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <div>

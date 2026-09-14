@@ -16,7 +16,7 @@ const services = [
 
 const ServicesOverview = () => {
   return (
-    <section className="bg-ink py-section-lg">
+    <section className="bg-ink py-[100px] md:py-[120px]">
       <div className="container-site">
         <span className="text-label-xs text-stone uppercase tracking-wider mb-3 block">WHAT WE DO</span>
         <h2 className="font-display text-heading-xl text-canvas mb-2">The full stack, handled.</h2>

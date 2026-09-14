@@ -56,7 +56,7 @@ const ROICalculator = () => {
   const canShow = revenue && channels.size > 0;
 
   return (
-    <section className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+    <section className="bg-soft-cloud py-[80px] md:py-[100px]">
       <div className="container-site">
         <div className="max-w-2xl mb-10">
           <span className="text-label-xs text-mute uppercase tracking-wider">ROI Estimator</span>

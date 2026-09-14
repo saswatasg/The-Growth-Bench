@@ -15,7 +15,7 @@ const CartRecovery = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Solutions · Cart &amp; Checkout Recovery</span>
@@ -30,7 +30,7 @@ const CartRecovery = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">What we fix</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">Same leaks, different stores.</h2>
@@ -50,7 +50,7 @@ const CartRecovery = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">Results</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">Tested, then rolled out.</h2>
@@ -74,7 +74,7 @@ const CartRecovery = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
             <div>
@@ -104,7 +104,7 @@ const CartRecovery = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Find your leak<br />in 30 minutes.

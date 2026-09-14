@@ -260,7 +260,7 @@ const Services = () => {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </Helmet>
 
-      <section className="bg-canvas py-section-lg border-b border-hairline-soft">
+      <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
@@ -274,7 +274,7 @@ const Services = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-3 gap-4">
             {services.map((s) => {
@@ -303,8 +303,8 @@ const Services = () => {
         const Icon = service.icon;
         return (
           <React.Fragment key={service.id}>
-            <motion.section id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas border-t border-hairline-soft scroll-mt-16' : 'bg-soft-cloud border-t border-hairline-soft scroll-mt-16'}>
-              <div className="container-site py-section-lg">
+              <motion.section id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas scroll-mt-16' : 'bg-soft-cloud scroll-mt-16'}>
+              <div className="container-site py-[80px] md:py-[100px]">
                 <div className="grid md:grid-cols-2 gap-12">
                   <div>
                     <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
@@ -362,7 +362,7 @@ const Services = () => {
               </div>
             </motion.section>
             {i === 2 && (
-              <motion.section {...fadeUp} className="bg-ink py-section text-center">
+              <motion.section {...fadeUp} className="bg-ink py-[80px] md:py-[100px] text-center">
                 <div className="container-site">
                   <h3 className="font-display text-heading-xl text-canvas leading-none mb-4">
                     Not sure which services you need?
@@ -380,7 +380,7 @@ const Services = () => {
         );
       })}
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-t border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">What founders ask first.</h2>
@@ -395,7 +395,7 @@ const Services = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Not sure which<br />services you need?

@@ -47,7 +47,7 @@ const Home = () => {
 
       <HowItWorks className="bg-soft-cloud" />
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="text-center">
             <span className="text-label-xs text-stone uppercase tracking-wider">By The Numbers</span>
@@ -78,7 +78,7 @@ const Home = () => {
       <FitFilter className="bg-canvas" />
       <ActivityProof className="bg-soft-cloud" />
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-section-lg border-b border-hairline-soft">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-label-xs text-mute uppercase tracking-wider">What People Say</span>
@@ -137,7 +137,7 @@ const Home = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-section-lg">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-2xl mb-12">
             <span className="text-label-xs text-mute uppercase tracking-wider">From The Bench</span>
@@ -165,7 +165,7 @@ const Home = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-section-lg text-center">
+      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Start with a free<br />audit call.

@@ -6,7 +6,7 @@ const Terms = () => {
   return (
     <>
       <PageMeta />
-      <section className="bg-canvas py-section-lg">
+      <section className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site max-w-3xl mx-auto">
           <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">
             <Link to="/" className="hover:text-ink transition-colors no-underline text-mute">Home</Link>
