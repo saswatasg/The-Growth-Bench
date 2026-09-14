@@ -5,9 +5,9 @@ import { fadeUp } from '@/lib/motion';
 const publications = [
   { name: 'YourStory', abbr: 'YS' },
   { name: 'Inc42', abbr: 'I42' },
-  { name: 'Entrepreneur', abbr: 'EN' },
+  { name: 'Entrepreneur India', abbr: 'EI' },
+  { name: 'Economic Times', abbr: 'ET' },
   { name: 'Business Insider', abbr: 'BI' },
-  { name: 'Tech in Asia', abbr: 'TA' },
 ];
 
 const AsSeenIn = ({ className = '' }) => {
