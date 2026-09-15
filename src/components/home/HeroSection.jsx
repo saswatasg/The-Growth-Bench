@@ -4,6 +4,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { useCursor } from '@/components/CustomCursor';
 
 const wordConfig = {
   GROWTH: {
@@ -84,6 +85,7 @@ const UnderlineReveal = () => (
 
 const HeroSection = () => {
   const { openBookingModal } = useBookingModal();
+  const { setCursorState } = useCursor();
   const words = ['GROWTH', 'THAT', 'STICKS'];
   const [allLanded, setAllLanded] = useState(false);
   const ref = React.useRef(null);
@@ -114,6 +116,8 @@ const HeroSection = () => {
           >
             <Link
               to="/services#ai-implementation"
+              onMouseEnter={() => setCursorState('hover-link')}
+              onMouseLeave={() => setCursorState('default')}
               className="inline-flex items-center gap-2 text-label-xs uppercase tracking-wider border border-ink/20 rounded-full px-4 py-2 text-ink no-underline hover:bg-soft-cloud transition-colors"
             >
               Drowning in repeatable work? · Agentic AI for ops, support, content <ArrowRight className="w-3.5 h-3.5" />
@@ -145,7 +149,12 @@ const HeroSection = () => {
             transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-wrap justify-center gap-4 mt-12"
           >
-            <Button size="lg" onClick={openBookingModal}>
+            <Button 
+              size="lg" 
+              onClick={openBookingModal}
+              onMouseEnter={() => setCursorState('hover-button')}
+              onMouseLeave={() => setCursorState('default')}
+            >
               Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </motion.div>

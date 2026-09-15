@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from '@/lib/constants';
+import { useCursor } from '@/components/CustomCursor';
 
 const footerLinks = {
   Services: [
@@ -27,6 +28,8 @@ const footerLinks = {
 };
 
 const Footer = () => {
+  const { setCursorState } = useCursor();
+  
   return (
     <footer className="bg-ink text-canvas">
       <div className="container-site py-[80px] md:py-[100px]">
@@ -44,7 +47,12 @@ const Footer = () => {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.to} className="text-body-sm text-stone no-underline hover:text-canvas transition-colors">
+                    <Link 
+                      to={link.to} 
+                      onMouseEnter={() => setCursorState('hover-link')}
+                      onMouseLeave={() => setCursorState('default')}
+                      className="text-body-sm text-stone no-underline hover:text-canvas transition-colors"
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -57,12 +65,24 @@ const Footer = () => {
             <h4 className="text-caption-sm text-canvas font-medium mb-4 uppercase tracking-wider">Contact</h4>
             <ul className="space-y-2.5">
               <li>
-                <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
+                <a 
+                  href="mailto:hello@thegrowthbench.com" 
+                  onMouseEnter={() => setCursorState('hover-link')}
+                  onMouseLeave={() => setCursorState('default')}
+                  className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2"
+                >
                   <Mail className="w-3.5 h-3.5" /> Email
                 </a>
               </li>
               <li>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
+                <a 
+                  href={WHATSAPP_URL} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onMouseEnter={() => setCursorState('hover-link')}
+                  onMouseLeave={() => setCursorState('default')}
+                  className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2"
+                >
                   <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
                 </a>
               </li>
@@ -77,8 +97,22 @@ const Footer = () => {
             &copy; 2026 The Growth Bench. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
-            <Link to="/privacy" className="text-caption-sm text-stone no-underline hover:text-canvas transition-colors">Privacy</Link>
-            <Link to="/terms" className="text-caption-sm text-stone no-underline hover:text-canvas transition-colors">Terms</Link>
+            <Link 
+              to="/privacy"
+              onMouseEnter={() => setCursorState('hover-link')}
+              onMouseLeave={() => setCursorState('default')}
+              className="text-caption-sm text-stone no-underline hover:text-canvas transition-colors"
+            >
+              Privacy
+            </Link>
+            <Link 
+              to="/terms"
+              onMouseEnter={() => setCursorState('hover-link')}
+              onMouseLeave={() => setCursorState('default')}
+              className="text-caption-sm text-stone no-underline hover:text-canvas transition-colors"
+            >
+              Terms
+            </Link>
           </div>
         </div>
       </div>

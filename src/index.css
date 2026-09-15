@@ -26,7 +26,11 @@
   }
 
   body {
-    @apply bg-canvas text-ink font-body antialiased;
+    @apply bg-canvas text-ink font-body antialiased cursor-none;
+  }
+
+  a, button, input, textarea, select, [role="button"] {
+    @apply cursor-none;
   }
 }
 
