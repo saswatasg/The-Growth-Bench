@@ -69,7 +69,7 @@ const CartRecovery = () => {
           </div>
           <p className="text-caption-sm text-mute mt-8 max-w-2xl leading-relaxed">
             Client engagement outcomes; individual results vary. Full methodology in the{' '}
-            <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="text-ink underline underline-offset-2">checkout teardown</Link>.
+            <Link to="/resources/we-fixed-checkout-flow-recovered-2-89-crore-month" className="text-ink underline underline-offset-2">checkout teardown</Link>.
           </p>
         </div>
       </motion.section>

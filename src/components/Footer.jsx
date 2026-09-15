@@ -15,14 +15,21 @@ const footerLinks = {
     { label: 'Content & Email', to: '/services#content-email' },
     { label: 'Analytics & Reporting', to: '/services#analytics' },
   ],
+  Proof: [
+    { label: 'Case Studies', to: '/proof' },
+    { label: 'Compare Models', to: '/proof' },
+    { label: 'Cart Recovery', to: '/solutions/recover-abandoned-carts' },
+  ],
+  Resources: [
+    { label: 'Blog', to: '/resources' },
+    { label: 'AI Scorecard', to: '/ai-scorecard' },
+    { label: 'Growth Scorecard', to: '/growth-scorecard' },
+  ],
   Company: [
     { label: 'About', to: '/about' },
-    { label: 'Case Studies', to: '/case-studies' },
-    { label: 'Compare Models', to: '/compare' },
-    { label: 'Cart Recovery', to: '/solutions/recover-abandoned-carts' },
-    { label: 'AI Scorecard', to: '/ai-scorecard' },
-    { label: 'Start — Free Audit', to: '/pricing' },
-    { label: 'Insights', to: '/insights' },
+    { label: 'Get Started', to: '/get-started' },
+    { label: 'Privacy', to: '/privacy' },
+    { label: 'Terms', to: '/terms' },
   ],
 };
 

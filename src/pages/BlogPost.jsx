@@ -55,7 +55,7 @@ const BlogPost = () => {
     }
   };
 
-  const postUrl = `${SITE_URL}/insights/${slug}/`;
+  const postUrl = `${SITE_URL}/resources/${slug}/`;
   const postImage = `${SITE_URL}${slugToCategoryImage[post.category] || '/assets/images/og-card.png'}`;
   const articleSchema = {
     "@context": "https://schema.org",
@@ -179,7 +179,7 @@ const BlogPost = () => {
                 .filter((p) => p.slug !== post.slug && p.category === post.category)
                 .slice(0, 2)
                 .map((related) => (
-                  <Link key={related.slug} to={`/insights/${related.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group">
+                  <Link key={related.slug} to={`/resources/${related.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group">
                     <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-2 uppercase">{related.category}</span>
                     <h3 className="text-heading-md text-ink mb-1 group-hover:text-mute transition-colors">{related.title}</h3>
                     <p className="text-caption-sm text-mute">{related.readTime} min read</p>

@@ -7,11 +7,9 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
   { to: '/services', label: 'Services' },
-  { to: '/case-studies', label: 'Case Studies' },
-  { to: '/compare', label: 'Compare' },
-  { to: '/insights', label: 'Insights' },
+  { to: '/proof', label: 'Proof' },
+  { to: '/resources', label: 'Resources' },
   { to: '/about', label: 'About' },
-  { to: '/pricing', label: 'Start' },
 ];
 
 const Header = () => {
@@ -60,6 +58,16 @@ const Header = () => {
                 {link.label}
               </NavLink>
             ))}
+            <NavLink
+              to="/get-started"
+              className={({ isActive }) =>
+                `text-body-sm font-medium no-underline transition-colors ${
+                  isActive ? 'text-ink' : 'text-mute hover:text-ink'
+                }`
+              }
+            >
+              Get Started
+            </NavLink>
             <Button size="sm" onClick={openBookingModal}>
               Book a Free Audit Call
             </Button>
@@ -97,6 +105,15 @@ const Header = () => {
                 {link.label}
               </NavLink>
             ))}
+            <NavLink
+              to="/get-started"
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `text-heading-lg no-underline ${isActive ? 'text-ink' : 'text-mute'}`
+              }
+            >
+              Get Started
+            </NavLink>
             <div className="flex items-center gap-4 pt-4">
               <Button size="lg" className="flex-1" onClick={() => { openBookingModal(); setIsOpen(false); }}>
                 Book a Free Audit Call

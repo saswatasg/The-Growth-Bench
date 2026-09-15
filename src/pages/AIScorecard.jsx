@@ -771,7 +771,7 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
         )}
         {tier === 'warm' && (
           <Button size="lg" asChild>
-            <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="no-underline">
+            <Link to="/resources/we-fixed-checkout-flow-recovered-2-89-crore-month" className="no-underline">
               Read the recovery playbook <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>

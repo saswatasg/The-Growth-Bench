@@ -4,8 +4,6 @@ import { ArrowRight } from 'lucide-react';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { WHATSAPP_URL } from '@/lib/constants';
 
-// Unified triple-path row under every major CTA:
-// Book (ready) · Scorecard (diagnose) · WhatsApp (quick question)
 const CtaPaths = ({ tone = 'light', align = 'center' }) => {
   const { openBookingModal } = useBookingModal();
   const cls = tone === 'dark' ? 'text-stone hover:text-canvas' : 'text-mute hover:text-ink';
@@ -16,7 +14,10 @@ const CtaPaths = ({ tone = 'light', align = 'center' }) => {
         Ready? Book a free audit call <ArrowRight className="w-3.5 h-3.5" />
       </button>
       <Link to="/ai-scorecard" className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
-        Diagnosing? Take the AI scorecard <ArrowRight className="w-3.5 h-3.5" />
+        AI readiness? Take the scorecard <ArrowRight className="w-3.5 h-3.5" />
+      </Link>
+      <Link to="/growth-scorecard" className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
+        Growth leaks? Take the scorecard <ArrowRight className="w-3.5 h-3.5" />
       </Link>
       <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
         Quick question? WhatsApp <ArrowRight className="w-3.5 h-3.5" />
