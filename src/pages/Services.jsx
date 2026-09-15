@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
+import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow, Lightbulb, Wrench, Rocket } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
@@ -11,12 +11,13 @@ import { fadeUp, fadeIn } from '@/lib/motion';
 
 const services = [
   {
-    id: 'ai-implementation', icon: Workflow,
+    id: 'ai-implementation', icon: Workflow, category: 'core',
     title: 'AI Implementation',
     tagline: 'Agents that run your repetitive work.',
-    summary: 'Agentic AI for anything repeatable: ops, support, content, follow-ups, reviews.',
+    shortDesc: 'Ops, support, content, follow-ups — automated end-to-end.',
     eyebrow: '01 — AI Implementation',
     h2: 'Agents that run your repetitive work end-to-end.',
+    summary: 'Agentic AI for anything repeatable: ops, support, content, follow-ups, reviews.',
     proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the large-scale catalog automation pipeline.',
     includes: [
       'Auto-replies for repeat customer questions across WhatsApp and Instagram',
@@ -40,10 +41,10 @@ const services = [
     boundariesFoot: 'Money-moving actions always need your approval. Automation compounds after the human-review period.',
   },
   {
-    id: 'strategy', icon: Search,
+    id: 'strategy', icon: Search, category: 'core',
     title: 'Growth Strategy',
     tagline: 'The diagnosis before the prescription.',
-    summary: 'Full funnel audit, ICP, 90-day roadmap before touching a single ad account.',
+    shortDesc: 'Funnel audit, ICP, 90-day roadmap.',
     eyebrow: '02 — Growth Strategy',
     h2: 'The diagnosis before the prescription.',
     includes: [
@@ -58,10 +59,10 @@ const services = [
     ],
   },
   {
-    id: 'website', icon: Code2,
-    title: 'Website & Development',
-    tagline: 'A website that works as hard as you do.',
-    summary: 'Full builds in Next.js, Webflow, or Shopify. CRO and analytics baked in from day one.',
+    id: 'website', icon: Code2, category: 'core',
+    title: 'Website & Dev',
+    tagline: 'Conversion-first builds.',
+    shortDesc: 'Next.js, Webflow, Shopify — tracked and optimised from day one.',
     eyebrow: '03 — Website & Development',
     h2: 'A website that works as hard as you do.',
     includes: [
@@ -78,10 +79,10 @@ const services = [
     ],
   },
   {
-    id: 'ads', icon: Target,
+    id: 'ads', icon: Target, category: 'core',
     title: 'Ads',
-    tagline: 'Paid media that works because the funnel works.',
-    summary: 'Meta, Google, Amazon, LinkedIn — full-funnel campaigns with proper attribution.',
+    tagline: 'Full-funnel paid media.',
+    shortDesc: 'Meta, Google, Amazon, LinkedIn — with proper attribution.',
     eyebrow: '04 — Ads',
     h2: 'Paid media that works because the funnel works.',
     includes: [
@@ -99,10 +100,10 @@ const services = [
     ],
   },
   {
-    id: 'lead-systems', icon: Users,
+    id: 'lead-systems', icon: Users, category: 'supporting',
     title: 'Lead Systems',
-    tagline: 'A form is not a lead system.',
-    summary: 'Landing pages, CRM, nurture sequences, scoring. Not just a form — a system.',
+    tagline: 'Not just a form — a system.',
+    shortDesc: 'CRM, nurture, scoring. The infrastructure behind pipeline.',
     eyebrow: '05 — Lead Systems',
     h2: 'A form is not a lead system.',
     includes: [
@@ -118,10 +119,10 @@ const services = [
     ],
   },
   {
-    id: 'cro', icon: TrendingUp,
+    id: 'cro', icon: TrendingUp, category: 'supporting',
     title: 'CRO',
-    tagline: 'Your website is a product. Treat it like one.',
-    summary: 'Qualitative research, quantitative analysis, structured A/B testing that compounds.',
+    tagline: 'Structured experimentation.',
+    shortDesc: 'Research, analysis, A/B testing that compounds.',
     eyebrow: '06 — CRO',
     h2: 'Your website is a product. Treat it like one.',
     includes: [
@@ -137,10 +138,10 @@ const services = [
     ],
   },
   {
-    id: 'ui-ux', icon: Palette,
+    id: 'ui-ux', icon: Palette, category: 'supporting',
     title: 'UI/UX Design',
-    tagline: 'Design that reduces friction.',
-    summary: 'Research-grounded design in Figma. Dev-ready handoffs.',
+    tagline: 'Design that removes friction.',
+    shortDesc: 'Research to Figma to dev handoff.',
     eyebrow: '07 — UI/UX Design',
     h2: 'Design that reduces friction.',
     includes: [
@@ -156,10 +157,10 @@ const services = [
     ],
   },
   {
-    id: 'content-email', icon: FileText,
+    id: 'content-email', icon: FileText, category: 'supporting',
     title: 'Content & Email',
-    tagline: 'The organic engine behind paid performance.',
-    summary: 'Email flows, WhatsApp sequences, SEO strategy, content architecture.',
+    tagline: 'The organic engine.',
+    shortDesc: 'Email flows, SEO, content architecture.',
     eyebrow: '08 — Content & Email',
     h2: 'The organic engine behind paid performance.',
     includes: [
@@ -174,10 +175,10 @@ const services = [
     ],
   },
   {
-    id: 'analytics', icon: BarChart3,
-    title: 'Analytics & Reporting',
-    tagline: 'Own your data before you scale spend.',
-    summary: 'Dashboards, attribution, GA4, CAPI — own your data.',
+    id: 'analytics', icon: BarChart3, category: 'supporting',
+    title: 'Analytics',
+    tagline: 'Own your data.',
+    shortDesc: 'Dashboards, attribution, GA4, CAPI.',
     eyebrow: '09 — Analytics & Reporting',
     h2: 'Own your data before you scale spend.',
     includes: [
@@ -189,6 +190,20 @@ const services = [
       'Monthly reporting cadence tied to the experiment backlog',
     ],
   },
+];
+
+const coreServices = services.filter(s => s.category === 'core');
+const supportingServices = services.filter(s => s.category === 'supporting');
+
+const processSteps = [
+  { icon: Lightbulb, num: '01', title: 'Audit', desc: 'We map your funnel, find leaks, and rank fixes by revenue impact.' },
+  { icon: Wrench, num: '02', title: 'Build', desc: 'Strategy, systems, creative — shipped in weeks, not quarters.' },
+  { icon: Rocket, num: '03', title: 'Scale', desc: 'Compound results through structured experiments and AI automation.' },
+];
+
+const platforms = [
+  'Shopify', 'Meta Ads', 'Google Ads', 'Amazon', 'Next.js', 'Webflow', 'Figma',
+  'HubSpot', 'Zoho', 'GA4', 'GTM', 'WhatsApp Business', 'Instagram',
 ];
 
 const Services = () => {
@@ -239,43 +254,93 @@ const Services = () => {
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
             <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               The full growth stack.<br />Not parts of it.
             </h1>
-            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn&apos;t live in a lane. Click any service to see what&apos;s inside.
+            <p className="text-body-lg text-mute mt-6 max-w-xl leading-relaxed">
+              Most agencies pick a lane. We cover the entire growth surface — because growth doesn&apos;t live in a lane.
             </p>
+          </div>
+
+          {/* Inline metrics */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-hairline-soft max-w-3xl">
+            {[
+              { num: '9', label: 'Capabilities' },
+              { num: '$425K/mo', label: 'Recovered for one client' },
+              { num: '5.7x', label: 'ROAS achieved' },
+              { num: '30–60d', label: 'To first win' },
+            ].map((m) => (
+              <div key={m.label}>
+                <div className="font-display text-heading-lg text-ink leading-none">{m.num}</div>
+                <p className="text-caption-sm text-mute mt-1.5">{m.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Service Grid — Bento Layout */}
-      <motion.section {...fadeUp} className="bg-canvas pb-[80px] md:pb-[100px]">
+      {/* How We Work — Process strip */}
+      <motion.section {...fadeUp} className="bg-ink py-[60px] md:py-[80px]">
         <div className="container-site">
-          <div className="grid md:grid-cols-3 gap-4">
-            {/* AI Implementation — spans 2 cols, featured */}
+          <div className="flex items-center gap-2 mb-8">
+            <span className="text-label-xs text-stone uppercase tracking-wider">How we work</span>
+            <div className="flex-1 h-px bg-stone/20" />
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {processSteps.map((step) => {
+              const Icon = step.icon;
+              return (
+                <div key={step.num} className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full border border-stone/30 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-4 h-4 text-stone" />
+                  </div>
+                  <div>
+                    <span className="text-caption-sm text-stone font-mono">{step.num}</span>
+                    <h3 className="font-display text-heading-lg text-canvas leading-none mt-0.5">{step.title}</h3>
+                    <p className="text-body-sm text-stone mt-2 leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Core Services */}
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+        <div className="container-site">
+          <div className="flex items-center gap-2 mb-8">
+            <span className="text-label-xs text-mute uppercase tracking-wider">Core services</span>
+            <div className="flex-1 h-px bg-hairline-soft" />
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* AI Implementation — featured, full width */}
             <button
               onClick={() => openModal(services[0])}
               className="md:col-span-2 group text-left p-6 md:p-8 border border-hairline-soft bg-soft-cloud hover:border-ink transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <span className="absolute top-4 right-4 text-label-xs uppercase tracking-wider bg-ink text-canvas px-3 py-1 rounded-full">New</span>
-              <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
-                <Workflow className="w-5 h-5 text-canvas" />
-              </div>
-              <span className="text-caption-sm text-mute font-mono">01</span>
-              <h3 className="font-display text-heading-xl text-ink mt-1 leading-none">{services[0].title}</h3>
-              <p className="text-body-md text-mute mt-3 leading-relaxed max-w-lg">{services[0].tagline}</p>
-              <div className="flex items-center gap-4 mt-5">
-                {services[0].benchmarks.slice(0, 3).map((b) => (
-                  <div key={b.num}>
-                    <span className="font-display text-heading-md text-ink">{b.num}</span>
-                    <span className="text-caption-sm text-mute ml-1.5 hidden sm:inline">benchmarked</span>
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                <div className="max-w-xl">
+                  <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
+                    <Workflow className="w-5 h-5 text-canvas" />
                   </div>
-                ))}
+                  <span className="text-caption-sm text-mute font-mono">01</span>
+                  <h3 className="font-display text-heading-xl text-ink mt-1 leading-none">{services[0].title}</h3>
+                  <p className="text-body-md text-mute mt-3 leading-relaxed">{services[0].shortDesc}</p>
+                </div>
+                <div className="flex items-center gap-6 md:gap-8 flex-shrink-0">
+                  {services[0].benchmarks.slice(0, 3).map((b) => (
+                    <div key={b.num}>
+                      <span className="font-display text-heading-lg text-ink">{b.num}</span>
+                      <span className="text-caption-sm text-mute ml-1 block mt-0.5">benchmarked</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <span className="text-body-sm text-ink mt-5 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+              <span className="text-body-sm text-ink mt-6 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
                 See overview <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </button>
@@ -290,7 +355,7 @@ const Services = () => {
               </div>
               <span className="text-caption-sm text-mute font-mono">02</span>
               <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[1].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[1].tagline}</p>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[1].shortDesc}</p>
               <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
                 Overview <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -306,7 +371,7 @@ const Services = () => {
               </div>
               <span className="text-caption-sm text-mute font-mono">03</span>
               <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[2].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[2].tagline}</p>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[2].shortDesc}</p>
               <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
                 Overview <ArrowRight className="w-3.5 h-3.5" />
               </span>
@@ -322,91 +387,60 @@ const Services = () => {
               </div>
               <span className="text-caption-sm text-mute font-mono">04</span>
               <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[3].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[3].tagline}</p>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[3].shortDesc}</p>
               <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
                 Overview <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </button>
+          </div>
+        </div>
+      </motion.section>
 
-            {/* Lead Systems — spans 2 cols */}
-            <button
-              onClick={() => openModal(services[4])}
-              className="md:col-span-2 group text-left p-6 md:p-8 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
-            >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <Users className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
-              </div>
-              <span className="text-caption-sm text-mute font-mono">05</span>
-              <h3 className="font-display text-heading-xl text-ink mt-1 leading-none">{services[4].title}</h3>
-              <p className="text-body-md text-mute mt-2 leading-relaxed max-w-lg">{services[4].tagline}</p>
-              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
-                Overview <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </button>
+      {/* Supporting Services */}
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+        <div className="container-site">
+          <div className="flex items-center gap-2 mb-8">
+            <span className="text-label-xs text-mute uppercase tracking-wider">Supporting services</span>
+            <div className="flex-1 h-px bg-hairline" />
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {supportingServices.map((s) => {
+              const Icon = s.icon;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => openModal(s)}
+                  className="group text-left p-6 border border-hairline bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+                >
+                  <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                    <Icon className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+                  </div>
+                  <span className="text-caption-sm text-mute font-mono">{s.eyebrow.split(' — ')[0]}</span>
+                  <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{s.title}</h3>
+                  <p className="text-body-sm text-mute mt-2 leading-relaxed">{s.shortDesc}</p>
+                  <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                    Overview <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </motion.section>
 
-            {/* CRO */}
-            <button
-              onClick={() => openModal(services[5])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
-            >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <TrendingUp className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
-              </div>
-              <span className="text-caption-sm text-mute font-mono">06</span>
-              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[5].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[5].tagline}</p>
-              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
-                Overview <ArrowRight className="w-3.5 h-3.5" />
+      {/* Platforms strip */}
+      <motion.section {...fadeUp} className="bg-canvas border-t border-b border-hairline-soft py-[40px] md:py-[50px]">
+        <div className="container-site">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-label-xs text-mute uppercase tracking-wider">Platforms we work with</span>
+            <div className="flex-1 h-px bg-hairline-soft" />
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {platforms.map((p) => (
+              <span key={p} className="px-4 py-2 border border-hairline-soft text-body-sm text-mute bg-soft-cloud/50 hover:border-ink hover:text-ink transition-colors">
+                {p}
               </span>
-            </button>
-
-            {/* UI/UX */}
-            <button
-              onClick={() => openModal(services[6])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
-            >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <Palette className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
-              </div>
-              <span className="text-caption-sm text-mute font-mono">07</span>
-              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[6].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[6].tagline}</p>
-              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
-                Overview <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </button>
-
-            {/* Content & Email */}
-            <button
-              onClick={() => openModal(services[7])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
-            >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <FileText className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
-              </div>
-              <span className="text-caption-sm text-mute font-mono">08</span>
-              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[7].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[7].tagline}</p>
-              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
-                Overview <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </button>
-
-            {/* Analytics */}
-            <button
-              onClick={() => openModal(services[8])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
-            >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <BarChart3 className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
-              </div>
-              <span className="text-caption-sm text-mute font-mono">09</span>
-              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[8].title}</h3>
-              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[8].tagline}</p>
-              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
-                Overview <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </button>
+            ))}
           </div>
         </div>
       </motion.section>
