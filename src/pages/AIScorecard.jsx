@@ -260,7 +260,7 @@ const hoursFor = (arm, a) => {
 const BENCH = {
   support: 'WhatsApp flows read 70–90% vs ~20% email — category data, not our client results.',
   ops: 'Auto NDR outreach within 2h → 64–74% redelivery vs 28–36% with none (Base 2026). COD AI-calling runs 4.2× faster with 40%+ fewer COD returns (vendor-reported deployments).',
-  content: 'Same pipeline behind Sierra-scale catalogs — our proof, not a benchmark.',
+  content: 'Same pipeline behind large-scale catalogs — our proof, not a benchmark.',
   followups: 'Optimized WhatsApp cart-recovery: 18–23% vs 5–8% via email (Chatarmin 2026, 450+ brands).',
   creative: 'No benchmark cited — throughput proof from our own outreach engine. Validated line by line on your audit call.',
 };

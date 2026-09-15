@@ -74,7 +74,7 @@ const sections = [
       'Scoped roadmap with fixed-timeline build — same Diagnosis → Team Assembly → Execute & Iterate process',
     ],
     benchmarksNote: 'Industry benchmarks behind this build — category data, not our client results.',
-    proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the Sierra catalog pipeline.',
+    proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the large-scale catalog automation pipeline.',
     boundariesNote: 'The honest boundaries — what we don\u2019t promise',
     boundaries: [
       'A specific ROAS',

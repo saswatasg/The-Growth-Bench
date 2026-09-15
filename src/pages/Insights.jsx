@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { loadPosts } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';

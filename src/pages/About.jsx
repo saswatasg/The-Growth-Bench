@@ -118,7 +118,7 @@ const About = () => {
             <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
               <img
                 src="/assets/images/founder.jpg"
-                alt="Saswata Sengupta, Founder of The Growth Bench"
+                alt="The Growth Bench Founder"
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
               />
@@ -126,7 +126,7 @@ const About = () => {
             </div>
             <div>
               <span className="text-label-xs text-mute uppercase tracking-wider">The Founder</span>
-              <h2 className="font-display text-display-md text-ink mt-1 leading-none">Saswata Sengupta</h2>
+              <h2 className="font-display text-display-md text-ink mt-1 leading-none">The Founder</h2>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
                 I started The Growth Bench after years inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). I&apos;ve managed ad accounts spending crores per month, fixed checkout flows that recovered lakhs in lost revenue, and built growth systems for brands that started with nothing but a Shopify store.
               </p>
@@ -134,10 +134,10 @@ const About = () => {
                 What I learned is that most brands don&apos;t need a bigger agency or a cheaper freelancer. They need one person who owns the full picture — with the right specialists on call when the work demands it. That&apos;s how we run: founder-led, with a specialist engaged per project on a contract basis. No account layers, no overhead you don&apos;t need.
               </p>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                Background: MBA in Marketing &amp; Analytics (IIT Jodhpur) and B.Tech in Mechanical Engineering — analytics and systems thinking applied to growth. Recent independent client work includes Sierra Living Concepts (checkout recovery) and Caffena (D2C coffee scale-up).
+                Background: MBA in Marketing &amp; Analytics (IIT Jodhpur) and B.Tech in Mechanical Engineering — analytics and systems thinking applied to growth. Recent independent client work includes a US D2C furniture brand (checkout recovery) and a D2C coffee brand (scale-up).
               </p>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind Sierra-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
+                We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind large-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
               </p>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
                 And if the lead is ever unavailable, a briefed specialist covers the sprint — your context lives in shared docs and weekly notes, never in one head.
@@ -145,7 +145,7 @@ const About = () => {
               <div className="flex flex-wrap items-center gap-3 mt-6">
                 <Button asChild size="sm" className="gap-2">
                   <a href="mailto:hello@thegrowthbench.com" className="no-underline">
-                    <Mail className="w-4 h-4" /> Email Saswata
+                    <Mail className="w-4 h-4" /> Email Us
                   </a>
                 </Button>
                 <Button asChild size="sm" variant="outline" className="gap-2">

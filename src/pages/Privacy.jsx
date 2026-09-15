@@ -19,7 +19,7 @@ const Privacy = () => {
 
           <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
             <h2>1. Who We Are</h2>
-            <p>The Growth Bench is a growth consultancy founded by Saswata Sengupta, operating from India. For any privacy-related questions, reach us at <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>.</p>
+            <p>The Growth Bench is a growth consultancy operating from India. For any privacy-related questions, reach us at <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>.</p>
 
             <h2>2. Information We Collect</h2>
             <p>We collect only information you voluntarily provide: contact form data (name, email, company, challenge description), communication data (emails, WhatsApp messages), and booking data (via Google Calendar).</p>

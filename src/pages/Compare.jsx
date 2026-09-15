@@ -102,7 +102,7 @@ const Compare = () => {
           </div>
           <p className="text-caption-sm text-mute mt-6">
             For D2C brands doing ₹10L–₹10Cr/month. Proof:{' '}
-            <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="text-ink underline underline-offset-2">Sierra teardown</Link>
+            <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="text-ink underline underline-offset-2">Cart recovery teardown</Link>
             {' '}·{' '}
             <Link to="/ai-scorecard" className="text-ink underline underline-offset-2">AI scorecard</Link>
           </p>

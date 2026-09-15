@@ -67,7 +67,7 @@ const BlogPost = () => {
     "datePublished": dateToISO(post.date),
     "dateModified": dateToISO(post.date),
     "image": postImage,
-    "author": { "@type": "Person", "name": "Saswata Sengupta", "url": `${SITE_URL}/about/` },
+    "author": { "@type": "Organization", "name": "The Growth Bench", "url": `${SITE_URL}/about/` },
     "publisher": { "@type": "Organization", "name": "The Growth Bench", "logo": { "@type": "ImageObject", "url": `${SITE_URL}/assets/images/og-card.png` } },
   };
 
