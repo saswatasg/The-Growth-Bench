@@ -89,7 +89,6 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                onMouseEnter={playHoverTick}
                 className={({ isActive }) =>
                   `text-heading-lg no-underline ${isActive ? 'text-ink' : 'text-mute'}`
                 }
