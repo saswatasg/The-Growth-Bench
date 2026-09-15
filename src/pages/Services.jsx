@@ -1,100 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
+import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
 import CtaPaths from '@/components/CtaPaths';
+import ServiceModal from '@/components/ServiceModal';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
 const services = [
   {
     id: 'ai-implementation', icon: Workflow,
     title: 'AI Implementation',
+    tagline: 'Agents that run your repetitive work.',
     summary: 'Agentic AI for anything repeatable: ops, support, content, follow-ups, reviews.',
+    eyebrow: '01 — AI Implementation',
+    h2: 'Agents that run your repetitive work end-to-end.',
+    proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the large-scale catalog automation pipeline.',
+    includes: [
+      'Auto-replies for repeat customer questions across WhatsApp and Instagram',
+      'COD verification calls + failed-delivery follow-up across WhatsApp, SMS, and voice',
+      'Returns triage: eligibility, pickup scheduling, refund briefs',
+      'AI-assisted product and catalog copy at scale, tuned for SEO',
+      'Post-purchase and abandoned-cart follow-up sequences',
+      'Review and UGC request automation',
+      'Human-review period before anything goes live',
+      'Scoped roadmap with fixed-timeline build',
+    ],
+    benchmarks: [
+      { num: '18–23%', label: 'WhatsApp cart-recovery in optimized flows vs 5–8% via email' },
+      { num: '64–74%', label: 'Re-delivery on auto NDR outreach within 2 hours vs 28–36%' },
+      { num: '4x', label: 'Shoppers who engage AI chat buy vs those who don\'t' },
+      { num: '270%', label: 'Higher purchase likelihood with five reviews vs none' },
+    ],
+    benchmarksNote: 'Industry benchmarks — category data, not client results.',
+    boundaries: ['A specific ROAS', 'Platform approvals', 'Inbox placement', 'Overnight results'],
+    boundariesNote: 'The honest boundaries — what we don\'t promise',
+    boundariesFoot: 'Money-moving actions always need your approval. Automation compounds after the human-review period.',
   },
   {
     id: 'strategy', icon: Search,
     title: 'Growth Strategy',
-    summary: 'Funnel audit, ICP, 90-day roadmap before touching a single ad account.',
-  },
-  {
-    id: 'website', icon: Code2,
-    title: 'Website & Development',
-    summary: 'Full builds in Next.js, Webflow, or Shopify. CRO and analytics baked in from day one.',
-  },
-  {
-    id: 'ads', icon: Target,
-    title: 'Ads',
-    summary: 'Meta, Google, Amazon, LinkedIn — full-funnel campaigns with proper attribution.',
-  },
-  {
-    id: 'lead-systems', icon: Users,
-    title: 'Lead Systems',
-    summary: 'Landing pages, CRM, nurture sequences, scoring. Not just a form — a system.',
-  },
-  {
-    id: 'cro', icon: TrendingUp,
-    title: 'CRO',
-    summary: 'Qualitative research, quantitative analysis, structured A/B testing that compounds.',
-  },
-  {
-    id: 'ui-ux', icon: Palette,
-    title: 'UI/UX Design',
-    summary: 'Research-grounded design in Figma. Dev-ready handoffs.',
-  },
-  {
-    id: 'content-email', icon: FileText,
-    title: 'Content & Email',
-    summary: 'Email flows, WhatsApp sequences, SEO strategy, content architecture.',
-  },
-  {
-    id: 'analytics', icon: BarChart3,
-    title: 'Analytics & Reporting',
-    summary: 'Dashboards, attribution, GA4, CAPI — own your data.',
-  },
-];
-
-const sections = [
-  {
-    id: 'ai-implementation', icon: Workflow,
-    eyebrow: '01 — AI Implementation',
-    h2: 'Agents that run your repetitive work end-to-end.',
-    summary: 'Most D2C teams are drowning in repeatable work: the same sizing question forty times a week, COD calls nobody has time for, product descriptions written one at a time, silence after checkout. We build agentic AI systems that take this off your plate — not a chatbot demo, but agents that check state, act inside your WhatsApp, Instagram, Shopify, and ops stack, verify the outcome, and escalate the hard exceptions with full context.',
-    includes: [
-      'Auto-replies for repeat customer questions (sizing, fabric, delivery, returns) across WhatsApp and Instagram',
-      'COD verification calls + failed-delivery (NDR) follow-up across WhatsApp, SMS, and voice',
-      'Returns triage: eligibility, pickup scheduling, refund briefs — exceptions land with full context',
-      'AI-assisted product and catalog copy at scale, tuned for SEO',
-      'Post-purchase and abandoned-cart follow-up sequences',
-      'Review and UGC request automation',
-      'Human-review period before anything goes live; money-moving actions need your approval',
-      'Scoped roadmap with fixed-timeline build — same Diagnosis → Team Assembly → Execute & Iterate process',
-    ],
-    benchmarksNote: 'Industry benchmarks behind this build — category data, not our client results.',
-    proof: 'Built by the same bench behind DhanPlan.in, our own outreach engine, and the large-scale catalog automation pipeline.',
-    boundariesNote: 'The honest boundaries — what we don\u2019t promise',
-    boundaries: [
-      'A specific ROAS',
-      'Platform approvals',
-      'Inbox placement',
-      'Overnight results',
-    ],
-    boundariesFoot: 'Money-moving actions always need your approval. Automation compounds after the human-review period.',
-    benchmarks: [
-      { num: '18–23%', label: 'WhatsApp cart-recovery in optimized flows vs 5–8% via email (Chatarmin 2026, 450+ brands)' },
-      { num: '64–74%', label: 'Re-delivery on auto NDR outreach within 2 hours vs 28–36% with none (Base 2026, India D2C)' },
-      { num: '4x', label: 'Shoppers who engage AI chat buy vs those who don\u2019t (Rep AI 2025, 17M shoppers)' },
-      { num: '270%', label: 'Higher purchase likelihood with five reviews vs none (Northwestern Spiegel)' },
-    ],
-  },
-  {
-    id: 'strategy', icon: Search,
+    tagline: 'The diagnosis before the prescription.',
+    summary: 'Full funnel audit, ICP, 90-day roadmap before touching a single ad account.',
     eyebrow: '02 — Growth Strategy',
     h2: 'The diagnosis before the prescription.',
-    summary: 'We audit your funnel, find the fastest path to more revenue, and give you a prioritised 90-day roadmap. No 50-slide decks — a working plan tied to real outcomes.',
     includes: [
       'Full funnel audit (acquisition → activation → retention → revenue)',
       'ICP definition and customer segmentation',
@@ -108,9 +59,11 @@ const sections = [
   },
   {
     id: 'website', icon: Code2,
+    title: 'Website & Development',
+    tagline: 'A website that works as hard as you do.',
+    summary: 'Full builds in Next.js, Webflow, or Shopify. CRO and analytics baked in from day one.',
     eyebrow: '03 — Website & Development',
     h2: 'A website that works as hard as you do.',
-    summary: 'We build conversion-first websites in Next.js, Webflow, or Shopify — fully tracked, tagged, and ready to optimise from day one. No expensive brochureware.',
     includes: [
       'Full website build (Next.js / Webflow / Shopify / custom)',
       'Landing page design and development',
@@ -126,9 +79,11 @@ const sections = [
   },
   {
     id: 'ads', icon: Target,
+    title: 'Ads',
+    tagline: 'Paid media that works because the funnel works.',
+    summary: 'Meta, Google, Amazon, LinkedIn — full-funnel campaigns with proper attribution.',
     eyebrow: '04 — Ads',
     h2: 'Paid media that works because the funnel works.',
-    summary: 'We manage Meta, Google, Amazon, and LinkedIn Ads — but we never treat ads as standalone. Every campaign is built with the landing page, attribution, and funnel in mind.',
     includes: [
       'Full account audit and health check for any platform',
       'Meta Ads: creative strategy, CAPI, audience architecture',
@@ -145,9 +100,11 @@ const sections = [
   },
   {
     id: 'lead-systems', icon: Users,
+    title: 'Lead Systems',
+    tagline: 'A form is not a lead system.',
+    summary: 'Landing pages, CRM, nurture sequences, scoring. Not just a form — a system.',
     eyebrow: '05 — Lead Systems',
     h2: 'A form is not a lead system.',
-    summary: 'We build the full infrastructure: landing pages that capture, CRMs that organise, sequences that nurture, and scoring that tells you who to call first.',
     includes: [
       'Lead funnel architecture and mapping',
       'Landing page and lead magnet creation',
@@ -162,14 +119,16 @@ const sections = [
   },
   {
     id: 'cro', icon: TrendingUp,
+    title: 'CRO',
+    tagline: 'Your website is a product. Treat it like one.',
+    summary: 'Qualitative research, quantitative analysis, structured A/B testing that compounds.',
     eyebrow: '06 — CRO',
     h2: 'Your website is a product. Treat it like one.',
-    summary: 'Same leaks, different stores: forced accounts, surprise shipping costs, missing trust signals, painful mobile flows. We combine qualitative research with quantitative analysis, run structured experiments, and implement what works. Every page has a job — we make it do that job better.',
     includes: [
       'Funnel drop-off analysis (GA4, Shopify analytics)',
       'Session recording and heatmap analysis',
       'Qualitative research: user interviews, on-page surveys',
-      'Hypothesis generation with ICE/PIE prioritisation (impact-first ranking)',
+      'Hypothesis generation with ICE/PIE prioritisation',
       'A/B and multivariate test design and execution',
       'Copy, layout, CTA, UX, offer experiment frameworks',
       'Statistical significance monitoring',
@@ -179,9 +138,11 @@ const sections = [
   },
   {
     id: 'ui-ux', icon: Palette,
+    title: 'UI/UX Design',
+    tagline: 'Design that reduces friction.',
+    summary: 'Research-grounded design in Figma. Dev-ready handoffs.',
     eyebrow: '07 — UI/UX Design',
     h2: 'Design that reduces friction.',
-    summary: 'Good UI/UX removes the moments where a user hesitates or leaves. We work in Figma from research to final design to dev handoff — every decision tied to a user or business reason.',
     includes: [
       'UX research: user interviews, JTBD framework',
       'Information architecture and user flow mapping',
@@ -196,9 +157,11 @@ const sections = [
   },
   {
     id: 'content-email', icon: FileText,
+    title: 'Content & Email',
+    tagline: 'The organic engine behind paid performance.',
+    summary: 'Email flows, WhatsApp sequences, SEO strategy, content architecture.',
     eyebrow: '08 — Content & Email',
     h2: 'The organic engine behind paid performance.',
-    summary: 'Paid ads work better when your organic presence builds trust. We build the messaging framework, content architecture, and channel strategy that makes every channel more efficient.',
     includes: [
       'Brand messaging and positioning framework',
       'Content strategy and editorial calendar',
@@ -212,9 +175,11 @@ const sections = [
   },
   {
     id: 'analytics', icon: BarChart3,
+    title: 'Analytics & Reporting',
+    tagline: 'Own your data before you scale spend.',
+    summary: 'Dashboards, attribution, GA4, CAPI — own your data.',
     eyebrow: '09 — Analytics & Reporting',
     h2: 'Own your data before you scale spend.',
-    summary: 'We wire up clean tracking and reporting so every decision ties to revenue — no conflicting dashboards, no blind spots between ad platforms and Shopify or GA4.',
     includes: [
       'GA4 implementation with custom events and key-event mapping',
       'Google Tag Manager setup and tagging health check',
@@ -228,11 +193,23 @@ const sections = [
 
 const Services = () => {
   const { openBookingModal } = useBookingModal();
+  const [selectedService, setSelectedService] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = useCallback((service) => {
+    setSelectedService(service);
+    setModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setModalOpen(false);
+    setTimeout(() => setSelectedService(null), 300);
+  }, []);
 
   const faqItems = [
-    { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\u2019re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.' },
-    { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\u2019re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
-    { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30\u201360 days. Quick wins land in the first two weeks; compound results build over 3\u20136 months.' },
+    { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\'re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.' },
+    { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\'re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
+    { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30–60 days. Quick wins land in the first two weeks; compound results build over 3–6 months.' },
     { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Nothing goes live without a human-review period.' },
     { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, analytics, and WhatsApp/Instagram automation — picked per client, never one-size-fits-all.' },
     { q: 'What do you need from us to start?', a: 'Access to the tools involved (Shopify, ad accounts, WhatsApp Business), plus a few hours a week from your side for reviews and approvals. We handle everything else.' },
@@ -259,6 +236,7 @@ const Services = () => {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </Helmet>
 
+      {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
@@ -267,103 +245,173 @@ const Services = () => {
               The full growth stack.<br />Not parts of it.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn&apos;t live in a lane. Start with <a href="#ai-implementation" className="text-ink underline underline-offset-2">AI Implementation, our newest capability</a> — or any layer of the stack.
+              Most agencies pick a lane — ads, or SEO, or design. We cover the entire growth surface because growth doesn&apos;t live in a lane. Click any service to see what&apos;s inside.
             </p>
           </div>
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      {/* Service Grid — Bento Layout */}
+      <motion.section {...fadeUp} className="bg-canvas pb-[80px] md:pb-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-3 gap-4">
-            {services.map((s) => {
-              const Icon = s.icon;
-              return (
-                <a
-                  key={s.id}
-                  href={`#${s.id}`}
-                  className="flex items-start gap-4 p-5 border border-hairline-soft bg-canvas no-underline group hover:border-ink transition-colors"
-                >
-                  <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center flex-shrink-0 group-hover:bg-ink transition-colors">
-                    <Icon className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+            {/* AI Implementation — spans 2 cols, featured */}
+            <button
+              onClick={() => openModal(services[0])}
+              className="md:col-span-2 group text-left p-6 md:p-8 border border-hairline-soft bg-soft-cloud hover:border-ink transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <span className="absolute top-4 right-4 text-label-xs uppercase tracking-wider bg-ink text-canvas px-3 py-1 rounded-full">New</span>
+              <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
+                <Workflow className="w-5 h-5 text-canvas" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">01</span>
+              <h3 className="font-display text-heading-xl text-ink mt-1 leading-none">{services[0].title}</h3>
+              <p className="text-body-md text-mute mt-3 leading-relaxed max-w-lg">{services[0].tagline}</p>
+              <div className="flex items-center gap-4 mt-5">
+                {services[0].benchmarks.slice(0, 3).map((b) => (
+                  <div key={b.num}>
+                    <span className="font-display text-heading-md text-ink">{b.num}</span>
+                    <span className="text-caption-sm text-mute ml-1.5 hidden sm:inline">benchmarked</span>
                   </div>
-                  <div>
-                    <h3 className="text-heading-md text-ink">{s.title}</h3>
-                    <p className="text-body-sm text-mute mt-1 leading-relaxed">{s.summary}</p>
-                  </div>
-                </a>
-              );
-            })}
+                ))}
+              </div>
+              <span className="text-body-sm text-ink mt-5 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                See overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* Strategy */}
+            <button
+              onClick={() => openModal(services[1])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <Search className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">02</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[1].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[1].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* Website */}
+            <button
+              onClick={() => openModal(services[2])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <Code2 className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">03</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[2].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[2].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* Ads */}
+            <button
+              onClick={() => openModal(services[3])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <Target className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">04</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[3].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[3].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* Lead Systems — spans 2 cols */}
+            <button
+              onClick={() => openModal(services[4])}
+              className="md:col-span-2 group text-left p-6 md:p-8 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <Users className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">05</span>
+              <h3 className="font-display text-heading-xl text-ink mt-1 leading-none">{services[4].title}</h3>
+              <p className="text-body-md text-mute mt-2 leading-relaxed max-w-lg">{services[4].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* CRO */}
+            <button
+              onClick={() => openModal(services[5])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <TrendingUp className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">06</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[5].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[5].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* UI/UX */}
+            <button
+              onClick={() => openModal(services[6])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <Palette className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">07</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[6].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[6].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* Content & Email */}
+            <button
+              onClick={() => openModal(services[7])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <FileText className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">08</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[7].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[7].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
+
+            {/* Analytics */}
+            <button
+              onClick={() => openModal(services[8])}
+              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+            >
+              <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                <BarChart3 className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+              </div>
+              <span className="text-caption-sm text-mute font-mono">09</span>
+              <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[8].title}</h3>
+              <p className="text-body-sm text-mute mt-2 leading-relaxed">{services[8].tagline}</p>
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                Overview <ArrowRight className="w-3.5 h-3.5" />
+              </span>
+            </button>
           </div>
         </div>
       </motion.section>
 
-      {sections.map((service, i) => {
-        const Icon = service.icon;
-        return (
-          <React.Fragment key={service.id}>
-              <motion.section id={service.id} {...fadeUp} className={i % 2 === 0 ? 'bg-canvas scroll-mt-16' : 'bg-soft-cloud scroll-mt-16'}>
-              <div className="container-site py-[80px] md:py-[100px]">
-                <div className="grid md:grid-cols-2 gap-12">
-                  <div>
-                    <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
-                      <Icon className="w-4 h-4 text-canvas" />
-                    </div>
-                    <span className="text-label-xs text-mute uppercase tracking-wider">{service.eyebrow}</span>
-                    <h2 className="font-display text-display-md text-ink mt-2 leading-none">{service.h2}</h2>
-                    <p className="text-body-md text-mute mt-4 leading-relaxed">{service.summary}</p>
-                    {service.proof && (
-                      <p className="text-body-sm text-ink mt-4 leading-relaxed">{service.proof}</p>
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-heading-md text-ink mb-4">What's included</h3>
-                    <ul className="space-y-2">
-                      {service.includes.map((item) => (
-                        <li key={item} className="text-body-sm text-mute flex items-start gap-2">
-                          <Check className="w-3.5 h-3.5 text-success flex-shrink-0 mt-0.5" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-                {service.benchmarks && (
-                  <div className="mt-12 border-t border-hairline-soft pt-8">
-                    <span className="text-label-xs text-mute uppercase tracking-wider">{service.benchmarksNote}</span>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-6">
-                      {service.benchmarks.map((b) => (
-                        <div key={b.num}>
-                          <div className="font-display text-heading-xl md:text-display-md text-ink leading-none">{b.num}</div>
-                          <p className="text-caption-md text-mute mt-2 leading-relaxed">{b.label}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-8">
-                      Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
-                    </Link>
-                    {service.boundaries && (
-                      <div className="mt-8 border border-hairline-soft p-6 max-w-2xl">
-                        <span className="text-label-xs text-mute uppercase tracking-wider">{service.boundariesNote}</span>
-                        <ul className="mt-3 space-y-2">
-                          {service.boundaries.map((item) => (
-                            <li key={item} className="text-body-sm text-mute flex items-start gap-2.5">
-                              <span className="text-mute mt-0.5 flex-shrink-0">✕</span>
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                        <p className="text-caption-md text-mute mt-4 leading-relaxed">{service.boundariesFoot}</p>
-                      </div>
-                    )}
-                  </div>
-                )}
-              </div>
-            </motion.section>
-          </React.Fragment>
-        );
-      })}
-
+      {/* FAQ */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
@@ -379,13 +427,14 @@ const Services = () => {
         </div>
       </motion.section>
 
+      {/* Bottom CTA */}
       <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Not sure which<br />services you need?
           </h2>
           <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
-            That's what the audit call is for. We'll look at your current setup, identify the highest-impact gaps, and tell you honestly where we'd start.
+            That&apos;s what the audit call is for. We&apos;ll look at your current setup, identify the highest-impact gaps, and tell you honestly where we&apos;d start.
           </p>
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
@@ -395,6 +444,9 @@ const Services = () => {
           </div>
         </div>
       </motion.section>
+
+      {/* Service Modal */}
+      <ServiceModal service={selectedService} isOpen={modalOpen} onClose={closeModal} />
     </>
   );
 };
