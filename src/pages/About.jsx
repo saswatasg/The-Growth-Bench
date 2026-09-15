@@ -188,7 +188,7 @@ const About = () => {
             Sound like what<br />you've been looking for?
           </h2>
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a 30-Minute Call <ArrowRight className="w-4 h-4 ml-2" />
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <p className="text-caption-md text-stone italic mt-4">
             We&apos;ll tell you in the first 10 minutes if we&apos;re the right fit.

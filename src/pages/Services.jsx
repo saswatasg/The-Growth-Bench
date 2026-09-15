@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
 import CtaPaths from '@/components/CtaPaths';
-import { fadeUp, fadeIn, stagger } from '@/lib/motion';
+import { fadeUp, fadeIn } from '@/lib/motion';
 import { SITE_URL } from '@/lib/constants';
 
 const services = [
@@ -361,21 +361,6 @@ const Services = () => {
                 )}
               </div>
             </motion.section>
-            {i === 2 && (
-              <motion.section {...fadeUp} className="bg-ink py-[80px] md:py-[100px] text-center">
-                <div className="container-site">
-                  <h3 className="font-display text-heading-xl text-canvas leading-none mb-4">
-                    Not sure which services you need?
-                  </h3>
-                  <p className="text-body-sm text-stone mb-6 max-w-md mx-auto">
-                    That's what the audit call is for. We'll identify the highest-impact gaps and tell you honestly where we'd start.
-                  </p>
-                  <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-                    Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </div>
-              </motion.section>
-            )}
           </React.Fragment>
         );
       })}

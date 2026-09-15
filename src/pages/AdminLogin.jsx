@@ -25,7 +25,7 @@ const AdminLogin = () => {
   return (
     <>
       <PageMeta title="Admin | The Growth Bench" description="Admin sign-in." noindex={true} />
-    <section className="section-light min-h-screen flex items-center justify-center pt-16">
+    <section className="bg-canvas min-h-screen flex items-center justify-center pt-16">
       <div className="container-site">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="max-w-sm mx-auto">
           <div className="w-16 h-16 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-6">

@@ -598,7 +598,7 @@ const AIScorecard = () => {
             The scorecard points at the leak. The free audit call measures it — one concrete recommendation, no pitch.
           </p>
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book Your Free Call <ArrowRight className="w-4 h-4 ml-2" />
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </motion.section>

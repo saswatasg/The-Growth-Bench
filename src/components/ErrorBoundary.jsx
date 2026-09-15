@@ -18,7 +18,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <section className="section-light pt-32 pb-24">
+        <section className="bg-canvas pt-32 pb-24">
           <div className="container-site text-center">
             <h1 className="mb-4">Something went wrong</h1>
             <p className="text-body mb-8 max-w-md mx-auto">

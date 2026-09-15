@@ -245,7 +245,7 @@ const WorkWithUs = () => {
               <h2 className="font-display text-heading-xl text-ink mb-2">You're on the list.</h2>
               <p className="text-body-md text-mute mb-8">Now pick a time for your free 30-minute call.</p>
               <Button onClick={openBookingModal} size="lg">
-                Book Your Free Call &rarr;
+                Book a Free Audit Call &rarr;
               </Button>
               <p className="text-caption-sm text-mute mt-6">
                 Prefer email? <a href="mailto:hello@thegrowthbench.com" className="text-ink underline">hello@thegrowthbench.com</a>
@@ -295,7 +295,7 @@ const WorkWithUs = () => {
       <section className="bg-soft-cloud py-[80px] md:py-[100px] text-center">
         <div className="container-site">
           <div className="max-w-xl mx-auto">
-            <p className="text-body-sm text-mute mb-6">Three ways in — pick yours.</p>
+            <p className="text-body-sm text-mute mb-6">Three ways to get in touch.</p>
             <CtaPaths tone="light" />
           </div>
         </div>

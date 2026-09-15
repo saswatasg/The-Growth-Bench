@@ -113,7 +113,7 @@ const CartRecovery = () => {
             Book a free audit call. We&apos;ll look at your checkout, name the biggest leak, and tell you honestly if recovery work pays for your store.
           </p>
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book Your Free Call <ArrowRight className="w-4 h-4 ml-2" />
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <p className="text-caption-md text-stone mt-4">
             No retainer commitment. Cancel anytime.

@@ -128,7 +128,7 @@ const AdminDashboard = () => {
   return (
     <>
       <PageMeta title="Admin Dashboard | The Growth Bench" description="Blog content management." noindex={true} />
-    <section className="section-light min-h-screen pt-20">
+    <section className="bg-canvas min-h-screen pt-20">
       <div className="container-site">
         {/* Header */}
         <div className="flex items-center justify-between mb-8 pt-4">

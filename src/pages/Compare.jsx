@@ -122,7 +122,7 @@ const Compare = () => {
             Book a free 30-minute call. We&apos;ll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
           </p>
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book Your Free Call <ArrowRight className="w-4 h-4 ml-2" />
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <p className="text-caption-md text-stone mt-4">
             No retainer commitment. Cancel anytime.
