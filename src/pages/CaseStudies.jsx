@@ -10,16 +10,16 @@ import { fadeUp, fadeIn } from '@/lib/motion';
 
 const pastProjects = [
   {
-    client: 'Sierra Living Concepts — US D2C Furniture Brand',
-    stat: '₹2.89 Cr / month recovered',
-    description: 'The problem: a 73.1% checkout abandonment rate across 480,000 monthly sessions — the kind of leak that swallows ad spend before it converts. What we did: rebuilt the checkout flow, fixed mobile-specific friction points, and replaced one-off redesign guesses with a systematic conversion-testing process. The result: in a 22-day A/B test on 10% traffic, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate. Mobile conversion rate ended up ahead of Wayfair\'s.',
+    client: 'US D2C Furniture Brand',
+    stat: '₹3.5 Cr / month recovered',
+    description: 'The problem: a 73.1% checkout abandonment rate across 480,000 monthly sessions — the kind of leak that swallows ad spend before it converts. What we did: rebuilt the checkout flow, fixed mobile-specific friction points, and replaced one-off redesign guesses with a systematic conversion-testing process. The result: in a 22-day A/B test on 10% traffic, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate. Mobile conversion rate ended up ahead of a major competitor\'s.',
     tags: ['CRO', 'E-Commerce', 'UX'],
     before: '73.1% checkout abandonment',
     after: '53.9% checkout abandonment',
     timeline: '22-day A/B test',
   },
   {
-    client: 'Caffena Coffee — D2C Coffee Brand',
+    client: 'D2C Coffee Brand',
     stat: '357% revenue growth in 3 months',
     description: 'Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
     tags: ['E-Commerce', 'Web Development', 'Ads'],
@@ -154,9 +154,9 @@ const CaseStudies = () => {
         <div className="container-site">
           <div className="p-6 md:p-8 border-2 border-ink bg-canvas max-w-4xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">AI Implementation</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The Sierra engine, productized.</h2>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">Our automation engine, productized.</h2>
             <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">
-              The content and SEO automation pipeline behind Sierra-scale catalog work is one example — our agents now also run ops, support, and follow-ups end-to-end. Nothing goes live without a human-review period.
+              The content and SEO automation pipeline behind large-scale catalog work is one example — our agents now also run ops, support, and follow-ups end-to-end. Nothing goes live without a human-review period.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-6">
               <Link to="/services#ai-implementation" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
@@ -177,7 +177,7 @@ const CaseStudies = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
               <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-2 uppercase">CRO</span>
-              <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">We fixed a checkout flow. Recovered ₹2.89Cr/month.</h3>
+              <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">We fixed a checkout flow. Recovered ₹3.5Cr/month.</h3>
               <span className="text-body-sm text-ink flex items-center gap-1">Read <ArrowRight className="w-3.5 h-3.5" /></span>
             </Link>
             <Link to="/insights/funnel-audit-101-find-the-leak-before-spending-more-on-ads" className="block p-6 border border-hairline-soft bg-canvas no-underline group">

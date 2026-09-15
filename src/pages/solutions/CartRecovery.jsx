@@ -24,7 +24,7 @@ const CartRecovery = () => {
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
               For a US D2C furniture brand, checkout abandonment sat at 73.1% across 480,000 monthly sessions.
-              We rebuilt the flow, tested it, and recovered approximately $345K/month. Here is the exact playbook — and how we run it for you.
+              We rebuilt the flow, tested it, and recovered approximately $425K/month. Here is the exact playbook — and how we run it for you.
             </p>
           </div>
         </div>
@@ -59,7 +59,7 @@ const CartRecovery = () => {
               { num: '73.1% → 53.9%', label: 'Checkout abandonment in a 22-day A/B test — a 26% relative drop' },
               { num: '84.47% → 58.2%', label: 'Cart abandonment site-wide after rollout — a 26-point drop' },
               { num: '+47%', label: 'Mobile conversion lift (1.2% → 1.76%)' },
-              { num: '$345K/mo', label: 'Recovered revenue (≈₹2.89 Cr at the time)' },
+              { num: '$425K/mo', label: 'Recovered revenue (≈₹3.5 Cr at the time)' },
             ].map((s) => (
               <div key={s.num} className="text-center md:text-left">
                 <div className="font-display text-heading-xl md:text-display-md text-ink leading-none break-words">{s.num}</div>

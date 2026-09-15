@@ -47,7 +47,7 @@ const pageSpecificMeta = {
   },
   '/solutions/recover-abandoned-carts': {
     title: "Cart Recovery Service for D2C | The Growth Bench",
-    description: "Checkout abandonment 73.1% to 53.9% in a 22-day A/B test, ~$345K/month recovered. The exact cart and checkout recovery playbook for D2C brands."
+    description: "Checkout abandonment 73.1% to 53.9% in a 22-day A/B test, ~$425K/month recovered. The exact cart and checkout recovery playbook for D2C brands."
   },
   '/ai-scorecard': {
     title: "Automation Readiness Scorecard | The Growth Bench",

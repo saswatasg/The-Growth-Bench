@@ -32,7 +32,7 @@ const Footer = () => {
       <div className="container-site py-[80px] md:py-[100px]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
           <div className="col-span-2 md:col-span-1">
-            <img src="/favicon.png" alt="" className="w-8 h-8 rounded-full mb-4" />
+            <img src="/logo.png" alt="" className="w-8 h-8 logo-dark mb-4" />
             <p className="text-body-sm text-stone leading-relaxed max-w-xs">
               Full-stack growth partner for D2C brands and early-stage startups. Strategy, systems, scale.
             </p>

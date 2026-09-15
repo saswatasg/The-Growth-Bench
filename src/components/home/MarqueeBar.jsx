@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const items = [
-  'AI Implementation for D2C', 'Agentic AI: ops + support + content', '$345K/mo recovered', '5.7x ROAS',
+  'AI Implementation for D2C', 'Agentic AI: ops + support + content',       '$425K/mo recovered', '5.7x ROAS',
   '26% checkout drop cut', '47% mobile lift', '9 growth capabilities',
   'Strategy & Audit', 'Growth Ads', 'CRO', 'Web Development',
   'Lead Systems', 'UI/UX Design', 'Performance Marketing', 'SEO'

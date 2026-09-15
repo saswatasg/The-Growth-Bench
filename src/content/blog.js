@@ -276,13 +276,13 @@ These aren't nice-to-haves. They're the difference between a visitor seeing your
   },
   {
     slug: 'we-fixed-checkout-flow-recovered-2-89-crore-month',
-    title: 'We Fixed a Checkout Flow and Recovered ₹2.89Cr/Month — Here\'s Exactly How',
+    title: 'We Fixed a Checkout Flow and Recovered ₹3.5Cr/Month — Here\'s Exactly How',
     date: 'April 2025',
     category: 'CRO',
     image: '/assets/images/og-cro.svg',
     readTime: 10,
-    description: 'A detailed teardown of a cart and checkout redesign that recovered ₹2.89 crore per month for a US D2C furniture brand.',
-    body: `In early 2025, we took on a client engagement with a clear brief: fix the cart and checkout for a US D2C furniture brand doing approximately $500K/month in revenue.
+    description: 'A detailed teardown of a cart and checkout redesign that recovered ₹3.5 crore per month for a US D2C furniture brand.',
+    body: `In early 2025, we took on a client engagement with a clear brief: fix the cart and checkout for a US D2C furniture brand doing approximately $625K/month in revenue.
 
 The brand had a problem that's common in D2C: decent traffic, decent product, but a checkout flow that was bleeding revenue.
 
@@ -327,9 +327,9 @@ After implementation and A/B testing over 22 days on 10% traffic (480K sessions 
 - Checkout abandonment in-test: 73.1% (control) → 53.9% (variant) — a 26% relative drop
 - Mobile conversion: 1.2% → 1.76% (47% lift)
 - Average checkout time: 4.2 min → 2.8 min (34% reduction)
-- Monthly recovered revenue: approximately $345K/month
+- Monthly recovered revenue: approximately $425K/month
 
-At current exchange rates, that's approximately ₹2.89 crore in checkout revenue recovered per month.
+At current exchange rates, that's approximately ₹3.5 crore in checkout revenue recovered per month.
 
 **What we'd do next**
 

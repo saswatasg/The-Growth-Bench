@@ -156,7 +156,7 @@ const HeroSection = () => {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="text-body-sm text-mute mt-6"
           >
-            No retainer commitment · Cancel anytime · $345K/mo recovered for one client
+            No retainer commitment · Cancel anytime · $425K/mo recovered for one client
           </motion.p>
         </div>
       </div>

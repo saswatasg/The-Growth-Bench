@@ -35,6 +35,10 @@
     @apply mx-auto px-5 md:px-8;
     max-width: 1440px;
   }
+
+  .logo-dark {
+    filter: invert(1);
+  }
 }
 
 @keyframes marquee {

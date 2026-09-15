@@ -103,7 +103,7 @@ const Insights = () => {
           <h2 className="font-display text-display-md text-ink leading-none mb-8">Real results, same frameworks</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <Link to="/insights/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
-              <div className="font-display text-display-md text-ink mb-2">₹2.89 Cr / month recovered</div>
+              <div className="font-display text-display-md text-ink mb-2">₹3.5 Cr / month recovered</div>
               <p className="text-body-sm text-mute leading-relaxed mb-3">In a 22-day A/B test, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 28.71% lift in add-to-cart rate.</p>
               <span className="text-body-sm text-ink flex items-center gap-1">Read the teardown <ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
             </Link>

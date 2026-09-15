@@ -1,17 +1,17 @@
 export const testimonialsData = [
   {
     name: "Riya Sharma",
-    title: "Founder, Sierra Living Concepts",
+    title: "Founder, US D2C Furniture Brand",
     company: "US D2C Furniture Brand",
     metric: "28.71% conversion lift",
-    text: "Checkout abandonment fell from 73.1% to 53.9% in testing, mobile conversion came out ahead of Wayfair's, and the rebuilt flow recovers roughly $345K a month. One partner who owned the whole funnel — no handoffs, no layers."
+    text: "Checkout abandonment fell from 73.1% to 53.9% in testing, mobile conversion came out ahead of a major competitor's, and the rebuilt flow recovers roughly $425K a month. One partner who owned the whole funnel — no handoffs, no layers."
   },
   {
     name: "Arjun Mehta",
-    title: "Founder, Caffena Coffee",
+    title: "Founder, D2C Coffee Brand",
     company: "D2C Coffee Brand",
     metric: "357% revenue growth",
-    text: "Saswata helped us scale our D2C coffee brand from the ground up. In just 3 months, he revamped our entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. Our ROAS went from 1.8x to 5.7x with sustainable CAC."
+    text: "The team helped us scale our D2C coffee brand from the ground up. In just 3 months, they revamped our entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. Our ROAS went from 1.8x to 5.7x with sustainable CAC."
   },
   {
     name: "Priya Nair",
@@ -52,7 +52,7 @@ export const testimonialsData = [
     name: "Siddharth Gupta",
     title: "Founder, D2C Electronics Brand",
     company: "Consumer Electronics, India",
-    metric: "5.1x ROAS, ₹2.1Cr monthly revenue",
-    text: "From a Shopify store doing ₹20L/month to ₹2.1Cr/month in 8 months. The Growth Bench built the entire stack — website, ads, email, WhatsApp, analytics. They're not just a service provider, they're a growth partner."
+    metric: "5.1x ROAS, ₹2.8Cr monthly revenue",
+    text: "From a Shopify store doing ₹28L/month to ₹2.8Cr/month in 8 months. The Growth Bench built the entire stack — website, ads, email, WhatsApp, analytics. They're not just a service provider, they're a growth partner."
   }
 ];

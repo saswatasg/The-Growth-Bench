@@ -88,7 +88,7 @@ const Compare = () => {
                   ['First meaningful win', 'Weeks to months', 'A quarter or more', 'Weeks, not quarters'],
                   ['Overhead', 'None', 'Retainer + account layers', 'No middlemen, specialists on demand'],
                   ['AI automation', 'Manual tools', 'Pilots that stall', 'Agentic systems across ops + support'],
-                  ['Proof you can check', '—', '—', '$345K/mo recovered, 73.1% → 53.9%'],
+                  ['Proof you can check', '—', '—', '$425K/mo recovered, 73.1% → 53.9%'],
                 ].map((row) => (
                   <tr key={row[0]} className="border-b border-hairline-soft last:border-b-0">
                     <td className="py-4 pr-4 font-medium text-ink">{row[0]}</td>
