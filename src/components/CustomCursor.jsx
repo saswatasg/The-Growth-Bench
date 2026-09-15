@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useCallback, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-const CursorContext = createContext();
+const CursorContext = createContext({ setCursorState: () => {} });
 
 export const useCursor = () => useContext(CursorContext);
 
@@ -9,35 +9,28 @@ const CURSOR_STATES = {
   default: {
     dot: { size: 6, opacity: 1 },
     ring: { size: 36, opacity: 1, borderWidth: 1.5 },
-    label: '',
   },
   'hover-link': {
     dot: { size: 0, opacity: 0 },
     ring: { size: 56, opacity: 1, borderWidth: 2 },
-    label: '',
   },
   'hover-interactive': {
     dot: { size: 0, opacity: 0 },
     ring: { size: 72, opacity: 1, borderWidth: 2 },
-    label: '',
   },
   'hover-image': {
     dot: { size: 0, opacity: 0 },
     ring: { size: 88, opacity: 1, borderWidth: 1 },
-    label: '',
   },
   'hover-button': {
     dot: { size: 8, opacity: 1 },
     ring: { size: 48, opacity: 1, borderWidth: 2 },
-    label: '',
   },
 };
 
-const CustomCursor = () => {
+const CustomCursorInner = () => {
   const [state, setState] = useState('default');
   const [visible, setVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
-  const prefersReducedMotion = useRef(false);
   const [isClicking, setIsClicking] = useState(false);
 
   const cursorX = useMotionValue(-100);
@@ -52,13 +45,6 @@ const CustomCursor = () => {
   const dotY = useSpring(cursorY, dotSpringConfig);
 
   useEffect(() => {
-    const isTouch = window.matchMedia('(pointer: coarse)').matches;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setIsTouchDevice(isTouch);
-    prefersReducedMotion.current = reducedMotion;
-
-    if (isTouch || reducedMotion) return;
-
     const handleMouseMove = (e) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -86,17 +72,10 @@ const CustomCursor = () => {
     };
   }, [cursorX, cursorY, visible]);
 
-  const setCursorState = useCallback((newState) => {
-    setState(newState);
-  }, []);
-
-  if (isTouchDevice || prefersReducedMotion.current) return null;
-
   const config = CURSOR_STATES[state] || CURSOR_STATES.default;
 
   return (
-    <CursorContext.Provider value={{ setCursorState }}>
-      {/* Ring cursor — follows with spring delay */}
+    <>
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -125,7 +104,6 @@ const CustomCursor = () => {
         />
       </motion.div>
 
-      {/* Dot cursor — follows instantly */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
@@ -149,6 +127,29 @@ const CustomCursor = () => {
       >
         <div className="w-full h-full rounded-full bg-ink mix-blend-difference" />
       </motion.div>
+    </>
+  );
+};
+
+const CustomCursor = () => {
+  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const prefersReducedMotion = useRef(false);
+  const [state, setState] = useState('default');
+
+  const setCursorState = useCallback((newState) => {
+    setState(newState);
+  }, []);
+
+  useEffect(() => {
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setIsTouchDevice(isTouch);
+    prefersReducedMotion.current = reducedMotion;
+  }, []);
+
+  return (
+    <CursorContext.Provider value={{ setCursorState }}>
+      {!isTouchDevice && !prefersReducedMotion.current && <CustomCursorInner />}
     </CursorContext.Provider>
   );
 };
