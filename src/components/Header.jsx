@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { useCursor } from '@/components/CustomCursor';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
@@ -18,7 +17,6 @@ const navLinks = [
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { openBookingModal } = useBookingModal();
-  const { setCursorState } = useCursor();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
@@ -53,8 +51,6 @@ const Header = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
-                onMouseEnter={() => setCursorState('hover-link')}
-                onMouseLeave={() => setCursorState('default')}
                 className={({ isActive }) =>
                   `text-body-sm font-medium no-underline transition-colors ${
                     isActive ? 'text-ink' : 'text-mute hover:text-ink'
@@ -64,12 +60,7 @@ const Header = () => {
                 {link.label}
               </NavLink>
             ))}
-            <Button 
-              size="sm" 
-              onClick={openBookingModal}
-              onMouseEnter={() => setCursorState('hover-button')}
-              onMouseLeave={() => setCursorState('default')}
-            >
+            <Button size="sm" onClick={openBookingModal}>
               Book a Free Audit Call
             </Button>
           </nav>
@@ -99,8 +90,6 @@ const Header = () => {
                 key={link.to}
                 to={link.to}
                 onClick={() => setIsOpen(false)}
-                onMouseEnter={() => setCursorState('hover-link')}
-                onMouseLeave={() => setCursorState('default')}
                 className={({ isActive }) =>
                   `text-heading-lg no-underline ${isActive ? 'text-ink' : 'text-mute'}`
                 }
@@ -109,13 +98,7 @@ const Header = () => {
               </NavLink>
             ))}
             <div className="flex items-center gap-4 pt-4">
-              <Button 
-                size="lg" 
-                className="flex-1" 
-                onClick={() => { openBookingModal(); setIsOpen(false); }}
-                onMouseEnter={() => setCursorState('hover-button')}
-                onMouseLeave={() => setCursorState('default')}
-              >
+              <Button size="lg" className="flex-1" onClick={() => { openBookingModal(); setIsOpen(false); }}>
                 Book a Free Audit Call
               </Button>
             </div>

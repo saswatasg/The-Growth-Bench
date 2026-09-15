@@ -6,7 +6,6 @@ import { BookingModalProvider } from '@/context/BookingModalContext';
 import Layout from '@/components/Layout';
 import RoutesConfig from '@/config/RoutesConfig';
 import ScrollToTop from '@/components/ScrollToTop';
-import CustomCursor from '@/components/CustomCursor';
 import Preloader from '@/components/Preloader';
 import CookieConsent from '@/components/CookieConsent';
 import ExitIntent from '@/components/ExitIntent';
@@ -21,7 +20,6 @@ function App() {
         <BookingModalProvider>
         <ScrollToTop />
         <Preloader />
-        <CustomCursor />
         <Layout>
           <RoutesConfig />
         </Layout>
