@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { useBookingModal } from '@/context/BookingModalContext';
+import { Check, Clock, Target, BarChart3 } from 'lucide-react';
 
 const phases = [
   {
@@ -51,7 +49,6 @@ const phases = [
 
 const GrowthTimeline = () => {
   const [expanded, setExpanded] = useState(null);
-  const { openBookingModal } = useBookingModal();
 
   return (
     <section className="bg-canvas py-[100px] md:py-[120px]">
@@ -133,12 +130,9 @@ const GrowthTimeline = () => {
 
         <div className="mt-8 max-w-3xl">
           <div className="border-t border-hairline-soft pt-8">
-            <p className="text-body-sm text-mute mb-6">
+            <p className="text-body-sm text-mute">
               Every phase includes weekly check-ins, continuous optimisation, and transparent reporting.
             </p>
-            <Button size="lg" onClick={openBookingModal}>
-              Start Your 90-Day Sprint <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
           </div>
         </div>
       </div>

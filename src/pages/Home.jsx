@@ -7,17 +7,14 @@ import PageMeta from '@/components/PageMeta';
 import HeroSection from '@/components/home/HeroSection';
 import MarqueeBar from '@/components/home/MarqueeBar';
 import ServicesOverview from '@/components/home/ServicesOverview';
-import HowItWorks from '@/components/HowItWorks';
-import FitFilter from '@/components/FitFilter';
 import GrowthTimeline from '@/components/GrowthTimeline';
-import ROICalculator from '@/components/ROICalculator';
-import AsSeenIn from '@/components/AsSeenIn';
 import ActivityProof from '@/components/ActivityProof';
+import FitFilter from '@/components/FitFilter';
 import CtaPaths from '@/components/CtaPaths';
 import { loadPosts } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { testimonialsData } from '@/data/testimonials';
-import { fadeUp, fadeIn, stagger } from '@/lib/motion';
+import { fadeUp, fadeIn } from '@/lib/motion';
 
 const Home = () => {
   const { openBookingModal } = useBookingModal();
@@ -42,41 +39,8 @@ const Home = () => {
       <MarqueeBar />
       <ServicesOverview />
       <GrowthTimeline />
-      <ROICalculator />
-      <AsSeenIn className="bg-canvas" />
-
-      <HowItWorks className="bg-soft-cloud" />
-
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <div className="text-center">
-            <span className="text-label-xs text-stone uppercase tracking-wider">By The Numbers</span>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8">
-              {[
-                { num: '28.71%', label: 'Avg. conversion lift' },
-                { num: '468%', label: 'Avg. ROAS' },
-                { num: '2+ yrs', label: 'Avg. client tenure' },
-                { num: '9', label: 'Growth capabilities' },
-              ].map((s) => (
-                <motion.div key={s.num} {...stagger} className="text-center md:border-r md:border-stone/20 md:last:border-r-0">
-                  <motion.span
-                    className="font-display text-heading-xl md:text-display-lg text-canvas leading-none block"
-                    animate={{ scale: [1, 1.02, 1] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-                  >
-                    {s.num}
-                  </motion.span>
-                  <div className="text-caption-md text-stone mt-2">{s.label}</div>
-                </motion.div>
-              ))}
-          </div>
-          <p className="text-caption-sm text-stone/70 text-center mt-8">Representative outcomes across client engagements; individual results vary.</p>
-        </div>
-      </motion.section>
-
+      <ActivityProof className="bg-ink" />
       <FitFilter className="bg-canvas" />
-      <ActivityProof className="bg-soft-cloud" />
 
       <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site max-w-4xl mx-auto">
@@ -113,7 +77,7 @@ const Home = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-2 mb-10">
+          <div className="flex justify-center gap-2">
             {testimonialsData.map((_, i) => (
               <button
                 key={i}
@@ -125,45 +89,38 @@ const Home = () => {
               />
             ))}
           </div>
-
-          <div className="text-center">
-            <p className="text-body-sm text-mute mb-6">
-              Ready to see what your business could do with a full growth partner?
-            </p>
-            <Button onClick={openBookingModal} size="lg">
-              Book Your Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
-        <div className="container-site">
-          <div className="max-w-2xl mb-12">
-            <span className="text-label-xs text-mute uppercase tracking-wider">From The Bench</span>
-            <h2 className="font-display text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
-          </div>
+      {posts.length > 0 && (
+        <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+          <div className="container-site">
+            <div className="max-w-2xl mb-12">
+              <span className="text-label-xs text-mute uppercase tracking-wider">From The Bench</span>
+              <h2 className="font-display text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
+            </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {posts.slice(0, 3).map((post) => (
-              <Link key={post.slug} to={`/insights/${post.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group h-full">
-                <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-3 uppercase">{post.category}</span>
-                <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">{post.title}</h3>
-                <p className="text-body-sm text-mute leading-relaxed mb-3 line-clamp-2">{post.description}</p>
-                <p className="text-body-sm text-mute flex items-center gap-1">
-                  Read more <ArrowRight className="w-3.5 h-3.5" />
-                </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              {posts.slice(0, 3).map((post) => (
+                <Link key={post.slug} to={`/insights/${post.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group h-full">
+                  <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-3 uppercase">{post.category}</span>
+                  <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">{post.title}</h3>
+                  <p className="text-body-sm text-mute leading-relaxed mb-3 line-clamp-2">{post.description}</p>
+                  <p className="text-body-sm text-mute flex items-center gap-1">
+                    Read more <ArrowRight className="w-3.5 h-3.5" />
+                  </p>
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-10">
+              <Link to="/insights" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+                View all insights <ArrowRight className="w-4 h-4" />
               </Link>
-            ))}
+            </div>
           </div>
-
-          <div className="mt-10">
-            <Link to="/insights" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
-              View all insights <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </motion.section>
+        </motion.section>
+      )}
 
       <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
         <div className="container-site max-w-2xl mx-auto">

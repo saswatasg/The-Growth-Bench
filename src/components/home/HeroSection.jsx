@@ -5,26 +5,24 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 
-const smoothEase = [0.25, 0.1, 0.25, 1];
-
 const wordConfig = {
   GROWTH: {
-    fallDistance: -140,
-    startRotation: -6,
-    staggerMs: 140,
-    squashScale: { x: 1.12, y: 0.82 },
+    fallDistance: -120,
+    startRotation: -5,
+    staggerMs: 60,
+    squashScale: { x: 1.1, y: 0.85 },
   },
   THAT: {
-    fallDistance: -110,
-    startRotation: 4,
-    staggerMs: 100,
+    fallDistance: -90,
+    startRotation: 3,
+    staggerMs: 45,
     squashScale: { x: 1.08, y: 0.88 },
   },
   STICKS: {
-    fallDistance: -160,
-    startRotation: -8,
-    staggerMs: 80,
-    squashScale: { x: 1.15, y: 0.78 },
+    fallDistance: -140,
+    startRotation: -7,
+    staggerMs: 35,
+    squashScale: { x: 1.12, y: 0.8 },
   },
 };
 
@@ -40,38 +38,16 @@ function StickyLetter({ char, delay, config }) {
       }}
       animate={{
         opacity: [0, 1, 1],
-        y: [
-          config.fallDistance,
-          0,
-          config.squashScale.y * -8,
-          0,
-          -3,
-          0,
-        ],
-        rotateZ: [
-          config.startRotation,
-          config.startRotation * -0.3,
-          0,
-          config.startRotation * 0.1,
-          0,
-        ],
-        scale: [
-          0.5,
-          1.05,
-          config.squashScale.x,
-          1.02,
-          1,
-        ],
+        y: [config.fallDistance, 0, config.squashScale.y * -6, 0, -2, 0],
+        rotateZ: [config.startRotation, config.startRotation * -0.3, 0, 0],
+        scale: [0.5, 1.04, config.squashScale.x, 1.01, 1],
       }}
       transition={{
         delay: delay / 1000,
-        duration: 1.4,
-        times: [0, 0.35, 0.5, 0.65, 0.82, 1],
+        duration: 0.7,
+        times: [0, 0.4, 0.55, 0.7, 0.85, 1],
         ease: [0.22, 0.03, 0.36, 1],
-        opacity: {
-          delay: delay / 1000,
-          duration: 0.3,
-        },
+        opacity: { delay: delay / 1000, duration: 0.2 },
       }}
     >
       {char}
@@ -82,7 +58,6 @@ function StickyLetter({ char, delay, config }) {
 function StickyWord({ word, wordOffset }) {
   const config = wordConfig[word];
   const letters = word.split('');
-
   return (
     <span className="inline-block">
       {letters.map((char, i) => (
@@ -102,10 +77,7 @@ const UnderlineReveal = () => (
     className="block mx-auto mt-2 h-[3px] bg-ink origin-left"
     initial={{ scaleX: 0, opacity: 0 }}
     animate={{ scaleX: 1, opacity: 1 }}
-    transition={{
-      duration: 0.8,
-      ease: [0.22, 0.03, 0.36, 1],
-    }}
+    transition={{ duration: 0.6, ease: [0.22, 0.03, 0.36, 1] }}
     style={{ maxWidth: '280px' }}
   />
 );
@@ -118,12 +90,11 @@ const HeroSection = () => {
   const isInView = useInView(ref, { once: true });
 
   const wordOffsets = [];
-  let offset = 400;
+  let offset = 150;
   for (const word of words) {
     wordOffsets.push(offset);
-    offset += word.length * wordConfig[word].staggerMs + 260;
+    offset += word.length * wordConfig[word].staggerMs + 120;
   }
-
   const totalAnimMs = offset;
 
   useEffect(() => {
@@ -139,7 +110,7 @@ const HeroSection = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease: smoothEase }}
+            transition={{ duration: 0.5 }}
           >
             <Link
               to="/services#ai-implementation"
@@ -153,29 +124,25 @@ const HeroSection = () => {
             {words.map((word, wi) => (
               <React.Fragment key={word}>
                 {wi > 0 && <span className="inline-block w-[0.12em]" />}
-                <StickyWord
-                  word={word}
-                  wordOffset={wordOffsets[wi]}
-                />
+                <StickyWord word={word} wordOffset={wordOffsets[wi]} />
               </React.Fragment>
             ))}
             {allLanded && <UnderlineReveal />}
           </h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30, filter: 'blur(4px)' }}
+            initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
             animate={allLanded ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
-            transition={{ duration: 0.8, ease: smoothEase }}
+            transition={{ duration: 0.6 }}
             className="text-body-lg text-mute mt-10 leading-relaxed max-w-2xl mx-auto"
           >
-            Strategy, ads, CRO, web, and AI agents — connected by one lead who sees the entire funnel.
-            No handoffs between specialists who don't talk. No overhead from layers that don't build.
+            One partner. Full funnel. From audit to AI agents — we own the outcome, not just the channel.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={allLanded ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 0.03, 0.36, 1] }}
+            transition={{ delay: 0.3, duration: 0.5 }}
             className="flex flex-wrap justify-center gap-4 mt-12"
           >
             <Button size="lg" onClick={openBookingModal}>
@@ -186,17 +153,10 @@ const HeroSection = () => {
           <motion.p
             initial={{ opacity: 0 }}
             animate={allLanded ? { opacity: 1 } : {}}
-            transition={{ delay: 0.7, duration: 0.5 }}
+            transition={{ delay: 0.5, duration: 0.4 }}
             className="text-body-sm text-mute mt-6"
           >
-            Or see{' '}
-            <Link to="/services" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
-              our services
-            </Link>
-            {' '}· take the{' '}
-            <Link to="/ai-scorecard" className="text-ink font-medium underline underline-offset-2 hover:text-mute transition-colors">
-              60-second AI scorecard
-            </Link>
+            No retainer commitment · Cancel anytime · $345K/mo recovered for one client
           </motion.p>
         </div>
       </div>
