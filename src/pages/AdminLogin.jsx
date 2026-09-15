@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Lock, ArrowRight } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 
 const AdminLogin = () => {
@@ -28,11 +29,11 @@ const AdminLogin = () => {
     <section className="bg-canvas min-h-screen flex items-center justify-center pt-16">
       <div className="container-site">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="max-w-sm mx-auto">
-          <div className="w-16 h-16 rounded-full bg-primary-light flex items-center justify-center mx-auto mb-6">
-            <Lock className="w-8 h-8 text-primary" />
+          <div className="w-16 h-16 rounded-full bg-soft-cloud flex items-center justify-center mx-auto mb-6">
+            <Lock className="w-8 h-8 text-ink" />
           </div>
-          <h1 className="text-center mb-2">Admin Access</h1>
-          <p className="text-sm text-muted-foreground text-center mb-8">Enter the admin password to manage blog content.</p>
+          <h1 className="font-display text-display-md text-ink text-center mb-2">Admin Access</h1>
+          <p className="text-body-sm text-mute text-center mb-8">Enter the admin password to manage blog content.</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="password"
@@ -40,12 +41,12 @@ const AdminLogin = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               autoFocus
-              className="input w-full text-center text-lg"
+              className="w-full px-4 py-3 text-body-md text-ink bg-canvas border border-hairline-soft rounded-lg focus:outline-none focus:ring-2 focus:ring-ink/20 text-center"
             />
-            {error && <p className="text-sm text-red-500 text-center">{error}</p>}
-            <button type="submit" disabled={loading} className="btn-primary w-full justify-center">
+            {error && <p className="text-body-sm text-sale text-center">{error}</p>}
+            <Button type="submit" size="lg" disabled={loading} className="w-full justify-center">
               {loading ? 'Verifying...' : 'Sign In'} <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+            </Button>
           </form>
         </motion.div>
       </div>

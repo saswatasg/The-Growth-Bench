@@ -17,7 +17,7 @@ const Terms = () => {
           <h1 className="font-display text-display-md text-ink mt-2 mb-3 leading-none">Terms of Service</h1>
           <p className="text-caption-sm text-mute mb-10">Last updated: May 2026</p>
 
-          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink -canvas [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink -accent [&_a]:underline [&_strong]:text-ink -canvas [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
+          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
             <h2>1. Introduction</h2>
             <p>These Terms govern your use of <a href="https://www.thegrowthbench.com">thegrowthbench.com</a> and the services provided by The Growth Bench. By using our Site or submitting an enquiry, you agree to these Terms.</p>
 

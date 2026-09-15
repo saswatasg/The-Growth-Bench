@@ -208,7 +208,7 @@ const WorkWithUs = () => {
                   <div className="bg-canvas border border-hairline-soft p-6 mb-6 space-y-3">
                     <div>
                       <span className="text-caption-sm text-mute uppercase">Modules</span>
-                      <p className="text-body-sm font-medium text-ink mt-0.5">{[...selectedModules].join(', ')}</p>
+                      <p className="text-body-sm font-medium text-ink mt-0.5">{[...selectedModules].map(id => MODULES.find(m => m.id === id)?.label || id).join(', ')}</p>
                     </div>
                     <div className="h-px bg-hairline-soft" />
                     <div>
@@ -245,7 +245,7 @@ const WorkWithUs = () => {
               <h2 className="font-display text-heading-xl text-ink mb-2">You're on the list.</h2>
               <p className="text-body-md text-mute mb-8">Now pick a time for your free 30-minute call.</p>
               <Button onClick={openBookingModal} size="lg">
-                Book a Free Audit Call &rarr;
+                Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <p className="text-caption-sm text-mute mt-6">
                 Prefer email? <a href="mailto:hello@thegrowthbench.com" className="text-ink underline">hello@thegrowthbench.com</a>

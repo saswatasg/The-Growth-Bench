@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, Clock, Target, BarChart3 } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const phases = [
   {

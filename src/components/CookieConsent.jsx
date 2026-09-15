@@ -50,7 +50,7 @@ const CookieConsent = () => {
       role="dialog"
       aria-live="polite"
       aria-label="Analytics consent"
-      className="fixed bottom-4 inset-x-4 md:left-auto md:right-6 md:max-w-sm z-[90] bg-ink text-canvas p-5 shadow-2xl"
+      className="fixed bottom-20 inset-x-4 md:bottom-6 md:left-auto md:right-6 md:max-w-sm z-[90] bg-ink text-canvas p-5 shadow-2xl"
     >
       <p className="text-body-sm leading-relaxed">
         We measure visits to improve the site — only if you agree.

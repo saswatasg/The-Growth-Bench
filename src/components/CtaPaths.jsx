@@ -13,7 +13,7 @@ const CtaPaths = ({ tone = 'light', align = 'center' }) => {
   return (
     <div className={`flex flex-wrap items-center gap-x-5 gap-y-2 text-body-sm ${justify}`}>
       <button onClick={openBookingModal} className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
-        Ready? Book a free call <ArrowRight className="w-3.5 h-3.5" />
+        Ready? Book a free audit call <ArrowRight className="w-3.5 h-3.5" />
       </button>
       <Link to="/ai-scorecard" className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
         Diagnosing? Take the AI scorecard <ArrowRight className="w-3.5 h-3.5" />

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
@@ -13,11 +13,6 @@ const variants = {
 
 export default function PageTransition({ children }) {
   const location = useLocation();
-  const keyRef = useRef(location.pathname);
-
-  useEffect(() => {
-    keyRef.current = location.pathname;
-  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait">

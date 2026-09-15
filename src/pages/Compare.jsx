@@ -109,6 +109,14 @@ const Compare = () => {
         </div>
       </motion.section>
 
+      <motion.section {...fadeUp} className="bg-canvas py-[60px] md:py-[80px] text-center">
+        <div className="container-site">
+          <Button size="lg" onClick={openBookingModal}>
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
+      </motion.section>
+
       <HowItWorks className="bg-soft-cloud" />
 
       <FitFilter className="bg-canvas" />

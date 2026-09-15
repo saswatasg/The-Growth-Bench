@@ -92,6 +92,14 @@ const Home = () => {
         </div>
       </motion.section>
 
+      <motion.section {...fadeUp} className="bg-canvas py-[60px] md:py-[80px] text-center">
+        <div className="container-site">
+          <Button size="lg" onClick={openBookingModal}>
+            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </div>
+      </motion.section>
+
       {posts.length > 0 && (
         <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
           <div className="container-site">

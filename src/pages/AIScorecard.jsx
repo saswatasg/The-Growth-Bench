@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Check, Workflow, MessageCircle, Truck, FileText, Repeat, Palette } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Workflow, MessageCircle, Truck, FileText, Repeat, Palette } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import PageMeta from '@/components/PageMeta';

@@ -8,7 +8,6 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
 import CtaPaths from '@/components/CtaPaths';
 import { fadeUp, fadeIn } from '@/lib/motion';
-import { SITE_URL } from '@/lib/constants';
 
 const services = [
   {

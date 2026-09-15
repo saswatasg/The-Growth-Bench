@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -20,12 +21,14 @@ class ErrorBoundary extends React.Component {
       return (
         <section className="bg-canvas pt-32 pb-24">
           <div className="container-site text-center">
-            <h1 className="mb-4">Something went wrong</h1>
-            <p className="text-body mb-8 max-w-md mx-auto">
+            <h1 className="font-display text-display-md text-ink mb-4">Something went wrong</h1>
+            <p className="text-body-md text-mute mb-8 max-w-md mx-auto">
               We encountered an unexpected error. Please try refreshing the page, or{' '}
-              <a href="mailto:hello@thegrowthbench.com" className="text-primary underline">contact us</a> if the problem persists.
+              <a href="mailto:hello@thegrowthbench.com" className="text-ink underline">contact us</a> if the problem persists.
             </p>
-            <Link to="/" className="btn-primary no-underline">Go Home</Link>
+            <Button size="lg" asChild>
+              <Link to="/">Go Home</Link>
+            </Button>
           </div>
         </section>
       );

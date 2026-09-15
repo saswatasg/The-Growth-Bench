@@ -34,7 +34,7 @@ const ServicesOverview = () => {
                     <Icon className="w-5 h-5 text-canvas" />
                   </div>
                   <span className="text-caption-sm text-mute font-mono">{s.num}</span>
-                  <h3 className="text-body-strong text-ink mt-1 mb-1">{s.name}</h3>
+                  <h3 className="text-body-md font-medium text-ink mt-1 mb-1">{s.name}</h3>
                   <p className="text-caption-md text-mute leading-relaxed">{s.desc}</p>
                   <span className="text-caption-sm text-ink mt-3 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                     See how it works <ArrowRight className="w-3 h-3" />
@@ -52,7 +52,7 @@ const ServicesOverview = () => {
                   <Icon className="w-5 h-5 text-canvas" />
                 </div>
                 <span className="text-caption-sm text-stone font-mono">{s.num}</span>
-                <h3 className="text-body-strong text-canvas mt-1 mb-1">{s.name}</h3>
+                <h3 className="text-body-md font-medium text-canvas mt-1 mb-1">{s.name}</h3>
                 <p className="text-caption-md text-stone leading-relaxed">{s.desc}</p>
                 <span className="text-caption-sm text-stone mt-3 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   Learn more <ArrowRight className="w-3 h-3" />

@@ -12,12 +12,13 @@ const StickyMobileCTA = () => {
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ delay: 2, duration: 0.4 }}
-      className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-ink border-t border-ink/20 px-4 py-3 safe-area-bottom"
+      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-ink border-t border-ink/20 px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
     >
       <Button
         size="lg"
         className="w-full bg-canvas text-ink hover:bg-soft-cloud"
         onClick={openBookingModal}
+        aria-label="Book a free audit call"
       >
         Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
       </Button>

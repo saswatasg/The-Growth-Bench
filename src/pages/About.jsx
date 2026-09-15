@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -154,7 +153,7 @@ const About = () => {
                     <MessageCircle className="w-4 h-4" /> WhatsApp
                   </a>
                 </Button>
-                <Button size="sm" variant="secondary" onClick={openBookingModal}>Book a Call</Button>
+                <Button size="sm" variant="secondary" onClick={openBookingModal}>Book a Free Audit Call</Button>
               </div>
             </div>
           </div>

@@ -104,7 +104,7 @@ const HeroSection = () => {
   }, [isInView, totalAnimMs]);
 
   return (
-    <section ref={ref} className="bg-canvas py-[100px] md:py-[140px] overflow-hidden">
+    <section ref={ref} className="bg-canvas py-[100px] md:py-[120px] overflow-hidden">
       <div className="container-site w-full">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div

@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 const NotFound = () => {
+  const { openBookingModal } = useBookingModal();
   return (
     <>
       <PageMeta title="404 - Page Not Found | The Growth Bench" description="The page you are looking for does not exist or has been moved." noindex={true} />
@@ -14,9 +16,14 @@ const NotFound = () => {
           <p className="text-body-md text-mute max-w-md mb-8">
             The page you're looking for doesn't exist, has been removed, or is temporarily unavailable.
           </p>
-          <Button asChild size="lg">
-            <Link to="/">Back to Home</Link>
-          </Button>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg">
+              <Link to="/">Back to Home</Link>
+            </Button>
+            <Button size="lg" variant="outline" onClick={openBookingModal}>
+              Book a Free Audit Call
+            </Button>
+          </div>
           <p className="mt-6">
             <Link to="/ai-scorecard" className="text-body-sm text-mute underline underline-offset-2 hover:text-ink transition-colors">
               Or take the 60-second AI scorecard

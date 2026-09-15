@@ -6,7 +6,7 @@ const CTAS_KEY = 'tgb_blog_ctas';
 export const defaultCTAs = {
   midArticle: {
     text: 'Want this applied to your brand?',
-    button: "Book a free audit call",
+    button: "Book a Free Audit Call",
     note: "or chat with us on WhatsApp"
   },
   bottomCTA: {

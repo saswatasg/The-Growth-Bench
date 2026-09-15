@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ArrowRight } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Button } from '@/components/ui/button';
@@ -98,7 +98,7 @@ const BlogPost = () => {
 
           <div className="border-t border-hairline-soft pt-8" />
 
-          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink -canvas [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink -canvas [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink -accent [&_a]:underline [&_strong]:text-ink -canvas [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4">
+          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.body}
             </ReactMarkdown>
@@ -155,7 +155,7 @@ const BlogPost = () => {
                 <strong>{ctas.bottomCTA.text}</strong>
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Button size="lg" onClick={openBookingModal}>{ctas.bottomCTA.button} &rarr;</Button>
+                <Button size="lg" onClick={openBookingModal}>{ctas.bottomCTA.button} <ArrowRight className="w-4 h-4 ml-2" /></Button>
                 {ctas.bottomCTA.secondary && (
                   <Button asChild variant="outline" size="lg">
                     <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">

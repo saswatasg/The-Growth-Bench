@@ -8,6 +8,7 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 const navLinks = [
   { to: '/services', label: 'Services' },
   { to: '/case-studies', label: 'Case Studies' },
+  { to: '/compare', label: 'Compare' },
   { to: '/insights', label: 'Insights' },
   { to: '/about', label: 'About' },
   { to: '/pricing', label: 'Start' },
@@ -39,7 +40,7 @@ const Header = () => {
       <header className="sticky top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur border-b border-hairline-soft">
         <div className="container-site flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2.5 no-underline group">
-            <img src="/logo.png" alt="" className="w-8 h-8" />
+            <img src="/logo.png" alt="The Growth Bench" className="w-8 h-8" />
             <span className="font-display text-lg tracking-wide text-ink">
               THE GROWTH BENCH
             </span>
@@ -60,7 +61,7 @@ const Header = () => {
               </NavLink>
             ))}
             <Button size="sm" onClick={openBookingModal}>
-              Book a Call
+              Book a Free Audit Call
             </Button>
           </nav>
 
@@ -78,7 +79,7 @@ const Header = () => {
       {isOpen && (
         <div className="fixed inset-0 z-[60] bg-canvas flex flex-col md:hidden">
           <div className="container-site flex items-center justify-between h-16 border-b border-hairline-soft">
-            <img src="/logo.png" alt="" className="w-8 h-8" />
+            <img src="/logo.png" alt="The Growth Bench" className="w-8 h-8" />
             <button className="p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full" onClick={() => setIsOpen(false)} aria-label="Close menu">
               <X className="w-5 h-5" />
             </button>
@@ -98,7 +99,7 @@ const Header = () => {
             ))}
             <div className="flex items-center gap-4 pt-4">
               <Button size="lg" className="flex-1" onClick={() => { openBookingModal(); setIsOpen(false); }}>
-                Book a Call
+                Book a Free Audit Call
               </Button>
             </div>
           </nav>
