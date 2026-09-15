@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from '@/lib/constants';
+import { useSound } from '@/components/SoundManager';
 
 const footerLinks = {
   Services: [
@@ -27,6 +28,7 @@ const footerLinks = {
 };
 
 const Footer = () => {
+  const { playHoverTick } = useSound();
   return (
     <footer className="bg-ink text-canvas">
       <div className="container-site py-[80px] md:py-[100px]">
@@ -44,7 +46,7 @@ const Footer = () => {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.to} className="text-body-sm text-stone no-underline hover:text-canvas transition-colors">
+                    <Link to={link.to} onMouseEnter={playHoverTick} className="text-body-sm text-stone no-underline hover:text-canvas transition-colors">
                       {link.label}
                     </Link>
                   </li>

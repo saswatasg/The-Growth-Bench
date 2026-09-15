@@ -78,7 +78,7 @@ export function SoundProvider({ children }) {
     if (muted) return;
     try {
       const ctx = getCtx();
-      createOscillator(ctx, 'sine', 800, 0.05, 0.02);
+      createOscillator(ctx, 'sine', 800, 0.05, 0.08);
     } catch {}
   }, [muted, getCtx]);
 
@@ -91,7 +91,7 @@ export function SoundProvider({ children }) {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(1200, ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.1);
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
       osc.connect(gain);
       gain.connect(ctx.destination);
@@ -106,7 +106,7 @@ export function SoundProvider({ children }) {
       const ctx = getCtx();
       [523, 659, 784].forEach((freq, i) => {
         setTimeout(() => {
-          createOscillator(ctx, 'sine', freq, 0.2, 0.03);
+          createOscillator(ctx, 'sine', freq, 0.2, 0.08);
         }, i * 80);
       });
     } catch {}
@@ -116,7 +116,7 @@ export function SoundProvider({ children }) {
     if (muted) return;
     try {
       const ctx = getCtx();
-      createOscillator(ctx, 'sawtooth', 200, 0.15, 0.02);
+      createOscillator(ctx, 'sawtooth', 200, 0.15, 0.06);
     } catch {}
   }, [muted, getCtx]);
 
