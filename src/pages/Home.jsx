@@ -49,7 +49,7 @@ const Home = () => {
             <h2 className="font-display text-display-md text-ink mt-2">Results that speak plainly.</h2>
           </div>
 
-          <div className="relative min-h-[260px] md:min-h-[220px] mb-8">
+          <div className="relative h-[320px] md:h-[280px] mb-8 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial}
@@ -57,7 +57,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="p-8 md:p-10 border border-hairline-soft bg-canvas relative max-w-2xl mx-auto"
+                className="p-8 md:p-10 border border-hairline-soft bg-canvas relative max-w-2xl mx-auto absolute inset-x-0 top-0"
               >
                 <span aria-hidden="true" className="font-display text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
                 <p className="text-body-md text-mute leading-relaxed mb-6 relative z-10">{testimonialsData[currentTestimonial].text}</p>
