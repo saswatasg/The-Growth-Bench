@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { useSound } from '@/components/SoundManager';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
@@ -17,7 +16,6 @@ const navLinks = [
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { openBookingModal } = useBookingModal();
-  const { playHoverTick, playClickChime } = useSound();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
@@ -52,7 +50,6 @@ const Header = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
-                onMouseEnter={playHoverTick}
                 className={({ isActive }) =>
                   `text-body-sm font-medium no-underline transition-colors ${
                     isActive ? 'text-ink' : 'text-mute hover:text-ink'
@@ -62,14 +59,14 @@ const Header = () => {
                 {link.label}
               </NavLink>
             ))}
-            <Button size="sm" onClick={() => { playClickChime(); openBookingModal(); }}>
+            <Button size="sm" onClick={openBookingModal}>
               Book a Call
             </Button>
           </nav>
 
           <button
             className="md:hidden p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full"
-            onClick={() => { playClickChime(); setIsOpen(true); }}
+            onClick={() => setIsOpen(true)}
             aria-label="Open menu"
             aria-expanded={isOpen}
           >
@@ -82,7 +79,7 @@ const Header = () => {
         <div className="fixed inset-0 z-[60] bg-canvas flex flex-col md:hidden">
           <div className="container-site flex items-center justify-between h-16 border-b border-hairline-soft">
             <img src="/logo.png" alt="" className="w-8 h-8" />
-            <button className="p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full" onClick={() => { playClickChime(); setIsOpen(false); }} aria-label="Close menu">
+            <button className="p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full" onClick={() => setIsOpen(false)} aria-label="Close menu">
               <X className="w-5 h-5" />
             </button>
           </div>
@@ -91,7 +88,7 @@ const Header = () => {
               <NavLink
                 key={link.to}
                 to={link.to}
-                onClick={() => { playClickChime(); setIsOpen(false); }}
+                onClick={() => setIsOpen(false)}
                 onMouseEnter={playHoverTick}
                 className={({ isActive }) =>
                   `text-heading-lg no-underline ${isActive ? 'text-ink' : 'text-mute'}`
@@ -101,7 +98,7 @@ const Header = () => {
               </NavLink>
             ))}
             <div className="flex items-center gap-4 pt-4">
-              <Button size="lg" className="flex-1" onClick={() => { playClickChime(); openBookingModal(); setIsOpen(false); }}>
+              <Button size="lg" className="flex-1" onClick={() => { openBookingModal(); setIsOpen(false); }}>
                 Book a Call
               </Button>
             </div>
