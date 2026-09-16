@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
           {/* Brand + Contact */}
           <div className="col-span-2 md:col-span-1">
-            <img src="/logo.png" alt="The Growth Bench" className="w-8 h-8 logo-dark mb-4" />
+            <img src="/logo.png" alt="The Growth Bench" className="h-8 w-auto logo-dark mb-4" />
             <p className="text-body-sm text-stone leading-relaxed max-w-xs mb-6">
               Full-stack growth partner for D2C brands and early-stage startups. Strategy, systems, scale.
             </p>
