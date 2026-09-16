@@ -398,10 +398,10 @@ const Services = () => {
             {supportingServices.map((s) => {
               const Icon = s.icon;
               return (
-                <motion.div key={s.id} {...staggerChild}>
+                <motion.div key={s.id} {...staggerChild} className="h-full">
                   <button
                     onClick={() => openModal(s)}
-                    className="group text-left p-6 border border-hairline bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 w-full"
+                    className="group text-left p-6 border border-hairline bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 w-full h-full flex flex-col"
                   >
                     <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
                       <Icon className="w-5 h-5 text-ink group-hover:text-canvas transition-colors" />
@@ -416,7 +416,7 @@ const Services = () => {
                         ))}
                       </div>
                     )}
-                    <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                    <span className="text-body-sm text-ink mt-auto pt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
                       Overview <ArrowRight className="w-3.5 h-3.5" />
                     </span>
                   </button>

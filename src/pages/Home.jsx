@@ -8,7 +8,6 @@ import MarqueeBar from '@/components/home/MarqueeBar';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import GrowthTimeline from '@/components/GrowthTimeline';
 import ActivityProof from '@/components/ActivityProof';
-import ProblemSection from '@/components/ProblemSection';
 import { loadPosts } from '@/lib/blogUtils';
 import { testimonialsData } from '@/data/testimonials';
 import { fadeUp, staggerContainer, staggerChild } from '@/lib/motion';
@@ -55,8 +54,7 @@ const Home = () => {
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="p-8 md:p-10 border border-hairline-soft bg-canvas max-w-2xl mx-auto"
               >
-                <span aria-hidden="true" className="font-display text-heading-xl md:text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
-                <p className="text-body-md text-mute leading-relaxed mb-6 relative z-10">{testimonialsData[currentTestimonial].text}</p>
+                <p className="text-body-md text-mute leading-relaxed mb-6">{testimonialsData[currentTestimonial].text}</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center flex-shrink-0">
                     <span className="text-caption-sm text-ink font-bold">{testimonialsData[currentTestimonial].name.split(' ').map(n => n[0]).join('')}</span>
@@ -79,10 +77,12 @@ const Home = () => {
                 key={i}
                 onClick={() => setCurrentTestimonial(i)}
                 aria-label={`Show testimonial ${i + 1}`}
-                className={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                className={`p-3 flex items-center justify-center rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40`}
+              >
+                <span className={`block rounded-full transition-all duration-300 ${
                   i === currentTestimonial ? 'bg-ink w-6 h-2' : 'bg-hairline hover:bg-mute/30 w-2 h-2'
-                }`}
-              />
+                }`} />
+              </button>
             ))}
           </div>
         </div>

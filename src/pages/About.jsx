@@ -23,29 +23,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* The Problem */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
-        <div className="container-site">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-10">
-              <span className="text-label-xs text-mute uppercase tracking-wider">The Problem</span>
-            </div>
-            <p className="text-body-lg text-mute leading-relaxed text-center">
-              Most growing brands end up choosing between talented freelancers stretched too thin and large agencies with too many layers.
-            </p>
-            <blockquote className="mt-10 border-l-4 border-ink pl-6 py-2">
-              <p className="text-heading-md text-ink leading-snug">
-                "I just wanted one person who understood my whole business and could build the whole thing properly."
-              </p>
-              <cite className="text-caption-sm text-mute mt-3 block not-italic">— What founders told us</cite>
-            </blockquote>
-            <p className="text-body-lg text-mute leading-relaxed mt-10 text-center">
-              That person is your Growth Bench lead — a senior partner who owns the full picture, with the right specialists on call when the work demands it. No handoffs, no layers, no overhead you don't need.
-            </p>
-          </div>
-        </div>
-      </motion.section>
-
       {/* Operating Model */}
       <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
@@ -276,19 +253,6 @@ const About = () => {
 
           <p className="text-caption-sm text-hairline mt-8 text-center">
             Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
-          </p>
-        </div>
-      </motion.section>
-
-      {/* What We Don't Do */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
-        <div className="container-site text-center">
-          <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
-          <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">
-            We pick a lane and<br />stay in it.
-          </h2>
-          <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl mx-auto">
-            We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
           </p>
         </div>
       </motion.section>
