@@ -92,7 +92,7 @@ const About = () => {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
               { stat: '3', label: 'Industries served — D2C, B2B SaaS, education' },
-              { stat: '9', label: 'Growth capabilities under one bench' },
+              { stat: '9', label: 'Service lines under one bench' },
               { stat: '25+', label: 'Projects delivered for brands and startups' },
             ].map((s) => (
               <div key={s.stat}>
@@ -145,16 +145,21 @@ const About = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">The growth stack, handled.</h2>
             <p className="text-body-md text-mute mt-4 max-w-xl leading-relaxed">
-              Nine capabilities. One operating lead. Every specialist deployed per project.
+              Nine service lines. Twenty specialists on call. One operating lead who owns the full picture.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
             {[
-              { id: 'ai-implementation', title: 'AI Implementation', tagline: 'Agents that run your repetitive work.' },
-              { id: 'strategy', title: 'Growth Strategy', tagline: 'The diagnosis before the prescription.' },
-              { id: 'website', title: 'Website & Dev', tagline: 'Conversion-first builds.' },
-              { id: 'ads', title: 'Ads', tagline: 'Full-funnel paid media.' },
+              { id: 'ai-implementation', title: 'AI Implementation', tagline: 'Agents that run your repetitive work.', core: true },
+              { id: 'strategy', title: 'Growth Strategy', tagline: 'The diagnosis before the prescription.', core: true },
+              { id: 'website', title: 'Website & Dev', tagline: 'Conversion-first builds.', core: true },
+              { id: 'ads', title: 'Ads', tagline: 'Full-funnel paid media.', core: true },
+              { id: 'lead-systems', title: 'Lead Systems', tagline: 'Not just a form — a system.' },
+              { id: 'cro', title: 'CRO', tagline: 'Structured experimentation.' },
+              { id: 'ui-ux', title: 'UI/UX Design', tagline: 'Design that removes friction.' },
+              { id: 'content-email', title: 'Content & Email', tagline: 'The organic engine.' },
+              { id: 'analytics', title: 'Analytics', tagline: 'Own your data.' },
             ].map((service) => (
               <Link
                 key={service.id}
@@ -162,7 +167,10 @@ const About = () => {
                 className="group p-6 bg-canvas border border-hairline-soft hover:border-ink transition-all duration-300 no-underline flex items-start justify-between gap-4"
               >
                 <div>
-                  <h3 className="text-heading-md text-ink group-hover:text-mute transition-colors">{service.title}</h3>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-heading-md text-ink group-hover:text-mute transition-colors">{service.title}</h3>
+                    {service.core && <span className="text-label-xs text-mute bg-soft-cloud px-2 py-0.5 rounded-full">Core</span>}
+                  </div>
                   <p className="text-body-sm text-mute mt-1">{service.tagline}</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-mute group-hover:text-ink transition-colors flex-shrink-0 mt-1" />
@@ -172,7 +180,7 @@ const About = () => {
 
           <div className="mt-8">
             <a href="#full-bench" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
-              9 capabilities total — see the full bench <ArrowRight className="w-4 h-4" />
+              See the full bench —20 specialists across 9 service lines <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>

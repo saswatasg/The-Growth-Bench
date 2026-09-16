@@ -34,7 +34,7 @@ export function BookingModalProvider({ children }) {
           onClick={closeBookingModal}
         >
           <div
-            className="relative w-full max-w-3xl bg-canvas rounded-2xl overflow-hidden shadow-2xl"
+            className="relative w-full max-w-3xl bg-canvas rounded-none overflow-hidden shadow-2xl"
             style={{ maxHeight: '90vh' }}
             onClick={(e) => e.stopPropagation()}
             role="dialog"

@@ -104,6 +104,7 @@ const services = [
     shortDesc: 'CRM, nurture, scoring. The infrastructure behind pipeline.',
     eyebrow: '05 — Lead Systems',
     h2: 'A form is not a lead system.',
+    roles: ['CRM Specialist', 'Email & Lifecycle Specialist', 'WhatsApp Commerce Specialist'],
     includes: [
       'Lead funnel architecture and mapping',
       'Landing page and lead magnet creation',
@@ -123,6 +124,7 @@ const services = [
     shortDesc: 'Research, analysis, A/B testing that compounds.',
     eyebrow: '06 — CRO',
     h2: 'Your website is a product. Treat it like one.',
+    roles: ['CRO Specialist', 'Data & Analytics Analyst'],
     includes: [
       'Funnel drop-off analysis (GA4, Shopify analytics)',
       'Session recording and heatmap analysis',
@@ -142,6 +144,7 @@ const services = [
     shortDesc: 'Research to Figma to dev handoff.',
     eyebrow: '07 — UI/UX Design',
     h2: 'Design that reduces friction.',
+    roles: ['UI/UX Designer', 'Graphic Designer', 'Motion Graphics Designer'],
     includes: [
       'UX research: user interviews, JTBD framework',
       'Information architecture and user flow mapping',
@@ -161,6 +164,7 @@ const services = [
     shortDesc: 'Email flows, SEO, content architecture.',
     eyebrow: '08 — Content & Email',
     h2: 'The organic engine behind paid performance.',
+    roles: ['Copywriter', 'Content Strategist', 'Email & Lifecycle Specialist'],
     includes: [
       'Brand messaging and positioning framework',
       'Content strategy and editorial calendar',
@@ -179,6 +183,7 @@ const services = [
     shortDesc: 'Dashboards, attribution, GA4, CAPI.',
     eyebrow: '09 — Analytics & Reporting',
     h2: 'Own your data before you scale spend.',
+    roles: ['Data & Analytics Analyst', 'SEO Specialist'],
     includes: [
       'GA4 implementation with custom events and key-event mapping',
       'Google Tag Manager setup and tagging health check',
@@ -248,10 +253,10 @@ const Services = () => {
           {/* Inline metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-hairline-soft">
             {[
-              { num: '9', label: 'Capabilities' },
+              { num: '9', label: 'Service lines' },
+              { num: '20+', label: 'Specialists on call' },
               { num: '$425K/mo', label: 'Recovered for one client' },
               { num: '5.7x', label: 'ROAS achieved' },
-              { num: '30–60d', label: 'To first win' },
             ].map((m) => (
               <div key={m.label}>
                 <div className="font-display text-heading-lg text-ink leading-none">{m.num}</div>
@@ -407,6 +412,13 @@ const Services = () => {
                     <span className="text-caption-sm text-mute font-mono">{s.eyebrow.split(' — ')[0]}</span>
                     <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{s.title}</h3>
                     <p className="text-body-sm text-mute mt-2 leading-relaxed">{s.shortDesc}</p>
+                    {s.roles && (
+                      <div className="mt-3 flex flex-wrap gap-1.5">
+                        {s.roles.map((role) => (
+                          <span key={role} className="text-label-xs text-mute bg-soft-cloud px-2 py-0.5 rounded-full">{role}</span>
+                        ))}
+                      </div>
+                    )}
                     <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
                       Overview <ArrowRight className="w-3.5 h-3.5" />
                     </span>

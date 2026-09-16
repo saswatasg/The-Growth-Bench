@@ -100,59 +100,55 @@ const Proof = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">Side by side</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same job, three ways.</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-5 items-stretch mb-10">
+          <div className="grid md:grid-cols-3 gap-5 items-stretch">
+            {/* Freelancer */}
             <div className="p-6 border border-hairline bg-canvas flex flex-col">
-              <span className="text-label-xs text-mute uppercase tracking-wider mb-2">Freelancer</span>
-              <p className="text-body-sm text-mute leading-relaxed flex-grow">Good people, limited scope. No systems, no strategy ownership. You outgrow them fast.</p>
-              <div className="mt-4 pt-4 border-t border-hairline-soft text-body-sm text-sale font-medium">No full funnel view</div>
+              <span className="text-label-xs text-mute uppercase tracking-wider mb-3">Freelancer</span>
+              <p className="text-body-sm text-mute leading-relaxed mb-5">Good people, limited scope. No systems, no strategy ownership. You outgrow them fast.</p>
+              <div className="space-y-3 text-body-sm">
+                <div className="flex justify-between"><span className="text-mute">Owns funnel</span><span className="text-ink">One lane</span></div>
+                <div className="flex justify-between"><span className="text-mute">First win</span><span className="text-ink">Weeks–months</span></div>
+                <div className="flex justify-between"><span className="text-mute">Overhead</span><span className="text-ink">None</span></div>
+                <div className="flex justify-between"><span className="text-mute">AI</span><span className="text-ink">Manual tools</span></div>
+                <div className="flex justify-between"><span className="text-mute">Proof</span><span className="text-mute">—</span></div>
+              </div>
+              <div className="mt-5 pt-4 border-t border-hairline-soft text-body-sm text-sale font-medium">No full funnel view</div>
             </div>
+
+            {/* The Growth Bench — featured */}
             <div className="p-6 border-2 border-ink bg-canvas flex flex-col relative order-first md:order-none">
               <div className="absolute -top-3 left-6 bg-ink text-canvas text-label-xs uppercase tracking-wider px-4 py-1.5 rounded-full">Best of both</div>
-              <span className="text-label-xs text-ink uppercase tracking-wider mt-2 mb-2">The Growth Bench</span>
-              <p className="text-body-sm text-mute leading-relaxed flex-grow">One senior partner who owns the full picture. Specialists on demand. Depth without overhead.</p>
-              <div className="mt-4 pt-4 border-t border-ink/10 space-y-2">
-                {['One partner, full context', 'Specialists on demand', 'First wins in weeks, not quarters', 'No middlemen'].map(item => (
+              <span className="text-label-xs text-ink uppercase tracking-wider mt-2 mb-3">The Growth Bench</span>
+              <p className="text-body-sm text-mute leading-relaxed mb-5">One senior partner who owns the full picture. Specialists on demand. Depth without overhead.</p>
+              <div className="space-y-3 text-body-sm">
+                <div className="flex justify-between"><span className="text-mute">Owns funnel</span><span className="text-ink font-medium">Yes — full context</span></div>
+                <div className="flex justify-between"><span className="text-mute">First win</span><span className="text-ink font-medium">Weeks</span></div>
+                <div className="flex justify-between"><span className="text-mute">Overhead</span><span className="text-ink font-medium">None</span></div>
+                <div className="flex justify-between"><span className="text-mute">AI</span><span className="text-ink font-medium">Agentic systems</span></div>
+                <div className="flex justify-between"><span className="text-mute">Proof</span><span className="text-ink font-medium">$425K/mo recovered</span></div>
+              </div>
+              <div className="mt-5 pt-4 border-t border-ink/10 space-y-2">
+                {['One partner, full context', 'Specialists on demand', 'First wins in weeks'].map(item => (
                   <div key={item} className="text-body-sm text-ink flex items-center gap-2">
                     <Check className="w-3.5 h-3.5 text-success" /> {item}
                   </div>
                 ))}
               </div>
             </div>
-            <div className="p-6 border border-hairline bg-canvas flex flex-col">
-              <span className="text-label-xs text-mute uppercase tracking-wider mb-2">Agency</span>
-              <p className="text-body-sm text-mute leading-relaxed flex-grow">Expensive retainers, slow onboarding, layers between you and the people doing the work.</p>
-              <div className="mt-4 pt-4 border-t border-hairline-soft text-body-sm text-sale font-medium">Paying for what you don&apos;t use</div>
-            </div>
-          </div>
 
-          {/* Comparison table */}
-          <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0">
-            <table className="w-full min-w-[640px] border-collapse text-left">
-              <thead>
-                <tr className="border-b border-hairline">
-                  <th className="text-label-xs text-mute uppercase tracking-wider font-medium py-3 pr-4"></th>
-                  <th className="text-label-xs text-mute uppercase tracking-wider font-medium py-3 pr-4">Freelancer</th>
-                  <th className="text-label-xs text-mute uppercase tracking-wider font-medium py-3 pr-4">Agency</th>
-                  <th className="text-label-xs text-ink uppercase tracking-wider font-medium py-3">The Growth Bench</th>
-                </tr>
-              </thead>
-              <tbody className="text-body-sm">
-                {[
-                  ['Owns your full funnel', 'One lane only', 'Handoffs between layers', 'Yes — one partner, full context'],
-                  ['First meaningful win', 'Weeks to months', 'A quarter or more', 'Weeks, not quarters'],
-                  ['Overhead', 'None', 'Retainer + account layers', 'No middlemen, specialists on demand'],
-                  ['AI automation', 'Manual tools', 'Pilots that stall', 'Agentic systems across ops + support'],
-                  ['Proof you can check', '—', '—', '$425K/mo recovered, 73.1% → 53.9%'],
-                ].map((row) => (
-                  <tr key={row[0]} className="border-b border-hairline-soft last:border-b-0">
-                    <td className="py-4 pr-4 font-medium text-ink">{row[0]}</td>
-                    <td className="py-4 pr-4 text-mute">{row[1]}</td>
-                    <td className="py-4 pr-4 text-mute">{row[2]}</td>
-                    <td className="py-4 text-ink font-medium">{row[3]}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {/* Agency */}
+            <div className="p-6 border border-hairline bg-canvas flex flex-col">
+              <span className="text-label-xs text-mute uppercase tracking-wider mb-3">Agency</span>
+              <p className="text-body-sm text-mute leading-relaxed mb-5">Expensive retainers, slow onboarding, layers between you and the people doing the work.</p>
+              <div className="space-y-3 text-body-sm">
+                <div className="flex justify-between"><span className="text-mute">Owns funnel</span><span className="text-ink">Handoffs</span></div>
+                <div className="flex justify-between"><span className="text-mute">First win</span><span className="text-ink">A quarter+</span></div>
+                <div className="flex justify-between"><span className="text-mute">Overhead</span><span className="text-ink">Retainer + layers</span></div>
+                <div className="flex justify-between"><span className="text-mute">AI</span><span className="text-ink">Pilots that stall</span></div>
+                <div className="flex justify-between"><span className="text-mute">Proof</span><span className="text-mute">—</span></div>
+              </div>
+              <div className="mt-5 pt-4 border-t border-hairline-soft text-body-sm text-sale font-medium">Paying for what you don&apos;t use</div>
+            </div>
           </div>
         </div>
       </motion.section>
@@ -188,7 +184,7 @@ const Proof = () => {
                   <div className="font-display text-display-lg text-ink leading-none my-4">{project.stat}</div>
                   <p className="text-body-sm text-mute leading-relaxed mb-4">{project.description}</p>
                   {(project.before || project.after) && (
-                    <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud rounded-sm">
+                    <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud">
                       <div>
                         <span className="text-label-xs text-mute uppercase tracking-wider block mb-1">Before</span>
                         <span className="text-body-sm text-ink font-medium">{project.before}</span>
