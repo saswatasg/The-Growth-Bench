@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Lightbulb, Palette, Code2, Target } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { fadeUp, fadeIn, staggerContainer, staggerChild } from '@/lib/motion';
 
@@ -136,25 +137,90 @@ const About = () => {
         </div>
       </motion.section>
 
-      {/* What We Don't Do + Full Bench */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      {/* What We Don't Do */}
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
-            <div>
-              <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
-              <p className="text-body-md text-mute leading-relaxed mt-4">
-                We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-heading-md text-ink mb-4">The full bench</h3>
-              <div className="flex flex-wrap gap-2">
-                {['Product Manager', 'UI/UX Designer', 'SEO Specialist', 'Growth Consultant', 'Web Developer', 'Video Editor', 'Performance Marketer', 'CRO Specialist', 'AI Automation'].map((role) => (
-                  <span key={role} className="text-body-sm text-mute bg-canvas border border-hairline-soft px-3 py-1.5 rounded-full">{role}</span>
-                ))}
-              </div>
-            </div>
+          <div className="max-w-3xl">
+            <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+              We pick a lane and<br />stay in it.
+            </h2>
+            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl">
+              We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
+            </p>
           </div>
+        </div>
+      </motion.section>
+
+      {/* The Full Bench */}
+      <motion.section {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
+        <div className="container-site">
+          <div className="max-w-3xl mb-10">
+            <span className="text-label-xs text-stone uppercase tracking-wider">The Full Bench</span>
+            <h2 className="font-display text-display-md text-canvas mt-2 leading-none">
+              A specialist for every<br />growth surface.
+            </h2>
+            <p className="text-body-md text-stone mt-4 max-w-xl leading-relaxed">
+              One lead orchestrates. Twenty specialists deploy. You get depth without overhead.
+            </p>
+          </div>
+
+          <motion.div {...staggerContainer} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                icon: Lightbulb,
+                title: 'Strategy & Planning',
+                flagship: ['Growth Consultant', 'Marketing Strategist'],
+                all: ['GTM Engineer', 'Product Manager'],
+              },
+              {
+                icon: Palette,
+                title: 'Creative & Design',
+                flagship: ['UI/UX Designer'],
+                all: ['Graphic Designer', 'Video Editor', 'Copywriter', 'Motion Graphics Designer'],
+              },
+              {
+                icon: Code2,
+                title: 'Engineering & Tech',
+                flagship: ['Web Developer', 'AI Automation Expert'],
+                all: ['Solution Architect', 'Shopify Expert'],
+              },
+              {
+                icon: Target,
+                title: 'Marketing & Growth',
+                flagship: ['Performance Marketer', 'SEO Specialist', 'CRO Specialist'],
+                all: ['Email & Lifecycle Specialist', 'WhatsApp Commerce Specialist', 'Data & Analytics Analyst'],
+              },
+            ].map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <motion.div key={cat.title} {...staggerChild} className="p-5 bg-canvas/5 border border-stone/10">
+                  <div className="w-10 h-10 rounded-full bg-canvas/10 flex items-center justify-center mb-4">
+                    <Icon className="w-5 h-5 text-canvas" />
+                  </div>
+                  <h3 className="text-heading-md text-canvas mb-3">{cat.title}</h3>
+                  <ul className="space-y-1.5">
+                    {cat.flagship.map((role) => (
+                      <li key={role} className="text-body-sm text-canvas flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-canvas flex-shrink-0" />
+                        {role}
+                      </li>
+                    ))}
+                    {cat.all.map((role) => (
+                      <li key={role} className="text-body-sm text-stone flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-stone/40 flex-shrink-0" />
+                        {role}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <p className="text-caption-sm text-stone/60 mt-8">
+            Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
+          </p>
         </div>
       </motion.section>
     </>
