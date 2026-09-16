@@ -116,7 +116,7 @@ const About = () => {
           <div className="grid md:grid-cols-[auto_1fr] gap-8 max-w-4xl items-start">
             <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
               <img
-                src="/assets/images/founder.jpg"
+                src="/assets/images/founder.png"
                 alt="Saswata S. Sengupta"
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
