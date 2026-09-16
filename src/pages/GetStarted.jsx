@@ -5,7 +5,7 @@ import { ArrowRight, Workflow, TrendingUp, MessageSquare, Zap, Sparkles } from '
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { fadeUp } from '@/lib/motion';
+import { fadeUp, staggerContainer, staggerChild } from '@/lib/motion';
 
 const STEPS = [
   { icon: MessageSquare, title: 'You tell us your story', body: 'Where your business is, what you want to grow, and what\'s been standing in the way.' },
@@ -29,11 +29,53 @@ const GetStarted = () => {
               Start with a diagnosis.<br />Then we build.
             </h1>
             <p className="text-body-lg text-mute mt-6 max-w-xl leading-relaxed">
-              Two paths in: take a free scorecard to see where you stand, or book a call and we&apos;ll diagnose together.
+              Two paths in: book a free audit call and we&apos;ll diagnose together, or take a scorecard to see where you stand.
             </p>
           </div>
         </div>
       </section>
+
+      {/* Book a call + What happens — combined */}
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left: Book a call */}
+            <div>
+              <span className="text-label-xs text-mute uppercase tracking-wider">Talk to us</span>
+              <h2 className="font-display text-display-md text-ink mt-2 leading-none">Book a free 30-minute audit call.</h2>
+              <p className="text-body-md text-mute mt-4 max-w-lg leading-relaxed">
+                We&apos;ll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
+              </p>
+              <div className="mt-8">
+                <Button size="lg" onClick={openBookingModal}>
+                  Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: What happens on the call */}
+            <div>
+              <span className="text-label-xs text-mute uppercase tracking-wider">What happens</span>
+              <motion.div {...staggerContainer} className="mt-6 space-y-6">
+                {STEPS.map((s, i) => {
+                  const Icon = s.icon;
+                  return (
+                    <motion.div key={s.title} {...staggerChild} className="flex items-start gap-4">
+                      <div className="w-10 h-10 rounded-full bg-canvas border border-hairline-soft flex items-center justify-center flex-shrink-0">
+                        <Icon className="w-5 h-5 text-ink" />
+                      </div>
+                      <div>
+                        <h3 className="text-heading-md text-ink">{s.title}</h3>
+                        <p className="text-body-sm text-mute mt-1 leading-relaxed">{s.body}</p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Scorecard choice — full-width black */}
       <section className="bg-ink py-[60px] md:py-[80px]">
@@ -76,45 +118,6 @@ const GetStarted = () => {
           </div>
         </div>
       </section>
-
-      {/* Book a call */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
-        <div className="container-site">
-          <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Or talk to us</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">Book a free 30-minute audit call.</h2>
-            <p className="text-body-md text-mute mt-4 max-w-lg leading-relaxed">
-              We&apos;ll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
-            </p>
-          </div>
-          <div className="mt-8">
-            <Button size="lg" onClick={openBookingModal}>
-              Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* What happens on the call */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
-        <div className="container-site">
-          <h2 className="font-display text-display-md text-ink text-center leading-none mb-12">What happens on the call</h2>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {STEPS.map((s) => {
-              const Icon = s.icon;
-              return (
-                <div key={s.title} className="text-center">
-                  <div className="w-14 h-14 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center mx-auto mb-4">
-                    <Icon className="w-6 h-6 text-ink" />
-                  </div>
-                  <h3 className="text-heading-md text-ink mb-2">{s.title}</h3>
-                  <p className="text-body-sm text-mute leading-relaxed">{s.body}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </motion.section>
     </>
   );
 };
