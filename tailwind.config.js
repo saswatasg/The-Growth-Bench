@@ -60,7 +60,7 @@ module.exports = {
         'button-sm': ['13px', { lineHeight: '1', fontWeight: '500', letterSpacing: '0' }],
         'caption-md': ['14px', { lineHeight: '1.5', fontWeight: '500', letterSpacing: '0' }],
         'caption-sm': ['12px', { lineHeight: '1.5', fontWeight: '500', letterSpacing: '0' }],
-        'label-xs': ['11px', { lineHeight: '1', fontWeight: '600', letterSpacing: '0.05em' }],
+        'label-xs': ['12px', { lineHeight: '1', fontWeight: '600', letterSpacing: '0.05em' }],
       },
       spacing: {},
       keyframes: {

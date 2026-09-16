@@ -96,7 +96,7 @@ const Preloader = () => {
         </div>
 
         {/* Progress bar */}
-        <div className="w-48 h-[2px] bg-charcoal rounded-full overflow-hidden mb-4">
+        <div className="w-48 h-[2px] bg-stone rounded-full overflow-hidden mb-4">
           <motion.div
             className="h-full bg-canvas rounded-full"
             initial={{ width: 0 }}

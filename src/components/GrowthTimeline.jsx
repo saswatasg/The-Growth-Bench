@@ -71,7 +71,7 @@ const GrowthTimeline = () => {
 
               <button
                 onClick={() => setExpanded(expanded === i ? null : i)}
-                className="relative z-10 w-full text-left group focus-visible:outline-none"
+                className="relative z-10 w-full text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
               >
                 <div className="flex items-start gap-6 py-8">
                   <span className="font-mono text-body-sm text-mute mt-1 w-10 flex-shrink-0 select-none">

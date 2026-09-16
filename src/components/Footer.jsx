@@ -32,7 +32,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
           {/* Brand + Contact */}
           <div className="col-span-2 md:col-span-1">
-            <img src="/logo.png" alt="The Growth Bench" className="h-10 w-auto logo-dark mb-4" />
+            <img src="/logo.png" alt="The Growth Bench" className="h-12 w-auto logo-dark mb-4" />
             <p className="text-body-sm text-stone leading-relaxed max-w-xs mb-6">
               Full-stack growth partner for D2C brands and early-stage startups. Strategy, systems, scale.
             </p>
@@ -56,7 +56,7 @@ const Footer = () => {
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <Link to={link.to} className="text-body-sm text-stone no-underline hover:text-canvas transition-colors">
+                    <Link to={link.to} className="text-body-sm text-stone no-underline hover:text-canvas transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-canvas/40">
                       {link.label}
                     </Link>
                   </li>

@@ -196,7 +196,7 @@ const AdminDashboard = () => {
                   </div>
 
                   <div className="border-t border-hairline-soft pt-4 flex gap-2">
-                    <a href={'/insights/' + activePost.slug} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-body-sm text-mute hover:text-ink no-underline"><Eye className="w-4 h-4" /> Preview</a>
+                    <a href={'/resources/' + activePost.slug} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-body-sm text-mute hover:text-ink no-underline"><Eye className="w-4 h-4" /> Preview</a>
                   </div>
                 </div>
               ) : (

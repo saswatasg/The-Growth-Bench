@@ -13,7 +13,7 @@ const ServicesOverview = () => {
   return (
     <section className="bg-ink py-[100px] md:py-[120px]">
       <div className="container-site">
-        <span className="text-label-xs text-stone uppercase tracking-wider mb-3 block">WHAT WE DO</span>
+          <span className="text-label-xs text-stone uppercase tracking-wider mb-3 block">What we do</span>
         <h2 className="font-display text-heading-xl text-canvas mb-2">The full stack, handled.</h2>
         <p className="text-body-md text-stone max-w-xl mb-10">
           From the first strategy call to the live campaign to the optimised checkout — plus the AI systems that take repetitive work off your plate.

@@ -38,7 +38,7 @@ const Header = () => {
       <header className="sticky top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur border-b border-hairline-soft">
         <div className="container-site flex items-center justify-between h-16">
           <Link to="/" className="flex items-center no-underline group">
-            <img src="/logo.png" alt="The Growth Bench" className="h-10 w-auto" />
+            <img src="/logo.png" alt="The Growth Bench" className="h-12 w-auto" />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">

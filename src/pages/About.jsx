@@ -107,7 +107,7 @@ const About = () => {
               </div>
             ))}
           </div>
-          <p className="text-caption-sm text-hairline/70 mt-8">Representative outcomes across client engagements; individual results vary.</p>
+          <p className="text-caption-sm text-hairline/80 mt-8">Representative outcomes across client engagements; individual results vary.</p>
         </div>
       </motion.section>
 
@@ -120,6 +120,7 @@ const About = () => {
                 src="/assets/images/founder.png"
                 alt="Saswata S. Sengupta"
                 className="w-full h-full object-cover"
+                loading="lazy"
                 onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
               />
               <span className="font-display text-display-md text-canvas hidden">S</span>
@@ -164,7 +165,7 @@ const About = () => {
               <Link
                 key={service.id}
                 to={`/services#${service.id}`}
-                className="group p-6 bg-canvas border border-hairline-soft hover:border-ink transition-all duration-300 no-underline flex items-start justify-between gap-4"
+                className="group p-6 bg-canvas border border-hairline-soft hover:border-ink transition-all duration-300 no-underline flex items-start justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
               >
                 <div>
                   <div className="flex items-center gap-2">
@@ -252,7 +253,7 @@ const About = () => {
             })}
           </motion.div>
 
-          <p className="text-caption-sm text-hairline/60 mt-8">
+          <p className="text-caption-sm text-hairline/80 mt-8">
             Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
           </p>
         </div>

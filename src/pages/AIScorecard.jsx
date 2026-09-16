@@ -718,10 +718,10 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
         <span className="text-label-xs text-stone uppercase tracking-wider">Recoverable every month</span>
         <div className="font-display text-display-lg leading-none mt-2">~{fmtIN(recHrs)} hrs</div>
         <div className="text-body-md mt-2">worth roughly ₹{fmtIN(inrLow)} – ₹{fmtIN(inrHigh)}</div>
-        <p className="text-caption-sm text-stone/70 mt-3 leading-relaxed">
+        <p className="text-caption-sm text-stone/80 mt-3 leading-relaxed">
           That&apos;s ~{fmtIN(annualHrs)} hours a year — about {fmtIN(annualHrs / 40)} working weeks handed to agents.
         </p>
-        <p className="text-caption-sm text-stone/70 mt-2 leading-relaxed">
+        <p className="text-caption-sm text-stone/80 mt-2 leading-relaxed">
           At a typical ₹600–1,200/hr fully-loaded ops cost — bring your number and we&apos;ll re-run it on the audit call.
         </p>
       </div>

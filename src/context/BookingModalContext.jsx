@@ -34,8 +34,7 @@ export function BookingModalProvider({ children }) {
           onClick={closeBookingModal}
         >
           <div
-            className="relative w-full max-w-3xl bg-canvas rounded-none overflow-hidden shadow-2xl"
-            style={{ maxHeight: '90vh' }}
+            className="relative w-full max-w-3xl bg-canvas rounded-none overflow-hidden shadow-2xl max-h-[90vh]"
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
@@ -48,11 +47,11 @@ export function BookingModalProvider({ children }) {
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
-            <div style={{ height: '85vh', minHeight: '600px', position: 'relative' }}>
+            <div className="h-[85vh] min-h-[600px] relative">
               {loading && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4" style={{ background: 'var(--color-card-bg, #fff)' }}>
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-canvas">
                   <div className="w-10 h-10 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
-                  <p className="text-sm text-muted-foreground">Loading booking calendar...</p>
+                  <p className="text-sm text-mute">Loading booking calendar...</p>
                 </div>
               )}
               <iframe

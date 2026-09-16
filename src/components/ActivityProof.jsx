@@ -29,7 +29,7 @@ const ActivityProof = ({ className = '' }) => {
             </div>
           ))}
         </div>
-        <p className="text-caption-sm text-stone/60 text-center mt-8">
+        <p className="text-caption-sm text-stone/80 text-center mt-8">
           Representative outcomes across client engagements; individual results vary.
         </p>
       </div>
