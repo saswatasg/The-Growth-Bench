@@ -45,13 +45,13 @@ const GetStarted = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <Link
               to="/ai-scorecard"
-              className="group p-6 md:p-8 border border-hairline-soft bg-canvas hover:border-ink transition-colors no-underline"
+              className="group p-6 md:p-8 border-2 border-canvas bg-canvas hover:bg-soft-cloud transition-colors no-underline"
             >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-full bg-canvas border-2 border-hairline-soft flex items-center justify-center mb-4">
                 <Workflow className="w-5 h-5 text-ink" />
               </div>
               <h3 className="font-display text-heading-xl text-ink leading-none">AI Readiness Scorecard</h3>
-              <p className="text-body-sm text-mute mt-3 leading-relaxed">
+              <p className="text-body-sm text-ink/70 mt-3 leading-relaxed">
                 Which parts of your ops, support, and content can be automated? 60 seconds, instant readout.
               </p>
               <span className="text-body-sm text-ink mt-4 flex items-center gap-1 font-medium">
@@ -60,13 +60,13 @@ const GetStarted = () => {
             </Link>
             <Link
               to="/growth-scorecard"
-              className="group p-6 md:p-8 border border-hairline-soft bg-canvas hover:border-ink transition-colors no-underline"
+              className="group p-6 md:p-8 border-2 border-canvas bg-canvas hover:bg-soft-cloud transition-colors no-underline"
             >
-              <div className="w-10 h-10 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-full bg-canvas border-2 border-hairline-soft flex items-center justify-center mb-4">
                 <TrendingUp className="w-5 h-5 text-ink" />
               </div>
               <h3 className="font-display text-heading-xl text-ink leading-none">Growth Audit Scorecard</h3>
-              <p className="text-body-sm text-mute mt-3 leading-relaxed">
+              <p className="text-body-sm text-ink/70 mt-3 leading-relaxed">
                 Funnel health check — where are the leaks? Get a prioritised fix list in 60 seconds.
               </p>
               <span className="text-body-sm text-ink mt-4 flex items-center gap-1 font-medium">
