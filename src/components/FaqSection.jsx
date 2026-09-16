@@ -37,7 +37,7 @@ const FaqSection = ({
 
   return (
     <section className={`bg-canvas py-[100px] md:py-[120px] ${className}`}>
-      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div className="container-site">
         <div className="max-w-2xl mb-12">
           {label && <span className="text-label-xs text-mute uppercase tracking-wider">{label}</span>}
           <h2 className="font-display text-display-md text-ink mt-2 leading-none">{title}</h2>

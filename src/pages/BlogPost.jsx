@@ -38,7 +38,7 @@ const BlogPost = () => {
       <section className="bg-canvas">
         <div className="container-site py-[80px] md:py-[100px] text-center">
           <h1 className="font-display text-display-md text-ink">Post not found</h1>
-          <Link to="/insights" className="text-body-sm text-ink underline mt-4 inline-block">Back to Insights</Link>
+          <Link to="/resources" className="text-body-sm text-ink underline mt-4 inline-block">Back to Insights</Link>
         </div>
       </section>
     );
@@ -81,7 +81,7 @@ const BlogPost = () => {
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">
               <Link to="/" className="hover:text-ink transition-colors no-underline text-mute">Home</Link>
               <ChevronRight className="w-3.5 h-3.5" />
-              <Link to="/insights" className="hover:text-ink transition-colors no-underline text-mute">Insights</Link>
+              <Link to="/resources" className="hover:text-ink transition-colors no-underline text-mute">Insights</Link>
               <ChevronRight className="w-3.5 h-3.5" />
               <span className="text-ink font-medium">{post.title}</span>
             </nav>

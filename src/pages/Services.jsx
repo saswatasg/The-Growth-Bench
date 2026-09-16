@@ -266,7 +266,7 @@ const Services = () => {
       <motion.section {...fadeUp} className="bg-ink py-[60px] md:py-[80px]">
         <div className="container-site">
           <div className="flex items-center gap-2 mb-8">
-            <span className="text-label-xs text-mute uppercase tracking-wider">How we work</span>
+            <span className="text-label-xs text-hairline uppercase tracking-wider">How we work</span>
             <div className="flex-1 h-px bg-mute/20" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -278,9 +278,9 @@ const Services = () => {
                     <Icon className="w-5 h-5 text-canvas" />
                   </div>
                   <div>
-                    <span className="text-caption-sm text-mute font-mono">{step.num}</span>
+                    <span className="text-caption-sm text-hairline font-mono">{step.num}</span>
                     <h3 className="font-display text-heading-lg text-canvas leading-none mt-0.5">{step.title}</h3>
-                    <p className="text-body-sm text-mute mt-2 leading-relaxed">{step.desc}</p>
+                    <p className="text-body-sm text-hairline mt-2 leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               );
@@ -299,6 +299,7 @@ const Services = () => {
           <div className="grid md:grid-cols-2 gap-4">
             {/* AI Implementation — featured, full width */}
             <button
+              id="ai-implementation"
               onClick={() => openModal(services[0])}
               className="md:col-span-2 group text-left p-6 md:p-8 border border-hairline-soft bg-soft-cloud hover:border-ink transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
@@ -328,6 +329,7 @@ const Services = () => {
 
             {/* Strategy */}
             <button
+              id="strategy"
               onClick={() => openModal(services[1])}
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
@@ -344,6 +346,7 @@ const Services = () => {
 
             {/* Website */}
             <button
+              id="website"
               onClick={() => openModal(services[2])}
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
@@ -360,6 +363,7 @@ const Services = () => {
 
             {/* Ads */}
             <button
+              id="ads"
               onClick={() => openModal(services[3])}
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >

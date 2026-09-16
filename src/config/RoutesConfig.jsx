@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { Helmet } from 'react-helmet-async';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminRoute from '@/components/AdminRoute';

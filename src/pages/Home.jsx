@@ -11,7 +11,7 @@ import ActivityProof from '@/components/ActivityProof';
 import FitFilter from '@/components/FitFilter';
 import { loadPosts } from '@/lib/blogUtils';
 import { testimonialsData } from '@/data/testimonials';
-import { fadeUp, staggerContainer, staggerChild, scaleIn } from '@/lib/motion';
+import { fadeUp, staggerContainer, staggerChild } from '@/lib/motion';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);

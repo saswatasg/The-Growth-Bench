@@ -6,7 +6,7 @@ const services = [
   { num: '01', name: 'AI Implementation', icon: Workflow, desc: 'Agentic AI for anything repeatable: ops, support, content, follow-ups, reviews.', to: '/services#ai-implementation', featured: true },
   { num: '02', name: 'Growth Strategy', icon: Search, desc: 'Funnel audit, ICP, 90-day roadmap before touching a single ad account.', to: '/services#strategy' },
   { num: '03', name: 'Ads', icon: Target, desc: 'Meta, Google, Amazon, LinkedIn — full-funnel campaigns with proper attribution.', to: '/services#ads' },
-  { num: '04', name: 'CRO', icon: TrendingUp, desc: 'Qualitative research, quantitative analysis, structured A/B testing.', to: '/services#cro' },
+  { num: '04', name: 'CRO', icon: TrendingUp, desc: 'Qualitative research, quantitative analysis, structured A/B testing.', to: '/services' },
 ];
 
 const ServicesOverview = () => {
@@ -51,10 +51,10 @@ const ServicesOverview = () => {
                 <div className="w-10 h-10 rounded-full bg-canvas/10 flex items-center justify-center mb-3">
                   <Icon className="w-5 h-5 text-canvas" />
                 </div>
-                <span className="text-caption-sm text-stone font-mono">{s.num}</span>
+                <span className="text-caption-sm text-hairline font-mono">{s.num}</span>
                 <h3 className="text-body-md font-medium text-canvas mt-1 mb-1">{s.name}</h3>
-                <p className="text-caption-md text-stone leading-relaxed">{s.desc}</p>
-                <span className="text-caption-sm text-stone mt-3 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                <p className="text-caption-md text-hairline leading-relaxed">{s.desc}</p>
+                <span className="text-caption-sm text-hairline mt-3 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   Learn more <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>
@@ -66,7 +66,7 @@ const ServicesOverview = () => {
           <Link to="/services" className="inline-flex items-center gap-1 text-body-sm font-medium text-canvas no-underline hover:text-stone transition-colors">
             View all 9 services <ArrowRight className="w-4 h-4" />
           </Link>
-          <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-stone no-underline hover:text-canvas transition-colors">
+          <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-hairline no-underline hover:text-canvas transition-colors">
             Not sure where to start? Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

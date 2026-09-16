@@ -6,7 +6,7 @@ const platforms = [
   { name: 'Shopify', slug: 'shopify' },
   { name: 'Meta Ads', slug: 'meta' },
   { name: 'Google Ads', slug: 'googleads' },
-  { name: 'Amazon', slug: 'amazon' },
+  { name: 'Google Tag Manager', slug: 'googletagmanager' },
   { name: 'Next.js', slug: 'nextdotjs' },
   { name: 'Webflow', slug: 'webflow' },
   { name: 'Figma', slug: 'figma' },
@@ -15,7 +15,6 @@ const platforms = [
   { name: 'WhatsApp', slug: 'whatsapp' },
   { name: 'Instagram', slug: 'instagram' },
   { name: 'Zoho', slug: 'zoho' },
-  { name: 'Klaviyo', slug: 'klaviyo' },
   { name: 'Mailchimp', slug: 'mailchimp' },
   { name: 'Hotjar', slug: 'hotjar' },
 ];

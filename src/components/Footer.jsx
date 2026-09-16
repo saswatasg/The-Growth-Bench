@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MessageCircle, Phone, ArrowRight } from 'lucide-react';
+import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
 import { WHATSAPP_URL } from '@/lib/constants';
 import { useBookingModal } from '@/context/BookingModalContext';
 

@@ -102,11 +102,11 @@ const About = () => {
                 >
                   {s.stat}
                 </motion.span>
-                <div className="text-caption-md text-stone mt-2">{s.label}</div>
+                <div className="text-caption-md text-hairline mt-2">{s.label}</div>
               </div>
             ))}
           </div>
-          <p className="text-caption-sm text-stone/70 mt-8">Representative outcomes across client engagements; individual results vary.</p>
+          <p className="text-caption-sm text-hairline/70 mt-8">Representative outcomes across client engagements; individual results vary.</p>
         </div>
       </motion.section>
 
@@ -160,7 +160,7 @@ const About = () => {
             <h2 className="font-display text-display-md text-canvas mt-2 leading-none">
               A specialist for every<br />growth surface.
             </h2>
-            <p className="text-body-md text-stone mt-4 max-w-xl leading-relaxed">
+            <p className="text-body-md text-hairline mt-4 max-w-xl leading-relaxed">
               One lead orchestrates. Twenty specialists deploy. You get depth without overhead.
             </p>
           </div>
@@ -207,8 +207,8 @@ const About = () => {
                       </li>
                     ))}
                     {cat.all.map((role) => (
-                      <li key={role} className="text-body-sm text-stone flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-stone/40 flex-shrink-0" />
+                      <li key={role} className="text-body-sm text-hairline flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-hairline/40 flex-shrink-0" />
                         {role}
                       </li>
                     ))}
@@ -218,7 +218,7 @@ const About = () => {
             })}
           </motion.div>
 
-          <p className="text-caption-sm text-stone/60 mt-8">
+          <p className="text-caption-sm text-hairline/60 mt-8">
             Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
           </p>
         </div>

@@ -21,7 +21,7 @@ const pageSpecificMeta = {
     title: "About The Growth Bench — Who We Are and How We Work",
     description: "We're a senior-led growth consultancy with specialists on demand — built for D2C brands and startups that outgrew freelancers but don't want agency overhead."
   },
-  '/case-studies': {
+  '/proof': {
     title: "Case Studies & Client Results | The Growth Bench",
     description: "Real outcomes with real numbers from clients across D2C, B2B SaaS, education, and more. CRO, ads, web development, AI implementation, and full-funnel strategy."
   },
