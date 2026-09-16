@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import HeroSection from '@/components/home/HeroSection';
 import MarqueeBar from '@/components/home/MarqueeBar';
@@ -10,15 +9,11 @@ import ServicesOverview from '@/components/home/ServicesOverview';
 import GrowthTimeline from '@/components/GrowthTimeline';
 import ActivityProof from '@/components/ActivityProof';
 import FitFilter from '@/components/FitFilter';
-import CtaPaths from '@/components/CtaPaths';
 import { loadPosts } from '@/lib/blogUtils';
-import { useBookingModal } from '@/context/BookingModalContext';
 import { testimonialsData } from '@/data/testimonials';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import { fadeUp } from '@/lib/motion';
 
 const Home = () => {
-  const { openBookingModal } = useBookingModal();
-  const [posts, setPosts] = useState([]);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   useEffect(() => {
@@ -121,23 +116,6 @@ const Home = () => {
           </div>
         </motion.section>
       )}
-
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Start with a free<br />audit call.
-          </h2>
-          <p className="text-body-md text-mute leading-relaxed mb-8 max-w-lg mx-auto">
-            Book a free 30-minute call. We'll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
-          </p>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <div className="mt-6">
-            <CtaPaths tone="dark" />
-          </div>
-        </div>
-      </motion.section>
     </>
   );
 };

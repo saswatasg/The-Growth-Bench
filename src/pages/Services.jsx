@@ -1,13 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText, BarChart3, Workflow, Lightbulb, Wrench, Rocket } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
-import { Button } from '@/components/ui/button';
-import { useBookingModal } from '@/context/BookingModalContext';
 import PageMeta from '@/components/PageMeta';
-import CtaPaths from '@/components/CtaPaths';
 import ServiceModal from '@/components/ServiceModal';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import FaqSection from '@/components/FaqSection';
+import { fadeUp } from '@/lib/motion';
 
 const services = [
   {
@@ -207,7 +204,6 @@ const platforms = [
 ];
 
 const Services = () => {
-  const { openBookingModal } = useBookingModal();
   const [selectedService, setSelectedService] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -222,34 +218,23 @@ const Services = () => {
   }, []);
 
   const faqItems = [
-    { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\'re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs.' },
-    { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\'re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
-    { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30–60 days. Quick wins land in the first two weeks; compound results build over 3–6 months.' },
-    { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Nothing goes live without a human-review period.' },
-    { q: 'What tools & platforms do you use?', a: 'Google Ads, Meta Ads, Amazon Ads, Shopify, React/Next.js, Figma, Salesforce, Zoho CRM, analytics, and WhatsApp/Instagram automation — picked per client, never one-size-fits-all.' },
-    { q: 'What do you need from us to start?', a: 'Access to the tools involved (Shopify, ad accounts, WhatsApp Business), plus a few hours a week from your side for reviews and approvals. We handle everything else.' },
-    { q: 'What if the AI makes a mistake?', a: 'Every system ships with a human-review period, and money or promise-moving actions always need sign-off first. Exceptions land with full context — and if a flow misbehaves, we pause it and fix it before it touches another customer.' },
+    { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\'re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs. For Indian D2C brands, a serious managed retainer starts around ₹30K/month — anything cheaper is likely one junior running templated campaigns across many accounts.' },
+    { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\'re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14. You\'ll know exactly what\'s happening and when, from day one.' },
+    { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30–60 days. Quick wins land in the first two weeks — a tracking fix, a checkout change, a campaign restructuring. Compound results build over 3–6 months as we stack optimizations across your full funnel.' },
+    { q: 'What\'s the first thing you\'ll do with our brand?', a: 'We start with a diagnostic: attribution setup, creative audit, unit economics review, and funnel teardown. No guessing. We map where revenue is leaking before touching a single ad or line of code. Then we prioritize the highest-impact gap and build from there.' },
+    { q: 'Who actually works on my account day-to-day?', a: 'You get a named account lead, not a rotating pool of juniors. The strategist who sells the engagement stays involved. Specialists (ads, dev, AI) are pulled in per project on a contract basis — no account layers, no overhead you don\'t need. And if anyone on the team changes, documented processes ensure nothing falls through the cracks.' },
+    { q: 'How do you report ROAS — and what about blended vs platform ROAS?', a: 'Platform-reported ROAS inside Meta or Google is often inflated by over-attribution across overlapping campaigns. We report blended ROAS — total revenue divided by total ad spend across all channels with a stated attribution window. If an agency only shows you platform ROAS without reconciling it to your actual store revenue, they\'re hiding the real picture.' },
+    { q: 'Do you own the ad accounts, or do we?', a: 'Your business owns all ad accounts. We access through a manager/partner role — never ownership. This applies to Meta Business Suite, Google Ads (we use MCC), and any other platforms. If the relationship ends, you retain all data, pixels, and account history without needing anyone\'s permission.' },
+    { q: 'What if we don\'t see results in 90 days?', a: 'Get the answer in writing before signing. Our agreement includes a performance review at 90 days, defined KPIs both parties agreed to, and a clear off-boarding process with handoff of accounts, passwords, and creative assets. No excessive penalties for ending early. A confident partner won\'t hold your business hostage.' },
+    { q: 'What can AI automate for us?', a: 'Anything repeatable: ops (COD verification, NDR follow-up, returns triage), support replies, catalog copy, follow-ups, reviews, creative variants. Nothing goes live without a human-review period. Every system ships with guardrails — money or promise-moving actions always need sign-off first.' },
+    { q: 'How do you handle COD-heavy Indian D2C brands?', a: 'COD can eat 12–18% of gross COD revenue when you factor in handling fees (1.75%), RTO costs, remittance leakage (3%), and ops overhead. We implement WhatsApp-based COD verification flows, pre-shipping OTP confirmation, and high-risk pin code blocking. A generic agency unfamiliar with Indian logistics will optimize your ads but ignore the leak in your fulfillment pipeline.' },
+    { q: 'Should we build in-house or hire an agency?', a: 'Below ₹15–20L monthly ad spend, a good agency gives you better leverage — media buying expertise, channel experience, and pattern recognition across accounts. Above that threshold with a senior hire who can manage the function, a hybrid model works best: you own strategy and creative direction, we own campaign execution and testing. Bad internal hiring and poor measurement cost far more than agency fees.' },
+    { q: 'What channels beyond Meta and Google should we think about?', a: 'For Indian D2C specifically: WhatsApp commerce (broadcasts, cart recovery, COD confirmation) is massively underutilized — 530M+ users with 90%+ open rates. Influencer marketing is shifting toward direct brand-creator deals (cheaper than agency-led). Quick commerce platforms like Blinkit and Zepto are emerging as discovery channels. We prioritize based on your category, not just our service menu.' },
   ];
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqItems.map(item => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
-  };
 
   return (
     <>
       <PageMeta />
-      <Helmet>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      </Helmet>
 
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
@@ -446,38 +431,7 @@ const Services = () => {
       </motion.section>
 
       {/* FAQ */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">What founders ask first.</h2>
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl">
-            {faqItems.map((item) => (
-              <div key={item.q}>
-                <h3 className="text-heading-md text-ink">{item.q}</h3>
-                <p className="text-body-sm text-mute mt-2 leading-relaxed max-w-md">{item.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Bottom CTA */}
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Not sure which<br />services you need?
-          </h2>
-          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
-            That&apos;s what the audit call is for. We&apos;ll look at your current setup, identify the highest-impact gaps, and tell you honestly where we&apos;d start.
-          </p>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <div className="mt-6">
-            <CtaPaths tone="dark" />
-          </div>
-        </div>
-      </motion.section>
+      <FaqSection items={faqItems} />
 
       {/* Service Modal */}
       <ServiceModal service={selectedService} isOpen={modalOpen} onClose={closeModal} />

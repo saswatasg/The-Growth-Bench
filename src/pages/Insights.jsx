@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { loadPosts } from '@/lib/blogUtils';
 import { useBookingModal } from '@/context/BookingModalContext';
@@ -114,17 +113,6 @@ const Insights = () => {
               <span className="text-body-sm text-ink flex items-center gap-1">See case study <ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
             </Link>
           </div>
-        </div>
-      </motion.section>
-
-      <motion.section {...fadeUp} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Ready to put these<br />insights to work?
-          </h2>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
         </div>
       </motion.section>
     </>

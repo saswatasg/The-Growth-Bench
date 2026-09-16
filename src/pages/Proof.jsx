@@ -5,10 +5,9 @@ import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-import CtaPaths from '@/components/CtaPaths';
 import HowItWorks from '@/components/HowItWorks';
 import FitFilter from '@/components/FitFilter';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import { fadeUp } from '@/lib/motion';
 
 const pastProjects = [
   {
@@ -249,21 +248,6 @@ const Proof = () => {
 
       <HowItWorks className="bg-canvas" />
       <FitFilter className="bg-soft-cloud" />
-
-      {/* Bottom CTA */}
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Want results<br />like these?
-          </h2>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <div className="mt-6">
-            <CtaPaths tone="dark" />
-          </div>
-        </div>
-      </motion.section>
     </>
   );
 };

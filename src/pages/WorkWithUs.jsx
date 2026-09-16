@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Search, Target, TrendingUp, Code2, Palette, Users, FileText, BarChart3, Sparkles, Zap, MessageSquare, Workflow } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 import PageMeta from '@/components/PageMeta';
 import CtaPaths from '@/components/CtaPaths';
+import FaqSection from '@/components/FaqSection';
 import { useBookingModal } from '@/context/BookingModalContext';
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
@@ -39,23 +39,13 @@ const WorkWithUs = () => {
   const { openBookingModal } = useBookingModal();
 
   const faqItems = [
-    { q: 'How much does it cost?', a: 'Scoped after a free 30-minute audit — no public pricing, no retainer commitment upfront. Fixed-timeline scope based on your funnel.' },
-    { q: 'How does onboarding work?', a: 'Audit, scoped plan, kickoff + access, first deliverables within week one, strategy doc by day 14.' },
-    { q: 'How soon do results show?', a: 'First meaningful improvement in 30–60 days, quick wins in the first two weeks.' },
+    { q: 'How much does it cost?', a: 'We scope every engagement after a free 30-minute audit — no public pricing, no retainer commitment upfront. If we\'re a fit, you get a clear fixed-timeline scope based on what your funnel actually needs. For Indian D2C brands, a serious managed retainer starts around ₹30K/month.' },
+    { q: 'How does onboarding work?', a: 'Step 1: free 30-min audit. Step 2: if we\'re a fit, we scope the plan. Step 3: kickoff call + access setup. Step 4: first deliverables within the first week, full strategy doc by day 14.' },
+    { q: 'How soon can I see results?', a: 'Most clients see the first meaningful improvement within 30–60 days. Quick wins land in the first two weeks; compound results build over 3–6 months.' },
+    { q: 'Who actually works on my account?', a: 'You get a named account lead, not a rotating pool of juniors. Specialists (ads, dev, AI) are pulled in per project on a contract basis — no account layers, no overhead you don\'t need.' },
+    { q: 'What if we don\'t see results in 90 days?', a: 'Our agreement includes a performance review at 90 days, defined KPIs both parties agreed to, and a clear off-boarding process with handoff of accounts, passwords, and creative assets. No excessive penalties.' },
+    { q: 'Do you own the ad accounts, or do we?', a: 'Your business owns all ad accounts. We access through a manager/partner role — never ownership. If the relationship ends, you retain all data, pixels, and account history.' },
   ];
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqItems.map(item => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
-  };
 
   const toggleModule = (id) => {
     const next = new Set(selectedModules);
@@ -111,9 +101,6 @@ const WorkWithUs = () => {
   return (
     <>
       <PageMeta />
-      <Helmet>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      </Helmet>
 
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
@@ -275,22 +262,7 @@ const WorkWithUs = () => {
         </div>
       </section>
 
-      <section className="bg-canvas py-[80px] md:py-[100px]">
-        <div className="container-site">
-          <div className="max-w-4xl mx-auto">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Questions, answered</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">What founders ask first.</h2>
-            <div className="grid md:grid-cols-3 gap-8 mt-8">
-              {faqItems.map((item) => (
-                <div key={item.q}>
-                  <h3 className="text-heading-md text-ink mb-2">{item.q}</h3>
-                  <p className="text-body-sm text-mute leading-relaxed">{item.a}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <FaqSection items={faqItems} />
 
       <section className="bg-soft-cloud py-[80px] md:py-[100px] text-center">
         <div className="container-site">

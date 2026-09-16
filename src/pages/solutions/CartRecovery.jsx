@@ -1,16 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
-import CtaPaths from '@/components/CtaPaths';
-import { useBookingModal } from '@/context/BookingModalContext';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import { fadeUp } from '@/lib/motion';
 
 const CartRecovery = () => {
-  const { openBookingModal } = useBookingModal();
-
   return (
     <>
       <PageMeta />
@@ -100,26 +94,6 @@ const CartRecovery = () => {
                 ))}
               </ul>
             </div>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Find your leak<br />in 30 minutes.
-          </h2>
-          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
-            Book a free audit call. We&apos;ll look at your checkout, name the biggest leak, and tell you honestly if recovery work pays for your store.
-          </p>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <p className="text-caption-md text-stone mt-4">
-            No retainer commitment. Cancel anytime.
-          </p>
-          <div className="mt-6">
-            <CtaPaths tone="dark" />
           </div>
         </div>
       </motion.section>

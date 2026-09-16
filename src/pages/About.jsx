@@ -1,11 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { WHATSAPP_URL } from '@/lib/constants';
-import CtaPaths from '@/components/CtaPaths';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
 const About = () => {
@@ -177,23 +174,6 @@ const About = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Sound like what<br />you've been looking for?
-          </h2>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <p className="text-caption-md text-stone italic mt-4">
-            We&apos;ll tell you in the first 10 minutes if we&apos;re the right fit.
-          </p>
-          <div className="mt-6">
-            <CtaPaths tone="dark" />
           </div>
         </div>
       </motion.section>

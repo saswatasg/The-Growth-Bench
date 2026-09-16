@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { WHATSAPP_URL } from '@/lib/constants';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import { fadeUp } from '@/lib/motion';
 
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
@@ -428,20 +428,6 @@ const GrowthScorecard = () => {
             Real funnel economics: average D2C conversion 1.5–3%, top performers 4–6%. WhatsApp cart recovery
             18–23% vs 5–8% email. Repeat customers spend 67% more. Category benchmarks — <Link to="/services" className="text-ink underline underline-offset-2">see the systems</Link>.
           </p>
-        </div>
-      </motion.section>
-
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px] text-center">
-        <div className="container-site max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-canvas leading-none mb-6">
-            Want it exact, not<br />directional?
-          </h2>
-          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
-            The scorecard points at the leak. The free audit call measures it — one concrete recommendation, no pitch.
-          </p>
-          <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
         </div>
       </motion.section>
     </>
