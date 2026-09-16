@@ -78,7 +78,7 @@ const UnderlineReveal = () => (
     initial={{ scaleX: 0, opacity: 0 }}
     animate={{ scaleX: 1, opacity: 1 }}
     transition={{ duration: 0.6, ease: [0.22, 0.03, 0.36, 1] }}
-    style={{ maxWidth: '280px' }}
+    className="block mx-auto mt-2 h-[3px] bg-ink origin-left max-w-[280px]"
   />
 );
 
@@ -104,7 +104,7 @@ const HeroSection = () => {
   }, [isInView, totalAnimMs]);
 
   return (
-    <section ref={ref} className="bg-canvas py-[100px] md:py-[120px] overflow-hidden">
+    <section ref={ref} className="bg-canvas py-[60px] md:py-[120px] overflow-hidden">
       <div className="container-site w-full">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -120,7 +120,7 @@ const HeroSection = () => {
             </Link>
           </motion.div>
 
-          <h1 className="font-display text-display-lg md:text-display-xl lg:text-[80px] text-ink leading-[0.92] mt-8 select-none">
+          <h1 className="font-display text-heading-xl md:text-display-lg lg:text-[80px] text-ink leading-[0.92] mt-8 select-none">
             {words.map((word, wi) => (
               <React.Fragment key={word}>
                 {wi > 0 && <span className="inline-block w-[0.12em]" />}

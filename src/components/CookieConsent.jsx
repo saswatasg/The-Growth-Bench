@@ -58,7 +58,7 @@ const CookieConsent = () => {
       <div className="flex items-center gap-3 mt-4">
         <button
           onClick={() => choose('accepted')}
-          className="h-9 px-5 rounded-full bg-canvas text-ink text-button-sm font-medium hover:bg-soft-cloud transition-colors"
+          className="h-11 px-5 rounded-full bg-canvas text-ink text-button-sm font-medium hover:bg-soft-cloud transition-colors"
         >
           Accept
         </button>

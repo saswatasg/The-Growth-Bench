@@ -484,7 +484,7 @@ const AIScorecard = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-[80px] md:py-[100px] overflow-x-clip">
+      <section className="bg-canvas py-[48px] md:py-[100px] overflow-x-clip">
         <div className="container-site max-w-2xl mx-auto">
           {step !== 'hook' && !isResult && (
             <div className="mb-8">
@@ -594,9 +594,9 @@ const AIScorecard = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-display-md text-ink leading-none">What the readout is based on</h2>
+          <h2 className="font-display text-heading-xl md:text-display-md text-ink leading-none">What the readout is based on</h2>
           <p className="text-body-md text-mute mt-4 leading-relaxed">
             Real automation economics: WhatsApp flows read 70–90% vs ~20% email; auto NDR outreach within
             2 hours re-delivers 64–74% vs 28–36%; optimized cart-recovery runs 18–23% vs 5–8% email.
@@ -710,18 +710,18 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
       <div className="font-display text-display-md md:text-display-xl text-ink leading-none mt-2">
         {displayPct}<span className="text-stone">%</span>
       </div>
-      <h2 className="font-display text-display-md text-ink mt-4 leading-none">{copy.headline}</h2>
+      <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-4 leading-none">{copy.headline}</h2>
       <p className="text-body-md text-mute mt-4 max-w-xl mx-auto leading-relaxed">{copy.sub}</p>
       {recall && <p className="text-caption-md text-mute mt-3 italic">{recall}</p>}
 
       <div className="mt-8 max-w-xl mx-auto bg-ink text-canvas p-6 md:p-8">
         <span className="text-label-xs text-stone uppercase tracking-wider">Recoverable every month</span>
-        <div className="font-display text-display-lg leading-none mt-2">~{fmtIN(recHrs)} hrs</div>
+        <div className="font-display text-heading-xl md:text-display-lg leading-none mt-2">~{fmtIN(recHrs)} hrs</div>
         <div className="text-body-md mt-2">worth roughly ₹{fmtIN(inrLow)} – ₹{fmtIN(inrHigh)}</div>
-        <p className="text-caption-sm text-stone/80 mt-3 leading-relaxed">
+        <p className="text-caption-sm text-stone mt-3 leading-relaxed">
           That&apos;s ~{fmtIN(annualHrs)} hours a year — about {fmtIN(annualHrs / 40)} working weeks handed to agents.
         </p>
-        <p className="text-caption-sm text-stone/80 mt-2 leading-relaxed">
+        <p className="text-caption-sm text-stone mt-2 leading-relaxed">
           At a typical ₹600–1,200/hr fully-loaded ops cost — bring your number and we&apos;ll re-run it on the audit call.
         </p>
       </div>

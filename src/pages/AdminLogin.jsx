@@ -32,7 +32,7 @@ const AdminLogin = () => {
           <div className="w-16 h-16 rounded-full bg-soft-cloud flex items-center justify-center mx-auto mb-6">
             <Lock className="w-8 h-8 text-ink" />
           </div>
-          <h1 className="font-display text-display-md text-ink text-center mb-2">Admin Access</h1>
+          <h1 className="font-display text-heading-xl md:text-display-md text-ink text-center mb-2">Admin Access</h1>
           <p className="text-body-sm text-mute text-center mb-8">Enter the admin password to manage blog content.</p>
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
@@ -41,7 +41,8 @@ const AdminLogin = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               autoFocus
-              className="w-full px-4 py-3 text-body-md text-ink bg-canvas border border-hairline-soft rounded-lg focus:outline-none focus:ring-2 focus:ring-ink/20 text-center"
+              className="w-full px-4 py-3 text-body-md text-ink bg-canvas border border-hairline-soft rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 text-center"
+              aria-label="Password"
             />
             {error && <p className="text-body-sm text-sale text-center">{error}</p>}
             <Button type="submit" size="lg" disabled={loading} className="w-full justify-center">

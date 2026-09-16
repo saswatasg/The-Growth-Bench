@@ -50,7 +50,7 @@ const GrowthTimeline = () => {
   const [expanded, setExpanded] = useState(null);
 
   return (
-    <section className="bg-canvas py-[100px] md:py-[120px]">
+    <section className="bg-canvas py-[60px] md:py-[120px]">
       <div className="container-site">
         <div className="text-center mb-12">
           <p className="text-label-xs text-mute uppercase tracking-wider">The Bench Method</p>
@@ -107,7 +107,7 @@ const GrowthTimeline = () => {
                     transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-8 pl-16">
+                    <div className="pb-8 pl-8 md:pl-16">
                       <div className="border-t border-hairline-soft pt-6">
                         <p className="text-label-xs text-mute uppercase tracking-wider mb-4">Deliverables</p>
                         <ul className="space-y-2.5">

@@ -13,11 +13,11 @@ const services = [
 
 const ServicesOverview = () => {
   return (
-    <motion.section {...fadeUp} className="bg-ink py-[100px] md:py-[120px]">
+    <motion.section {...fadeUp} className="bg-ink py-[60px] md:py-[120px]">
       <div className="container-site">
         <div className="text-center mb-12">
           <span className="text-label-xs text-stone uppercase tracking-wider">What we do</span>
-          <h2 className="font-display text-display-md text-canvas mt-2 leading-none">The full stack, handled.</h2>
+          <h2 className="font-display text-heading-xl md:text-display-md text-canvas mt-2 leading-none">The full stack, handled.</h2>
           <p className="text-body-md text-stone mt-4 max-w-xl mx-auto leading-relaxed">
             From the first strategy call to the live campaign to the optimised checkout — plus the AI systems that take repetitive work off your plate.
           </p>

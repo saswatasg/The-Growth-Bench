@@ -66,7 +66,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
               <div className="px-6 md:px-8 py-8 md:py-10">
                 {/* Hero */}
                 <div className="max-w-3xl">
-                  <h3 className="font-display text-display-md md:text-display-lg text-ink leading-[0.95]">
+                  <h3 className="font-display text-heading-xl md:text-display-lg text-ink leading-[0.95]">
                     {service.h2}
                   </h3>
                   <p className="text-body-md text-mute mt-5 leading-relaxed max-w-2xl">

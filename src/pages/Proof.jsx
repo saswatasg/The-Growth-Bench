@@ -79,7 +79,7 @@ const Proof = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="bg-canvas py-[100px] md:py-[120px]">
+      <section className="bg-canvas py-[60px] md:py-[120px]">
         <div className="container-site text-center">
           <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
           <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
@@ -92,11 +92,11 @@ const Proof = () => {
       </section>
 
       {/* Comparison — Freelancer vs Agency vs Bench */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Side by side</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same job, three ways.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">The same job, three ways.</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-5 items-stretch">
             {/* Freelancer */}
@@ -152,7 +152,7 @@ const Proof = () => {
       </motion.section>
 
       {/* Case Studies */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Case studies</span>
@@ -178,7 +178,7 @@ const Proof = () => {
               {filtered.map((project) => (
                 <div key={project.client} className="p-6 border border-hairline-soft bg-canvas">
                   <p className="text-caption-sm text-mute uppercase tracking-wide mb-1">{project.client}</p>
-                  <div className="font-display text-display-lg text-ink leading-none my-4">{project.stat}</div>
+                  <div className="font-display text-heading-xl md:text-display-lg text-ink leading-none my-4">{project.stat}</div>
                   <p className="text-body-sm text-mute leading-relaxed mb-4">{project.description}</p>
                   {(project.before || project.after) && (
                     <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud">
@@ -213,11 +213,11 @@ const Proof = () => {
       </motion.section>
 
       {/* AI Implementation callout — full width */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="p-6 md:p-8 border-2 border-ink bg-canvas">
             <span className="text-label-xs text-mute uppercase tracking-wider">AI Implementation</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">Our automation engine, productized.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Our automation engine, productized.</h2>
             <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">
               The content and SEO automation pipeline behind large-scale catalog work is one example — our agents now also run ops, support, and follow-ups end-to-end. Nothing goes live without a human-review period.
             </p>
@@ -235,9 +235,9 @@ const Proof = () => {
       </motion.section>
 
       {/* Final CTA */}
-      <motion.section {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-ink py-[48px] md:py-[100px]">
         <div className="container-site text-center">
-          <h2 className="font-display text-display-md text-canvas leading-none">
+          <h2 className="font-display text-heading-xl md:text-display-md text-canvas leading-none">
             Ready to see what&apos;s<br />actually leaking?
           </h2>
           <p className="text-body-md text-hairline mt-4 max-w-xl mx-auto leading-relaxed">

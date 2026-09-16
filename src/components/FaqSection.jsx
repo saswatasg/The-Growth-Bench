@@ -36,11 +36,11 @@ const FaqSection = ({
   }, [items, schema]);
 
   return (
-    <section className={`bg-canvas py-[100px] md:py-[120px] ${className}`}>
+    <section className={`bg-canvas py-[60px] md:py-[120px] ${className}`}>
       <div className="container-site">
-        <div className="max-w-2xl mb-12">
+        <div className="text-center mb-12">
           {label && <span className="text-label-xs text-mute uppercase tracking-wider">{label}</span>}
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none">{title}</h2>
+          <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">{title}</h2>
         </div>
 
         <Accordion type="single" collapsible className="w-full">

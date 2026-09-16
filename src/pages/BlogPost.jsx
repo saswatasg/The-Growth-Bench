@@ -36,8 +36,8 @@ const BlogPost = () => {
   if (!post) {
     return (
       <section className="bg-canvas">
-        <div className="container-site py-[80px] md:py-[100px] text-center">
-          <h1 className="font-display text-display-md text-ink">Post not found</h1>
+        <div className="container-site py-[48px] md:py-[100px] text-center">
+          <h1 className="font-display text-heading-xl md:text-display-md text-ink">Post not found</h1>
           <Link to="/resources" className="text-body-sm text-ink underline mt-4 inline-block">Back to Insights</Link>
         </div>
       </section>
@@ -75,7 +75,7 @@ const BlogPost = () => {
     <>
       <PageMeta title={`${post.title} | The Growth Bench Insights`} description={post.description} articleSchema={articleSchema} ogImage={slugToCategoryImage[post.category] || "/assets/images/og-card.png"} />
 
-      <article className="bg-canvas py-[80px] md:py-[100px]">
+      <article className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site max-w-3xl mx-auto">
           <div className="mb-8">
             <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">
@@ -92,13 +92,13 @@ const BlogPost = () => {
               <span className="text-caption-sm text-mute">{post.readTime} min read</span>
             </div>
 
-            <h1 className="font-display text-display-md text-ink leading-none">{post.title}</h1>
+            <h1 className="font-display text-heading-xl md:text-display-md text-ink leading-none">{post.title}</h1>
             <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">{post.description}</p>
           </div>
 
           <div className="border-t border-hairline-soft pt-8"></div>
 
-          <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4">
+          <div className="text-body-md text-mute leading-relaxed space-y-4 overflow-x-auto break-words [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4 [&_pre]:overflow-x-auto [&_pre]:text-body-sm [&_img]:max-w-full [&_table]:overflow-x-auto [&_table]:block">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {post.body}
             </ReactMarkdown>

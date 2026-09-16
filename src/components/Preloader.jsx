@@ -61,7 +61,7 @@ const Preloader = () => {
         className="fixed inset-0 z-[200] bg-ink flex flex-col items-center justify-center"
       >
         {/* Staggered letter reveal */}
-        <div className="flex items-baseline gap-[0.15em] mb-10 overflow-hidden">
+        <div className="flex items-baseline gap-[0.15em] mb-10 overflow-hidden flex-wrap justify-center">
           {letters.map((char, i) => (
             <motion.span
               key={i}

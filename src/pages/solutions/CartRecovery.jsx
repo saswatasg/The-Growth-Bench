@@ -9,26 +9,26 @@ const CartRecovery = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Solutions · Cart &amp; Checkout Recovery</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-              Recover the revenue<br />leaking at checkout.
-            </h1>
-            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              For a US D2C furniture brand, checkout abandonment sat at 73.1% across 480,000 monthly sessions.
-              We rebuilt the flow, tested it, and recovered approximately $425K/month. Here is the exact playbook — and how we run it for you.
-            </p>
-          </div>
+      <section className="bg-canvas py-[60px] md:py-[120px]">
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Solutions · Cart &amp; Checkout Recovery</span>
+          <h1 className="font-display text-heading-xl md:text-display-lg text-ink mt-2 leading-none">
+            Recover the revenue<br />leaking at checkout.
+          </h1>
+          <p className="text-body-md text-mute mt-6 max-w-xl mx-auto leading-relaxed">
+            For a US D2C furniture brand, checkout abandonment sat at 73.1% across 480,000 monthly sessions.
+            We rebuilt the flow, tested it, and recovered approximately $425K/month. Here is the exact playbook — and how we run it for you.
+          </p>
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">What we fix</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">Same leaks, different stores.</h2>
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl">
+          <div className="text-center mb-8">
+            <span className="text-label-xs text-mute uppercase tracking-wider">What we fix</span>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Same leaks, different stores.</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8 max-w-4xl mx-auto">
             {[
               { title: 'Forced account creation', body: 'Requiring signup before payment was alone worth an estimated 22% of cart abandonment. Guest checkout first.' },
               { title: 'Surprise shipping costs', body: 'Costs revealed only at the final step cause last-minute exits. Real-time calculation at the cart page instead.' },
@@ -44,11 +44,13 @@ const CartRecovery = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">Results</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">Tested, then rolled out.</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 max-w-4xl">
+          <div className="text-center mb-8">
+            <span className="text-label-xs text-mute uppercase tracking-wider">Results</span>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Tested, then rolled out.</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 max-w-4xl mx-auto">
             {[
               { num: '73.1% → 53.9%', label: 'Checkout abandonment in a 22-day A/B test — a 26% relative drop' },
               { num: '84.47% → 58.2%', label: 'Cart abandonment site-wide after rollout — a 26-point drop' },
@@ -68,12 +70,12 @@ const CartRecovery = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
             <div>
               <span className="text-label-xs text-mute uppercase tracking-wider">Follow-up sequences</span>
-              <h2 className="font-display text-display-md text-ink mt-2 leading-none">Then we chase what still slips.</h2>
+              <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Then we chase what still slips.</h2>
               <p className="text-body-md text-mute mt-4 leading-relaxed">
                 Redesign fixes the flow; sequences recover the rest. Abandoned-cart follow-ups across email and WhatsApp,
                 tuned per cart value — part of our <Link to="/services#ai-implementation" className="text-ink underline underline-offset-2">AI Implementation</Link> capability.

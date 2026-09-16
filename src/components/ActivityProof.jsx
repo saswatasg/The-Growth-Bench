@@ -11,7 +11,7 @@ const stats = [
 
 const ActivityProof = ({ className = '' }) => {
   return (
-    <motion.section {...fadeUp} className={`py-[100px] md:py-[120px] ${className}`}>
+    <motion.section {...fadeUp} className={`py-[60px] md:py-[120px] ${className}`}>
       <div className="container-site">
         <div className="text-center mb-12">
           <span className="text-label-xs text-stone uppercase tracking-wider">By The Numbers</span>
@@ -29,7 +29,7 @@ const ActivityProof = ({ className = '' }) => {
             </div>
           ))}
         </div>
-        <p className="text-caption-sm text-stone/80 text-center mt-8">
+        <p className="text-caption-sm text-stone text-center mt-8">
           Representative outcomes across client engagements; individual results vary.
         </p>
       </div>

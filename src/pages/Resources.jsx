@@ -23,7 +23,7 @@ const Resources = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="bg-canvas py-[100px] md:py-[120px]">
+      <section className="bg-canvas py-[60px] md:py-[120px]">
         <div className="container-site text-center">
           <span className="text-label-xs text-mute uppercase tracking-wider">Insights</span>
           <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
@@ -40,7 +40,7 @@ const Resources = () => {
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-stone uppercase tracking-wider">Free tools</span>
-            <h2 className="font-display text-display-md text-canvas mt-2 leading-none">Not ready to talk?<br />Take a free scorecard.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-canvas mt-2 leading-none">Not ready to talk?<br />Take a free scorecard.</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             <Link
@@ -79,7 +79,7 @@ const Resources = () => {
 
       {/* Blog posts */}
       <motion.section {...fadeUp} className="bg-soft-cloud">
-        <div className="container-site py-[80px] md:py-[100px]">
+        <div className="container-site py-[48px] md:py-[100px]">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Latest insights</span>
           </div>
@@ -123,19 +123,19 @@ const Resources = () => {
       </motion.section>
 
       {/* Results callout */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Real results</span>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <Link to="/resources/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
-              <div className="font-display text-display-md text-ink mb-2">₹3.5 Cr / month recovered</div>
+              <div className="font-display text-heading-xl md:text-display-md text-ink mb-2">₹3.5 Cr / month recovered</div>
               <p className="text-body-sm text-mute leading-relaxed mb-3">In a 22-day A/B test, checkout abandonment fell from 73.1% to 53.9% — a 26% relative drop — with a 47% mobile conversion lift (1.2% → 1.76%).</p>
               <span className="text-body-sm text-ink flex items-center gap-1">Read the teardown <ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
             </Link>
             <Link to="/proof" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
-              <div className="font-display text-display-md text-ink mb-2">357% revenue growth in 3 months</div>
+              <div className="font-display text-heading-xl md:text-display-md text-ink mb-2">357% revenue growth in 3 months</div>
               <p className="text-body-sm text-mute leading-relaxed mb-3">Early-win snapshot for a D2C coffee brand — website revamp, precise tracking, and high-converting ad campaigns. ROAS went from 1.8x to 5.7x.</p>
               <span className="text-body-sm text-ink flex items-center gap-1">See case study <ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
             </Link>

@@ -330,7 +330,7 @@ const GrowthScorecard = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-[80px] md:py-[100px] overflow-x-clip">
+      <section className="bg-canvas py-[48px] md:py-[100px] overflow-x-clip">
         <div className="container-site max-w-2xl mx-auto">
           {step !== 'hook' && !isResult && (
             <div className="mb-8">
@@ -437,9 +437,9 @@ const GrowthScorecard = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site max-w-2xl mx-auto text-center">
-          <h2 className="font-display text-display-md text-ink leading-none">What the readout is based on</h2>
+          <h2 className="font-display text-heading-xl md:text-display-md text-ink leading-none">What the readout is based on</h2>
           <p className="text-body-md text-mute mt-4 leading-relaxed">
             Real funnel economics: average D2C conversion 1.5–3%, top performers 4–6%. WhatsApp cart recovery
             18–23% vs 5–8% email. Repeat customers spend 67% more. Category benchmarks — <Link to="/services" className="text-ink underline underline-offset-2">see the systems</Link>.
@@ -552,7 +552,7 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, waScore, openB
       <div className="font-display text-display-md md:text-display-xl text-ink leading-none mt-2">
         {displayPct}<span className="text-stone">%</span>
       </div>
-      <h2 className="font-display text-display-md text-ink mt-4 leading-none">{copy.headline}</h2>
+      <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-4 leading-none">{copy.headline}</h2>
       <p className="text-body-md text-mute mt-4 max-w-xl mx-auto leading-relaxed">{copy.sub}</p>
       {recall && <p className="text-caption-md text-mute mt-3 italic">{recall}</p>}
 

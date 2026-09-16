@@ -64,7 +64,7 @@ const ExitIntent = () => {
           </button>
 
           <span className="text-label-xs text-mute uppercase tracking-wider">Before you go</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+          <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">
             Get your free growth audit
           </h2>
           <p className="text-body-md text-mute mt-4 leading-relaxed">

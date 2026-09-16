@@ -38,11 +38,11 @@ const Home = () => {
       <GrowthTimeline />
       <ActivityProof className="bg-ink" />
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-label-xs text-mute uppercase tracking-wider">Client Results</span>
-            <h2 className="font-display text-display-md text-ink mt-2">Results that speak plainly.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2">Results that speak plainly.</h2>
           </div>
 
           <div className="relative mb-8 overflow-hidden">
@@ -55,7 +55,7 @@ const Home = () => {
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
                 className="p-8 md:p-10 border border-hairline-soft bg-canvas max-w-2xl mx-auto"
               >
-                <span aria-hidden="true" className="font-display text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
+                <span aria-hidden="true" className="font-display text-heading-xl md:text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
                 <p className="text-body-md text-mute leading-relaxed mb-6 relative z-10">{testimonialsData[currentTestimonial].text}</p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-ink/10 flex items-center justify-center flex-shrink-0">
@@ -79,8 +79,8 @@ const Home = () => {
                 key={i}
                 onClick={() => setCurrentTestimonial(i)}
                 aria-label={`Show testimonial ${i + 1}`}
-                className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
-                  i === currentTestimonial ? 'bg-ink w-6' : 'bg-hairline hover:bg-mute/30 w-2'
+                className={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 ${
+                  i === currentTestimonial ? 'bg-ink w-6 h-2' : 'bg-hairline hover:bg-mute/30 w-2 h-2'
                 }`}
               />
             ))}
@@ -89,11 +89,11 @@ const Home = () => {
       </motion.section>
 
       {posts.length > 0 && (
-        <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+        <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
           <div className="container-site">
             <div className="text-center mb-12">
               <span className="text-label-xs text-mute uppercase tracking-wider">Latest Insights</span>
-              <h2 className="font-display text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
+              <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
             </div>
 
             <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6">

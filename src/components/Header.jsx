@@ -71,7 +71,7 @@ const Header = () => {
           </nav>
 
           <button
-            className="md:hidden p-3 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full"
+            className="md:hidden p-3.5 -m-1 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 rounded-full"
             onClick={() => setIsOpen(true)}
             aria-label="Open menu"
             aria-expanded={isOpen}

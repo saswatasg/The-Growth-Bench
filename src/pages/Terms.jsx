@@ -6,7 +6,7 @@ const Terms = () => {
   return (
     <>
       <PageMeta />
-      <section className="bg-canvas py-[80px] md:py-[100px]">
+      <section className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site max-w-3xl mx-auto">
           <nav aria-label="breadcrumb" className="flex items-center gap-1.5 text-caption-sm text-mute mb-6">
             <Link to="/" className="hover:text-ink transition-colors no-underline text-mute">Home</Link>
@@ -14,7 +14,7 @@ const Terms = () => {
             <span className="text-ink font-medium">Terms of Service</span>
           </nav>
           <span className="text-label-xs text-mute uppercase tracking-wider">Legal</span>
-          <h1 className="font-display text-display-md text-ink mt-2 mb-3 leading-none">Terms of Service</h1>
+          <h1 className="font-display text-heading-xl md:text-display-md text-ink mt-2 mb-3 leading-none">Terms of Service</h1>
           <p className="text-caption-sm text-mute mb-10">Last updated: May 2026</p>
 
           <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">

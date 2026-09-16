@@ -21,7 +21,7 @@ const GetStarted = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="bg-canvas py-[100px] md:py-[120px]">
+      <section className="bg-canvas py-[60px] md:py-[120px]">
         <div className="container-site text-center">
           <span className="text-label-xs text-mute uppercase tracking-wider">Get Started</span>
           <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
@@ -34,13 +34,13 @@ const GetStarted = () => {
       </section>
 
       {/* Book a call + What happens — combined */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             {/* Left: Book a call */}
             <div>
               <span className="text-label-xs text-mute uppercase tracking-wider">Talk to us</span>
-              <h2 className="font-display text-display-md text-ink mt-2 leading-none">Book a free 30-minute audit call.</h2>
+              <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Book a free 30-minute audit call.</h2>
               <p className="text-body-md text-mute mt-4 max-w-lg leading-relaxed">
                 We&apos;ll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
               </p>
@@ -80,7 +80,7 @@ const GetStarted = () => {
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-stone uppercase tracking-wider">Free scorecards</span>
-            <h2 className="font-display text-display-md text-canvas mt-2 leading-none">Not ready to talk?<br />Diagnose yourself first.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-canvas mt-2 leading-none">Not ready to talk?<br />Diagnose yourself first.</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             <Link

@@ -97,7 +97,7 @@ const AdminDashboard = () => {
 
   const categories = ['Growth Strategy', 'CRO', 'Google Ads', 'Meta Ads', 'Lead Systems', 'UI/UX', 'Website Dev', 'Marketing Strategy'];
 
-  const inputClass = "w-full px-3 py-2 text-body-sm text-ink bg-canvas border border-hairline-soft rounded-lg focus:outline-none focus:ring-2 focus:ring-ink/20";
+  const inputClass = "w-full px-3 py-2 text-body-sm text-ink bg-canvas border border-hairline-soft rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40";
   const labelClass = "text-caption-sm font-medium text-mute uppercase tracking-wider mb-1 block";
 
   return (
@@ -107,7 +107,7 @@ const AdminDashboard = () => {
       <div className="container-site">
         <div className="flex items-center justify-between mb-8 pt-4">
           <div>
-            <h1 className="font-display text-display-md text-ink mb-1">Blog Admin</h1>
+            <h1 className="font-display text-heading-xl md:text-display-md text-ink mb-1">Blog Admin</h1>
             <p className="text-body-sm text-mute">Manage blog posts, CTAs, and page meta.</p>
           </div>
           <div className="flex items-center gap-3">
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
                 <div className="space-y-5">
                   <div className="flex items-center justify-between">
                     <h2 className="text-heading-lg font-display text-ink">Editing: {activePost.title}</h2>
-                    <button onClick={() => deletePost(activePost.slug)} className="text-mute hover:text-sale p-1"><Trash2 className="w-4 h-4" /></button>
+                    <button onClick={() => deletePost(activePost.slug)} aria-label="Delete post" className="text-mute hover:text-sale p-1"><Trash2 className="w-4 h-4" /></button>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

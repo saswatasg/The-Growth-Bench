@@ -8,8 +8,8 @@ const AdminRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="flex flex-col justify-center items-center min-h-[calc(100vh-200px)] w-full gap-4">
-        <div className="w-12 h-12 rounded-full bg-muted animate-pulse"></div>
-        <div className="w-32 h-4 rounded bg-muted animate-pulse"></div>
+        <div className="w-12 h-12 rounded-full bg-soft-cloud animate-pulse"></div>
+        <div className="w-32 h-4 rounded bg-soft-cloud animate-pulse"></div>
       </div>
     );
   }

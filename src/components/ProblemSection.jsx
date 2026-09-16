@@ -28,11 +28,11 @@ const ProblemSection = ({ className = '' }) => {
   const { openBookingModal } = useBookingModal();
 
   return (
-    <motion.section {...fadeUp} className={`py-[100px] md:py-[120px] ${className}`}>
+    <motion.section {...fadeUp} className={`py-[60px] md:py-[120px] ${className}`}>
       <div className="container-site">
         <div className="text-center mb-12">
           <span className="text-label-xs text-mute uppercase tracking-wider">Sound familiar?</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+          <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">
             Most growth problems look<br />the same from the inside.
           </h2>
         </div>

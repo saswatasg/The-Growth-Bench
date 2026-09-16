@@ -11,7 +11,7 @@ const About = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="bg-canvas py-[100px] md:py-[120px]">
+      <section className="bg-canvas py-[60px] md:py-[120px]">
         <div className="container-site text-center">
           <span className="text-label-xs text-mute uppercase tracking-wider">About</span>
           <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
@@ -24,7 +24,7 @@ const About = () => {
       </section>
 
       {/* The Problem */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-10">
@@ -47,11 +47,11 @@ const About = () => {
       </motion.section>
 
       {/* Operating Model */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same person who sees<br />the full picture builds it.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">The same person who sees<br />the full picture builds it.</h2>
           </div>
 
           <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -73,11 +73,11 @@ const About = () => {
       </motion.section>
 
       {/* How We Think */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">Four principles. No exceptions.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Four principles. No exceptions.</h2>
           </div>
           <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto mt-8">
             {[
@@ -97,7 +97,7 @@ const About = () => {
       </motion.section>
 
       {/* Stats */}
-      <motion.section {...fadeIn} className="bg-ink py-[80px] md:py-[100px]">
+      <motion.section {...fadeIn} className="bg-ink py-[48px] md:py-[100px]">
         <div className="container-site text-center">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
@@ -122,7 +122,7 @@ const About = () => {
       </motion.section>
 
       {/* Founder */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
@@ -161,11 +161,11 @@ const About = () => {
       </motion.section>
 
       {/* Flagship Services */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The growth stack, handled.</h2>
+            <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">The growth stack, handled.</h2>
             <p className="text-body-md text-mute mt-4 max-w-xl mx-auto leading-relaxed">
               Nine service lines. Twenty specialists on call. One operating lead who owns the full picture.
             </p>
@@ -209,11 +209,11 @@ const About = () => {
       </motion.section>
 
       {/* The Full Bench */}
-      <motion.section id="full-bench" {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
+      <motion.section id="full-bench" {...fadeUp} className="bg-ink py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-stone uppercase tracking-wider">The Full Bench</span>
-            <h2 className="font-display text-display-md text-canvas mt-2 leading-none">
+            <h2 className="font-display text-heading-xl md:text-display-md text-canvas mt-2 leading-none">
               A specialist for every<br />growth surface.
             </h2>
             <p className="text-body-md text-hairline mt-4 max-w-xl mx-auto leading-relaxed">
@@ -274,17 +274,17 @@ const About = () => {
             })}
           </motion.div>
 
-          <p className="text-caption-sm text-hairline/80 mt-8 text-center">
+          <p className="text-caption-sm text-hairline mt-8 text-center">
             Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
           </p>
         </div>
       </motion.section>
 
       {/* What We Don't Do */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site text-center">
           <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+          <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">
             We pick a lane and<br />stay in it.
           </h2>
           <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl mx-auto">

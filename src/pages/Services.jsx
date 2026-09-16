@@ -238,7 +238,7 @@ const Services = () => {
       <PageMeta />
 
       {/* Hero */}
-      <section className="bg-canvas py-[100px] md:py-[120px]">
+      <section className="bg-canvas py-[60px] md:py-[120px]">
         <div className="container-site">
           <div className="text-center">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
@@ -294,7 +294,7 @@ const Services = () => {
       </motion.section>
 
       {/* Core Services */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Core services</span>
@@ -389,7 +389,7 @@ const Services = () => {
       </motion.section>
 
       {/* Supporting Services */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Supporting services</span>

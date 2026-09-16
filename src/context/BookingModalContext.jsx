@@ -47,7 +47,7 @@ export function BookingModalProvider({ children }) {
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
-            <div className="h-[85vh] min-h-[600px] relative">
+            <div className="h-[85vh] min-h-[400px] relative">
               {loading && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-canvas">
                   <div className="w-10 h-10 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
