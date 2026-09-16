@@ -15,6 +15,7 @@ import { fadeUp } from '@/lib/motion';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     const timer = setInterval(() => {
