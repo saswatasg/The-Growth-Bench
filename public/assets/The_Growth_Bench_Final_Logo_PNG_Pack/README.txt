@@ -1,0 +1,28 @@
+THE GROWTH BENCH — FINAL LOGO PNG PACK
+
+Included:
+01_primary_horizontal_black_transparent.png
+01_primary_horizontal_white_transparent.png
+02_stacked_logo_black_transparent.png
+02_stacked_logo_white_transparent.png
+03_icon_mark_black_transparent.png
+03_icon_mark_white_transparent.png
+04_wordmark_only_black_transparent.png
+04_wordmark_only_white_transparent.png
+05_tagline_black_transparent.png
+05_tagline_white_transparent.png
+06_bench_line_black_transparent.png
+06_bench_line_white_transparent.png
+07_favicon_32px.png
+07_favicon_48px.png
+07_favicon_64px.png
+07_favicon_128px.png
+07_favicon_256px.png
+07_favicon_512px.png
+08_app_icon_dark_1024px.png
+08_app_icon_light_1024px.png
+09_logo_pack_preview.png
+
+Use black transparent versions on light backgrounds and white transparent
+versions on dark backgrounds. The icon mark is the recommended favicon,
+social avatar, and compact-brand asset.
