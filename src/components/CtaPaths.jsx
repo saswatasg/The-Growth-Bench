@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { WHATSAPP_URL } from '@/lib/constants';
 
@@ -10,9 +11,9 @@ const CtaPaths = ({ tone = 'light', align = 'center' }) => {
   const justify = align === 'center' ? 'justify-center' : 'justify-start';
   return (
     <div className={`flex flex-wrap items-center gap-x-5 gap-y-2 text-body-sm ${justify}`}>
-      <button onClick={openBookingModal} className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
-        Ready? Book a free audit call <ArrowRight className="w-3.5 h-3.5" />
-      </button>
+      <Button variant="ghost" size="sm" onClick={openBookingModal} className={`gap-1 font-medium no-underline transition-colors ${cls}`}>
+        Ready? Book a Free Audit Call <ArrowRight className="w-3.5 h-3.5" />
+      </Button>
       <Link to="/ai-scorecard" className={`inline-flex items-center gap-1 font-medium no-underline transition-colors ${cls}`}>
         AI readiness? Take the scorecard <ArrowRight className="w-3.5 h-3.5" />
       </Link>

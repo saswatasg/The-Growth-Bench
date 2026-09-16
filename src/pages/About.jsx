@@ -68,7 +68,7 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
           <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
@@ -92,7 +92,7 @@ const About = () => {
         <div className="container-site text-center">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
-              { stat: '6', label: 'Industries served — D2C, B2B SaaS, education' },
+              { stat: '3', label: 'Industries served — D2C, B2B SaaS, education' },
               { stat: '9', label: 'Growth capabilities under one bench' },
               { stat: '25+', label: 'Projects delivered for brands and startups' },
             ].map((s) => (
@@ -125,7 +125,7 @@ const About = () => {
               <span className="font-display text-display-md text-canvas hidden">S</span>
             </div>
             <div>
-              <span className="text-label-xs text-mute uppercase tracking-wider">The Founder</span>
+              <span className="text-label-xs text-mute uppercase tracking-wider">Founder</span>
               <h2 className="font-display text-display-md text-ink mt-1 leading-none">The Founder</h2>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
                 I started The Growth Bench after years inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). I&apos;ve managed ad accounts spending crores per month, fixed checkout flows that recovered lakhs in lost revenue, and built growth systems for brands that started with nothing but a Shopify store.

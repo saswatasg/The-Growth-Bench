@@ -45,7 +45,7 @@ const Home = () => {
       <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
         <div className="container-site max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <span className="text-label-xs text-mute uppercase tracking-wider">What People Say</span>
+            <span className="text-label-xs text-mute uppercase tracking-wider">Client Results</span>
             <h2 className="font-display text-display-md text-ink mt-2">Results that speak plainly.</h2>
           </div>
 
@@ -57,7 +57,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="p-8 md:p-10 border border-hairline-soft bg-canvas relative max-w-2xl mx-auto absolute inset-x-0 top-0"
+                className="p-8 md:p-10 border border-hairline-soft bg-canvas max-w-2xl mx-auto absolute inset-x-0 top-0"
               >
                 <span aria-hidden="true" className="font-display text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
                 <p className="text-body-md text-mute leading-relaxed mb-6 relative z-10">{testimonialsData[currentTestimonial].text}</p>
@@ -92,19 +92,11 @@ const Home = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[60px] md:py-[80px] text-center">
-        <div className="container-site">
-          <Button size="lg" onClick={openBookingModal}>
-            Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
-      </motion.section>
-
       {posts.length > 0 && (
         <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
           <div className="container-site">
             <div className="max-w-2xl mb-12">
-              <span className="text-label-xs text-mute uppercase tracking-wider">From The Bench</span>
+              <span className="text-label-xs text-mute uppercase tracking-wider">Latest Insights</span>
               <h2 className="font-display text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
             </div>
 
@@ -115,7 +107,7 @@ const Home = () => {
                   <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">{post.title}</h3>
                   <p className="text-body-sm text-mute leading-relaxed mb-3 line-clamp-2">{post.description}</p>
                   <p className="text-body-sm text-mute flex items-center gap-1">
-                    Read more <ArrowRight className="w-3.5 h-3.5" />
+                    Read the breakdown <ArrowRight className="w-3.5 h-3.5" />
                   </p>
                 </Link>
               ))}
@@ -135,15 +127,12 @@ const Home = () => {
           <h2 className="font-display text-display-md text-canvas leading-none mb-6">
             Start with a free<br />audit call.
           </h2>
-          <p className="text-body-md text-stone leading-relaxed mb-8 max-w-lg mx-auto">
+          <p className="text-body-md text-mute leading-relaxed mb-8 max-w-lg mx-auto">
             Book a free 30-minute call. We'll look at your funnel, give you one concrete recommendation, and tell you honestly if we can help. No pitch, no pressure.
           </p>
           <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
             Book a Free Audit Call <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <p className="text-caption-md text-stone mt-4">
-            No retainer commitment. Cancel anytime.
-          </p>
           <div className="mt-6">
             <CtaPaths tone="dark" />
           </div>

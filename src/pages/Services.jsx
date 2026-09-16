@@ -285,21 +285,21 @@ const Services = () => {
       <motion.section {...fadeUp} className="bg-ink py-[60px] md:py-[80px]">
         <div className="container-site">
           <div className="flex items-center gap-2 mb-8">
-            <span className="text-label-xs text-stone uppercase tracking-wider">How we work</span>
-            <div className="flex-1 h-px bg-stone/20" />
+            <span className="text-label-xs text-mute uppercase tracking-wider">How we work</span>
+            <div className="flex-1 h-px bg-mute/20" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step) => {
               const Icon = step.icon;
               return (
                 <div key={step.num} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full border border-stone/30 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 text-stone" />
+                  <div className="w-10 h-10 rounded-full border border-mute/30 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-4 h-4 text-mute" />
                   </div>
                   <div>
-                    <span className="text-caption-sm text-stone font-mono">{step.num}</span>
+                    <span className="text-caption-sm text-mute font-mono">{step.num}</span>
                     <h3 className="font-display text-heading-lg text-canvas leading-none mt-0.5">{step.title}</h3>
-                    <p className="text-body-sm text-stone mt-2 leading-relaxed">{step.desc}</p>
+                    <p className="text-body-sm text-mute mt-2 leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               );
@@ -348,7 +348,7 @@ const Services = () => {
             {/* Strategy */}
             <button
               onClick={() => openModal(services[1])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+              className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
                 <Search className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
@@ -364,7 +364,7 @@ const Services = () => {
             {/* Website */}
             <button
               onClick={() => openModal(services[2])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+              className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
                 <Code2 className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
@@ -380,7 +380,7 @@ const Services = () => {
             {/* Ads */}
             <button
               onClick={() => openModal(services[3])}
-              className="group text-left p-6 border border-hairline-soft hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
+              className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
                 <Target className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />

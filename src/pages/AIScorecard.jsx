@@ -321,6 +321,22 @@ const AIScorecard = () => {
 
   const answeredCount = Object.keys(answers).length;
 
+  const getMaxQuestions = (startArm) => {
+    if (!startArm) return 6;
+    let maxDepth = 0;
+    const visit = (nodeId, depth) => {
+      const node = NODES[nodeId];
+      if (!node) return;
+      if (node.next === 'FIT' || node.next === 'RESULT') { maxDepth = Math.max(maxDepth, depth); return; }
+      if (typeof node.next === 'function') { visit('FIT', depth + 1); return; }
+      if (node.next) visit(node.next, depth + 1);
+    };
+    const armStart = { support: 'A1', ops: 'B0', content: 'C1', followups: 'D0', creative: 'E1' }[startArm];
+    if (armStart) visit(armStart, 1);
+    return Math.max(maxDepth + 1, 3);
+  };
+  const maxQ = arm ? getMaxQuestions(arm) : 6;
+
   const postLead = async (payload) => {
     if (!WEB3FORMS_KEY) return;
     try {
@@ -462,7 +478,7 @@ const AIScorecard = () => {
     `Hi! I took the Automation Readiness Scorecard: ${pct}% (${tier}), ~${fmtIN(recHrs)} hrs/mo recoverable. Can we talk about what to automate first?`
   );
 
-  const progress = Math.min(100, Math.round((answeredCount / 6) * 100));
+  const progress = Math.min(100, Math.round((answeredCount / maxQ) * 100));
 
   return (
     <>
@@ -745,7 +761,7 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
         <div className="mt-8 text-left max-w-xl mx-auto border border-hairline-soft p-6">
           <span className="text-label-xs text-mute uppercase tracking-wider">Your 90 days</span>
           <ul className="mt-3 space-y-3">
-            {['Weeks 1–2', 'Days 30–60', 'Days 60–90'].map((when, i) => (
+            {['Weeks 1–2', 'Weeks 4–8', 'Weeks 8–12'].map((when, i) => (
               <li key={when} className="text-body-sm text-mute leading-relaxed">
                 <span className="text-ink font-medium">{when}:</span> {seq[i]}
               </li>
@@ -778,8 +794,8 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, recHrs, inrLow
         )}
         {tier === 'cold' && (
           <Button size="lg" asChild>
-            <Link to="/solutions/recover-abandoned-carts" className="no-underline">
-              Start with checkout recovery <ArrowRight className="w-4 h-4 ml-2" />
+            <Link to="/services" className="no-underline">
+              See what AI can automate <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
         )}

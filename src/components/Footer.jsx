@@ -5,19 +5,18 @@ import { WHATSAPP_URL } from '@/lib/constants';
 
 const footerLinks = {
   Services: [
-    { label: 'AI Implementation', to: '/services#ai-implementation' },
-    { label: 'Growth Strategy', to: '/services#strategy' },
-    { label: 'Website & Development', to: '/services#website' },
-    { label: 'Ads', to: '/services#ads' },
-    { label: 'Lead Systems', to: '/services#lead-systems' },
-    { label: 'CRO', to: '/services#cro' },
-    { label: 'UI/UX Design', to: '/services#ui-ux' },
-    { label: 'Content & Email', to: '/services#content-email' },
-    { label: 'Analytics & Reporting', to: '/services#analytics' },
+    { label: 'AI Implementation', to: '/services' },
+    { label: 'Growth Strategy', to: '/services' },
+    { label: 'Website & Development', to: '/services' },
+    { label: 'Ads', to: '/services' },
+    { label: 'Lead Systems', to: '/services' },
+    { label: 'CRO', to: '/services' },
+    { label: 'UI/UX Design', to: '/services' },
+    { label: 'Content & Email', to: '/services' },
+    { label: 'Analytics & Reporting', to: '/services' },
   ],
   Proof: [
     { label: 'Case Studies', to: '/proof' },
-    { label: 'Compare Models', to: '/proof' },
     { label: 'Cart Recovery', to: '/solutions/recover-abandoned-carts' },
   ],
   Resources: [
@@ -28,8 +27,6 @@ const footerLinks = {
   Company: [
     { label: 'About', to: '/about' },
     { label: 'Get Started', to: '/get-started' },
-    { label: 'Privacy', to: '/privacy' },
-    { label: 'Terms', to: '/terms' },
   ],
 };
 

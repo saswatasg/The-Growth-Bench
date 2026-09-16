@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
 import CtaPaths from '@/components/CtaPaths';
+import { WHATSAPP_URL } from '@/lib/constants';
 import { fadeUp, fadeIn } from '@/lib/motion';
 
 const STEPS = [
@@ -123,7 +124,7 @@ const GetStarted = () => {
           <p className="text-body-sm text-mute mb-6">Prefer something quicker?</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/919836312162?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services"
+              href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors"

@@ -572,7 +572,7 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, waScore, openB
         <div className="mt-8 text-left max-w-xl mx-auto border border-hairline-soft p-6">
           <span className="text-label-xs text-mute uppercase tracking-wider">Your 90-day roadmap</span>
           <ul className="mt-3 space-y-3">
-            {['Weeks 1–2', 'Days 30–60', 'Days 60–90'].map((when, i) => (
+            {['Weeks 1–2', 'Weeks 4–8', 'Weeks 8–12'].map((when, i) => (
               <li key={when} className="text-body-sm text-mute leading-relaxed">
                 <span className="text-ink font-medium">{when}:</span> {seq[i]}
               </li>
@@ -583,7 +583,7 @@ const ResultStep = ({ pct, displayPct, tier, levers, recall, arm, waScore, openB
 
       <div className="mt-8 text-left max-w-xl mx-auto">
         <span className="text-label-xs text-mute uppercase tracking-wider">Behind this readout</span>
-        <p className="caption-md text-mute mt-2 leading-relaxed">{BENCH[arm] || BENCH.acquisition}</p>
+        <p className="text-caption-md text-mute mt-2 leading-relaxed">{BENCH[arm] || BENCH.acquisition}</p>
       </div>
 
       <div className="flex flex-wrap justify-center gap-4 mt-8">

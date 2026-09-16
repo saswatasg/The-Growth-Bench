@@ -90,7 +90,7 @@ const Proof = () => {
               Work that speaks<br />for itself.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Case studies, comparisons, and the results this model produces. Every project starts with a diagnosis.
+              Case studies, comparisons, and the results The Growth Bench produces. Every project starts with a diagnosis.
             </p>
           </div>
         </div>
@@ -235,7 +235,7 @@ const Proof = () => {
               The content and SEO automation pipeline behind large-scale catalog work is one example — our agents now also run ops, support, and follow-ups end-to-end. Nothing goes live without a human-review period.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-6">
-              <Link to="/services#ai-implementation" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+              <Link to="/services" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
                 See AI Implementation <ArrowRight className="w-4 h-4" />
               </Link>
               <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">

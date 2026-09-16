@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -120,9 +121,9 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
                 {/* AI Scorecard link (for AI service) */}
                 {service.benchmarks && (
                   <div className="mt-8">
-                    <a href="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+                    <Link to="/ai-scorecard" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
                       Take the 60-second AI scorecard <ArrowRight className="w-4 h-4" />
-                    </a>
+                    </Link>
                   </div>
                 )}
               </div>

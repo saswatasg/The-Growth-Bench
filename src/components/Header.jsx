@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 right-0 h-0.5 bg-ink origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-0.5 bg-ink origin-left z-[70]"
         style={{ scaleX }}
       />
       <header className="sticky top-0 left-0 right-0 z-50 bg-canvas/95 backdrop-blur border-b border-hairline-soft">
