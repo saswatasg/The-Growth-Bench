@@ -224,10 +224,10 @@ const Proof = () => {
         </div>
       </motion.section>
 
-      {/* AI Implementation callout */}
+      {/* AI Implementation callout — full width */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="p-6 md:p-8 border-2 border-ink bg-canvas max-w-4xl">
+          <div className="p-6 md:p-8 border-2 border-ink bg-canvas">
             <span className="text-label-xs text-mute uppercase tracking-wider">AI Implementation</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">Our automation engine, productized.</h2>
             <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">

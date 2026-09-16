@@ -78,7 +78,7 @@ const GetStarted = () => {
       </section>
 
       {/* Book a call */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-2xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">Or talk to us</span>

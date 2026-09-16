@@ -114,8 +114,8 @@ const Header = () => {
             >
               Get Started
             </NavLink>
-            <div className="flex items-center gap-4 pt-4">
-              <Button size="lg" className="flex-1" onClick={() => { openBookingModal(); setIsOpen(false); }}>
+            <div className="pt-4">
+              <Button size="lg" className="w-full" onClick={() => { openBookingModal(); setIsOpen(false); }}>
                 Book a Free Audit Call
               </Button>
             </div>

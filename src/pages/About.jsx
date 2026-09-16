@@ -1,18 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MessageCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
-import { useBookingModal } from '@/context/BookingModalContext';
-import { WHATSAPP_URL } from '@/lib/constants';
-import { fadeUp, fadeIn, scaleIn, staggerContainer, staggerChild } from '@/lib/motion';
+import { fadeUp, fadeIn, staggerContainer, staggerChild } from '@/lib/motion';
 
 const About = () => {
-  const { openBookingModal } = useBookingModal();
   return (
     <>
       <PageMeta />
 
+      {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-3xl">
@@ -24,7 +20,8 @@ const About = () => {
         </div>
       </section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
+      {/* The Problem */}
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-4xl">
             <span className="text-label-xs text-mute uppercase tracking-wider">The Problem</span>
@@ -42,32 +39,32 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
+      {/* Operating Model */}
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">The same person who sees the full picture builds it.</h2>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-10 max-w-4xl">
+          <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6 mt-10">
             {[
-              { num: '01', title: 'One lead, end to end', desc: 'The person who audits your funnel leads execution across every channel and every sprint. No handoffs, no context lost between strategy and delivery.' },
-              { num: '02', title: 'Specialists who scale', desc: 'CRO, ads, dev, design — deployed for what\'s needed, never burning hours on a retainer bench. You pay for depth, not occupancy.' },
-              { num: '03', title: 'Direct to the source', desc: 'Your lead works directly with you. No account managers routing messages, no briefings lost in translation. Decisions in hours, not days.' },
+              { icon: '01', title: 'One lead, end to end', desc: 'The person who audits your funnel leads execution across every channel and every sprint. No handoffs, no context lost between strategy and delivery.' },
+              { icon: '02', title: 'Specialists who scale', desc: 'CRO, ads, dev, design — deployed for what\'s needed, never burning hours on a retainer bench. You pay for depth, not occupancy.' },
+              { icon: '03', title: 'Direct to the source', desc: 'Your lead works directly with you. No account managers routing messages, no briefings lost in translation. Decisions in hours, not days.' },
             ].map((step) => (
-              <div key={step.num} className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-ink flex items-center justify-center flex-shrink-0">
-                  <span className="text-caption-sm text-canvas font-bold">{step.num}</span>
+              <motion.div key={step.icon} {...staggerChild} className="p-6 bg-canvas border border-hairline-soft">
+                <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
+                  <span className="text-caption-sm text-canvas font-bold">{step.icon}</span>
                 </div>
-                <div>
-                  <h3 className="text-heading-md text-ink">{step.title}</h3>
-                  <p className="text-body-sm text-mute mt-1 leading-relaxed">{step.desc}</p>
-                </div>
-              </div>
+                <h3 className="text-heading-md text-ink">{step.title}</h3>
+                <p className="text-body-sm text-mute mt-2 leading-relaxed">{step.desc}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
+      {/* How We Think */}
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
           <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
@@ -87,7 +84,8 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeIn} className="bg-ink py-[100px] md:py-[120px]">
+      {/* Stats */}
+      <motion.section {...fadeIn} className="bg-ink py-[80px] md:py-[100px]">
         <div className="container-site text-center">
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3 max-w-3xl mx-auto">
             {[
@@ -111,13 +109,14 @@ const About = () => {
         </div>
       </motion.section>
 
-      <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
+      {/* Founder — compact */}
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-[auto_1fr] gap-8 max-w-4xl items-start">
             <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
               <img
                 src="/assets/images/founder.jpg"
-                alt="The Growth Bench Founder"
+                alt="Saswata S. Sengupta"
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
               />
@@ -125,40 +124,19 @@ const About = () => {
             </div>
             <div>
               <span className="text-label-xs text-mute uppercase tracking-wider">Founder</span>
-              <h2 className="font-display text-display-md text-ink mt-1 leading-none">The Founder</h2>
+              <h2 className="font-display text-heading-xl text-ink mt-1 leading-none">Saswata S. Sengupta</h2>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                I started The Growth Bench after years inside D2C e-commerce (a US furniture brand), B2B SaaS (a GST compliance platform), and product discovery (an AI venture studio). I&apos;ve managed ad accounts spending crores per month, fixed checkout flows that recovered lakhs in lost revenue, and built growth systems for brands that started with nothing but a Shopify store.
+                Growth strategist and full-stack operator. Built growth systems for D2C e-commerce, B2B SaaS, and AI ventures — managing ad accounts spending crores per month, fixing checkout flows that recovered lakhs in lost revenue, and shipping AI automation from scratch.
               </p>
               <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                What I learned is that most brands don&apos;t need a bigger agency or a cheaper freelancer. They need one person who owns the full picture — with the right specialists on call when the work demands it. That&apos;s how we run: founder-led, with a specialist engaged per project on a contract basis. No account layers, no overhead you don&apos;t need.
+                MBA in Marketing &amp; Analytics (IIT Jodhpur). B.Tech in Mechanical Engineering. We run founder-led, with specialists deployed per project — no account layers, no overhead you don't need.
               </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                Background: MBA in Marketing &amp; Analytics (IIT Jodhpur) and B.Tech in Mechanical Engineering — analytics and systems thinking applied to growth. Recent independent client work includes a US D2C furniture brand (checkout recovery) and a D2C coffee brand (scale-up).
-              </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                We also build with AI ourselves: <a href="https://dhanplan.in" target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-2">DhanPlan.in</a>, a live free AI-assisted personal finance and retirement planning tool we shipped independently; our own AI outreach system that powers our lead generation; and the content and SEO automation pipeline behind large-scale catalog work — the same bench we now offer as agentic AI Implementation across ops, support, content, and follow-ups.
-              </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                And if the lead is ever unavailable, a briefed specialist covers the sprint — your context lives in shared docs and weekly notes, never in one head.
-              </p>
-              <div className="flex flex-wrap items-center gap-3 mt-6">
-                <Button asChild size="sm" className="gap-2">
-                  <a href="mailto:hello@thegrowthbench.com" className="no-underline">
-                    <Mail className="w-4 h-4" /> Email Us
-                  </a>
-                </Button>
-                <Button asChild size="sm" variant="outline" className="gap-2">
-                  <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="no-underline">
-                    <MessageCircle className="w-4 h-4" /> WhatsApp
-                  </a>
-                </Button>
-                <Button size="sm" variant="secondary" onClick={openBookingModal}>Book a Free Audit Call</Button>
-              </div>
             </div>
           </div>
         </div>
       </motion.section>
 
+      {/* What We Don't Do + Full Bench */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="grid md:grid-cols-2 gap-12 max-w-4xl">

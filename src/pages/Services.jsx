@@ -246,7 +246,7 @@ const Services = () => {
           </div>
 
           {/* Inline metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-hairline-soft max-w-3xl">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-hairline-soft">
             {[
               { num: '9', label: 'Capabilities' },
               { num: '$425K/mo', label: 'Recovered for one client' },
