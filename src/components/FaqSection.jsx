@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 const FaqSection = ({
@@ -8,24 +8,35 @@ const FaqSection = ({
   schema = true,
   className = '',
 }) => {
-  const faqSchema = schema ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": items.map(item => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
+  const scriptRef = useRef(null);
+
+  useEffect(() => {
+    if (!schema || !items.length) return;
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": items.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      }))
+    });
+    document.head.appendChild(script);
+    scriptRef.current = script;
+    return () => {
+      if (scriptRef.current && scriptRef.current.parentNode) {
+        scriptRef.current.parentNode.removeChild(scriptRef.current);
       }
-    }))
-  } : null;
+    };
+  }, [items, schema]);
 
   return (
     <section className={`bg-canvas py-[100px] md:py-[120px] ${className}`}>
-      {faqSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-      )}
       <div className="w-full max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
         <div className="max-w-2xl mb-12">
           {label && <span className="text-label-xs text-mute uppercase tracking-wider">{label}</span>}
