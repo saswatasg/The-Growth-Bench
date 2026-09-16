@@ -28,16 +28,16 @@ const ProblemSection = ({ className = '' }) => {
   const { openBookingModal } = useBookingModal();
 
   return (
-    <motion.section {...fadeUp} className={`py-[80px] md:py-[100px] ${className}`}>
+    <motion.section {...fadeUp} className={`py-[100px] md:py-[120px] ${className}`}>
       <div className="container-site">
-        <div className="max-w-2xl mb-10">
+        <div className="text-center mb-12">
           <span className="text-label-xs text-mute uppercase tracking-wider">Sound familiar?</span>
           <h2 className="font-display text-display-md text-ink mt-2 leading-none">
-            Most growth problems look the same from the inside.
+            Most growth problems look<br />the same from the inside.
           </h2>
         </div>
 
-        <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-5 max-w-4xl">
+        <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
           {problems.map((p) => (
             <motion.div key={p.headline} {...staggerChild} className="p-6 border border-hairline-soft bg-canvas">
               <div className="flex items-start gap-3">
@@ -51,7 +51,7 @@ const ProblemSection = ({ className = '' }) => {
           ))}
         </motion.div>
 
-        <div className="mt-10 max-w-4xl">
+        <div className="mt-10 text-center">
           <Button size="lg" onClick={openBookingModal}>
             Book a Free Audit Call — we'll diagnose which problem is costing you the most
           </Button>

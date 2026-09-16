@@ -33,10 +33,10 @@ const Home = () => {
       <PageMeta />
       <HeroSection />
       <MarqueeBar />
+      <ProblemSection className="bg-canvas" />
       <ServicesOverview />
       <GrowthTimeline />
       <ActivityProof className="bg-ink" />
-      <ProblemSection className="bg-canvas" />
 
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site max-w-4xl mx-auto">
@@ -45,7 +45,7 @@ const Home = () => {
             <h2 className="font-display text-display-md text-ink mt-2">Results that speak plainly.</h2>
           </div>
 
-          <div className="relative h-[320px] md:h-[280px] mb-8 overflow-hidden">
+          <div className="relative mb-8 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial}
@@ -53,7 +53,7 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                className="p-8 md:p-10 border border-hairline-soft bg-canvas max-w-2xl mx-auto absolute inset-x-0 top-0"
+                className="p-8 md:p-10 border border-hairline-soft bg-canvas max-w-2xl mx-auto"
               >
                 <span aria-hidden="true" className="font-display text-display-lg text-hairline leading-none absolute top-4 left-6 select-none">&ldquo;</span>
                 <p className="text-body-md text-mute leading-relaxed mb-6 relative z-10">{testimonialsData[currentTestimonial].text}</p>
@@ -91,7 +91,7 @@ const Home = () => {
       {posts.length > 0 && (
         <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
           <div className="container-site">
-            <div className="max-w-2xl mb-12">
+            <div className="text-center mb-12">
               <span className="text-label-xs text-mute uppercase tracking-wider">Latest Insights</span>
               <h2 className="font-display text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
             </div>
@@ -111,7 +111,7 @@ const Home = () => {
               ))}
             </motion.div>
 
-            <div className="mt-10">
+            <div className="mt-10 text-center">
               <Link to="/resources" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
                 View all insights <ArrowRight className="w-4 h-4" />
               </Link>

@@ -52,17 +52,17 @@ const GrowthTimeline = () => {
   return (
     <section className="bg-canvas py-[100px] md:py-[120px]">
       <div className="container-site">
-        <div className="max-w-3xl">
+        <div className="text-center mb-12">
           <p className="text-label-xs text-mute uppercase tracking-wider">The Bench Method</p>
-          <h2 className="font-display text-display-md md:text-display-lg text-ink mt-3 leading-[0.95]">
+          <h2 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-[0.95]">
             What happens in your<br />first 90 days.
           </h2>
-          <p className="text-body-lg text-mute mt-5 leading-relaxed max-w-xl">
+          <p className="text-body-lg text-mute mt-5 leading-relaxed max-w-xl mx-auto">
             A structured sprint, not an open-ended retainer. Three phases. Clear deliverables. Measurable outcomes.
           </p>
         </div>
 
-        <div className="mt-16 max-w-3xl">
+        <div className="max-w-4xl mx-auto">
           {phases.map((phase, i) => (
             <div key={phase.num} className="relative">
               {i < phases.length - 1 && (
@@ -127,9 +127,9 @@ const GrowthTimeline = () => {
           ))}
         </div>
 
-        <div className="mt-8 max-w-3xl">
+        <div className="mt-8 max-w-4xl mx-auto">
           <div className="border-t border-hairline-soft pt-8">
-            <p className="text-body-sm text-mute">
+            <p className="text-body-sm text-mute text-center">
               Every phase includes weekly check-ins, continuous optimisation, and transparent reporting.
             </p>
           </div>
