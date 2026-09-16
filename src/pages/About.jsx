@@ -17,22 +17,29 @@ const About = () => {
           <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
             We're not an agency.<br />We're the growth partner<br />you actually wanted.
           </h1>
+          <p className="text-body-lg text-mute mt-6 max-w-xl mx-auto leading-relaxed">
+            Senior-led growth consultancy with specialists on demand — built for brands that outgrew freelancers but don't want agency overhead.
+          </p>
         </div>
       </section>
 
       {/* The Problem */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="max-w-4xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">The Problem</span>
-            <p className="text-body-md text-mute leading-relaxed mt-4 max-w-2xl">
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <span className="text-label-xs text-mute uppercase tracking-wider">The Problem</span>
+            </div>
+            <p className="text-body-lg text-mute leading-relaxed text-center">
               Most growing brands end up choosing between talented freelancers stretched too thin and large agencies with too many layers.
             </p>
-            <p className="text-heading-md text-ink leading-snug mt-6 border-l-4 border-ink pl-5">
-              "I just wanted one person who understood my whole business and could build the whole thing properly."
-            </p>
-            <p className="text-caption-sm text-mute mt-2">— What founders told us</p>
-            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-2xl">
+            <blockquote className="mt-10 border-l-4 border-ink pl-6 py-2">
+              <p className="text-heading-md text-ink leading-snug">
+                "I just wanted one person who understood my whole business and could build the whole thing properly."
+              </p>
+              <cite className="text-caption-sm text-mute mt-3 block not-italic">— What founders told us</cite>
+            </blockquote>
+            <p className="text-body-lg text-mute leading-relaxed mt-10 text-center">
               That person is your Growth Bench lead — a senior partner who owns the full picture, with the right specialists on call when the work demands it. No handoffs, no layers, no overhead you don't need.
             </p>
           </div>
@@ -40,20 +47,20 @@ const About = () => {
       </motion.section>
 
       {/* Operating Model */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same person who sees<br />the full picture builds it.</h2>
           </div>
 
-          <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6 mt-10">
+          <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               { icon: '01', title: 'One lead, end to end', desc: 'The person who audits your funnel leads execution across every channel and every sprint. No handoffs, no context lost between strategy and delivery.' },
               { icon: '02', title: 'Specialists who scale', desc: 'CRO, ads, dev, design — deployed for what\'s needed, never burning hours on a retainer bench. You pay for depth, not occupancy.' },
               { icon: '03', title: 'Direct to the source', desc: 'Your lead works directly with you. No account managers routing messages, no briefings lost in translation. Decisions in hours, not days.' },
             ].map((step) => (
-              <motion.div key={step.icon} {...staggerChild} className="p-6 bg-canvas border border-hairline-soft">
+              <motion.div key={step.icon} {...staggerChild} className="p-6 bg-soft-cloud border border-hairline-soft">
                 <div className="w-10 h-10 rounded-full bg-ink flex items-center justify-center mb-4">
                   <span className="text-caption-sm text-canvas font-bold">{step.icon}</span>
                 </div>
@@ -66,12 +73,13 @@ const About = () => {
       </motion.section>
 
       {/* How We Think */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">Four principles. No exceptions.</h2>
           </div>
-          <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
+          <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto mt-8">
             {[
               { num: '01', title: 'Diagnosis before prescription.', body: "We don't recommend a channel until we understand the business. Every engagement starts with a thorough audit." },
               { num: '02', title: 'Owners, not vendors.', body: "We ask the questions a founder would ask. We'd rather delay a campaign by a week and get it right." },
@@ -81,7 +89,7 @@ const About = () => {
               <motion.div key={p.num} {...staggerChild}>
                 <span className="text-label-xs text-mute font-mono">{p.num}</span>
                 <h3 className="font-display text-heading-xl text-ink leading-none mt-1">{p.title}</h3>
-                <p className="text-body-sm text-mute mt-3 leading-relaxed max-w-md">{p.body}</p>
+                <p className="text-body-sm text-mute mt-3 leading-relaxed">{p.body}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -113,29 +121,40 @@ const About = () => {
         </div>
       </motion.section>
 
-      {/* Founder — compact */}
+      {/* Founder */}
       <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="grid md:grid-cols-[auto_1fr] gap-8 max-w-4xl items-start">
-            <div className="w-20 h-20 rounded-full bg-ink flex items-center justify-center flex-shrink-0 overflow-hidden">
-              <img
-                src="/assets/images/founder.png"
-                alt="Saswata S. Sengupta"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-              />
-              <span className="font-display text-display-md text-canvas hidden">S</span>
-            </div>
-            <div>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10">
               <span className="text-label-xs text-mute uppercase tracking-wider">Founder</span>
-              <h2 className="font-display text-heading-xl text-ink mt-1 leading-none">Saswata S. Sengupta</h2>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                Growth strategist and full-stack operator. Built growth systems for D2C e-commerce, B2B SaaS, and AI ventures — managing ad accounts spending crores per month, fixing checkout flows that recovered lakhs in lost revenue, and shipping AI automation from scratch.
-              </p>
-              <p className="text-body-md text-mute leading-relaxed mt-4 max-w-xl">
-                MBA in Marketing &amp; Analytics (IIT Jodhpur). B.Tech in Mechanical Engineering. We run founder-led, with specialists deployed per project — no account layers, no overhead you don't need.
-              </p>
+            </div>
+            <div className="grid md:grid-cols-[auto_1fr] gap-10 items-start">
+              <div className="flex justify-center md:justify-start">
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center flex-shrink-0 overflow-hidden">
+                  <img
+                    src="/assets/images/founder.png"
+                    alt="Saswata S. Sengupta"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                  />
+                  <span className="font-display text-display-md text-ink hidden">S</span>
+                </div>
+              </div>
+              <div>
+                <h2 className="font-display text-heading-xl text-ink leading-none">Saswata S. Sengupta</h2>
+                <p className="text-body-md text-mute leading-relaxed mt-4">
+                  Growth strategist and full-stack operator. Built growth systems for D2C e-commerce, B2B SaaS, and AI ventures — managing ad accounts spending crores per month, fixing checkout flows that recovered lakhs in lost revenue, and shipping AI automation from scratch.
+                </p>
+                <p className="text-body-md text-mute leading-relaxed mt-4">
+                  MBA in Marketing &amp; Analytics (IIT Jodhpur). B.Tech in Mechanical Engineering. We run founder-led, with specialists deployed per project — no account layers, no overhead you don't need.
+                </p>
+                <blockquote className="mt-8 border-l-4 border-ink pl-5 py-1">
+                  <p className="text-body-lg text-ink leading-relaxed italic">
+                    "Growth isn't a channel problem. It's a systems problem. We fix the system."
+                  </p>
+                </blockquote>
+              </div>
             </div>
           </div>
         </div>
@@ -152,7 +171,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-5">
+          <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
             {[
               { id: 'ai-implementation', title: 'AI Implementation', tagline: 'Agents that run your repetitive work.', core: true },
               { id: 'strategy', title: 'Growth Strategy', tagline: 'The diagnosis before the prescription.', core: true },
@@ -181,9 +200,9 @@ const About = () => {
             ))}
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 text-center">
             <a href="#full-bench" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
-              See the full bench —20 specialists across 9 service lines <ArrowRight className="w-4 h-4" />
+              See the full bench — 20 specialists across 9 service lines <ArrowRight className="w-4 h-4" />
             </a>
           </div>
         </div>
@@ -255,7 +274,7 @@ const About = () => {
             })}
           </motion.div>
 
-          <p className="text-caption-sm text-hairline/80 mt-8">
+          <p className="text-caption-sm text-hairline/80 mt-8 text-center">
             Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
           </p>
         </div>
