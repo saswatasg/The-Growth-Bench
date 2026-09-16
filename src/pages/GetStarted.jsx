@@ -22,16 +22,14 @@ const GetStarted = () => {
 
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Get Started</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-              Start with a diagnosis.<br />Then we build.
-            </h1>
-            <p className="text-body-lg text-mute mt-6 max-w-xl leading-relaxed">
-              Two paths in: book a free audit call and we&apos;ll diagnose together, or take a scorecard to see where you stand.
-            </p>
-          </div>
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Get Started</span>
+          <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            Start with a diagnosis.<br />Then we build.
+          </h1>
+          <p className="text-body-lg text-mute mt-6 max-w-xl mx-auto leading-relaxed">
+            Two paths in: book a free audit call and we&apos;ll diagnose together, or take a scorecard to see where you stand.
+          </p>
         </div>
       </section>
 
@@ -80,7 +78,7 @@ const GetStarted = () => {
       {/* Scorecard choice — full-width black */}
       <section className="bg-ink py-[60px] md:py-[80px]">
         <div className="container-site">
-          <div className="max-w-2xl mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-stone uppercase tracking-wider">Free scorecards</span>
             <h2 className="font-display text-display-md text-canvas mt-2 leading-none">Not ready to talk?<br />Diagnose yourself first.</h2>
           </div>

@@ -24,23 +24,21 @@ const Resources = () => {
 
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Insights</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-              Frameworks. Teardowns.<br />Things that actually work.
-            </h1>
-            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Blog posts, scorecards, and practical guides from the bench.
-            </p>
-          </div>
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Insights</span>
+          <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            Frameworks. Teardowns.<br />Things that actually work.
+          </h1>
+          <p className="text-body-md text-mute mt-6 max-w-xl mx-auto leading-relaxed">
+            Blog posts, scorecards, and practical guides from the bench.
+          </p>
         </div>
       </section>
 
       {/* Scorecards — full-width black banner */}
       <section className="bg-ink py-[60px] md:py-[80px]">
         <div className="container-site">
-          <div className="max-w-2xl mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-stone uppercase tracking-wider">Free tools</span>
             <h2 className="font-display text-display-md text-canvas mt-2 leading-none">Not ready to talk?<br />Take a free scorecard.</h2>
           </div>
@@ -82,9 +80,8 @@ const Resources = () => {
       {/* Blog posts */}
       <motion.section {...fadeUp} className="bg-soft-cloud">
         <div className="container-site py-[80px] md:py-[100px]">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Latest insights</span>
-            <div className="flex-1 h-px bg-hairline" />
           </div>
           <div className="flex flex-wrap gap-3 mb-10">
             {categories.map((cat) => (
@@ -128,9 +125,8 @@ const Resources = () => {
       {/* Results callout */}
       <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Real results</span>
-            <div className="flex-1 h-px bg-hairline-soft" />
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <Link to="/resources/we-fixed-checkout-flow-recovered-2-89-crore-month" className="block p-6 border border-hairline-soft bg-canvas no-underline group">

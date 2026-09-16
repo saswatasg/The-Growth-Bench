@@ -12,13 +12,11 @@ const About = () => {
 
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <div className="max-w-3xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">About</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-              We're not an agency.<br />We're the growth partner<br />you actually wanted.
-            </h1>
-          </div>
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">About</span>
+          <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            We're not an agency.<br />We're the growth partner<br />you actually wanted.
+          </h1>
         </div>
       </section>
 
@@ -44,8 +42,10 @@ const About = () => {
       {/* Operating Model */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
-          <h2 className="font-display text-display-md text-ink mt-2 leading-none max-w-2xl">The same person who sees the full picture builds it.</h2>
+          <div className="text-center mb-10">
+            <span className="text-label-xs text-mute uppercase tracking-wider">The Operating Model</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same person who sees<br />the full picture builds it.</h2>
+          </div>
 
           <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6 mt-10">
             {[
@@ -68,7 +68,9 @@ const About = () => {
       {/* How We Think */}
       <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
-          <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
+          <div className="text-center mb-8">
+            <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
+          </div>
           <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
             {[
               { num: '01', title: 'Diagnosis before prescription.', body: "We don't recommend a channel until we understand the business. Every engagement starts with a thorough audit." },
@@ -142,10 +144,10 @@ const About = () => {
       {/* Flagship Services */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="max-w-2xl mb-10">
+          <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">The growth stack, handled.</h2>
-            <p className="text-body-md text-mute mt-4 max-w-xl leading-relaxed">
+            <p className="text-body-md text-mute mt-4 max-w-xl mx-auto leading-relaxed">
               Nine service lines. Twenty specialists on call. One operating lead who owns the full picture.
             </p>
           </div>
@@ -190,12 +192,12 @@ const About = () => {
       {/* The Full Bench */}
       <motion.section id="full-bench" {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="max-w-3xl mb-10">
+          <div className="text-center mb-10">
             <span className="text-label-xs text-stone uppercase tracking-wider">The Full Bench</span>
             <h2 className="font-display text-display-md text-canvas mt-2 leading-none">
               A specialist for every<br />growth surface.
             </h2>
-            <p className="text-body-md text-hairline mt-4 max-w-xl leading-relaxed">
+            <p className="text-body-md text-hairline mt-4 max-w-xl mx-auto leading-relaxed">
               One lead orchestrates. Twenty specialists deploy. You get depth without overhead.
             </p>
           </div>
@@ -261,16 +263,14 @@ const About = () => {
 
       {/* What We Don't Do */}
       <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
-        <div className="container-site">
-          <div className="max-w-3xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">
-              We pick a lane and<br />stay in it.
-            </h2>
-            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl">
-              We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
-            </p>
-          </div>
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
+          <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+            We pick a lane and<br />stay in it.
+          </h2>
+          <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl mx-auto">
+            We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
+          </p>
         </div>
       </motion.section>
     </>

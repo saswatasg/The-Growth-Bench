@@ -240,18 +240,18 @@ const Services = () => {
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
-          <div className="max-w-3xl">
+          <div className="text-center">
             <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
             <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               The full growth stack.<br />Not parts of it.
             </h1>
-            <p className="text-body-lg text-mute mt-6 max-w-xl leading-relaxed">
+            <p className="text-body-lg text-mute mt-6 max-w-xl mx-auto leading-relaxed">
               Most agencies pick a lane. We cover the entire growth surface — because growth doesn&apos;t live in a lane.
             </p>
           </div>
 
           {/* Inline metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-hairline-soft">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-12 pt-8 border-t border-hairline-soft max-w-3xl mx-auto">
             {[
               { num: '9', label: 'Service lines' },
               { num: '20+', label: 'Specialists on call' },
@@ -270,9 +270,8 @@ const Services = () => {
       {/* How We Work — Process strip */}
       <motion.section {...fadeUp} className="bg-ink py-[60px] md:py-[80px]">
         <div className="container-site">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-hairline uppercase tracking-wider">How we work</span>
-            <div className="flex-1 h-px bg-mute/20" />
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step) => {
@@ -297,9 +296,8 @@ const Services = () => {
       {/* Core Services */}
       <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Core services</span>
-            <div className="flex-1 h-px bg-hairline-soft" />
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {/* AI Implementation — featured, full width */}
@@ -393,9 +391,8 @@ const Services = () => {
       {/* Supporting Services */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Supporting services</span>
-            <div className="flex-1 h-px bg-hairline" />
           </div>
           <motion.div {...staggerContainer} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {supportingServices.map((s) => {
@@ -433,9 +430,8 @@ const Services = () => {
       {/* Platforms strip */}
       <motion.section {...fadeUp} className="bg-canvas border-t border-b border-hairline-soft py-[40px] md:py-[50px]">
         <div className="container-site">
-          <div className="flex items-center gap-3 mb-6">
+          <div className="text-center mb-6">
             <span className="text-label-xs text-mute uppercase tracking-wider">Platforms we work with</span>
-            <div className="flex-1 h-px bg-hairline-soft" />
           </div>
           <PlatformLogos />
         </div>

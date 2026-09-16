@@ -80,23 +80,21 @@ const Proof = () => {
 
       {/* Hero */}
       <section className="bg-canvas py-[100px] md:py-[120px]">
-        <div className="container-site">
-          <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-              Work that speaks<br />for itself.
-            </h1>
-            <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Real results from real engagements. Every project starts with a diagnosis.
-            </p>
-          </div>
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
+          <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            Work that speaks<br />for itself.
+          </h1>
+          <p className="text-body-md text-mute mt-6 max-w-xl mx-auto leading-relaxed">
+            Real results from real engagements. Every project starts with a diagnosis.
+          </p>
         </div>
       </section>
 
       {/* Comparison — Freelancer vs Agency vs Bench */}
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="max-w-2xl mb-10">
+          <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Side by side</span>
             <h2 className="font-display text-display-md text-ink mt-2 leading-none">The same job, three ways.</h2>
           </div>
@@ -156,9 +154,8 @@ const Proof = () => {
       {/* Case Studies */}
       <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="flex items-center gap-2 mb-8">
+          <div className="text-center mb-8">
             <span className="text-label-xs text-mute uppercase tracking-wider">Case studies</span>
-            <div className="flex-1 h-px bg-hairline-soft" />
           </div>
           <div className="flex flex-wrap gap-3 mb-10">
             {['All', ...allTags].map((tag) => (
