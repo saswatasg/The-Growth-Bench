@@ -37,6 +37,14 @@ const pageSpecificMeta = {
     title: "Growth Frameworks & Teardowns | The Growth Bench",
     description: "Actionable growth advice, CRO teardowns, and marketing strategy frameworks for D2C brands and early-stage startups."
   },
+  '/resources': {
+    title: "Growth Frameworks & Teardowns | The Growth Bench",
+    description: "Actionable growth advice, CRO teardowns, and marketing strategy frameworks for D2C brands and early-stage startups."
+  },
+  '/get-started': {
+    title: "Get Started — Book a Free Audit Call | The Growth Bench",
+    description: "Start with a free scorecard or book a 30-minute audit call. One concrete recommendation, no pitch, no pressure."
+  },
   '/pricing': {
     title: "Work With Us — Start With a Free Funnel Audit | The Growth Bench",
     description: "Tell us where growth hurts, then get a scoped plan after a free 30-minute audit call. No fixed prices — just what moves your funnel."

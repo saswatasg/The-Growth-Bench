@@ -345,7 +345,7 @@ const AIScorecard = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'New scorecard lead', ...payload }),
       });
-    } catch {}
+    } catch (e) { console.error('Scorecard submission failed:', e); }
   };
 
   const goBack = () => {
@@ -424,7 +424,7 @@ const AIScorecard = () => {
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  });
+  }, [step, answer, history]);
 
   const isResult = step === 'result';
   const node = NODES[step];
@@ -651,7 +651,7 @@ const CopyButton = ({ text }) => {
       ta.value = text;
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); } catch {}
+      try { document.execCommand('copy'); } catch (e) { console.error('Copy failed:', e); }
       ta.remove();
     }
     setCopied(true);

@@ -168,6 +168,22 @@ const GrowthScorecard = () => {
 
   const answeredCount = Object.keys(answers).length;
 
+  const getMaxQuestions = (startArm) => {
+    if (!startArm) return 4;
+    let maxDepth = 0;
+    const visit = (nodeId, depth) => {
+      const node = NODES[nodeId];
+      if (!node) return;
+      if (node.next === 'FIT' || node.next === 'RESULT') { maxDepth = Math.max(maxDepth, depth); return; }
+      if (typeof node.next === 'function') { visit('FIT', depth + 1); return; }
+      if (node.next) visit(node.next, depth + 1);
+    };
+    const armStart = { acquisition: 'A1', conversion: 'B1', retention: 'C1', analytics: 'D1' }[startArm];
+    if (armStart) visit(armStart, 1);
+    return Math.max(maxDepth + 1, 3);
+  };
+  const maxQ = arm ? getMaxQuestions(arm) + 1 : 4;
+
   const postLead = async (payload) => {
     if (!WEB3FORMS_KEY) return;
     try {
@@ -176,7 +192,7 @@ const GrowthScorecard = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'New growth scorecard lead', ...payload }),
       });
-    } catch {}
+    } catch (e) { console.error('Scorecard submission failed:', e); }
   };
 
   const goBack = () => {
@@ -261,7 +277,7 @@ const GrowthScorecard = () => {
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  });
+  }, [step, answer, goBack]);
 
   const isResult = step === 'result';
   const node = NODES[step];
@@ -308,7 +324,7 @@ const GrowthScorecard = () => {
     `Hi! I took the Growth Audit Scorecard: ${pct}% (${tier}). Can we talk about what to fix first?`
   );
 
-  const progress = Math.min(100, Math.round((answeredCount / 5) * 100));
+  const progress = Math.min(100, Math.round((answeredCount / maxQ) * 100));
 
   return (
     <>
@@ -477,7 +493,7 @@ const CopyButton = ({ text }) => {
       ta.value = text;
       document.body.appendChild(ta);
       ta.select();
-      try { document.execCommand('copy'); } catch {}
+      try { document.execCommand('copy'); } catch (e) { console.error('Copy failed:', e); }
       ta.remove();
     }
     setCopied(true);

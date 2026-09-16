@@ -96,7 +96,7 @@ const BlogPost = () => {
             <p className="text-body-md text-mute mt-4 leading-relaxed max-w-2xl">{post.description}</p>
           </div>
 
-          <div className="border-t border-hairline-soft pt-8" />
+          <div className="border-t border-hairline-soft pt-8"></div>
 
           <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-xl [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_h3]:text-heading-md [&_h3]:text-ink [&_h3]:mt-8 [&_h3]:mb-3 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mb-1 [&_p]:mb-4">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>

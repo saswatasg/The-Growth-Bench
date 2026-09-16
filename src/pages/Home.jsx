@@ -38,7 +38,7 @@ const Home = () => {
       <ActivityProof className="bg-ink" />
       <FitFilter className="bg-canvas" />
 
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[100px] md:py-[120px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <span className="text-label-xs text-mute uppercase tracking-wider">Client Results</span>

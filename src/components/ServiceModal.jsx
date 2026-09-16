@@ -31,7 +31,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[70] bg-ink/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[80] bg-ink/60 backdrop-blur-sm"
             onClick={onClose}
           />
           <motion.div
@@ -39,7 +39,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 20 }}
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
-            className="fixed inset-4 md:inset-8 lg:inset-16 z-[80] bg-canvas overflow-hidden flex flex-col"
+            className="fixed inset-4 md:inset-8 lg:inset-16 z-[90] bg-canvas overflow-hidden flex flex-col"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 md:px-8 py-5 border-b border-hairline-soft flex-shrink-0">

@@ -301,6 +301,7 @@ const Services = () => {
             <button
               id="ai-implementation"
               onClick={() => openModal(services[0])}
+              aria-label="View AI Implementation service details"
               className="md:col-span-2 group text-left p-6 md:p-8 border border-hairline-soft bg-soft-cloud hover:border-ink transition-all duration-300 relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <span className="absolute top-4 right-4 text-label-xs uppercase tracking-wider bg-ink text-canvas px-3 py-1 rounded-full">New</span>
@@ -331,6 +332,7 @@ const Services = () => {
             <button
               id="strategy"
               onClick={() => openModal(services[1])}
+              aria-label="View Growth Strategy service details"
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
@@ -348,6 +350,7 @@ const Services = () => {
             <button
               id="website"
               onClick={() => openModal(services[2])}
+              aria-label="View Website and Development service details"
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
@@ -365,6 +368,7 @@ const Services = () => {
             <button
               id="ads"
               onClick={() => openModal(services[3])}
+              aria-label="View Ads service details"
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">

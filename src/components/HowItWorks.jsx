@@ -18,7 +18,7 @@ const HowItWorks = ({ className = '' }) => {
           <h2 className="font-display text-display-md text-ink mt-2 leading-none">One partner.<br />The right team.<br />No layers.</h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 items-start max-w-4xl">
+        <div className="grid md:grid-cols-3 gap-8 items-start max-w-4xl mx-auto">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
