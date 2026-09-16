@@ -47,31 +47,31 @@ const Resources = () => {
           <div className="grid md:grid-cols-2 gap-4">
             <Link
               to="/ai-scorecard"
-              className="group p-6 md:p-8 border border-stone/20 bg-ink hover:border-canvas transition-colors no-underline"
+              className="group p-6 md:p-8 border-2 border-canvas bg-canvas hover:bg-soft-cloud transition-colors no-underline"
             >
-              <div className="w-10 h-10 rounded-full bg-canvas/10 flex items-center justify-center mb-4">
-                <Workflow className="w-5 h-5 text-canvas" />
+              <div className="w-10 h-10 rounded-full bg-canvas border-2 border-hairline-soft flex items-center justify-center mb-4">
+                <Workflow className="w-5 h-5 text-ink" />
               </div>
-              <h3 className="font-display text-heading-xl text-canvas leading-none">AI Readiness Scorecard</h3>
-              <p className="text-body-sm text-stone mt-3 leading-relaxed">
+              <h3 className="font-display text-heading-xl text-ink leading-none">AI Readiness Scorecard</h3>
+              <p className="text-body-sm text-ink/70 mt-3 leading-relaxed">
                 60 seconds, instant readout — recoverable hours, a ₹ range, and exactly where to start.
               </p>
-              <span className="text-body-sm text-canvas mt-4 flex items-center gap-1 font-medium">
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 font-medium">
                 Take the quiz <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </Link>
             <Link
               to="/growth-scorecard"
-              className="group p-6 md:p-8 border border-stone/20 bg-ink hover:border-canvas transition-colors no-underline"
+              className="group p-6 md:p-8 border-2 border-canvas bg-canvas hover:bg-soft-cloud transition-colors no-underline"
             >
-              <div className="w-10 h-10 rounded-full bg-canvas/10 flex items-center justify-center mb-4">
-                <TrendingUp className="w-5 h-5 text-canvas" />
+              <div className="w-10 h-10 rounded-full bg-canvas border-2 border-hairline-soft flex items-center justify-center mb-4">
+                <TrendingUp className="w-5 h-5 text-ink" />
               </div>
-              <h3 className="font-display text-heading-xl text-canvas leading-none">Growth Audit Scorecard</h3>
-              <p className="text-body-sm text-stone mt-3 leading-relaxed">
+              <h3 className="font-display text-heading-xl text-ink leading-none">Growth Audit Scorecard</h3>
+              <p className="text-body-sm text-ink/70 mt-3 leading-relaxed">
                 Diagnose your funnel health — acquisition, conversion, retention, analytics. Get a prioritised fix list.
               </p>
-              <span className="text-body-sm text-canvas mt-4 flex items-center gap-1 font-medium">
+              <span className="text-body-sm text-ink mt-4 flex items-center gap-1 font-medium">
                 Take the quiz <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </Link>
