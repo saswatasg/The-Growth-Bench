@@ -4,7 +4,8 @@ import { ArrowRight, Search, Code2, Target, Users, TrendingUp, Palette, FileText
 import PageMeta from '@/components/PageMeta';
 import ServiceModal from '@/components/ServiceModal';
 import FaqSection from '@/components/FaqSection';
-import { fadeUp } from '@/lib/motion';
+import PlatformLogos from '@/components/PlatformLogos';
+import { fadeUp, staggerContainer, staggerChild } from '@/lib/motion';
 
 const services = [
   {
@@ -198,11 +199,6 @@ const processSteps = [
   { icon: Rocket, num: '03', title: 'Scale', desc: 'Compound results through structured experiments and AI automation.' },
 ];
 
-const platforms = [
-  'Shopify', 'Meta Ads', 'Google Ads', 'Amazon', 'Next.js', 'Webflow', 'Figma',
-  'HubSpot', 'Zoho', 'GA4', 'GTM', 'WhatsApp Business', 'Instagram',
-];
-
 const Services = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -278,8 +274,8 @@ const Services = () => {
               const Icon = step.icon;
               return (
                 <div key={step.num} className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full border border-mute/30 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 text-mute" />
+                  <div className="w-10 h-10 rounded-full bg-canvas/10 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-5 h-5 text-canvas" />
                   </div>
                   <div>
                     <span className="text-caption-sm text-mute font-mono">{step.num}</span>
@@ -336,7 +332,7 @@ const Services = () => {
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <Search className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+                <Search className="w-5 h-5 text-ink group-hover:text-canvas transition-colors" />
               </div>
               <span className="text-caption-sm text-mute font-mono">02</span>
               <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[1].title}</h3>
@@ -352,7 +348,7 @@ const Services = () => {
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <Code2 className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+                <Code2 className="w-5 h-5 text-ink group-hover:text-canvas transition-colors" />
               </div>
               <span className="text-caption-sm text-mute font-mono">03</span>
               <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[2].title}</h3>
@@ -368,7 +364,7 @@ const Services = () => {
               className="group text-left p-6 border border-hairline-soft bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
             >
               <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                <Target className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
+                <Target className="w-5 h-5 text-ink group-hover:text-canvas transition-colors" />
               </div>
               <span className="text-caption-sm text-mute font-mono">04</span>
               <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{services[3].title}</h3>
@@ -388,28 +384,29 @@ const Services = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">Supporting services</span>
             <div className="flex-1 h-px bg-hairline" />
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <motion.div {...staggerContainer} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {supportingServices.map((s) => {
               const Icon = s.icon;
               return (
-                <button
-                  key={s.id}
-                  onClick={() => openModal(s)}
-                  className="group text-left p-6 border border-hairline bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40"
-                >
-                  <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
-                    <Icon className="w-4 h-4 text-ink group-hover:text-canvas transition-colors" />
-                  </div>
-                  <span className="text-caption-sm text-mute font-mono">{s.eyebrow.split(' — ')[0]}</span>
-                  <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{s.title}</h3>
-                  <p className="text-body-sm text-mute mt-2 leading-relaxed">{s.shortDesc}</p>
-                  <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
-                    Overview <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </button>
+                <motion.div key={s.id} {...staggerChild}>
+                  <button
+                    onClick={() => openModal(s)}
+                    className="group text-left p-6 border border-hairline bg-canvas hover:border-ink transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 w-full"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-soft-cloud flex items-center justify-center mb-4 group-hover:bg-ink transition-colors">
+                      <Icon className="w-5 h-5 text-ink group-hover:text-canvas transition-colors" />
+                    </div>
+                    <span className="text-caption-sm text-mute font-mono">{s.eyebrow.split(' — ')[0]}</span>
+                    <h3 className="font-display text-heading-lg text-ink mt-1 leading-none">{s.title}</h3>
+                    <p className="text-body-sm text-mute mt-2 leading-relaxed">{s.shortDesc}</p>
+                    <span className="text-body-sm text-ink mt-4 flex items-center gap-1 md:opacity-0 md:group-hover:opacity-100 transition-opacity font-medium">
+                      Overview <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </button>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 
@@ -420,13 +417,7 @@ const Services = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">Platforms we work with</span>
             <div className="flex-1 h-px bg-hairline-soft" />
           </div>
-          <div className="flex flex-wrap gap-3">
-            {platforms.map((p) => (
-              <span key={p} className="px-4 py-2 border border-hairline-soft text-body-sm text-mute bg-soft-cloud/50 hover:border-ink hover:text-ink transition-colors">
-                {p}
-              </span>
-            ))}
-          </div>
+          <PlatformLogos />
         </div>
       </motion.section>
 

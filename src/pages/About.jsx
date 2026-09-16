@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import { WHATSAPP_URL } from '@/lib/constants';
+import { fadeUp, fadeIn, scaleIn, staggerContainer, staggerChild } from '@/lib/motion';
 
 const About = () => {
   const { openBookingModal } = useBookingModal();
@@ -68,20 +70,20 @@ const About = () => {
       <motion.section {...fadeUp} className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <span className="text-label-xs text-mute uppercase tracking-wider">How We Think</span>
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
+          <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-x-12 gap-y-8 mt-8">
             {[
               { num: '01', title: 'Diagnosis before prescription.', body: "We don't recommend a channel until we understand the business. Every engagement starts with a thorough audit." },
               { num: '02', title: 'Owners, not vendors.', body: "We ask the questions a founder would ask. We'd rather delay a campaign by a week and get it right." },
               { num: '03', title: 'Speed through clarity.', body: 'Most delays come from unclear direction, not slow execution. We invest time upfront so everyone knows what we\'re building.' },
               { num: '04', title: 'Honest over impressive.', body: "We'd rather tell you something uncomfortable early than send a polished slide that turns out to be wrong." },
             ].map((p) => (
-              <div key={p.num}>
+              <motion.div key={p.num} {...staggerChild}>
                 <span className="text-label-xs text-mute font-mono">{p.num}</span>
                 <h3 className="font-display text-heading-xl text-ink leading-none mt-1">{p.title}</h3>
                 <p className="text-body-sm text-mute mt-3 leading-relaxed max-w-md">{p.body}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </motion.section>
 

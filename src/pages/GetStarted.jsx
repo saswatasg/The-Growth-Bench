@@ -5,9 +5,7 @@ import { ArrowRight, Workflow, TrendingUp, MessageSquare, Zap, Sparkles } from '
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-import CtaPaths from '@/components/CtaPaths';
-import { WHATSAPP_URL } from '@/lib/constants';
-import { fadeUp, fadeIn } from '@/lib/motion';
+import { fadeUp } from '@/lib/motion';
 
 const STEPS = [
   { icon: MessageSquare, title: 'You tell us your story', body: 'Where your business is, what you want to grow, and what\'s been standing in the way.' },
@@ -114,32 +112,6 @@ const GetStarted = () => {
                 </div>
               );
             })}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Quick contact */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[60px] md:py-[80px] text-center">
-        <div className="container-site">
-          <p className="text-body-sm text-mute mb-6">Prefer something quicker?</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors"
-            >
-              WhatsApp us <ArrowRight className="w-3.5 h-3.5" />
-            </a>
-            <a
-              href="mailto:hello@thegrowthbench.com"
-              className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors"
-            >
-              Email hello@thegrowthbench.com <ArrowRight className="w-3.5 h-3.5" />
-            </a>
-          </div>
-          <div className="mt-8">
-            <CtaPaths tone="light" />
           </div>
         </div>
       </motion.section>

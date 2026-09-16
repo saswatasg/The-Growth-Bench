@@ -26,7 +26,7 @@ const Resources = () => {
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Resources</span>
+            <span className="text-label-xs text-mute uppercase tracking-wider">Insights</span>
             <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               Frameworks. Teardowns.<br />Things that actually work.
             </h1>

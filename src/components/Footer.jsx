@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { Mail, MessageCircle, Phone, ArrowRight } from 'lucide-react';
 import { WHATSAPP_URL } from '@/lib/constants';
 import { useBookingModal } from '@/context/BookingModalContext';
 
@@ -10,22 +10,16 @@ const footerLinks = {
     { label: 'Growth Strategy', to: '/services' },
     { label: 'Website & Development', to: '/services' },
     { label: 'Ads', to: '/services' },
-    { label: 'Lead Systems', to: '/services' },
     { label: 'CRO', to: '/services' },
-    { label: 'UI/UX Design', to: '/services' },
-    { label: 'Content & Email', to: '/services' },
     { label: 'Analytics & Reporting', to: '/services' },
   ],
-  Proof: [
-    { label: 'Case Studies', to: '/proof' },
-    { label: 'Cart Recovery', to: '/solutions/recover-abandoned-carts' },
-  ],
   Resources: [
-    { label: 'Blog', to: '/resources' },
+    { label: 'Insights', to: '/resources' },
     { label: 'AI Scorecard', to: '/ai-scorecard' },
     { label: 'Growth Scorecard', to: '/growth-scorecard' },
   ],
   Company: [
+    { label: 'Case Studies', to: '/proof' },
     { label: 'About', to: '/about' },
     { label: 'Get Started', to: '/get-started' },
   ],
@@ -55,11 +49,24 @@ const Footer = () => {
       {/* Link Grid */}
       <div className="container-site py-[60px] md:py-[80px]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10">
+          {/* Brand + Contact */}
           <div className="col-span-2 md:col-span-1">
             <img src="/logo.png" alt="The Growth Bench" className="w-8 h-8 logo-dark mb-4" />
-            <p className="text-body-sm text-stone leading-relaxed max-w-xs">
+            <p className="text-body-sm text-stone leading-relaxed max-w-xs mb-6">
               Full-stack growth partner for D2C brands and early-stage startups. Strategy, systems, scale.
             </p>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5" /> hello@thegrowthbench.com
+                </a>
+              </li>
+              <li>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
+                  <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+                </a>
+              </li>
+            </ul>
           </div>
 
           {Object.entries(footerLinks).map(([title, links]) => (
@@ -76,22 +83,6 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-
-          <div>
-            <h4 className="text-caption-sm text-canvas font-medium mb-4 uppercase tracking-wider">Contact</h4>
-            <ul className="space-y-2.5">
-              <li>
-                <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5" /> Email
-                </a>
-              </li>
-              <li>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
-                  <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
-                </a>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
 

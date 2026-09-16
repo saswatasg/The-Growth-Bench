@@ -11,7 +11,7 @@ import ActivityProof from '@/components/ActivityProof';
 import FitFilter from '@/components/FitFilter';
 import { loadPosts } from '@/lib/blogUtils';
 import { testimonialsData } from '@/data/testimonials';
-import { fadeUp } from '@/lib/motion';
+import { fadeUp, staggerContainer, staggerChild, scaleIn } from '@/lib/motion';
 
 const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -96,21 +96,23 @@ const Home = () => {
               <h2 className="font-display text-display-md text-ink mt-2">Growth insights<br />that actually help.</h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6">
               {posts.slice(0, 3).map((post) => (
-                <Link key={post.slug} to={`/resources/${post.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group h-full">
-                  <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-3 uppercase">{post.category}</span>
-                  <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">{post.title}</h3>
-                  <p className="text-body-sm text-mute leading-relaxed mb-3 line-clamp-2">{post.description}</p>
-                  <p className="text-body-sm text-mute flex items-center gap-1">
-                    Read the breakdown <ArrowRight className="w-3.5 h-3.5" />
-                  </p>
-                </Link>
+                <motion.div key={post.slug} {...staggerChild}>
+                  <Link to={`/resources/${post.slug}`} className="block p-6 border border-hairline-soft bg-canvas no-underline group h-full">
+                    <span className="inline-block text-label-xs text-mute bg-soft-cloud px-3 py-1 rounded-full mb-3 uppercase">{post.category}</span>
+                    <h3 className="text-heading-md text-ink mb-2 group-hover:text-mute transition-colors">{post.title}</h3>
+                    <p className="text-body-sm text-mute leading-relaxed mb-3 line-clamp-2">{post.description}</p>
+                    <p className="text-body-sm text-mute flex items-center gap-1">
+                      Read the breakdown <ArrowRight className="w-3.5 h-3.5" />
+                    </p>
+                  </Link>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             <div className="mt-10">
-              <Link to="/insights" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+              <Link to="/resources" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
                 View all insights <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

@@ -84,12 +84,12 @@ const Proof = () => {
       <section className="bg-canvas py-[100px] md:py-[120px]">
         <div className="container-site">
           <div className="max-w-2xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Proof</span>
+            <span className="text-label-xs text-mute uppercase tracking-wider">Case Studies</span>
             <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
               Work that speaks<br />for itself.
             </h1>
             <p className="text-body-md text-mute mt-6 max-w-xl leading-relaxed">
-              Case studies, comparisons, and the results The Growth Bench produces. Every project starts with a diagnosis.
+              Real results from real engagements. Every project starts with a diagnosis.
             </p>
           </div>
         </div>

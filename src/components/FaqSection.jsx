@@ -51,7 +51,7 @@ const FaqSection = ({
               className="border-t border-hairline-soft"
             >
               <AccordionTrigger className="text-left py-6 px-2 hover:no-underline group cursor-pointer [&[data-state=open]>svg]:rotate-180">
-                <span className="text-heading-lg text-ink pr-8 group-hover:text-mute transition-colors">{item.q}</span>
+                <span className="text-heading-md text-ink pr-8 group-hover:text-mute transition-colors">{item.q}</span>
               </AccordionTrigger>
               <AccordionContent className="px-2 pb-6">
                 <p className="text-body-md text-mute leading-relaxed max-w-3xl">{item.a}</p>
