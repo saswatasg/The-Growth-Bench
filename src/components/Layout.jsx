@@ -1,16 +1,21 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PreFooterCTA from '@/components/PreFooterCTA';
 
+const HIDE_PREFOOTER = ['/get-started'];
+
 const Layout = ({ children }) => {
+  const { pathname } = useLocation();
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-grow flex flex-col">
         {children}
       </main>
-      <PreFooterCTA />
+      {!HIDE_PREFOOTER.includes(pathname) && <PreFooterCTA />}
       <Footer />
     </div>
   );
