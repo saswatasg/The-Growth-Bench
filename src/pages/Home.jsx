@@ -8,7 +8,7 @@ import MarqueeBar from '@/components/home/MarqueeBar';
 import ServicesOverview from '@/components/home/ServicesOverview';
 import GrowthTimeline from '@/components/GrowthTimeline';
 import ActivityProof from '@/components/ActivityProof';
-import FitFilter from '@/components/FitFilter';
+import ProblemSection from '@/components/ProblemSection';
 import { loadPosts } from '@/lib/blogUtils';
 import { testimonialsData } from '@/data/testimonials';
 import { fadeUp, staggerContainer, staggerChild } from '@/lib/motion';
@@ -36,7 +36,7 @@ const Home = () => {
       <ServicesOverview />
       <GrowthTimeline />
       <ActivityProof className="bg-ink" />
-      <FitFilter className="bg-canvas" />
+      <ProblemSection className="bg-canvas" />
 
       <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site max-w-4xl mx-auto">

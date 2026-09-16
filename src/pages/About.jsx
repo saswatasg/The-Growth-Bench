@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Lightbulb, Palette, Code2, Target } from 'lucide-react';
+import { Lightbulb, Palette, Code2, Target, ArrowRight } from 'lucide-react';
 import PageMeta from '@/components/PageMeta';
 import { fadeUp, fadeIn, staggerContainer, staggerChild } from '@/lib/motion';
 
@@ -137,23 +138,48 @@ const About = () => {
         </div>
       </motion.section>
 
-      {/* What We Don't Do */}
-      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+      {/* Flagship Services */}
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[80px] md:py-[100px]">
         <div className="container-site">
-          <div className="max-w-3xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
-            <h2 className="font-display text-display-md text-ink mt-2 leading-none">
-              We pick a lane and<br />stay in it.
-            </h2>
-            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl">
-              We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
+          <div className="max-w-2xl mb-10">
+            <span className="text-label-xs text-mute uppercase tracking-wider">What We Do</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">The growth stack, handled.</h2>
+            <p className="text-body-md text-mute mt-4 max-w-xl leading-relaxed">
+              Nine capabilities. One operating lead. Every specialist deployed per project.
             </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              { id: 'ai-implementation', title: 'AI Implementation', tagline: 'Agents that run your repetitive work.' },
+              { id: 'strategy', title: 'Growth Strategy', tagline: 'The diagnosis before the prescription.' },
+              { id: 'website', title: 'Website & Dev', tagline: 'Conversion-first builds.' },
+              { id: 'ads', title: 'Ads', tagline: 'Full-funnel paid media.' },
+            ].map((service) => (
+              <Link
+                key={service.id}
+                to={`/services#${service.id}`}
+                className="group p-6 bg-canvas border border-hairline-soft hover:border-ink transition-all duration-300 no-underline flex items-start justify-between gap-4"
+              >
+                <div>
+                  <h3 className="text-heading-md text-ink group-hover:text-mute transition-colors">{service.title}</h3>
+                  <p className="text-body-sm text-mute mt-1">{service.tagline}</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-mute group-hover:text-ink transition-colors flex-shrink-0 mt-1" />
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8">
+            <a href="#full-bench" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors">
+              9 capabilities total — see the full bench <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </motion.section>
 
       {/* The Full Bench */}
-      <motion.section {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
+      <motion.section id="full-bench" {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mb-10">
             <span className="text-label-xs text-stone uppercase tracking-wider">The Full Bench</span>
@@ -221,6 +247,21 @@ const About = () => {
           <p className="text-caption-sm text-hairline/60 mt-8">
             Flagships marked with white dots. All roles deployed per project on a contract basis — no retainer bloat.
           </p>
+        </div>
+      </motion.section>
+
+      {/* What We Don't Do */}
+      <motion.section {...fadeUp} className="bg-canvas py-[80px] md:py-[100px]">
+        <div className="container-site">
+          <div className="max-w-3xl">
+            <span className="text-label-xs text-mute uppercase tracking-wider">What We Don't Do</span>
+            <h2 className="font-display text-display-md text-ink mt-2 leading-none">
+              We pick a lane and<br />stay in it.
+            </h2>
+            <p className="text-body-md text-mute leading-relaxed mt-6 max-w-xl">
+              We don't do daily social media posting, influencer campaigns, PR, or 24/7 support tiers. What we do, we do thoroughly. What we don't do, we'll refer you to people who do it better.
+            </p>
+          </div>
         </div>
       </motion.section>
     </>

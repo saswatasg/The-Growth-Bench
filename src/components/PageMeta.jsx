@@ -51,7 +51,7 @@ const pageSpecificMeta = {
   },
   '/compare': {
     title: "Freelancer vs Agency vs Bench | The Growth Bench",
-    description: "Compare freelancers, agencies, and the Growth Bench bench model on context, speed, and overhead. Built for D2C brands doing ₹10L–₹10Cr/month."
+    description: "Compare freelancers, agencies, and the Growth Bench bench model on context, speed, and overhead. Built for D2C brands ready to fix what's broken."
   },
   '/solutions/recover-abandoned-carts': {
     title: "Cart Recovery Service for D2C | The Growth Bench",

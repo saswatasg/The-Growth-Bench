@@ -5,8 +5,6 @@ import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
-import HowItWorks from '@/components/HowItWorks';
-import FitFilter from '@/components/FitFilter';
 import { fadeUp } from '@/lib/motion';
 
 const pastProjects = [
@@ -156,9 +154,6 @@ const Proof = () => {
               </tbody>
             </table>
           </div>
-          <p className="text-caption-sm text-mute mt-6">
-            For D2C brands doing ₹10L–₹10Cr/month.
-          </p>
         </div>
       </motion.section>
 
@@ -246,8 +241,22 @@ const Proof = () => {
         </div>
       </motion.section>
 
-      <HowItWorks className="bg-canvas" />
-      <FitFilter className="bg-soft-cloud" />
+      {/* Final CTA */}
+      <motion.section {...fadeUp} className="bg-ink py-[80px] md:py-[100px]">
+        <div className="container-site text-center">
+          <h2 className="font-display text-display-md text-canvas leading-none">
+            Ready to see what&apos;s<br />actually leaking?
+          </h2>
+          <p className="text-body-md text-hairline mt-4 max-w-xl mx-auto leading-relaxed">
+            30 minutes. One concrete recommendation.
+          </p>
+          <div className="mt-8">
+            <Button size="lg" className="bg-canvas text-ink hover:bg-soft-cloud" onClick={openBookingModal}>
+              Book a Free Audit Call
+            </Button>
+          </div>
+        </div>
+      </motion.section>
     </>
   );
 };
