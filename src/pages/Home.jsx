@@ -32,7 +32,6 @@ const Home = () => {
       <PageMeta />
       <HeroSection />
       <MarqueeBar />
-      <ProblemSection className="bg-canvas" />
       <ServicesOverview />
       <GrowthTimeline />
       <ActivityProof className="bg-ink" />
