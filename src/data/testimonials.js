@@ -11,7 +11,7 @@ export const testimonialsData = [
     title: "D2C Coffee Brand",
     company: "D2C Coffee Brand",
     metric: "357% revenue growth",
-    text: "In 3 months they revamped our website, set up tracking, and launched campaigns. ROAS went from 1.8x to 5.7x with sustainable CAC."
+    text: "In 3 months they revamped our website, set up tracking, and launched campaigns. ROAS went from 1.8x to 6.7x with sustainable CAC."
   },
   {
     name: "Head of Growth",

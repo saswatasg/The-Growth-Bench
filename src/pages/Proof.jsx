@@ -20,10 +20,10 @@ const pastProjects = [
   {
     client: 'D2C Coffee Brand',
     stat: '357% revenue growth in 3 months',
-    description: 'Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 5.7x with sustainable CAC.',
+    description: 'Full-funnel e-commerce overhaul: revamped the entire website, set up precise tracking and analytics, and launched high-converting ad campaigns. In just 3 months, ROAS went from 1.8x to 6.7x with sustainable CAC.',
     tags: ['E-Commerce', 'Web Development', 'Ads'],
     before: '1.8x ROAS',
-    after: '5.7x ROAS',
+    after: '6.7x ROAS',
     timeline: '3 months',
   },
   {

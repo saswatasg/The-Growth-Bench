@@ -136,7 +136,7 @@ const Resources = () => {
             </Link>
             <Link to="/proof" className="block p-6 border border-hairline-soft bg-canvas no-underline group">
               <div className="font-display text-heading-xl md:text-display-md text-ink mb-2">357% revenue growth in 3 months</div>
-              <p className="text-body-sm text-mute leading-relaxed mb-3">Early-win snapshot for a D2C coffee brand — website revamp, precise tracking, and high-converting ad campaigns. ROAS went from 1.8x to 5.7x.</p>
+              <p className="text-body-sm text-mute leading-relaxed mb-3">Early-win snapshot for a D2C coffee brand — website revamp, precise tracking, and high-converting ad campaigns. ROAS went from 1.8x to 6.7x.</p>
               <span className="text-body-sm text-ink flex items-center gap-1">See case study <ArrowRight className="w-3.5 h-3.5 ml-1" /></span>
             </Link>
           </div>

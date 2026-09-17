@@ -5,7 +5,7 @@ import { fadeUp } from '@/lib/motion';
 const stats = [
   { num: '28.71%', label: 'Avg. conversion lift' },
   { num: '468%', label: 'Avg. ROAS' },
-  { num: '50+', label: 'Brands scaled across D2C, SaaS, and education' },
+  { num: '14+', label: 'Brands scaled across D2C, SaaS, and education' },
   { num: '2+ yrs', label: 'Avg. client tenure' },
 ];
 

@@ -9,19 +9,19 @@ const wordConfig = {
   GROWTH: {
     fallDistance: -120,
     startRotation: -5,
-    staggerMs: 60,
+    staggerMs: 30,
     squashScale: { x: 1.1, y: 0.85 },
   },
   THAT: {
     fallDistance: -90,
     startRotation: 3,
-    staggerMs: 45,
+    staggerMs: 25,
     squashScale: { x: 1.08, y: 0.88 },
   },
   STICKS: {
     fallDistance: -140,
     startRotation: -7,
-    staggerMs: 35,
+    staggerMs: 20,
     squashScale: { x: 1.12, y: 0.8 },
   },
 };
@@ -89,7 +89,7 @@ const HeroSection = () => {
   const isInView = useInView(ref, { once: true });
 
   const wordOffsets = [];
-  let offset = 150;
+  let offset = 100;
   for (const word of words) {
     wordOffsets.push(offset);
     offset += word.length * wordConfig[word].staggerMs + 120;
@@ -135,7 +135,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6 }}
             className="text-body-lg text-mute mt-10 leading-relaxed max-w-2xl mx-auto"
           >
-            One partner. Full funnel. From audit to AI agents — we own the outcome, not just the channel.
+            Full-stack growth for D2C brands. One partner. Every channel. We own the funnel.
           </motion.p>
 
           <motion.div
@@ -155,7 +155,7 @@ const HeroSection = () => {
             transition={{ delay: 0.5, duration: 0.4 }}
             className="text-body-sm text-mute mt-6"
           >
-            No retainer commitment · Cancel anytime · $425K/mo recovered for one client
+            $425K/mo recovered · 6.7x ROAS · 14+ brands scaled
           </motion.p>
         </div>
       </div>

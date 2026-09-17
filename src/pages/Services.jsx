@@ -256,7 +256,7 @@ const Services = () => {
               { num: '9', label: 'Service lines' },
               { num: '20+', label: 'Specialists on call' },
               { num: '$425K/mo', label: 'Recovered for one client' },
-              { num: '5.7x', label: 'ROAS achieved' },
+              { num: '6.7x', label: 'ROAS achieved' },
             ].map((m) => (
               <div key={m.label}>
                 <div className="font-display text-heading-lg text-ink leading-none">{m.num}</div>
