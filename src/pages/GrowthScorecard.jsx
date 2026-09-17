@@ -463,7 +463,7 @@ const QuestionStep = ({ nodeId, node, selected, onPick, onBack }) => (
             type="button"
             onClick={() => onPick(i)}
             aria-pressed={selected === i}
-            className={`text-left px-5 py-4 rounded-lg border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 flex items-center gap-3 ${
+            className={`text-left px-5 py-4 rounded-none border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/40 flex items-center gap-3 ${
               selected === i
                 ? 'border-ink bg-ink text-canvas'
                 : 'border-hairline bg-canvas text-ink hover:border-ink/40'

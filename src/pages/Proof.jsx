@@ -178,7 +178,7 @@ const Proof = () => {
               {filtered.map((project) => (
                 <div key={project.client} className="p-6 border border-hairline-soft bg-canvas">
                   <p className="text-caption-sm text-mute uppercase tracking-wide mb-1">{project.client}</p>
-                  <div className="font-display text-heading-xl md:text-display-lg text-ink leading-none my-4">{project.stat}</div>
+                  <div className="font-display text-heading-xl md:text-display-lg text-ink leading-none my-4 break-words">{project.stat}</div>
                   <p className="text-body-sm text-mute leading-relaxed mb-4">{project.description}</p>
                   {(project.before || project.after) && (
                     <div className="grid grid-cols-2 gap-4 mb-4 p-4 bg-soft-cloud">

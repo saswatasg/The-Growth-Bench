@@ -46,7 +46,7 @@ const FaqSection = ({
         <Accordion type="single" collapsible className="w-full">
           {items.map((item, i) => (
             <AccordionItem
-              key={i}
+              key={item.q}
               value={`faq-${i}`}
               className="border-t border-hairline-soft"
             >

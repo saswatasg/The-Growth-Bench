@@ -44,6 +44,10 @@ const Terms = () => {
 
             <h2>9. Contact</h2>
             <p><a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a></p>
+
+            <div className="mt-8 pt-6 border-t border-hairline-soft">
+              <Link to="/get-started" className="text-body-sm text-ink underline underline-offset-2 hover:text-mute transition-colors">Get started with a free audit call →</Link>
+            </div>
           </div>
         </div>
       </section>

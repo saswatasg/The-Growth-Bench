@@ -41,6 +41,10 @@ const Privacy = () => {
 
             <h2>8. Contact</h2>
             <p>Email: <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a> | WhatsApp: +91 9836312162</p>
+
+            <div className="mt-8 pt-6 border-t border-hairline-soft">
+              <Link to="/get-started" className="text-body-sm text-ink underline underline-offset-2 hover:text-mute transition-colors">Get started with a free audit call →</Link>
+            </div>
           </div>
         </div>
       </section>

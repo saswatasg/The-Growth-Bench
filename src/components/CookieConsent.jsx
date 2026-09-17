@@ -64,7 +64,7 @@ const CookieConsent = () => {
         </button>
         <button
           onClick={() => choose('declined')}
-          className="text-caption-sm text-stone underline underline-offset-2 hover:text-canvas transition-colors"
+          className="text-caption-sm text-stone underline underline-offset-2 hover:text-canvas transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-canvas/40 py-2 px-1"
         >
           Decline
         </button>

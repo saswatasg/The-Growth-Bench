@@ -74,11 +74,10 @@ function StickyWord({ word, wordOffset }) {
 
 const UnderlineReveal = () => (
   <motion.span
-    className="block mx-auto mt-2 h-[3px] bg-ink origin-left"
+    className="block mx-auto mt-2 h-[3px] bg-ink origin-left max-w-[280px]"
     initial={{ scaleX: 0, opacity: 0 }}
     animate={{ scaleX: 1, opacity: 1 }}
     transition={{ duration: 0.6, ease: [0.22, 0.03, 0.36, 1] }}
-    className="block mx-auto mt-2 h-[3px] bg-ink origin-left max-w-[280px]"
   />
 );
 

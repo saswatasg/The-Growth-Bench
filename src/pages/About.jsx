@@ -86,7 +86,7 @@ const About = () => {
                 <motion.span
                   className="font-display text-heading-xl md:text-display-lg text-canvas leading-none block"
                   animate={{ scale: [1, 1.02, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
+                  transition={{ duration: 4, ease: 'easeInOut', delay: 0.8 }}
                 >
                   {s.stat}
                 </motion.span>

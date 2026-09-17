@@ -16,7 +16,7 @@ const MarqueeBar = () => {
       className="bg-ink py-4 overflow-hidden border-b border-stone/20"
     >
       <div className="overflow-hidden">
-        <div className="marquee-track">
+        <div className="marquee-track" aria-hidden="true">
           {items.map((s, i) => (
             <span key={`a-${i}`} className="flex-shrink-0 text-caption-sm text-stone whitespace-nowrap">
               {s}
