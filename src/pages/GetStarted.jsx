@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Workflow, TrendingUp, MessageSquare, Zap } from 'lucide-react';
+import { ArrowRight, Workflow, TrendingUp, MessageSquare, Zap, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { useBookingModal } from '@/context/BookingModalContext';
