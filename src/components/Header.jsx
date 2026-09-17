@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
@@ -155,18 +155,18 @@ const Header = () => {
                 {/* Quick links */}
                 <div className="mt-6 space-y-3">
                   <a
-                    href="mailto:hello@thegrowthbench.com"
-                    className="block text-body-sm text-mute no-underline hover:text-ink transition-colors"
+                    href="mailto:saswatasg@gmail.com"
+                    className="flex items-center gap-3 py-2 text-body-sm text-mute no-underline hover:text-ink transition-colors"
                   >
-                    hello@thegrowthbench.com
+                    <Mail className="w-4 h-4" /> saswatasg@gmail.com
                   </a>
                   <a
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-body-sm text-mute no-underline hover:text-ink transition-colors"
+                    className="flex items-center gap-3 py-2 text-body-sm text-mute no-underline hover:text-ink transition-colors"
                   >
-                    WhatsApp
+                    <MessageCircle className="w-4 h-4" /> WhatsApp
                   </a>
                 </div>
               </nav>

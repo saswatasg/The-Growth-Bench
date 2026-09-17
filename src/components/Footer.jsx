@@ -38,8 +38,8 @@ const Footer = () => {
             </p>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5" /> hello@thegrowthbench.com
+                <a href="mailto:saswatasg@gmail.com" className="text-body-sm text-stone no-underline hover:text-canvas transition-colors flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5" /> saswatasg@gmail.com
                 </a>
               </li>
               <li>

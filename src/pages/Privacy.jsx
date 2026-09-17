@@ -19,7 +19,7 @@ const Privacy = () => {
 
           <div className="text-body-md text-mute leading-relaxed space-y-4 [&_h2]:font-display [&_h2]:text-heading-lg [&_h2]:text-ink [&_h2]:mt-10 [&_h2]:mb-4 [&_a]:text-ink [&_a]:underline [&_strong]:text-ink [&_ul]:list-disc [&_ul]:pl-6 [&_li]:mb-1">
             <h2>1. Who We Are</h2>
-            <p>The Growth Bench is a growth consultancy operating from India. For any privacy-related questions, reach us at <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>.</p>
+            <p>The Growth Bench is a growth consultancy operating from India. For any privacy-related questions, reach us at <a href="mailto:saswatasg@gmail.com">saswatasg@gmail.com</a>.</p>
 
             <h2>2. Information We Collect</h2>
             <p>We collect only information you voluntarily provide: contact form data (name, email, company, challenge description), communication data (emails, WhatsApp messages), and booking data (via Google Calendar).</p>
@@ -37,10 +37,10 @@ const Privacy = () => {
             <p>This website does not use cookies, tracking scripts, or analytics tools. Google Fonts are loaded from Google's servers, which may transmit your IP address as part of the standard HTTP request.</p>
 
             <h2>7. Your Rights</h2>
-            <p>You may request access, rectification, erasure, restriction, or portability of your data by emailing <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a>. We will respond within 30 days.</p>
+            <p>You may request access, rectification, erasure, restriction, or portability of your data by emailing <a href="mailto:saswatasg@gmail.com">saswatasg@gmail.com</a>. We will respond within 30 days.</p>
 
             <h2>8. Contact</h2>
-            <p>Email: <a href="mailto:hello@thegrowthbench.com">hello@thegrowthbench.com</a> | WhatsApp: +91 9836312162</p>
+            <p>Email: <a href="mailto:saswatasg@gmail.com">saswatasg@gmail.com</a> | WhatsApp: +91 9836312162</p>
 
             <div className="mt-8 pt-6 border-t border-hairline-soft">
               <Link to="/get-started" className="text-body-sm text-ink underline underline-offset-2 hover:text-mute transition-colors">Get started with a free audit call →</Link>

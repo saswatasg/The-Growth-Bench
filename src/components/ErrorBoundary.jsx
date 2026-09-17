@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component {
             <h1 className="font-display text-heading-xl md:text-display-md text-ink mb-4">Something went wrong</h1>
             <p className="text-body-md text-mute mb-8 max-w-md mx-auto">
               We encountered an unexpected error. Please try refreshing the page, or{' '}
-              <a href="mailto:hello@thegrowthbench.com" className="text-ink underline">contact us</a> if the problem persists.
+              <a href="mailto:saswatasg@gmail.com" className="text-ink underline">contact us</a> if the problem persists.
             </p>
             <Button size="lg" asChild>
               <Link to="/">Go Home</Link>
