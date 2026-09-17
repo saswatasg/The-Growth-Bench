@@ -6,6 +6,7 @@ import { useBookingModal } from '@/context/BookingModalContext';
 import { motion, useScroll, useSpring } from 'framer-motion';
 
 const navLinks = [
+  { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
   { to: '/proof', label: 'Case Studies' },
   { to: '/resources', label: 'Insights' },
