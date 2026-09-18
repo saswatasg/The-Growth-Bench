@@ -36,6 +36,20 @@ const Home = () => {
       <GrowthTimeline />
       <ActivityProof className="bg-ink" />
 
+      {/* Training callout */}
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[80px]">
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Training</span>
+          <h2 className="font-display text-heading-lg text-ink mt-2 leading-none">We also certify teams.</h2>
+          <p className="text-body-md text-mute mt-3 max-w-xl mx-auto leading-relaxed">
+            Claude Practitioner Training — a 3-day live certification program. Structured fluency across Claude's full toolset, from Skills to MCP to automation.
+          </p>
+          <Link to="/training/claude-practitioner" className="inline-flex items-center gap-1 text-body-sm font-medium text-ink no-underline hover:text-mute transition-colors mt-4">
+            Learn more <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </motion.section>
+
       <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site max-w-4xl mx-auto">
           <div className="text-center mb-12">

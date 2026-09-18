@@ -55,7 +55,7 @@ const RoutesConfig = () => {
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/admin/claude-practitioner" element={<AdminRoute><AdminCertificates /></AdminRoute>} />
 
-        {/* Training portal — noindex, not linked publicly */}
+        {/* Training portal */}
         <Route path="/training/claude-practitioner" element={<TrainingLanding />} />
         <Route path="/training/claude-practitioner/enroll" element={<TrainingEnroll />} />
         <Route path="/training/claude-practitioner/verify" element={<CertificateVerify />} />

@@ -427,6 +427,20 @@ const Services = () => {
         </div>
       </motion.section>
 
+      {/* Training callout */}
+      <motion.section {...fadeUp} className="bg-ink py-[48px] md:py-[60px]">
+        <div className="container-site text-center">
+          <span className="text-label-xs text-stone uppercase tracking-wider">Training</span>
+          <h2 className="font-display text-heading-lg text-canvas mt-2 leading-none">We also train teams.</h2>
+          <p className="text-body-md text-hairline mt-3 max-w-xl mx-auto leading-relaxed">
+            Claude Practitioner Training — a 3-day live certification program for teams that want structured fluency across Claude's full toolset.
+          </p>
+          <Link to="/training/claude-practitioner" className="inline-flex items-center gap-1 text-body-sm font-medium text-canvas no-underline hover:text-stone transition-colors mt-4">
+            Learn more <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </motion.section>
+
       {/* Platforms strip */}
       <motion.section {...fadeUp} className="bg-canvas border-t border-b border-hairline-soft py-[40px] md:py-[50px]">
         <div className="container-site">

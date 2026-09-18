@@ -16,6 +16,7 @@ const footerLinks = {
     { label: 'Insights', to: '/resources' },
     { label: 'AI Scorecard', to: '/ai-scorecard' },
     { label: 'Growth Scorecard', to: '/growth-scorecard' },
+    { label: 'Claude Practitioner Training', to: '/training/claude-practitioner' },
   ],
   Company: [
     { label: 'Case Studies', to: '/proof' },
