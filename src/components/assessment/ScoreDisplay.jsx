@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle, XCircle, RotateCcw, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { formatINR } from '@/lib/training';
 import { PASS_THRESHOLD } from '@/lib/training';
 
 const ScoreDisplay = ({ result, attemptNumber, maxAttempts, onRetry, onFinish }) => {
@@ -71,10 +71,15 @@ const ScoreDisplay = ({ result, attemptNumber, maxAttempts, onRetry, onFinish })
         </div>
       )}
 
-      <div className="mt-8">
-        <Button variant="ghost" onClick={onFinish}>
-          Back to program page
-        </Button>
+      <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <Link to="/training/claude-practitioner">
+          <Button variant="outline">Back to program page</Button>
+        </Link>
+        {!passed && canRetry && (
+          <Button onClick={onRetry} variant="ghost">
+            <RotateCcw className="w-4 h-4 mr-2" /> Try Again
+          </Button>
+        )}
       </div>
     </div>
   );

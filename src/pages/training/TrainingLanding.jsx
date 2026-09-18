@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, Calendar, Users, Clock, Award, BookOpen, MessageCircle } from 'lucide-react';
+import { ArrowRight, Check, Calendar, Users, Clock, Award, BookOpen, MessageCircle, QrCode, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
+import { formatINR, BASE_PRICE_PAISE } from '@/lib/training';
 import { fadeUp, staggerContainer, staggerChild } from '@/lib/motion';
 
 const WHATS_LEAVE = [
@@ -60,6 +61,18 @@ const INCLUDED = [
   { icon: MessageCircle, title: 'Lifetime Monthly Q&A', desc: 'A standing 2-hour live session every month, open for as long as the relationship continues — not just for the program\'s duration.' },
 ];
 
+const WHO_FOR = [
+  'Marketing teams spending hours on repetitive content, reporting, or campaign management.',
+  'Operations teams drowning in manual processes that Claude could automate.',
+  'Founders and growth leads who want their team to use Claude strategically, not just for one-off tasks.',
+];
+
+const WHO_NOT = [
+  'Teams already using Claude Code daily with deep technical expertise.',
+  'Individual contributors looking for a basic "how to use ChatGPT" workshop.',
+  'Companies that need a custom-built automation — we do that separately as a service.',
+];
+
 const FAQ_ITEMS = [
   { q: 'How does invoicing and GST work?', a: 'We issue a GST-compliant invoice for every enrollment. Companies can pay via bank transfer or UPI. GST is included in the listed price.' },
   { q: 'What is the refund policy?', a: 'Full refund if cancelled 7+ days before the first session. 50% refund if cancelled 3–7 days before. No refund within 3 days of the first session, but you can transfer your seat to a future cohort at no cost.' },
@@ -70,32 +83,44 @@ const FAQ_ITEMS = [
 ];
 
 const TrainingLanding = () => {
+  const [openFaq, setOpenFaq] = React.useState(null);
+
   return (
     <>
       <PageMeta />
 
-      {/* Hero */}
-      <section className="bg-canvas py-[60px] md:py-[120px]">
+      {/* Breadcrumb */}
+      <div className="bg-canvas pt-6">
         <div className="container-site">
-          <div className="max-w-3xl">
-            <span className="text-label-xs text-mute uppercase tracking-wider">Training</span>
-            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-              Claude Practitioner Training
-            </h1>
-            <p className="text-body-lg text-mute mt-4 leading-relaxed">
-              A 3-Day Live Certification Program
-            </p>
-            <div className="flex flex-wrap items-center gap-6 mt-8 text-body-sm text-mute">
-              <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Next live cohort starts October 2026</span>
-              <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 12–35 per cohort</span>
-              <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> 3 × 2-hour sessions</span>
-            </div>
-            <div className="mt-8">
-              <Link to="/training/claude-practitioner/enroll">
-                <Button size="lg">Enroll Your Team <ArrowRight className="w-4 h-4 ml-2" /></Button>
-              </Link>
-            </div>
+          <nav className="flex items-center gap-2 text-body-sm text-mute">
+            <Link to="/" className="hover:text-ink transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-ink">Training</span>
+          </nav>
+        </div>
+      </div>
+
+      {/* Hero */}
+      <section className="bg-canvas py-[60px] md:py-[100px]">
+        <div className="container-site text-center">
+          <span className="text-label-xs text-mute uppercase tracking-wider">Training</span>
+          <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+            Claude Practitioner Training
+          </h1>
+          <p className="text-body-lg text-mute mt-4 leading-relaxed max-w-2xl mx-auto">
+            A 3-Day Live Certification Program
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-body-sm text-mute">
+            <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Next live cohort starts October 2026</span>
+            <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 12–35 per cohort</span>
+            <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> 3 × 2-hour sessions</span>
           </div>
+          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+            <Link to="/training/claude-practitioner/enroll">
+              <Button size="lg">Enroll Your Team — {formatINR(BASE_PRICE_PAISE)}/person <ArrowRight className="w-4 h-4 ml-2" /></Button>
+            </Link>
+          </div>
+          <p className="text-body-sm text-mute mt-4">Limited to 35 seats per cohort. No pre-work required.</p>
         </div>
       </section>
 
@@ -105,18 +130,55 @@ const TrainingLanding = () => {
           <div className="max-w-3xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">The Opportunity</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Most teams already use Claude. Few use it well.</h2>
-            <p className="text-body-lg text-mute mt-6 leading-relaxed">
-              Most teams already use Claude informally — drafting, research, one-off tasks — but that usage is scattered, unstructured, and rarely goes beyond chat. This program gives your team a shared, structured fluency across Claude's full toolset: not just prompting well, but building Skills, connecting real data sources, automating recurring work, and knowing which surface to reach for and when.
-            </p>
-            <p className="text-body-lg text-mute mt-4 leading-relaxed">
-              It closes with a hands-on assessment and a Growth Bench certificate of completion, so the training leaves a verifiable outcome, not just a workshop memory.
-            </p>
+            <div className="mt-6 space-y-4">
+              <p className="text-body-lg text-mute leading-relaxed">
+                Your team uses Claude for drafting, research, one-off tasks — but that usage is scattered and unstructured. It rarely goes beyond chat.
+              </p>
+              <p className="text-body-lg text-mute leading-relaxed">
+                This program gives your team a shared, structured fluency across Claude's full toolset: building Skills, connecting real data sources, automating recurring work, and knowing which surface to reach for and when.
+              </p>
+              <p className="text-body-lg text-mute leading-relaxed">
+                It closes with a hands-on assessment and a Growth Bench certificate — a verifiable outcome, not just a workshop memory.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Who this is for */}
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+        <div className="container-site">
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            <div>
+              <span className="text-label-xs text-success uppercase tracking-wider">Who this is for</span>
+              <h3 className="font-display text-heading-lg text-ink mt-2 mb-4">Teams ready to go beyond chat</h3>
+              <ul className="space-y-3">
+                {WHO_FOR.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                    <span className="text-body-md text-ink">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <span className="text-label-xs text-mute uppercase tracking-wider">Who this is not for</span>
+              <h3 className="font-display text-heading-lg text-ink mt-2 mb-4">Already deep in Claude? Skip this.</h3>
+              <ul className="space-y-3">
+                {WHO_NOT.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="w-5 h-5 flex-shrink-0 mt-0.5 text-mute">—</span>
+                    <span className="text-body-md text-mute">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </motion.section>
 
       {/* What the team leaves with */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">Outcomes</span>
@@ -134,7 +196,7 @@ const TrainingLanding = () => {
       </motion.section>
 
       {/* Program at a glance */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Schedule</span>
@@ -143,7 +205,7 @@ const TrainingLanding = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {SCHEDULE.map((s) => (
-              <div key={s.day} className="p-6 bg-canvas border border-hairline-soft">
+              <div key={s.day} className="p-6 bg-soft-cloud border border-hairline-soft">
                 <span className="text-label-xs text-mute uppercase tracking-wider">{s.day}</span>
                 <h3 className="text-heading-md text-ink mt-2">{s.focus}</h3>
                 <p className="text-body-sm text-mute mt-2">{s.format}</p>
@@ -157,7 +219,7 @@ const TrainingLanding = () => {
       </motion.section>
 
       {/* Included extras */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Included</span>
@@ -167,8 +229,8 @@ const TrainingLanding = () => {
             {INCLUDED.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="p-6 bg-soft-cloud border border-hairline-soft">
-                  <div className="w-10 h-10 rounded-full bg-canvas border border-hairline-soft flex items-center justify-center mb-4">
+                <div key={item.title} className="p-6 bg-canvas border border-hairline-soft">
+                  <div className="w-10 h-10 rounded-full bg-soft-cloud border border-hairline-soft flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-ink" />
                   </div>
                   <h3 className="text-heading-md text-ink">{item.title}</h3>
@@ -181,7 +243,7 @@ const TrainingLanding = () => {
       </motion.section>
 
       {/* Day-by-day detail */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Curriculum</span>
@@ -189,7 +251,7 @@ const TrainingLanding = () => {
           </div>
           <div className="max-w-3xl mx-auto space-y-8">
             {DAY_DETAILS.map((d) => (
-              <div key={d.day} className="p-6 md:p-8 bg-canvas border border-hairline-soft">
+              <div key={d.day} className="p-6 md:p-8 bg-soft-cloud border border-hairline-soft">
                 <span className="text-label-xs text-mute uppercase tracking-wider">{d.day}</span>
                 <h3 className="font-display text-heading-lg text-ink mt-2">{d.title}</h3>
                 <p className="text-body-md text-mute mt-2 italic">{d.question}</p>
@@ -208,17 +270,17 @@ const TrainingLanding = () => {
       </motion.section>
 
       {/* Format & delivery */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">Format</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Format & delivery</h2>
             <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <div className="p-6 bg-soft-cloud border border-hairline-soft">
+              <div className="p-6 bg-canvas border border-hairline-soft">
                 <h3 className="text-heading-md text-ink">Virtual</h3>
                 <p className="text-body-sm text-mute mt-2">Live sessions via video call. Interactive, not pre-recorded. Screen sharing and real-time Q&A.</p>
               </div>
-              <div className="p-6 bg-soft-cloud border border-hairline-soft">
+              <div className="p-6 bg-canvas border border-hairline-soft">
                 <h3 className="text-heading-md text-ink">On-site</h3>
                 <p className="text-body-sm text-mute mt-2">We come to your office. Hands-on workshops with your team in the room. Available for cohorts of 15+.</p>
               </div>
@@ -230,7 +292,7 @@ const TrainingLanding = () => {
                 { label: 'Timeline', value: '1–2 weeks' },
                 { label: 'Materials', value: 'Included' },
               ].map((item) => (
-                <div key={item.label} className="text-center p-4 bg-soft-cloud border border-hairline-soft">
+                <div key={item.label} className="text-center p-4 bg-canvas border border-hairline-soft">
                   <div className="font-display text-heading-lg text-ink">{item.value}</div>
                   <p className="text-caption-sm text-mute mt-1">{item.label}</p>
                 </div>
@@ -266,8 +328,9 @@ const TrainingLanding = () => {
                 <div className="flex justify-center gap-8 mb-6">
                   <div className="text-center">
                     <div className="w-20 h-20 bg-soft-cloud border border-hairline-soft flex items-center justify-center mb-2 mx-auto">
-                      <span className="text-caption-sm text-mute">QR Code</span>
+                      <QrCode className="w-10 h-10 text-mute" />
                     </div>
+                    <p className="text-caption-sm text-mute">Scan to verify</p>
                   </div>
                   <div className="text-center">
                     <div className="border-b border-ink w-32 mb-2 mx-auto" />
@@ -291,17 +354,21 @@ const TrainingLanding = () => {
             <span className="text-label-xs text-mute uppercase tracking-wider">FAQ</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Common questions</h2>
           </div>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {FAQ_ITEMS.map((item) => (
-              <details key={item.q} className="group border border-hairline-soft bg-soft-cloud">
-                <summary className="flex items-center justify-between p-5 cursor-pointer text-heading-md text-ink list-none">
-                  {item.q}
-                  <span className="text-mute group-open:rotate-45 transition-transform text-xl leading-none ml-4">+</span>
-                </summary>
-                <div className="px-5 pb-5">
-                  <p className="text-body-md text-mute leading-relaxed">{item.a}</p>
+          <div className="max-w-3xl mx-auto space-y-3">
+            {FAQ_ITEMS.map((item, i) => (
+              <button
+                key={item.q}
+                onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                className="w-full text-left border border-hairline-soft bg-soft-cloud p-5 transition-colors hover:border-ink/30"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-heading-md text-ink pr-4">{item.q}</span>
+                  <ChevronDown className={`w-5 h-5 text-mute flex-shrink-0 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
                 </div>
-              </details>
+                {openFaq === i && (
+                  <p className="text-body-md text-mute leading-relaxed mt-3">{item.a}</p>
+                )}
+              </button>
             ))}
           </div>
         </div>
@@ -320,7 +387,7 @@ const TrainingLanding = () => {
       <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site text-center">
           <h2 className="font-display text-heading-xl md:text-display-md text-ink leading-none">Ready to certify your team?</h2>
-          <p className="text-body-md text-mute mt-4">Next live cohort starts October 2026. Limited seats.</p>
+          <p className="text-body-md text-mute mt-4">Next live cohort starts October 2026. Limited to 35 seats.</p>
           <div className="mt-8">
             <Link to="/training/claude-practitioner/enroll">
               <Button size="lg">Enroll Your Team <ArrowRight className="w-4 h-4 ml-2" /></Button>

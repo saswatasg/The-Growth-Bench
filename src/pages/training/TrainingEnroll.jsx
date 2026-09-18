@@ -115,7 +115,6 @@ const TrainingEnroll = () => {
       }
 
       setOrderResult(order);
-      setStep('success');
     } catch (e) {
       console.error('Order failed:', e);
     } finally {
@@ -123,7 +122,7 @@ const TrainingEnroll = () => {
     }
   };
 
-  if (step === 'success' && orderResult) {
+  if (orderResult) {
     return (
       <>
         <PageMeta />
@@ -145,7 +144,29 @@ const TrainingEnroll = () => {
               </div>
             </div>
             <p className="text-body-sm text-mute mt-6">A confirmation email is on its way to {orderResult.contactEmail}.</p>
-            <div className="mt-8">
+
+            <div className="mt-8 p-6 bg-canvas border border-hairline-soft text-left">
+              <h3 className="text-heading-md text-ink mb-4">What happens next</h3>
+              <ul className="space-y-3 text-body-sm text-mute">
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
+                  You'll receive a calendar invite within 24 hours with session links and materials.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
+                  Each participant will get an email with their assessment link after Day 3.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
+                  Certificates are issued automatically to participants who pass the assessment.
+                </li>
+              </ul>
+            </div>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Link to="/training/claude-practitioner/assessment">
+                <Button size="lg">Take Assessment <ArrowRight className="w-4 h-4 ml-2" /></Button>
+              </Link>
               <Link to="/training/claude-practitioner">
                 <Button variant="outline">Back to program page</Button>
               </Link>

@@ -237,9 +237,9 @@ const Assessment = () => {
                   <span className="text-body-sm text-mute">
                     Question {currentIndex + 1} of {questions.length}
                   </span>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1.5">
                     {questions.map((_, i) => (
-                      <div key={i} className={`w-2 h-2 rounded-full ${i === currentIndex ? 'bg-ink' : answers[questions[i]?.id] ? 'bg-success' : 'bg-hairline'}`} />
+                      <div key={i} className={`w-3 h-3 rounded-full ${i === currentIndex ? 'bg-ink' : answers[questions[i]?.id] ? 'bg-success' : 'bg-hairline'}`} />
                     ))}
                   </div>
                 </div>

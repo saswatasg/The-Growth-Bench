@@ -29,7 +29,7 @@ const RosterTable = ({ rows, setRows, errors }) => {
 
       <div className="space-y-3">
         {rows.map((row, i) => (
-          <div key={i} className="flex gap-3 items-start">
+          <div key={`${row.email}-${i}`} className="flex gap-3 items-start">
             <div className="flex-1 grid grid-cols-2 gap-3">
               <div>
                 <input

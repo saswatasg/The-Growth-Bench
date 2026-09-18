@@ -67,7 +67,20 @@ const CertificateVerify = () => {
     <>
       <PageMeta />
 
-      <section className="bg-canvas py-[60px] md:py-[120px]">
+      {/* Breadcrumb */}
+      <div className="bg-canvas pt-6">
+        <div className="container-site">
+          <nav className="flex items-center gap-2 text-body-sm text-mute">
+            <Link to="/" className="hover:text-ink transition-colors">Home</Link>
+            <span>/</span>
+            <Link to="/training/claude-practitioner" className="hover:text-ink transition-colors">Training</Link>
+            <span>/</span>
+            <span className="text-ink">Verify</span>
+          </nav>
+        </div>
+      </div>
+
+      <section className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site max-w-2xl mx-auto text-center">
           <span className="text-label-xs text-mute uppercase tracking-wider">Verify</span>
           <h1 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Certificate verification</h1>
