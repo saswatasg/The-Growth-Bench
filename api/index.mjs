@@ -132,6 +132,36 @@ export default async function handler(req, res) {
         }
       }
 
+      // ── Training API ──────────────────────────────────────────────
+      // Public: verify certificate
+      if (apiPath.startsWith('/training/verify/') && req.method === 'GET') {
+        const certId = apiPath.split('/training/verify/')[1];
+        if (!certId) return json(res, 400, { error: 'Certificate ID required' });
+        // Supabase lookup happens client-side; this endpoint is a pass-through for SSR if needed
+        return json(res, 200, { message: 'Use client-side Supabase query', certId });
+      }
+
+      // Public: validate discount code
+      if (apiPath === '/training/discount/validate' && req.method === 'POST') {
+        const body = await parseBody(req);
+        const DISCOUNT_CODES = [];
+        const found = DISCOUNT_CODES.find(d => d.code === body.code?.toUpperCase());
+        if (!found) return json(res, 404, { valid: false, error: 'Invalid code' });
+        if (found.expiresAt && new Date(found.expiresAt) < new Date()) {
+          return json(res, 400, { valid: false, error: 'Code expired' });
+        }
+        return json(res, 200, { valid: true, ...found });
+      }
+
+      // Admin: certificate operations (require auth)
+      if (apiPath.startsWith('/training/certificates')) {
+        const user = getUser();
+        if (!user) return json(res, 401, { error: 'Unauthorized' });
+        // CRUD operations are handled client-side via Supabase
+        // This endpoint can be extended for server-side operations if needed
+        return json(res, 200, { message: 'Use client-side Supabase for certificate operations' });
+      }
+
       return json(res, 404, { error: 'Not found' });
     } catch (e) {
       return json(res, 500, { error: e.message });

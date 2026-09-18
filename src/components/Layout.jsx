@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PreFooterCTA from '@/components/PreFooterCTA';
 
-const HIDE_PREFOOTER = ['/get-started'];
+const HIDE_PREFOOTER = ['/get-started', '/training/claude-practitioner', '/training/claude-practitioner/enroll', '/training/claude-practitioner/verify', '/training/claude-practitioner/assessment'];
 
 const Layout = ({ children }) => {
   const { pathname } = useLocation();

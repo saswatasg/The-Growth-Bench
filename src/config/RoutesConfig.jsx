@@ -18,6 +18,11 @@ const Privacy = React.lazy(() => import('@/pages/Privacy'));
 const Terms = React.lazy(() => import('@/pages/Terms'));
 const AdminLogin = React.lazy(() => import('@/pages/AdminLogin'));
 const AdminDashboard = React.lazy(() => import('@/pages/AdminDashboard'));
+const TrainingLanding = React.lazy(() => import('@/pages/training/TrainingLanding'));
+const TrainingEnroll = React.lazy(() => import('@/pages/training/TrainingEnroll'));
+const CertificateVerify = React.lazy(() => import('@/pages/training/CertificateVerify'));
+const Assessment = React.lazy(() => import('@/pages/training/Assessment'));
+const AdminCertificates = React.lazy(() => import('@/pages/admin/AdminCertificates'));
 const NotFound = React.lazy(() => import('@/pages/NotFound'));
 
 const PageLoader = () => (
@@ -48,6 +53,13 @@ const RoutesConfig = () => {
         <Route path="/terms" element={<Terms />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+        <Route path="/admin/claude-practitioner" element={<AdminRoute><AdminCertificates /></AdminRoute>} />
+
+        {/* Training portal — noindex, not linked publicly */}
+        <Route path="/training/claude-practitioner" element={<TrainingLanding />} />
+        <Route path="/training/claude-practitioner/enroll" element={<TrainingEnroll />} />
+        <Route path="/training/claude-practitioner/verify" element={<CertificateVerify />} />
+        <Route path="/training/claude-practitioner/assessment" element={<Assessment />} />
 
         {/* Redirects from old routes */}
         <Route path="/case-studies" element={<Navigate to="/proof" replace />} />

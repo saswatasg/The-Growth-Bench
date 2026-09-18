@@ -60,12 +60,32 @@ const pageSpecificMeta = {
   '/ai-scorecard': {
     title: "Automation Readiness Scorecard | The Growth Bench",
     description: "A few taps, a minute, instant readout. Score how much agentic AI can take off your plate — support, ops, content, follow-ups, creative — with recoverable hours and a ₹ range."
+  },
+  '/training/claude-practitioner': {
+    title: "Claude Practitioner Training | The Growth Bench",
+    description: "A 3-day live certification program for teams. Structured fluency across Claude's full toolset — Skills, Connectors, MCP, automation. Certificate of completion included."
+  },
+  '/training/claude-practitioner/enroll': {
+    title: "Enroll Your Team | Claude Practitioner Training",
+    description: "Enroll your team in the Claude Practitioner Training program. 3-day live certification, ₹3,499 per person."
+  },
+  '/training/claude-practitioner/verify': {
+    title: "Verify Certificate | The Growth Bench",
+    description: "Verify a Claude Practitioner Training certificate of completion."
+  },
+  '/training/claude-practitioner/assessment': {
+    title: "Assessment | Claude Practitioner Training",
+    description: "Complete your Claude Practitioner Training assessment to earn your certificate."
   }
 };
 
 const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage: customOgImage }) => {
   const location = useLocation();
   const currentPath = location.pathname;
+
+  // Auto-noindex for training and admin pages
+  const autoNoindex = currentPath.startsWith('/training/') || currentPath.startsWith('/admin/');
+  const shouldNoindex = noindex || autoNoindex;
 
   const baseMeta = pageSpecificMeta[currentPath] || defaultMeta;
   const finalTitle = title || baseMeta.title;
@@ -126,7 +146,7 @@ const PageMeta = ({ title, description, noindex = false, articleSchema, ogImage:
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       <link rel="canonical" href={finalUrl} />
-      {noindex ? <meta name="robots" content="noindex" /> : <meta name="robots" content="index,follow" />}
+      {shouldNoindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index,follow" />}
 
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDescription} />
