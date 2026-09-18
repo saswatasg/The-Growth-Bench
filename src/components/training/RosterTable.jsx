@@ -1,13 +1,18 @@
 import React from 'react';
 import { Plus, X } from 'lucide-react';
 
-const RosterTable = ({ rows, setRows, errors }) => {
+const RosterTable = ({ rows, setRows, setSeatCount, errors }) => {
   const addRow = () => {
-    setRows([...rows, { name: '', email: '' }]);
+    const newRows = [...rows, { name: '', email: '' }];
+    setRows(newRows);
+    setSeatCount?.(newRows.length);
   };
 
   const removeRow = (index) => {
-    setRows(rows.filter((_, i) => i !== index));
+    if (rows.length <= 1) return;
+    const newRows = rows.filter((_, i) => i !== index);
+    setRows(newRows);
+    setSeatCount?.(newRows.length);
   };
 
   const updateRow = (index, field, value) => {

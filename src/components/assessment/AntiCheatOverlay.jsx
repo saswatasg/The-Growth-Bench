@@ -1,28 +1,19 @@
 import React from 'react';
 
+const EDGE_THRESHOLD_PERCENT = 2; // 2% from any edge
+const MOUSE_CHECK_INTERVAL_MS = 100;
+
 const AntiCheatOverlay = ({ children, participantName = '', onExitViolation }) => {
   const containerRef = React.useRef(null);
-  const exitCountRef = React.useRef(0);
-  const isFullscreenRef = React.useRef(false);
+  const violationCountRef = React.useRef(0);
+  const lastViolationRef = React.useRef(0);
+  const warnedRef = React.useRef(false);
 
-  // Request fullscreen on mount
+  // Block copy/paste/contextmenu
   React.useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
-    const requestFS = async () => {
-      try {
-        if (el.requestFullscreen) await el.requestFullscreen();
-        else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen();
-        isFullscreenRef.current = true;
-      } catch (e) {
-        console.warn('Fullscreen request failed:', e);
-      }
-    };
-
-    requestFS();
-
-    // Block copy/paste/contextmenu
     const block = (e) => e.preventDefault();
     const handlers = [
       ['copy', block],
@@ -32,63 +23,80 @@ const AntiCheatOverlay = ({ children, participantName = '', onExitViolation }) =
       ['dragstart', block],
     ];
     handlers.forEach(([event, handler]) => el.addEventListener(event, handler));
-
-    return () => {
-      handlers.forEach(([event, handler]) => el.removeEventListener(event, handler));
-    };
+    return () => handlers.forEach(([event, handler]) => el.removeEventListener(event, handler));
   }, []);
 
-  // Detect fullscreen exit
+  // Mouse proximity detection — warns when cursor approaches screen edges
   React.useEffect(() => {
-    const handleFullscreenChange = () => {
-      const isFS = !!(document.fullscreenElement || document.webkitFullscreenElement);
-      isFullscreenRef.current = isFS;
+    const handleMouseMove = (e) => {
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
 
-      if (!isFS) {
-        // User exited fullscreen
-        exitCountRef.current += 1;
-        if (exitCountRef.current >= 2) {
-          // Second exit — end the test
+      const thresholdX = innerWidth * (EDGE_THRESHOLD_PERCENT / 100);
+      const thresholdY = innerHeight * (EDGE_THRESHOLD_PERCENT / 100);
+
+      const nearEdge =
+        clientX <= thresholdX ||
+        clientX >= innerWidth - thresholdX ||
+        clientY <= thresholdY ||
+        clientY >= innerHeight - thresholdY;
+
+      if (nearEdge) {
+        const now = Date.now();
+        // Debounce: only count once per second
+        if (now - lastViolationRef.current < 1000) return;
+        lastViolationRef.current = now;
+
+        violationCountRef.current += 1;
+        if (violationCountRef.current >= 2) {
           onExitViolation?.('ended');
-        } else {
-          // First exit — warn and re-enter fullscreen
+        } else if (!warnedRef.current) {
+          warnedRef.current = true;
           onExitViolation?.('warning');
-          // Re-enter fullscreen after a brief delay
-          setTimeout(() => {
-            const el = containerRef.current;
-            if (el && !document.fullscreenElement) {
-              try {
-                if (el.requestFullscreen) el.requestFullscreen();
-                else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-              } catch (e) {
-                // Fullscreen re-entry failed — count as another violation
-                exitCountRef.current += 1;
-                if (exitCountRef.current >= 2) onExitViolation?.('ended');
-              }
-            }
-          }, 500);
         }
       }
     };
 
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
-
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
-    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [onExitViolation]);
 
-  // Detect tab visibility change
+  // Window blur detection — multi-monitor: cursor left browser window
+  React.useEffect(() => {
+    const handleBlur = () => {
+      // Only count if the blur is from the window losing focus (not an iframe)
+      if (document.activeElement?.tagName === 'IFRAME') return;
+
+      const now = Date.now();
+      if (now - lastViolationRef.current < 2000) return;
+      lastViolationRef.current = now;
+
+      violationCountRef.current += 1;
+      if (violationCountRef.current >= 2) {
+        onExitViolation?.('ended');
+      } else if (!warnedRef.current) {
+        warnedRef.current = true;
+        onExitViolation?.('warning');
+      }
+    };
+
+    window.addEventListener('blur', handleBlur);
+    return () => window.removeEventListener('blur', handleBlur);
+  }, [onExitViolation]);
+
+  // Tab visibility detection
   React.useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        // User switched tabs or minimized
-        exitCountRef.current += 1;
-        if (exitCountRef.current >= 2) {
+        const now = Date.now();
+        if (now - lastViolationRef.current < 2000) return;
+        lastViolationRef.current = now;
+
+        violationCountRef.current += 1;
+        if (violationCountRef.current >= 2) {
           onExitViolation?.('ended');
-        } else {
+        } else if (!warnedRef.current) {
+          warnedRef.current = true;
           onExitViolation?.('warning');
         }
       }

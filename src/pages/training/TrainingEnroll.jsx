@@ -255,7 +255,7 @@ const TrainingEnroll = () => {
 
               {/* Part B: Roster */}
               <div>
-                <RosterTable rows={roster} setRows={setRoster} errors={rosterErrors} />
+                <RosterTable rows={roster} setRows={setRoster} setSeatCount={setSeatCount} errors={rosterErrors} />
               </div>
 
               {/* Consent */}

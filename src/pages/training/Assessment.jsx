@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, AlertTriangle, Maximize } from 'lucide-react';
+import { ArrowRight, ArrowLeft, AlertTriangle, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import QuestionRenderer from '@/components/assessment/QuestionRenderer';
 import AntiCheatOverlay from '@/components/assessment/AntiCheatOverlay';
 import Timer from '@/components/assessment/Timer';
 import ScoreDisplay from '@/components/assessment/ScoreDisplay';
-import { selectQuestions, scoreAttempt } from '@/lib/assessment';
+import { selectQuestions, scoreAttempt, TIMER_MINUTES, QUESTION_COUNT } from '@/lib/assessment';
 import { PASS_THRESHOLD, MAX_ATTEMPTS } from '@/lib/training';
 import { issueCertificate, addAuditLog } from '@/lib/supabase';
 import { generateCertId } from '@/lib/training';
 
-const TIMER_SECONDS = 45 * 60; // 45 minutes
+const TIMER_SECONDS = TIMER_MINUTES * 60;
 
 const Assessment = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Assessment = () => {
       return;
     }
     setError('');
-    const qs = selectQuestions(10);
+    const qs = selectQuestions(QUESTION_COUNT);
     setQuestions(qs);
     setAnswers({});
     setCurrentIndex(0);
@@ -61,7 +61,7 @@ const Assessment = () => {
     const scoreResult = scoreAttempt(questions, answers);
     setResult(scoreResult);
 
-    // Exit fullscreen
+    // Exit fullscreen (if active from older sessions)
     try {
       if (document.exitFullscreen) await document.exitFullscreen();
       else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
@@ -110,10 +110,10 @@ const Assessment = () => {
 
   const handleExitViolation = (type) => {
     if (type === 'warning') {
-      setWarningMessage('You exited fullscreen. This is your only warning. Do it again and the test will be submitted automatically.');
+      setWarningMessage('Stay focused on the assessment. Moving your cursor to the edge of the screen or leaving the browser window is not allowed. This is your only warning.');
       setPhase('warning');
     } else if (type === 'ended') {
-      setWarningMessage('You exited fullscreen twice. Your assessment has been automatically submitted.');
+      setWarningMessage('You triggered a second violation. Your assessment has been automatically submitted.');
       submitAssessment();
     }
   };
@@ -121,12 +121,6 @@ const Assessment = () => {
   const dismissWarning = () => {
     setWarningMessage('');
     setPhase('active');
-    // Re-enter fullscreen
-    const el = document.documentElement;
-    try {
-      if (el.requestFullscreen) el.requestFullscreen();
-      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-    } catch (e) {}
   };
 
   const currentQuestion = questions[currentIndex];
@@ -150,7 +144,7 @@ const Assessment = () => {
               Claude Practitioner Assessment
             </h1>
             <p className="text-body-lg text-mute mt-4 leading-relaxed">
-              {questions.length > 0 ? questions.length : 10} questions · {TIMER_SECONDS / 60} minutes · {PASS_THRESHOLD}% to pass
+              {QUESTION_COUNT} questions · {TIMER_MINUTES} minutes · {PASS_THRESHOLD}% to pass · {MAX_ATTEMPTS} attempts
             </p>
 
             <div className="mt-8 p-6 bg-soft-cloud border border-hairline-soft text-left">
@@ -166,7 +160,7 @@ const Assessment = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
-                  The test runs in fullscreen — exiting fullscreen or switching tabs will count as a violation
+                  Mouse movement near screen edges or leaving the browser window will trigger a warning
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
@@ -197,11 +191,11 @@ const Assessment = () => {
 
             <div className="mt-8">
               <Button size="lg" onClick={startAssessment}>
-                <Maximize className="w-4 h-4 mr-2" /> Begin Assessment (Fullscreen)
+                <Shield className="w-4 h-4 mr-2" /> Begin Assessment
               </Button>
             </div>
 
-            <p className="text-caption-sm text-mute mt-4">The test will open in fullscreen mode. You will not be able to exit until you submit.</p>
+            <p className="text-caption-sm text-mute mt-4">Anti-cheat monitoring is active. Stay focused on the assessment.</p>
 
             <div className="mt-6">
               <Link to="/training/claude-practitioner" className="text-body-sm text-mute hover:text-ink transition-colors">

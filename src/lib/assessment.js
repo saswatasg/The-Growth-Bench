@@ -1,29 +1,36 @@
 // Assessment business logic — question bank, scoring, randomization
+// 20 questions, all closed-ended (no textboxes), 40 minutes, 2 attempts
 
-import { PASS_THRESHOLD, MAX_ATTEMPTS } from './training';
+import { PASS_THRESHOLD, MAX_ATTEMPTS, TIMER_MINUTES, QUESTION_COUNT } from './training';
 
-// Question bank — hardcoded for now, can be moved to Supabase later
+export { TIMER_MINUTES, QUESTION_COUNT };
+
+// Question bank — 20 high-quality closed-ended questions
 export const QUESTION_BANK = [
-  // Day 1: Foundations
+  // ═══════════════════════════════════════════════════════════
+  // DAY 1: Claude Foundations (7 questions)
+  // ═══════════════════════════════════════════════════════════
+
   {
     id: 'q1',
-    type: 'decision_tree',
+    type: 'single',
     category: 'day1',
     difficulty: 'easy',
     points: 2,
     data: {
-      scenario: 'A marketing manager needs to draft 15 product descriptions for a new Shopify collection. Each description should follow a specific brand voice guide and include SEO keywords from a spreadsheet. Which Claude surface is the best fit for this task?',
+      scenario: 'A marketing manager needs to draft 15 product descriptions for a new Shopify collection. Each description must follow a specific brand voice guide and include SEO keywords from a spreadsheet.',
+      question: 'Which Claude surface is the best fit for this task?',
       options: [
         { id: 'a', text: 'Claude Chat — one-off prompt per description' },
         { id: 'b', text: 'Claude Projects — upload brand voice + keywords as context, batch generate' },
         { id: 'c', text: 'Claude Desktop — use the desktop app for offline access' },
         { id: 'd', text: 'Claude Code — write a script to auto-generate' },
       ],
-      correct: ['b'],
-      multiSelect: false,
+      correct: 'b',
       explanation: 'Projects lets you upload the brand voice guide and keyword spreadsheet as persistent context. Each generation inherits that context without re-prompting.',
     },
   },
+
   {
     id: 'q2',
     type: 'ordering',
@@ -31,7 +38,7 @@ export const QUESTION_BANK = [
     difficulty: 'medium',
     points: 3,
     data: {
-      instruction: 'Rank these Claude surfaces from MOST to LEAST suitable for the following task: "You need to analyze a 200-page PDF research report, extract key findings, and create a structured executive summary with action items."',
+      instruction: 'Rank these Claude surfaces from MOST to LEAST suitable for this task: "Analyze a 200-page PDF research report, extract key findings, and create a structured executive summary with action items."',
       items: [
         { id: 'a', text: 'Claude Chat' },
         { id: 'b', text: 'Claude Projects' },
@@ -42,104 +49,281 @@ export const QUESTION_BANK = [
       explanation: 'Projects handles large documents best (persistent context). Artifacts helps structure the output. Chat works for quick extraction. Code is least relevant for this task.',
     },
   },
+
   {
     id: 'q3',
-    type: 'fill_blank',
+    type: 'single',
     category: 'day1',
     difficulty: 'easy',
     points: 2,
     data: {
-      template: 'When using Claude for customer support automation, the key principle is that Claude should handle the ___-repetition queries while human agents focus on ___-complexity issues.',
-      blanks: [
-        { position: 1, correct: ['high', 'low-complexity', 'routine', 'common', 'simple'], placeholder: 'type of queries' },
-        { position: 2, correct: ['high', 'complex', 'edge-case', 'sensitive', 'nuanced'], placeholder: 'type of issues' },
+      scenario: 'You want to give Claude persistent context about your company — brand guidelines, product catalog, and customer personas — so every conversation starts with that knowledge.',
+      question: 'Which approach achieves this?',
+      options: [
+        { id: 'a', text: 'Paste the context at the start of every Chat conversation' },
+        { id: 'b', text: 'Create a Claude Project and upload the documents as knowledge files' },
+        { id: 'c', text: 'Use Claude Desktop and save the files to your local machine' },
+        { id: 'd', text: 'Use Claude Code to build a custom knowledge base API' },
       ],
-      explanation: 'Claude excels at high-repetition, pattern-based queries. Humans handle high-complexity, nuanced, or sensitive issues.',
+      correct: 'b',
+      explanation: 'Projects provide persistent context. Uploaded documents stay available across all conversations in that project — no re-pasting needed.',
     },
   },
-  // Day 2: Skills & Automation
+
   {
     id: 'q4',
-    type: 'scenario',
-    category: 'day2',
-    difficulty: 'hard',
-    points: 4,
+    type: 'multi',
+    category: 'day1',
+    difficulty: 'medium',
+    points: 3,
     data: {
-      scenario: 'Your e-commerce client receives 300+ customer emails daily. The team spends 4 hours/day categorizing them into: Order Issues (40%), Product Questions (25%), Returns (20%), Shipping (10%), Other (5%). Each category has a different response template.',
-      task: 'Design a Claude Skill that automates this categorization. Describe: (1) What the Skill does, (2) What inputs it needs, (3) What outputs it produces, (4) What edge cases to handle.',
-      rubric: [
-        'Describes clear input/output specification',
-        'Mentions categorization logic or rules',
-        'Addresses edge cases (ambiguous emails, multi-category)',
-        'Includes human-review step for low-confidence categorizations',
+      scenario: 'Your team uses Claude for customer support. You want to set up the system correctly from day one.',
+      question: 'Which of the following are best practices for responsible AI use in customer support? (Select all that apply)',
+      options: [
+        { id: 'a', text: 'Let Claude respond to all customer messages without human review' },
+        { id: 'b', text: 'Set up a human-review period before AI responses go live' },
+        { id: 'c', text: 'Define clear escalation rules for when Claude should hand off to a human' },
+        { id: 'd', text: 'Log all AI interactions for quality monitoring' },
+        { id: 'e', text: 'Use Claude to handle sensitive complaints without human oversight' },
       ],
-      maxScore: 4,
+      correct: ['b', 'c', 'd'],
+      explanation: 'Responsible AI requires human oversight (b), clear escalation rules (c), and logging for quality (d). Letting AI respond without review (a) and handling sensitive complaints without oversight (e) are risky.',
     },
   },
+
   {
     id: 'q5',
-    type: 'decision_tree',
+    type: 'single',
+    category: 'day1',
+    difficulty: 'easy',
+    points: 2,
+    data: {
+      scenario: 'A founder asks: "I keep re-explaining my business context every time I open Claude. What am I doing wrong?"',
+      question: 'What is the most likely issue?',
+      options: [
+        { id: 'a', text: 'They are using Claude Chat instead of Claude Projects' },
+        { id: 'b', text: 'They are using the wrong Claude model' },
+        { id: 'c', text: 'Their prompts are too short' },
+        { id: 'd', text: 'They need to upgrade to a paid plan' },
+      ],
+      correct: 'a',
+      explanation: 'Claude Chat starts fresh each time. Claude Projects preserves context across conversations — brand docs, past discussions, and knowledge files stay loaded.',
+    },
+  },
+
+  {
+    id: 'q6',
+    type: 'ordering',
+    category: 'day1',
+    difficulty: 'hard',
+    points: 3,
+    data: {
+      instruction: 'A D2C brand wants to automate their returns process. Rank these steps from FIRST to LAST in a proper implementation sequence.',
+      items: [
+        { id: 'a', text: 'Define the returns policy rules and edge cases' },
+        { id: 'b', text: 'Build a Claude Skill that processes return requests' },
+        { id: 'c', text: 'Test with 10% of live traffic for 2 weeks' },
+        { id: 'd', text: 'Upload the returns policy and product catalog to Claude Projects' },
+        { id: 'e', text: 'Roll out to 100% of traffic with human-review monitoring' },
+      ],
+      correctOrder: ['a', 'd', 'b', 'c', 'e'],
+      explanation: 'Define rules first (a), then set up context (d), then build the Skill (b), then test at small scale (c), then full rollout (e). Skipping the definition step leads to bad automation.',
+    },
+  },
+
+  {
+    id: 'q7',
+    type: 'single',
+    category: 'day1',
+    difficulty: 'medium',
+    points: 2,
+    data: {
+      scenario: 'A team member says: "I asked Claude to write our Q3 marketing report and it made up revenue numbers."',
+      question: 'What is the correct response?',
+      options: [
+        { id: 'a', text: 'Claude is unreliable and should not be used for reports' },
+        { id: 'b', text: 'Claude can hallucinate — always provide real data as context and verify outputs' },
+        { id: 'c', text: 'Switch to a different AI model that doesn\'t hallucinate' },
+        { id: 'd', text: 'Use Claude Code instead, which has access to real data' },
+      ],
+      correct: 'b',
+      explanation: 'All LLMs can hallucinate. The solution is to provide real data as context (upload to Projects) and verify outputs. Claude is a tool, not an oracle.',
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // DAY 2: Skills, Connectors, Automation (7 questions)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 'q8',
+    type: 'single',
     category: 'day2',
     difficulty: 'medium',
     points: 2,
     data: {
-      scenario: 'You want Claude to automatically summarize every new blog post published on your WordPress site and send the summary to a Slack channel. Which approach is MOST appropriate?',
+      scenario: 'You want Claude to automatically summarize every new blog post published on your WordPress site and send the summary to a Slack channel.',
+      question: 'Which approach is MOST appropriate?',
       options: [
         { id: 'a', text: 'Create a Skill that monitors the RSS feed and generates summaries' },
         { id: 'b', text: 'Use Claude Chat and manually paste each blog post' },
         { id: 'c', text: 'Use Scheduled Tasks with a webhook trigger from WordPress' },
         { id: 'd', text: 'Use Claude Code to write a Python script that calls the Claude API' },
       ],
-      correct: ['c'],
-      multiSelect: false,
-      explanation: 'Scheduled Tasks with a webhook trigger is the most automated approach. Skills are for reusable prompts, not event-driven automation. Manual Chat doesn\'t scale. Claude Code works but is overkill for this.',
+      correct: 'c',
+      explanation: 'Scheduled Tasks with a webhook trigger is the most automated approach. Skills are for reusable prompts, not event-driven automation. Manual Chat doesn\'t scale. Claude Code works but is overkill.',
     },
   },
+
   {
-    id: 'q6',
-    type: 'simulation',
+    id: 'q9',
+    type: 'multi',
     category: 'day2',
     difficulty: 'hard',
-    points: 4,
+    points: 3,
     data: {
-      context: 'You are building a Claude automation for a D2C brand. The brand sells skincare products and receives 500+ Instagram DMs daily. Most are: "Is this product good for oily skin?" or "What\'s the shipping time?"',
-      interactive: true,
-      task: 'You have access to the brand\'s product database (a CSV with columns: product_name, skin_type, ingredients, price, stock_status). Design the automation flow.',
-      steps: [
-        { prompt: 'What data would you upload to Claude Projects as context?', type: 'textarea' },
-        { prompt: 'What prompt template would you use for the auto-reply Skill?', type: 'textarea' },
-        { prompt: 'What conditions should trigger a handoff to a human agent?', type: 'multi-select', options: ['Complaint about a specific order', 'Request for a refund', 'Question about ingredients', 'Offensive or threatening language', 'Question about shipping times'] },
+      scenario: 'You are building a Claude Skill for a D2C skincare brand. The Skill needs to handle Instagram DMs about product recommendations.',
+      question: 'Which components should the Skill include? (Select all that apply)',
+      options: [
+        { id: 'a', text: 'Product database with skin type, ingredients, and stock status' },
+        { id: 'b', text: 'Brand voice guide for response tone and style' },
+        { id: 'c', text: 'Escalation rules for complaints, refunds, and offensive messages' },
+        { id: 'd', text: 'Direct access to the brand\'s Shopify admin panel' },
+        { id: 'e', text: 'Response templates for common questions (shipping, returns, sizing)' },
       ],
-      maxScore: 4,
-      rubric: [
-        'Uploads product CSV + brand voice guide',
-        'Skill prompt includes category detection + tone matching',
-        'Handoff conditions cover complaints, refunds, offensive language',
-      ],
+      correct: ['a', 'b', 'c', 'e'],
+      explanation: 'A good Skill needs data context (a), brand voice (b), escalation rules (c), and templates (e). Direct Shopify admin access (d) is a security risk and unnecessary for DM responses.',
     },
   },
-  // Day 3: MCP & Assessment
+
   {
-    id: 'q7',
-    type: 'decision_tree',
+    id: 'q10',
+    type: 'single',
+    category: 'day2',
+    difficulty: 'medium',
+    points: 2,
+    data: {
+      scenario: 'Your team has built a Claude Skill that categorizes customer emails. It works well for 80% of emails but struggles with ambiguous ones that could fit multiple categories.',
+      question: 'What is the best approach to handle this?',
+      options: [
+        { id: 'a', text: 'Add more categories to cover every edge case' },
+        { id: 'b', text: 'Set up a confidence threshold — low-confidence emails go to a human for review' },
+        { id: 'c', text: 'Remove the Skill and have humans categorize all emails' },
+        { id: 'd', text: 'Switch to a more expensive Claude model' },
+      ],
+      correct: 'b',
+      explanation: 'A confidence threshold is the right approach. The Skill handles the easy 80%, and humans handle the ambiguous 20%. This is the human-AI collaboration pattern.',
+    },
+  },
+
+  {
+    id: 'q11',
+    type: 'ordering',
+    category: 'day2',
+    difficulty: 'medium',
+    points: 3,
+    data: {
+      instruction: 'You are building a custom Claude Skill for automated invoice processing. Rank these implementation steps from FIRST to LAST.',
+      items: [
+        { id: 'a', text: 'Define the Skill prompt template with clear input/output rules' },
+        { id: 'b', text: 'Test with 50 real invoices and measure accuracy' },
+        { id: 'c', text: 'Upload your invoice template and extraction rules as context' },
+        { id: 'd', text: 'Deploy to production with human-review monitoring' },
+        { id: 'e', text: 'Identify edge cases (multi-currency, partial payments, credit notes)' },
+      ],
+      correctOrder: ['e', 'c', 'a', 'b', 'd'],
+      explanation: 'Identify edge cases first (e), then set up context (c), then write the prompt (a), then test (b), then deploy (d). Understanding edge cases before building prevents rework.',
+    },
+  },
+
+  {
+    id: 'q12',
+    type: 'single',
+    category: 'day2',
+    difficulty: 'easy',
+    points: 2,
+    data: {
+      scenario: 'A founder asks: "What\'s the difference between a Claude Skill and a Claude Project?"',
+      question: 'Which answer is most accurate?',
+      options: [
+        { id: 'a', text: 'Skills are reusable prompt templates; Projects are persistent knowledge bases with files and conversations' },
+        { id: 'b', text: 'Skills and Projects are the same thing with different names' },
+        { id: 'c', text: 'Skills are for developers; Projects are for marketers' },
+        { id: 'd', text: 'Skills are free; Projects require a paid plan' },
+      ],
+      correct: 'a',
+      explanation: 'Skills are reusable prompt templates that define how Claude behaves for a specific task. Projects are persistent workspaces with uploaded files, knowledge, and conversation history.',
+    },
+  },
+
+  {
+    id: 'q13',
+    type: 'multi',
+    category: 'day2',
+    difficulty: 'hard',
+    points: 3,
+    data: {
+      scenario: 'You are deploying Claude automation for a D2C brand\'s customer support team. The brand receives 500+ messages daily across WhatsApp and Instagram.',
+      question: 'Which deployment considerations are critical? (Select all that apply)',
+      options: [
+        { id: 'a', text: 'Define clear handoff rules between AI and human agents' },
+        { id: 'b', text: 'Start with a pilot on 10% of traffic before full rollout' },
+        { id: 'c', text: 'Set up monitoring for response quality and customer satisfaction' },
+        { id: 'd', text: 'Replace all human agents immediately to reduce costs' },
+        { id: 'e', text: 'Create response templates for the most common question categories' },
+        { id: 'f', text: 'Ignore edge cases — they\'re too rare to matter' },
+      ],
+      correct: ['a', 'b', 'c', 'e'],
+      explanation: 'Proper deployment requires handoff rules (a), pilot testing (b), quality monitoring (c), and templates (e). Replacing all humans immediately (d) is risky. Ignoring edge cases (f) leads to bad customer experiences.',
+    },
+  },
+
+  {
+    id: 'q14',
+    type: 'single',
+    category: 'day2',
+    difficulty: 'medium',
+    points: 2,
+    data: {
+      scenario: 'A client says: "Our Claude automation works great for English queries but fails badly on Hindi and mixed-language messages."',
+      question: 'What is the best approach?',
+      options: [
+        { id: 'a', text: 'Tell the client to only use English' },
+        { id: 'b', text: 'Add language detection to the Skill and include Hindi response templates in the context' },
+        { id: 'c', text: 'Build a separate Skill for each language' },
+        { id: 'd', text: 'Use a translation API before sending to Claude' },
+      ],
+      correct: 'b',
+      explanation: 'Claude handles multiple languages well — the issue is likely missing context. Adding language detection and Hindi templates to the Skill context is the simplest and most effective fix.',
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════
+  // DAY 3: MCP, Cost Optimization, Strategy (6 questions)
+  // ═══════════════════════════════════════════════════════════
+
+  {
+    id: 'q15',
+    type: 'single',
     category: 'day3',
     difficulty: 'medium',
     points: 2,
     data: {
-      scenario: 'Your team uses Notion for project management and Google Sheets for financial tracking. You want Claude to answer questions like "What\'s our current burn rate?" by reading both sources. What\'s the right approach?',
+      scenario: 'Your team uses Notion for project management and Google Sheets for financial tracking. You want Claude to answer questions like "What\'s our current burn rate?" by reading both sources.',
+      question: 'What is the right approach?',
       options: [
         { id: 'a', text: 'Copy-paste data from both tools into Claude Chat each time' },
         { id: 'b', text: 'Set up MCP connectors for both Notion and Google Sheets' },
         { id: 'c', text: 'Export everything to PDF and upload to Claude Projects' },
         { id: 'd', text: 'Use Claude Code to build a custom API integration' },
       ],
-      correct: ['b'],
-      multiSelect: false,
+      correct: 'b',
       explanation: 'MCP connectors let Claude access both tools in real-time without manual data transfer. This is exactly what MCP is designed for.',
     },
   },
+
   {
-    id: 'q8',
+    id: 'q16',
     type: 'ordering',
     category: 'day3',
     difficulty: 'hard',
@@ -156,42 +340,89 @@ export const QUESTION_BANK = [
       explanation: 'Quality is paramount for customer-facing automation. Cost matters at scale. Latency affects user experience. Context window is least critical for support queries (usually short).',
     },
   },
+
   {
-    id: 'q9',
-    type: 'fill_blank',
+    id: 'q17',
+    type: 'single',
     category: 'day3',
     difficulty: 'medium',
     points: 2,
     data: {
-      template: 'When optimizing token costs, the two biggest levers are: (1) using the right ___ for the task complexity, and (2) keeping your prompts and context ___ focused on what Claude actually needs.',
-      blanks: [
-        { position: 1, correct: ['model', 'claude model', 'llm', 'ai model'], placeholder: 'what to choose' },
-        { position: 2, correct: ['concise', 'tight', 'lean', 'minimal', 'clean', 'short'], placeholder: 'how to trim' },
+      scenario: 'A team is spending ₹80,000/month on Claude subscriptions across 15 people. Most usage is simple tasks like email drafting and meeting summaries.',
+      question: 'Which optimization would have the biggest impact on cost?',
+      options: [
+        { id: 'a', text: 'Switch everyone to the most expensive model for better quality' },
+        { id: 'b', text: 'Use Sonnet for routine tasks and reserve Opus for complex analysis' },
+        { id: 'c', text: 'Reduce the number of users to save on seat costs' },
+        { id: 'd', text: 'Set shorter context windows for all users' },
       ],
-      explanation: 'Model selection (Sonnet vs Opus) is the biggest cost lever. Concise prompts and focused context reduce token usage per query.',
+      correct: 'b',
+      explanation: 'Model selection is the biggest cost lever. Sonnet handles 80% of tasks well at a fraction of Opus cost. Reserve Opus for complex work that genuinely needs it.',
     },
   },
+
   {
-    id: 'q10',
-    type: 'scenario',
+    id: 'q18',
+    type: 'multi',
     category: 'day3',
     difficulty: 'hard',
-    points: 4,
+    points: 3,
     data: {
-      scenario: 'Your company is deploying Claude across the marketing team (5 people), customer support (3 people), and product team (4 people). Each team has different needs. Budget is ₹50,000/month for Claude subscriptions.',
-      task: 'Create a deployment plan: (1) Which Claude plan for each team? (2) What MCP connectors would you set up? (3) What Skills would you build for each team? (4) How would you measure ROI?',
-      rubric: [
-        'Assigns appropriate plan tiers based on usage patterns',
-        'Mentions relevant MCP connectors per team (CRM for support, analytics for marketing)',
-        'Lists practical Skills per team category',
-        'Defines measurable ROI metrics (time saved, tickets resolved, content produced)',
+      scenario: 'Your company is deploying Claude across marketing (5 people), support (3 people), and product (4 people). Budget is ₹50,000/month.',
+      question: 'Which deployment strategies are correct? (Select all that apply)',
+      options: [
+        { id: 'a', text: 'Give every team member the same Claude plan for simplicity' },
+        { id: 'b', text: 'Set up team-specific Projects with relevant context files' },
+        { id: 'c', text: 'Build Skills for each team\'s most repetitive tasks' },
+        { id: 'd', text: 'Measure ROI by tracking time saved and output quality per team' },
+        { id: 'e', text: 'Deploy to all teams simultaneously without a pilot' },
       ],
-      maxScore: 4,
+      correct: ['b', 'c', 'd'],
+      explanation: 'Smart deployment means team-specific context (b), Skills for repetitive work (c), and ROI tracking (d). One-size-fits-all plans (a) waste money. No-pilot deployment (e) is risky.',
+    },
+  },
+
+  {
+    id: 'q19',
+    type: 'single',
+    category: 'day3',
+    difficulty: 'easy',
+    points: 2,
+    data: {
+      scenario: 'A founder asks: "What is MCP and why should I care?"',
+      question: 'Which explanation is most accurate?',
+      options: [
+        { id: 'a', text: 'MCP is a way to connect Claude to your real tools and data sources in real-time' },
+        { id: 'b', text: 'MCP is a new Claude model that\'s faster than Sonnet' },
+        { id: 'c', text: 'MCP is a pricing plan for enterprise customers' },
+        { id: 'd', text: 'MCP is a security protocol for data encryption' },
+      ],
+      correct: 'a',
+      explanation: 'MCP (Model Context Protocol) connects Claude to external tools and data sources — databases, APIs, spreadsheets, CRMs — so Claude can read and act on real-time data without manual copy-paste.',
+    },
+  },
+
+  {
+    id: 'q20',
+    type: 'ordering',
+    category: 'day3',
+    difficulty: 'medium',
+    points: 3,
+    data: {
+      instruction: 'A company wants to measure the ROI of their Claude deployment. Rank these metrics from MOST to LEAST important for a support team.',
+      items: [
+        { id: 'a', text: 'Customer satisfaction score (CSAT) after AI-assisted responses' },
+        { id: 'b', text: 'Number of tickets resolved per agent per day' },
+        { id: 'c', text: 'Cost per resolved ticket' },
+        { id: 'd', text: 'Number of Claude queries per day' },
+      ],
+      correctOrder: ['a', 'b', 'c', 'd'],
+      explanation: 'Customer satisfaction (a) is the ultimate metric — quality over quantity. Tickets resolved (b) measures throughput. Cost per ticket (c) measures efficiency. Query count (d) is a usage metric, not a value metric.',
     },
   },
 ];
 
-// Scoring
+// Scoring — all question types are deterministic (no keyword matching)
 export function scoreAttempt(questions, answers) {
   let totalScore = 0;
   let totalPossible = 0;
@@ -201,25 +432,20 @@ export function scoreAttempt(questions, answers) {
     const answer = answers[q.id];
     if (!answer) return;
 
-    if (q.type === 'decision_tree') {
-      const correct = q.data.correct;
-      const selected = Array.isArray(answer) ? answer : [answer];
-      if (q.data.multiSelect) {
-        const correctSet = new Set(correct);
-        const selectedSet = new Set(selected);
-        const matchCount = [...selectedSet].filter(x => correctSet.has(x)).length;
-        const penalty = [...selectedSet].filter(x => !correctSet.has(x)).length;
-        totalScore += Math.max(0, Math.round(q.points * (matchCount / correctSet.size) - penalty * 0.5));
-      } else {
-        if (correct.includes(answer)) totalScore += q.points;
-      }
+    if (q.type === 'single') {
+      if (answer === q.data.correct) totalScore += q.points;
+    } else if (q.type === 'multi') {
+      const correct = new Set(q.data.correct);
+      const selected = new Set(answer);
+      const matchCount = [...selected].filter(x => correct.has(x)).length;
+      const penalty = [...selected].filter(x => !correct.has(x)).length;
+      totalScore += Math.max(0, Math.round(q.points * (matchCount / correct.size) - penalty * 0.5));
     } else if (q.type === 'ordering') {
       const correctOrder = q.data.correctOrder;
       const userOrder = answer;
       if (JSON.stringify(correctOrder) === JSON.stringify(userOrder)) {
         totalScore += q.points;
       } else {
-        // Partial credit: count adjacent pairs that are correct
         let correctPairs = 0;
         for (let i = 0; i < correctOrder.length - 1; i++) {
           const userI = userOrder.indexOf(correctOrder[i]);
@@ -228,27 +454,6 @@ export function scoreAttempt(questions, answers) {
         }
         totalScore += Math.round(q.points * (correctPairs / (correctOrder.length - 1)));
       }
-    } else if (q.type === 'fill_blank') {
-      const blanks = q.data.blanks;
-      let correctBlanks = 0;
-      blanks.forEach(blank => {
-        const userAnswer = (answer[blank.position] || '').trim().toLowerCase();
-        if (blank.correct.some(c => userAnswer.includes(c.toLowerCase()))) {
-          correctBlanks++;
-        }
-      });
-      totalScore += Math.round(q.points * (correctBlanks / blanks.length));
-    } else if (q.type === 'scenario' || q.type === 'simulation') {
-      // Auto-score based on rubric keyword matching (simplified)
-      const rubric = q.data.rubric || [];
-      const answerText = typeof answer === 'string' ? answer : JSON.stringify(answer);
-      let matchedCriteria = 0;
-      rubric.forEach(criterion => {
-        const keywords = criterion.toLowerCase().split(/\s+/).filter(w => w.length > 3);
-        const matchCount = keywords.filter(k => answerText.toLowerCase().includes(k)).length;
-        if (matchCount >= Math.ceil(keywords.length * 0.3)) matchedCriteria++;
-      });
-      totalScore += Math.round(q.points * (matchedCriteria / Math.max(rubric.length, 1)));
     }
   });
 
@@ -262,7 +467,7 @@ export function scoreAttempt(questions, answers) {
 }
 
 // Randomize question order and select subset
-export function selectQuestions(count = 10) {
+export function selectQuestions(count = QUESTION_COUNT) {
   const shuffled = [...QUESTION_BANK].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.min(count, shuffled.length));
 }
