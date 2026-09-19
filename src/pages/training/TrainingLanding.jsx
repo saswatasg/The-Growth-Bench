@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { ArrowRight, Check, Calendar, Users, Clock, BookOpen, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
@@ -78,8 +78,28 @@ const FAQ_ITEMS = [
   { q: 'Is there any pre-work required?', a: 'No. Day 1 opens with the fundamentals. Every participant starts from the same baseline.' },
 ];
 
+// Animated section wrapper
+const AnimatedSection = ({ children, className, delay = 0 }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
 const TrainingLanding = () => {
   const [openFaq, setOpenFaq] = React.useState(null);
+  const { scrollYProgress } = useScroll();
+  const stickyOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
     <>
@@ -96,31 +116,49 @@ const TrainingLanding = () => {
         </div>
       </div>
 
-      {/* Hero */}
+      {/* Hero — value-first: what they get, not what it is */}
       <section className="bg-canvas py-[60px] md:py-[100px]">
         <div className="container-site text-center">
-          <span className="text-label-xs text-mute uppercase tracking-wider">Training</span>
-          <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
-            Claude Practitioner Training
-          </h1>
-          <p className="text-body-lg text-mute mt-4 leading-relaxed max-w-2xl mx-auto">
-            A 3-Day Live Certification Program
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-8 text-body-sm text-mute">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-label-xs text-mute uppercase tracking-wider">Training</span>
+            <h1 className="font-display text-display-md md:text-display-lg text-ink mt-2 leading-none">
+              Claude Practitioner Training
+            </h1>
+            <p className="text-body-lg text-mute mt-4 leading-relaxed max-w-2xl mx-auto">
+              A 3-Day Live Certification Program
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center gap-6 mt-8 text-body-sm text-mute"
+          >
             <span className="flex items-center gap-2"><Calendar className="w-4 h-4" /> Next live cohort: October 2026</span>
             <span className="flex items-center gap-2"><Users className="w-4 h-4" /> 12–35 per cohort</span>
             <span className="flex items-center gap-2"><Clock className="w-4 h-4" /> 3 × 2-hour sessions</span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-4 mt-8"
+          >
             <Link to="/training/claude-practitioner/enroll">
               <Button size="lg">Enroll Your Team — {formatINR(BASE_PRICE_PAISE)}/person <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* The Opportunity */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
+      {/* The Opportunity — value first */}
+      <AnimatedSection className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">The Opportunity</span>
@@ -138,10 +176,10 @@ const TrainingLanding = () => {
             </div>
           </div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
-      {/* What your team leaves with */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      {/* What your team leaves with — outcomes before who-for */}
+      <AnimatedSection className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">Outcomes</span>
@@ -156,28 +194,28 @@ const TrainingLanding = () => {
             </motion.ul>
           </div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
-      {/* Why this program */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
+      {/* Why this program — differentiate from alternatives */}
+      <AnimatedSection className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Why this program</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Not another recorded course.</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {WHY_THIS.map((item) => (
-              <div key={item.title} className="p-6 bg-canvas border border-hairline-soft">
+          <motion.div {...staggerContainer} className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {WHY_THIS.map((item, i) => (
+              <motion.div key={item.title} {...staggerChild} className="p-6 bg-canvas border border-hairline-soft">
                 <h3 className="text-heading-md text-ink">{item.title}</h3>
                 <p className="text-body-sm text-mute mt-2 leading-relaxed">{item.desc}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
       {/* Who this is for */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      <AnimatedSection className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
             <div>
@@ -206,100 +244,113 @@ const TrainingLanding = () => {
             </div>
           </div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
-      {/* Day-by-day curriculum */}
-      <motion.section {...fadeUp} className="bg-soft-cloud py-[48px] md:py-[100px]">
+      {/* Day-by-day curriculum — with staggered reveal */}
+      <AnimatedSection className="bg-soft-cloud py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">Curriculum</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Day-by-day breakdown</h2>
             <p className="text-body-md text-mute mt-4">No pre-work required — Day 1 opens with the fundamentals.</p>
           </div>
-          <div className="max-w-3xl mx-auto space-y-8">
-            {DAY_DETAILS.map((d) => (
-              <div key={d.day} className="p-6 md:p-8 bg-canvas border border-hairline-soft">
+          <motion.div {...staggerContainer} className="max-w-3xl mx-auto space-y-8">
+            {DAY_DETAILS.map((d, i) => (
+              <motion.div key={d.day} {...staggerChild} className="p-6 md:p-8 bg-canvas border border-hairline-soft">
                 <span className="text-label-xs text-mute uppercase tracking-wider">{d.day}</span>
                 <h3 className="font-display text-heading-lg text-ink mt-2">{d.title}</h3>
                 <p className="text-body-md text-mute mt-2 italic">{d.question}</p>
                 <ul className="mt-4 space-y-2">
-                  {d.points.map((p, i) => (
-                    <li key={i} className="flex items-start gap-2 text-body-sm text-ink">
+                  {d.points.map((p, j) => (
+                    <li key={j} className="flex items-start gap-2 text-body-sm text-ink">
                       <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
                       {p}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          {/* Included extras — merged here */}
-          <div className="max-w-3xl mx-auto mt-8 p-6 bg-canvas border border-hairline-soft">
+          {/* Included extras */}
+          <motion.div {...staggerContainer} className="max-w-3xl mx-auto mt-8 p-6 bg-canvas border border-hairline-soft">
             <span className="text-label-xs text-mute uppercase tracking-wider">Also included</span>
             <div className="grid sm:grid-cols-2 gap-6 mt-4">
-              <div className="flex items-start gap-3">
+              <motion.div {...staggerChild} className="flex items-start gap-3">
                 <BookOpen className="w-5 h-5 text-ink flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-body-md text-ink font-medium">Free Skill Library</h4>
                   <p className="text-body-sm text-mute mt-1">100+ curated Claude Skills, ready to install across your team's workflows.</p>
                 </div>
-              </div>
-              <div className="flex items-start gap-3">
+              </motion.div>
+              <motion.div {...staggerChild} className="flex items-start gap-3">
                 <MessageCircle className="w-5 h-5 text-ink flex-shrink-0 mt-0.5" />
                 <div>
                   <h4 className="text-body-md text-ink font-medium">Lifetime Monthly Q&A</h4>
                   <p className="text-body-sm text-mute mt-1">Standing 2-hour live session every month — open for as long as the relationship continues.</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
       {/* Format & delivery */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      <AnimatedSection className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="max-w-3xl mx-auto">
             <span className="text-label-xs text-mute uppercase tracking-wider">Format</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Format & delivery</h2>
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
-              <div className="p-6 bg-soft-cloud border border-hairline-soft">
+            <motion.div {...staggerContainer} className="grid md:grid-cols-2 gap-6 mt-8">
+              <motion.div {...staggerChild} className="p-6 bg-soft-cloud border border-hairline-soft">
                 <h3 className="text-heading-md text-ink">Virtual</h3>
                 <p className="text-body-sm text-mute mt-2">Live sessions via video call. Interactive, not pre-recorded. Screen sharing and real-time Q&A.</p>
-              </div>
-              <div className="p-6 bg-soft-cloud border border-hairline-soft">
+              </motion.div>
+              <motion.div {...staggerChild} className="p-6 bg-soft-cloud border border-hairline-soft">
                 <h3 className="text-heading-md text-ink">On-site</h3>
                 <p className="text-body-sm text-mute mt-2">We come to your office. Hands-on workshops with your team in the room. Available for cohorts of 15+.</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
             <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { label: 'Cohort size', value: '12–35' },
                 { label: 'Sessions', value: '3 × 2 hrs' },
                 { label: 'Timeline', value: '1–2 weeks' },
                 { label: 'Materials', value: 'Included' },
-              ].map((item) => (
-                <div key={item.label} className="text-center p-4 bg-soft-cloud border border-hairline-soft">
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="text-center p-4 bg-soft-cloud border border-hairline-soft"
+                >
                   <div className="font-display text-heading-lg text-ink">{item.value}</div>
                   <p className="text-caption-sm text-mute mt-1">{item.label}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
             <p className="text-body-sm text-mute mt-6 text-center">Led by Saswata Sengupta — growth strategist, AI implementation specialist, and founder of The Growth Bench.</p>
           </div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
-      {/* Certificate preview — compact */}
-      <motion.section {...fadeUp} className="bg-ink py-[48px] md:py-[80px]">
+      {/* Certificate preview — compact with parallax */}
+      <AnimatedSection className="bg-ink py-[48px] md:py-[80px]">
         <div className="container-site text-center">
           <span className="text-label-xs text-stone uppercase tracking-wider">Certificate</span>
           <h2 className="font-display text-heading-xl md:text-display-md text-canvas mt-2 leading-none">A certificate worth framing</h2>
           <p className="text-body-md text-hairline mt-3 max-w-xl mx-auto">
             Every participant who passes the assessment receives a Growth Bench certificate with their score.
           </p>
-          <div className="mt-8 max-w-xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-8 max-w-xl mx-auto"
+          >
             <div className="bg-[#F8F7F4] p-6 md:p-8 border border-hairline-soft">
               <div className="text-center">
                 <div className="mb-4">
@@ -326,40 +377,41 @@ const TrainingLanding = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
-      {/* FAQ */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      {/* FAQ — staggered */}
+      <AnimatedSection className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site">
           <div className="text-center mb-10">
             <span className="text-label-xs text-mute uppercase tracking-wider">FAQ</span>
             <h2 className="font-display text-heading-xl md:text-display-md text-ink mt-2 leading-none">Common questions</h2>
           </div>
-          <div className="max-w-3xl mx-auto space-y-3">
+          <motion.div {...staggerContainer} className="max-w-3xl mx-auto space-y-3">
             {FAQ_ITEMS.map((item, i) => (
-              <button
-                key={item.q}
-                onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                aria-expanded={openFaq === i}
-                className="w-full text-left border border-hairline-soft bg-soft-cloud p-5 transition-colors hover:border-ink/30"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-heading-md text-ink pr-4">{item.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-mute flex-shrink-0 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
-                </div>
-                {openFaq === i && (
-                  <p className="text-body-md text-mute leading-relaxed mt-3">{item.a}</p>
-                )}
-              </button>
+              <motion.div key={item.q} {...staggerChild}>
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  aria-expanded={openFaq === i}
+                  className="w-full text-left border border-hairline-soft bg-soft-cloud p-5 transition-colors hover:border-ink/30"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-heading-md text-ink pr-4">{item.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-mute flex-shrink-0 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
+                  </div>
+                  {openFaq === i && (
+                    <p className="text-body-md text-mute leading-relaxed mt-3">{item.a}</p>
+                  )}
+                </button>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </motion.section>
+      </AnimatedSection>
 
       {/* Final CTA — new angle */}
-      <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">
+      <AnimatedSection className="bg-canvas py-[48px] md:py-[100px]">
         <div className="container-site text-center">
           <h2 className="font-display text-heading-xl md:text-display-md text-ink leading-none">Your team will leave with more than a certificate.</h2>
           <p className="text-body-md text-mute mt-4 max-w-xl mx-auto">A working Skill. A system they can use from day one. And the confidence to use Claude for real work — not just one-off tasks.</p>
@@ -369,7 +421,16 @@ const TrainingLanding = () => {
             </Link>
           </div>
         </div>
-      </motion.section>
+      </AnimatedSection>
+
+      {/* Sticky enroll button — mobile only */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-canvas border-t border-hairline-soft p-4">
+        <Link to="/training/claude-practitioner/enroll">
+          <Button size="lg" className="w-full">
+            Enroll — {formatINR(BASE_PRICE_PAISE)}/person <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </Link>
+      </div>
     </>
   );
 };
