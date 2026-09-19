@@ -3,19 +3,34 @@ import { ArrowUp, ArrowDown } from 'lucide-react';
 
 const OrderingQuestion = ({ question, answer, onChange }) => {
   const { instruction, items } = question.data;
-  const [ordered, setOrdered] = React.useState(
-    answer || [...items].sort(() => Math.random() - 0.5).map(i => i.id)
-  );
+
+  // Reset state when question changes
+  const [ordered, setOrdered] = React.useState(() => {
+    return answer || [...items].sort(() => Math.random() - 0.5).map(i => i.id);
+  });
 
   React.useEffect(() => {
-    onChange(ordered);
-  }, [ordered]);
+    // If no answer yet, set the initial random order
+    if (!answer) {
+      onChange(ordered);
+    }
+  }, []);
+
+  // Reset when question changes (different question.id)
+  React.useEffect(() => {
+    if (!answer) {
+      const shuffled = [...items].sort(() => Math.random() - 0.5).map(i => i.id);
+      setOrdered(shuffled);
+      onChange(shuffled);
+    }
+  }, [question.id]);
 
   const moveUp = (index) => {
     if (index === 0) return;
     const newOrder = [...ordered];
     [newOrder[index - 1], newOrder[index]] = [newOrder[index], newOrder[index - 1]];
     setOrdered(newOrder);
+    onChange(newOrder);
   };
 
   const moveDown = (index) => {
@@ -23,6 +38,7 @@ const OrderingQuestion = ({ question, answer, onChange }) => {
     const newOrder = [...ordered];
     [newOrder[index], newOrder[index + 1]] = [newOrder[index + 1], newOrder[index]];
     setOrdered(newOrder);
+    onChange(newOrder);
   };
 
   const getItemText = (id) => items.find(i => i.id === id)?.text || id;
@@ -30,7 +46,7 @@ const OrderingQuestion = ({ question, answer, onChange }) => {
   return (
     <div>
       <p className="text-body-md text-ink mb-4">{instruction}</p>
-      <p className="text-label-xs text-mute uppercase tracking-wider mb-3">Drag to reorder (most suitable → least suitable)</p>
+      <p className="text-label-xs text-mute uppercase tracking-wider mb-3">Use the arrows to reorder (most suitable → least suitable)</p>
       <div className="space-y-2">
         {ordered.map((id, index) => (
           <div key={id} className="flex items-center gap-3 p-4 bg-canvas border border-hairline-soft">
@@ -40,16 +56,16 @@ const OrderingQuestion = ({ question, answer, onChange }) => {
               <button
                 onClick={() => moveUp(index)}
                 disabled={index === 0}
-                className="p-1 text-mute hover:text-ink disabled:opacity-30 transition-colors"
-                aria-label="Move up"
+                className="p-2 text-mute hover:text-ink disabled:opacity-30 transition-colors"
+                aria-label={`Move ${getItemText(id)} up`}
               >
                 <ArrowUp className="w-4 h-4" />
               </button>
               <button
                 onClick={() => moveDown(index)}
                 disabled={index === ordered.length - 1}
-                className="p-1 text-mute hover:text-ink disabled:opacity-30 transition-colors"
-                aria-label="Move down"
+                className="p-2 text-mute hover:text-ink disabled:opacity-30 transition-colors"
+                aria-label={`Move ${getItemText(id)} down`}
               >
                 <ArrowDown className="w-4 h-4" />
               </button>

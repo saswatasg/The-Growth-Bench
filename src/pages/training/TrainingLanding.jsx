@@ -364,6 +364,7 @@ const TrainingLanding = () => {
               <button
                 key={item.q}
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                aria-expanded={openFaq === i}
                 className="w-full text-left border border-hairline-soft bg-soft-cloud p-5 transition-colors hover:border-ink/30"
               >
                 <div className="flex items-center justify-between">
@@ -378,15 +379,6 @@ const TrainingLanding = () => {
           </div>
         </div>
       </motion.section>
-
-      {/* Disclosure */}
-      <div className="bg-soft-cloud py-6">
-        <div className="container-site text-center">
-          <p className="text-caption-sm text-mute">
-            Independent program built around Claude. Not affiliated with, endorsed, or issued by Anthropic.
-          </p>
-        </div>
-      </div>
 
       {/* Final CTA */}
       <motion.section {...fadeUp} className="bg-canvas py-[48px] md:py-[100px]">

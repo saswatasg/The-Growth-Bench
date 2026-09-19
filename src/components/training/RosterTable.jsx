@@ -35,8 +35,9 @@ const RosterTable = ({ rows, setRows, setSeatCount, errors }) => {
       <div className="space-y-3">
         {rows.map((row, i) => (
           <div key={`${row.email}-${i}`} className="flex gap-3 items-start">
-            <div className="flex-1 grid grid-cols-2 gap-3">
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
+                <label className="text-caption-sm text-mute mb-1 block">Name *</label>
                 <input
                   type="text"
                   value={row.name}
@@ -47,6 +48,7 @@ const RosterTable = ({ rows, setRows, setSeatCount, errors }) => {
                 {getError(i, 'name') && <p className="text-caption-sm text-sale mt-1">{getError(i, 'name')}</p>}
               </div>
               <div>
+                <label className="text-caption-sm text-mute mb-1 block">Email *</label>
                 <input
                   type="email"
                   value={row.email}
@@ -60,8 +62,8 @@ const RosterTable = ({ rows, setRows, setSeatCount, errors }) => {
             {rows.length > 1 && (
               <button
                 onClick={() => removeRow(i)}
-                className="w-8 h-8 flex items-center justify-center text-mute hover:text-sale transition-colors mt-1"
-                aria-label={`Remove row ${i + 1}`}
+                className="w-10 h-10 flex items-center justify-center text-mute hover:text-sale transition-colors mt-5"
+                aria-label={`Remove ${row.name || `row ${i + 1}`}`}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -72,7 +74,7 @@ const RosterTable = ({ rows, setRows, setSeatCount, errors }) => {
 
       <button
         onClick={addRow}
-        className="mt-4 flex items-center gap-2 text-body-sm text-ink hover:text-mute transition-colors"
+        className="mt-4 flex items-center gap-2 px-4 py-2 text-body-sm text-ink border border-hairline-soft hover:border-ink transition-colors"
       >
         <Plus className="w-4 h-4" /> Add another employee
       </button>

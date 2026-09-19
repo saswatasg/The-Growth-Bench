@@ -4,18 +4,20 @@ const SingleQuestion = ({ question, answer, onChange }) => {
   const { scenario, question: questionText, options } = question.data;
 
   return (
-    <div>
+    <div role="radiogroup" aria-labelledby="q-label">
       {scenario && (
         <div className="p-5 bg-soft-cloud border border-hairline-soft mb-4">
           <p className="text-body-md text-ink leading-relaxed">{scenario}</p>
         </div>
       )}
-      <p className="text-body-md text-ink font-medium mb-4">{questionText}</p>
+      <p id="q-label" className="text-body-md text-ink font-medium mb-4">{questionText}</p>
       <div className="space-y-2">
         {options.map(opt => (
           <button
             key={opt.id}
             onClick={() => onChange(opt.id)}
+            role="radio"
+            aria-checked={answer === opt.id}
             className={`w-full text-left p-4 border transition-all ${
               answer === opt.id
                 ? 'border-ink bg-ink/5'

@@ -285,8 +285,17 @@ const TrainingEnroll = () => {
                   </a>
                 ) : (
                   <Button size="lg" onClick={handleSubmit} disabled={submitting}>
-                    {submitting ? 'Processing...' : `Proceed to Payment — ${formatINR(pricing.total)}`}
-                    {!submitting && <ArrowRight className="w-4 h-4 ml-2" />}
+                    {submitting ? (
+                      <span className="flex items-center gap-2">
+                        <span className="w-4 h-4 border-2 border-canvas border-t-transparent rounded-full animate-spin" />
+                        Processing...
+                      </span>
+                    ) : (
+                      <>
+                        Proceed to Payment — {formatINR(pricing.total)}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </>
+                    )}
                   </Button>
                 )}
               </div>

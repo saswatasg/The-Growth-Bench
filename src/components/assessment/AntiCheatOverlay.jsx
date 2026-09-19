@@ -1,9 +1,11 @@
 import React from 'react';
 
-const EDGE_THRESHOLD_PERCENT = 2;
+const EDGE_THRESHOLD_PERCENT = 3;
+const THROTTLE_MS = 200;
 
 const AntiCheatOverlay = ({ children, participantName = '', onViolation }) => {
   const containerRef = React.useRef(null);
+  const lastCheckRef = React.useRef(0);
 
   // Block copy/paste/contextmenu
   React.useEffect(() => {
@@ -22,28 +24,40 @@ const AntiCheatOverlay = ({ children, participantName = '', onViolation }) => {
     return () => handlers.forEach(([event, handler]) => el.removeEventListener(event, handler));
   }, []);
 
-  // Mouse proximity detection
+  // Mouse proximity detection — throttled
   React.useEffect(() => {
+    let rafId = null;
+
     const handleMouseMove = (e) => {
-      const { clientX, clientY } = e;
-      const { innerWidth, innerHeight } = window;
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const now = Date.now();
+        if (now - lastCheckRef.current < THROTTLE_MS) return;
+        lastCheckRef.current = now;
 
-      const thresholdX = innerWidth * (EDGE_THRESHOLD_PERCENT / 100);
-      const thresholdY = innerHeight * (EDGE_THRESHOLD_PERCENT / 100);
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
+        const thresholdX = innerWidth * (EDGE_THRESHOLD_PERCENT / 100);
+        const thresholdY = innerHeight * (EDGE_THRESHOLD_PERCENT / 100);
 
-      const nearEdge =
-        clientX <= thresholdX ||
-        clientX >= innerWidth - thresholdX ||
-        clientY <= thresholdY ||
-        clientY >= innerHeight - thresholdY;
+        const nearEdge =
+          clientX <= thresholdX ||
+          clientX >= innerWidth - thresholdX ||
+          clientY <= thresholdY ||
+          clientY >= innerHeight - thresholdY;
 
-      if (nearEdge) {
-        onViolation?.('mouse_edge');
-      }
+        if (nearEdge) {
+          onViolation?.('mouse_edge');
+        }
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [onViolation]);
 
   // Window blur detection (multi-monitor)
@@ -78,20 +92,22 @@ const AntiCheatOverlay = ({ children, participantName = '', onViolation }) => {
       {/* Watermark overlay */}
       {participantName && (
         <div
-          className="absolute inset-0 pointer-events-none z-10 opacity-[0.03]"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 200px,
-              currentColor 200px,
-              currentColor 201px
-            )`,
-          }}
+          className="absolute inset-0 pointer-events-none z-10 opacity-[0.02]"
+          aria-hidden="true"
         >
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10px] text-mute font-mono whitespace-nowrap">
-            {participantName} — {new Date().toISOString().split('T')[0]}
-          </span>
+          {Array.from({ length: 8 }, (_, i) => (
+            <span
+              key={i}
+              className="absolute text-[10px] text-mute font-mono whitespace-nowrap"
+              style={{
+                top: `${(i + 1) * 12}%`,
+                left: `${(i % 3) * 30 + 5}%`,
+                transform: `rotate(-15deg)`,
+              }}
+            >
+              {participantName} — {new Date().toISOString().split('T')[0]}
+            </span>
+          ))}
         </div>
       )}
       {children}

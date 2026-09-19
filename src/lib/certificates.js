@@ -7,9 +7,9 @@ export { generateCertId };
 // Certificate data structure
 export function buildCertificateData(cert) {
   return {
-    certId: cert.cert_id,
-    candidateName: cert.candidate_name,
-    companyName: cert.company_name,
+    certId: cert.cert_id || 'N/A',
+    candidateName: cert.candidate_name || 'Participant',
+    companyName: cert.company_name || 'Company',
     courseName: cert.course_name || 'Claude Practitioner Training',
     score: cert.score || null,
     completionDate: new Date(cert.completion_date).toLocaleDateString('en-IN', {

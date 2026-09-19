@@ -18,7 +18,7 @@ const CertificateVerify = () => {
     if (urlId) {
       verifyCertificate(urlId);
     }
-  }, []);
+  }, [urlId]);
 
   const verifyCertificate = async (query) => {
     if (!query?.trim()) return;
@@ -37,23 +37,8 @@ const CertificateVerify = () => {
       }
     } catch (e) {
       console.error('Verification failed:', e);
-      // Mock fallback for demo
-      const q = query.trim().toUpperCase();
-      if (q.startsWith('GB-CPT-') || q.length > 2) {
-        setResult('found');
-        setCertData({
-          cert_id: q.startsWith('GB-CPT-') ? q : 'GB-CPT-DEMO1234',
-          candidate_name: 'Demo Participant',
-          company_name: 'Demo Company',
-          course_name: 'Claude Practitioner Training',
-          completion_date: '2026-10-15',
-          status: 'active',
-          score: 85,
-          issued_at: '2026-10-15T00:00:00Z',
-        });
-      } else {
-        setResult('not-found');
-      }
+      setResult('not-found');
+      setCertData(null);
     }
   };
 

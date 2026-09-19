@@ -1,5 +1,5 @@
 // Assessment business logic — 85-question bank, scoring, randomization
-// 2 attempts × 20 questions each, 40 minutes, 80% to pass
+// 2 attempts × 20 questions each, 40 minutes, 60% to pass
 
 import { PASS_THRESHOLD, MAX_ATTEMPTS, TIMER_MINUTES, QUESTION_COUNT } from './training';
 
@@ -1305,10 +1305,37 @@ export function scoreAttempt(questions, answers) {
   };
 }
 
-// Randomize question order and select subset
+// Proper Durstenfeld shuffle
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+// Randomize question order with category balancing
 export function selectQuestions(count = QUESTION_COUNT) {
-  const shuffled = [...QUESTION_BANK].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, Math.min(count, shuffled.length));
+  // Group by category
+  const byCategory = {};
+  QUESTION_BANK.forEach(q => {
+    if (!byCategory[q.category]) byCategory[q.category] = [];
+    byCategory[q.category].push(q);
+  });
+
+  const categories = Object.keys(byCategory);
+  const perCategory = Math.floor(count / categories.length);
+  const remainder = count - perCategory * categories.length;
+
+  const selected = [];
+  categories.forEach((cat, i) => {
+    const n = perCategory + (i < remainder ? 1 : 0);
+    const shuffled = shuffleArray(byCategory[cat]);
+    selected.push(...shuffled.slice(0, n));
+  });
+
+  return shuffleArray(selected);
 }
 
 // Check if participant can take assessment

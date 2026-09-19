@@ -156,7 +156,8 @@ const AdminCertificates = () => {
                               <div key={r.id} className="flex items-center justify-between text-body-sm">
                                 <span className="text-ink">{r.participant_name} <span className="text-mute">({r.email})</span></span>
                                 <button onClick={() => handleIssueCert(r, e)}
-                                  className="text-caption-sm text-ink hover:text-mute transition-colors ml-2">
+                                  aria-label={`Issue certificate to ${r.participant_name}`}
+                                  className="text-caption-sm text-ink hover:text-mute transition-colors ml-2 px-2 py-1">
                                   Issue cert
                                 </button>
                               </div>

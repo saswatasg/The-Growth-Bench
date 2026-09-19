@@ -16,14 +16,14 @@ const PricingStepper = ({ seatCount, setSeatCount, pricing, onDiscountApply, dis
           <button
             onClick={() => setSeatCount(Math.max(1, seatCount - 1))}
             disabled={seatCount <= 1}
-            className="w-8 h-8 rounded-full border border-hairline-soft flex items-center justify-center text-ink hover:bg-canvas disabled:opacity-30 transition-colors"
+            className="w-10 h-10 rounded-full border border-hairline-soft flex items-center justify-center text-ink hover:bg-canvas disabled:opacity-30 transition-colors"
           >
             <Minus className="w-4 h-4" />
           </button>
           <span className="font-display text-heading-lg text-ink w-8 text-center">{seatCount}</span>
           <button
             onClick={() => setSeatCount(seatCount + 1)}
-            className="w-8 h-8 rounded-full border border-hairline-soft flex items-center justify-center text-ink hover:bg-canvas transition-colors"
+            className="w-10 h-10 rounded-full border border-hairline-soft flex items-center justify-center text-ink hover:bg-canvas transition-colors"
           >
             <Plus className="w-4 h-4" />
           </button>
@@ -57,9 +57,17 @@ const PricingStepper = ({ seatCount, setSeatCount, pricing, onDiscountApply, dis
 
       {/* Bulk pricing note */}
       {isBulk && (
-        <p className="text-body-sm text-mute mt-4">
-          For {seatCount} seats, we offer custom bulk pricing. Contact us to discuss.
-        </p>
+        <div className="mt-4 pt-4 border-t border-hairline-soft">
+          <p className="text-body-sm text-mute mb-2">
+            For {seatCount} seats, we offer custom bulk pricing.
+          </p>
+          <a
+            href={`mailto:saswatasg@gmail.com?subject=Bulk training inquiry (${seatCount} seats)`}
+            className="text-body-sm text-ink underline hover:text-mute transition-colors"
+          >
+            Contact us for bulk pricing →
+          </a>
+        </div>
       )}
     </div>
   );
@@ -77,6 +85,8 @@ const DiscountCodeField = ({ onApply, error }) => {
           value={code}
           onChange={(e) => setCode(e.target.value.toUpperCase())}
           placeholder="Enter code"
+          autoCapitalize="characters"
+          spellCheck="false"
           className="flex-1 px-3 py-2 text-body-sm bg-canvas border border-hairline-soft focus:outline-none focus:border-ink transition-colors"
         />
         <button

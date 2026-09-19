@@ -13,19 +13,21 @@ const MultiQuestion = ({ question, answer, onChange }) => {
   };
 
   return (
-    <div>
+    <div role="group" aria-labelledby="q-label">
       {scenario && (
         <div className="p-5 bg-soft-cloud border border-hairline-soft mb-4">
           <p className="text-body-md text-ink leading-relaxed">{scenario}</p>
         </div>
       )}
-      <p className="text-body-md text-ink font-medium mb-4">{questionText}</p>
+      <p id="q-label" className="text-body-md text-ink font-medium mb-4">{questionText}</p>
       <p className="text-label-xs text-mute uppercase tracking-wider mb-3">Select all that apply</p>
       <div className="space-y-2">
         {options.map(opt => (
           <button
             key={opt.id}
             onClick={() => toggle(opt.id)}
+            role="checkbox"
+            aria-checked={selected.includes(opt.id)}
             className={`w-full text-left p-4 border transition-all ${
               selected.includes(opt.id)
                 ? 'border-ink bg-ink/5'

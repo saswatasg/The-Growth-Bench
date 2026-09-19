@@ -101,7 +101,8 @@ export async function createOrder(enrollmentData) {
 
 // Web3Forms email notification — sends to company with all details
 export async function sendEnrollmentToCompany(orderData) {
-  const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY'; // Replace with actual key
+  const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+  if (!WEB3FORMS_KEY) return;
   try {
     await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -130,7 +131,8 @@ export async function sendEnrollmentToCompany(orderData) {
 
 // Web3Forms email notification — sends confirmation to registrant
 export async function sendConfirmationToRegistrant(orderData) {
-  const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY'; // Replace with actual key
+  const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+  if (!WEB3FORMS_KEY) return;
   try {
     await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -151,7 +153,8 @@ export async function sendConfirmationToRegistrant(orderData) {
 
 // Certificate issuance email
 export async function sendCertificateEmail(certData) {
-  const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY'; // Replace with actual key
+  const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+  if (!WEB3FORMS_KEY) return;
   try {
     await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
