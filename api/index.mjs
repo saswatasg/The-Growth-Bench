@@ -114,8 +114,95 @@ export default async function handler(req, res) {
 
   // API routes
   if (path.startsWith('/api/')) {
-    if (!AUTH_CONFIGURED) return json(res, 503, { error: 'Admin API not configured' });
     const apiPath = path.replace(/^\/api/, '') || '/';
+
+    // ── Public routes (no auth required) ───────────────────────────
+
+    // Public: Create Razorpay order
+    if (apiPath === '/razorpay/order' && req.method === 'POST') {
+      if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });
+
+      const body = await parseBody(req);
+      const { seatCount, discountCode } = body;
+
+      if (!seatCount || seatCount < 1 || seatCount > MAX_SELF_SERVE_SEATS) {
+        return json(res, 400, { error: 'Invalid seat count (1-8)' });
+      }
+
+      const amount = deriveAmount(seatCount, discountCode);
+
+      try {
+        const { default: Razorpay } = await import('razorpay');
+        const razorpay = new Razorpay({
+          key_id: RAZORPAY_KEY_ID,
+          key_secret: RAZORPAY_KEY_SECRET,
+        });
+
+        const order = await razorpay.orders.create({
+          amount,
+          currency: 'INR',
+          receipt: `TGB-${Date.now()}`,
+          notes: {
+            seatCount: String(seatCount),
+            discountCode: discountCode || 'none',
+          },
+        });
+
+        return json(res, 200, {
+          orderId: order.id,
+          amount: order.amount,
+          currency: order.currency,
+        });
+      } catch (err) {
+        console.error('Razorpay order creation failed:', err);
+        return json(res, 500, { error: 'Failed to create order' });
+      }
+    }
+
+    // Public: Verify Razorpay payment
+    if (apiPath === '/razorpay/verify' && req.method === 'POST') {
+      if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });
+
+      const body = await parseBody(req);
+      const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = body;
+
+      if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+        return json(res, 400, { error: 'Missing payment verification fields' });
+      }
+
+      const generated = crypto
+        .createHmac('sha256', RAZORPAY_KEY_SECRET)
+        .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+        .digest('hex');
+
+      if (generated !== razorpay_signature) {
+        return json(res, 400, { verified: false, error: 'Invalid signature' });
+      }
+
+      return json(res, 200, { verified: true, paymentId: razorpay_payment_id });
+    }
+
+    // Public: verify certificate
+    if (apiPath.startsWith('/training/verify/') && req.method === 'GET') {
+      const certId = apiPath.split('/training/verify/')[1];
+      if (!certId) return json(res, 400, { error: 'Certificate ID required' });
+      return json(res, 200, { message: 'Use client-side Supabase query', certId });
+    }
+
+    // Public: validate discount code
+    if (apiPath === '/training/discount/validate' && req.method === 'POST') {
+      const body = await parseBody(req);
+      const DISCOUNT_CODES = [];
+      const found = DISCOUNT_CODES.find(d => d.code === body.code?.toUpperCase());
+      if (!found) return json(res, 404, { valid: false, error: 'Invalid code' });
+      if (found.expiresAt && new Date(found.expiresAt) < new Date()) {
+        return json(res, 400, { valid: false, error: 'Code expired' });
+      }
+      return json(res, 200, { valid: true, ...found });
+    }
+
+    // ── Admin routes (auth required) ───────────────────────────────
+    if (!AUTH_CONFIGURED) return json(res, 503, { error: 'Admin API not configured' });
 
     function getUser() {
       const header = req.headers.authorization;
@@ -160,99 +247,11 @@ export default async function handler(req, res) {
         }
       }
 
-      // ── Training API ──────────────────────────────────────────────
-      // Public: verify certificate
-      if (apiPath.startsWith('/training/verify/') && req.method === 'GET') {
-        const certId = apiPath.split('/training/verify/')[1];
-        if (!certId) return json(res, 400, { error: 'Certificate ID required' });
-        // Supabase lookup happens client-side; this endpoint is a pass-through for SSR if needed
-        return json(res, 200, { message: 'Use client-side Supabase query', certId });
-      }
-
-      // Public: validate discount code
-      if (apiPath === '/training/discount/validate' && req.method === 'POST') {
-        const body = await parseBody(req);
-        const DISCOUNT_CODES = [];
-        const found = DISCOUNT_CODES.find(d => d.code === body.code?.toUpperCase());
-        if (!found) return json(res, 404, { valid: false, error: 'Invalid code' });
-        if (found.expiresAt && new Date(found.expiresAt) < new Date()) {
-          return json(res, 400, { valid: false, error: 'Code expired' });
-        }
-        return json(res, 200, { valid: true, ...found });
-      }
-
       // Admin: certificate operations (require auth)
       if (apiPath.startsWith('/training/certificates')) {
         const user = getUser();
         if (!user) return json(res, 401, { error: 'Unauthorized' });
         return json(res, 200, { message: 'Use client-side Supabase for certificate operations' });
-      }
-
-      // ── Razorpay Payment API ─────────────────────────────────────
-      // Public: Create Razorpay order
-      if (apiPath === '/razorpay/order' && req.method === 'POST') {
-        if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });
-
-        const body = await parseBody(req);
-        const { seatCount, discountCode } = body;
-
-        if (!seatCount || seatCount < 1 || seatCount > MAX_SELF_SERVE_SEATS) {
-          return json(res, 400, { error: 'Invalid seat count (1-8)' });
-        }
-
-        const amount = deriveAmount(seatCount, discountCode);
-
-        try {
-          // Dynamic import of Razorpay SDK
-          const { default: Razorpay } = await import('razorpay');
-          const razorpay = new Razorpay({
-            key_id: RAZORPAY_KEY_ID,
-            key_secret: RAZORPAY_KEY_SECRET,
-          });
-
-          const order = await razorpay.orders.create({
-            amount,
-            currency: 'INR',
-            receipt: `TGB-${Date.now()}`,
-            notes: {
-              seatCount: String(seatCount),
-              discountCode: discountCode || 'none',
-            },
-          });
-
-          return json(res, 200, {
-            orderId: order.id,
-            amount: order.amount,
-            currency: order.currency,
-          });
-        } catch (err) {
-          console.error('Razorpay order creation failed:', err);
-          return json(res, 500, { error: 'Failed to create order' });
-        }
-      }
-
-      // Public: Verify Razorpay payment
-      if (apiPath === '/razorpay/verify' && req.method === 'POST') {
-        if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });
-
-        const body = await parseBody(req);
-        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = body;
-
-        if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-          return json(res, 400, { error: 'Missing payment verification fields' });
-        }
-
-        // HMAC-SHA256 verification
-        const generated = crypto
-          .createHmac('sha256', RAZORPAY_KEY_SECRET)
-          .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-          .digest('hex');
-
-        if (generated !== razorpay_signature) {
-          return json(res, 400, { verified: false, error: 'Invalid signature' });
-        }
-
-        return json(res, 200, { verified: true, paymentId: razorpay_payment_id });
       }
 
       return json(res, 404, { error: 'Not found' });
