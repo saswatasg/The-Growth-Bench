@@ -157,11 +157,15 @@ const TrainingEnroll = () => {
               <ul className="space-y-3 text-body-sm text-mute">
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
-                  You'll receive a calendar invite within 24 hours with session links and materials.
+                  We'll review your enrollment and confirm within 72 hours.
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
-                  Each participant will get an email with their assessment link after Day 3.
+                  Once confirmed, you'll receive a calendar invite with session links and materials.
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
+                  After Day 3, each participant gets an email with their assessment link.
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-ink flex-shrink-0 mt-2" />
@@ -171,11 +175,8 @@ const TrainingEnroll = () => {
             </div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Link to="/training/claude-practitioner/assessment">
-                <Button size="lg">Take Assessment <ArrowRight className="w-4 h-4 ml-2" /></Button>
-              </Link>
               <Link to="/training/claude-practitioner">
-                <Button variant="outline">Back to program page</Button>
+                <Button size="lg">Back to Program Page <ArrowRight className="w-4 h-4 ml-2" /></Button>
               </Link>
             </div>
           </div>
