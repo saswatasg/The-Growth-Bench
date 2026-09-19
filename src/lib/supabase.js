@@ -29,19 +29,31 @@ export async function createRosterEntries(entries) {
   return data;
 }
 
-// Certificate operations
-export async function getCertificate(certId) {
+// Search certificate by ID or name
+export async function searchCertificate(query) {
   if (!supabase) throw new Error('Supabase not configured');
-  const { data, error } = await supabase
+  const q = query.trim();
+  
+  // Try exact cert_id match first
+  const { data: byId, error: idError } = await supabase
     .from('certificates')
-    .select('cert_id, candidate_name, company_name, course_name, completion_date, status, issued_at')
-    .eq('cert_id', certId)
+    .select('cert_id, candidate_name, company_name, course_name, completion_date, status, issued_at, score')
+    .eq('cert_id', q.toUpperCase())
     .single();
-  if (error) {
-    if (error.code === 'PGRST116') return null; // not found
-    throw error;
-  }
-  return data;
+  
+  if (byId) return byId;
+  
+  // Try name search (case-insensitive partial match)
+  const { data: byName, error: nameError } = await supabase
+    .from('certificates')
+    .select('cert_id, candidate_name, company_name, course_name, completion_date, status, issued_at, score')
+    .ilike('candidate_name', `%${q}%`)
+    .order('issued_at', { ascending: false })
+    .limit(5);
+  
+  if (byName && byName.length > 0) return byName[0];
+  
+  return null;
 }
 
 export async function listCertificates({ company, name, status, limit = 50, offset = 0 } = {}) {

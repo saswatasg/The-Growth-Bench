@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, Calendar, Users, Clock, Award, BookOpen, MessageCircle, QrCode, ChevronDown } from 'lucide-react';
+import { ArrowRight, Check, Calendar, Users, Clock, Award, BookOpen, MessageCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import { formatINR, BASE_PRICE_PAISE } from '@/lib/training';
@@ -308,56 +308,44 @@ const TrainingLanding = () => {
           <span className="text-label-xs text-stone uppercase tracking-wider">Certificate</span>
           <h2 className="font-display text-heading-xl md:text-display-md text-canvas mt-2 leading-none">A certificate worth framing</h2>
           <p className="text-body-md text-hairline mt-4 max-w-xl mx-auto">
-            Every participant who passes the Day 3 assessment receives a Growth Bench certificate with their score.
+            Every participant who passes the assessment receives a Growth Bench certificate with their score.
           </p>
           <div className="mt-10 max-w-2xl mx-auto">
-            {/* Dark outer frame */}
-            <div className="bg-gradient-to-br from-[#C9A84C]/20 to-[#C9A84C]/5 p-[2px]">
-              <div className="bg-canvas p-8 md:p-12">
-                <div className="text-center">
-                  <div className="mb-4">
-                    <span className="font-display text-heading-lg text-ink tracking-[4px]">THE GROWTH BENCH</span>
-                  </div>
-                  {/* Gold divider */}
-                  <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mb-4" />
-                  <p className="text-label-xs text-[#C9A84C] uppercase tracking-[4px] font-semibold mb-6">Certificate of Completion</p>
-                  <p className="text-body-md text-mute mb-2">This certifies that</p>
-                  <p className="font-display text-heading-xl text-ink my-4">[Participant Name]</p>
-                  <p className="text-body-md text-mute mb-2">from <strong className="text-ink">[Company Name]</strong></p>
-                  <p className="text-body-md text-mute mb-6">has successfully completed</p>
-                  <p className="font-display text-heading-lg text-ink mb-8">Claude Practitioner Training</p>
-
-                  {/* Score badge */}
-                  <div className="inline-flex items-center gap-3 bg-soft-cloud border border-hairline-soft px-6 py-3 mb-8">
-                    <span className="text-label-xs text-mute uppercase tracking-wider">Assessment Score</span>
-                    <span className="font-display text-heading-xl text-ink">85%</span>
-                  </div>
-
-                  <div className="flex justify-center gap-8 text-caption-sm text-mute mb-6">
-                    <span>Date: October 15, 2026</span>
-                    <span className="font-mono">GB-CPT-XXXXXXXX</span>
-                  </div>
-
-                  {/* Gold divider */}
-                  <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent mx-auto mb-6" />
-
-                  <div className="flex justify-center gap-8 mb-6">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-soft-cloud border border-hairline-soft flex items-center justify-center mb-2 mx-auto">
-                        <QrCode className="w-8 h-8 text-mute" />
-                      </div>
-                      <p className="text-caption-sm text-mute">Scan to verify</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="border-b border-ink w-28 mb-2 mx-auto" />
-                      <p className="text-caption-sm text-ink font-medium">Saswata Sengupta</p>
-                      <p className="text-caption-sm text-mute">Founder, The Growth Bench</p>
-                    </div>
-                  </div>
-                  <p className="text-caption-sm text-mute mt-4">
-                    Independent program built around Claude. Not affiliated with, endorsed, or issued by Anthropic.
-                  </p>
+            {/* Certificate preview — matches actual design */}
+            <div className="bg-[#F8F7F4] p-8 md:p-12 border border-hairline-soft">
+              <div className="text-center">
+                {/* Logo */}
+                <div className="mb-5">
+                  <img src="/logo.png" alt="The Growth Bench" className="h-10 w-auto mx-auto" />
                 </div>
+
+                <p className="text-label-xs text-mute uppercase tracking-[3px] font-medium mb-6">Certificate of Completion</p>
+
+                <p className="font-display text-heading-xl text-ink font-bold">[Participant Name]</p>
+                <p className="text-body-sm text-mute mt-1 mb-4">[Company Name]</p>
+
+                <p className="text-body-sm text-mute mb-1">has successfully completed</p>
+                <p className="font-display text-heading-lg text-ink font-semibold mb-6">Claude Practitioner Training</p>
+
+                {/* Score badge */}
+                <div className="inline-flex items-center gap-3 bg-ink text-canvas px-6 py-3 mb-6">
+                  <span className="text-label-xs uppercase tracking-wider opacity-60">Score</span>
+                  <span className="font-display text-heading-lg">85%</span>
+                </div>
+
+                <div className="flex justify-center gap-6 text-caption-sm text-mute mb-6">
+                  <span>Issued: October 15, 2026</span>
+                  <span className="font-mono">GB-CPT-XXXXXXXX</span>
+                  <span>thegrowthbench.com/verify</span>
+                </div>
+
+                <div className="border-b border-ink w-36 mx-auto mb-2" />
+                <p className="text-caption-sm text-ink font-medium">Saswata Sengupta</p>
+                <p className="text-caption-sm text-mute">Founder, The Growth Bench</p>
+
+                <p className="text-caption-sm text-mute mt-4 opacity-60">
+                  Independent program built around Claude. Not affiliated with, endorsed, or issued by Anthropic.
+                </p>
               </div>
             </div>
           </div>

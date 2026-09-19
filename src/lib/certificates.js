@@ -27,75 +27,74 @@ export function buildCertificateData(cert) {
   };
 }
 
-// Generate beautiful certificate HTML
+// Generate beautiful certificate HTML — inspired by Google/AWS/Coursera patterns
 export function generateCertificateHTML(data) {
   const scoreDisplay = data.score ? `${data.score}%` : '—';
+  const logoUrl = 'https://www.thegrowthbench.com/assets/The_Growth_Bench_Final_Logo_PNG_Pack/02_stacked_logo_black_transparent.png';
+  
   return `
-    <div style="width: 1056px; height: 816px; background: #111111; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; position: relative;">
-      <!-- Outer gold border -->
-      <div style="position: absolute; inset: 12px; border: 2px solid #C9A84C; pointer-events: none;" />
-      <!-- Inner border -->
-      <div style="position: absolute; inset: 18px; border: 1px solid rgba(201,168,76,0.3); pointer-events: none;" />
-
-      <!-- Content area -->
-      <div style="background: #ffffff; margin: 24px; padding: 48px 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; min-height: calc(100% - 48px);">
-
-        <!-- Logo area -->
-        <div style="margin-bottom: 24px;">
-          <span style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 4px; color: #111;">THE GROWTH BENCH</span>
+    <div style="width: 1056px; height: 816px; background: #F8F7F4; font-family: 'Inter', -apple-system, sans-serif; position: relative; overflow: hidden;">
+      <!-- Subtle border -->
+      <div style="position: absolute; inset: 8px; border: 1px solid rgba(0,0,0,0.08); pointer-events: none;" />
+      
+      <!-- Content container -->
+      <div style="padding: 48px 64px; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative;">
+        
+        <!-- Logo -->
+        <div style="margin-bottom: 20px;">
+          <img src="${logoUrl}" alt="The Growth Bench" style="height: 48px; width: auto;" />
         </div>
 
-        <!-- Gold divider -->
-        <div style="width: 120px; height: 2px; background: linear-gradient(90deg, transparent, #C9A84C, transparent); margin-bottom: 24px;" />
-
         <!-- Certificate type -->
-        <p style="font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #C9A84C; margin-bottom: 20px; font-weight: 600;">Certificate of Completion</p>
+        <p style="font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #9CA3AF; margin-bottom: 24px; font-weight: 500;">Certificate of Completion</p>
 
-        <!-- Body -->
-        <p style="font-size: 14px; color: #707072; margin-bottom: 8px;">This certifies that</p>
-        <h1 style="font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: #111; margin: 8px 0 12px; line-height: 1.1; letter-spacing: 1px;">${data.candidateName}</h1>
-        <p style="font-size: 14px; color: #707072; margin-bottom: 6px;">from <strong style="color: #111;">${data.companyName}</strong></p>
-        <p style="font-size: 14px; color: #707072; margin-bottom: 20px;">has successfully completed</p>
-        <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #111; margin: 0 0 28px; letter-spacing: 1px;">${data.courseName}</h2>
+        <!-- Recipient name -->
+        <h1 style="font-family: 'Inter', sans-serif; font-size: 36px; font-weight: 700; color: #111; margin: 0 0 8px; line-height: 1.2; letter-spacing: -0.02em;">${data.candidateName}</h1>
+        
+        <!-- Company -->
+        <p style="font-size: 14px; color: #6B7280; margin-bottom: 20px;">${data.companyName}</p>
+
+        <!-- Linking text -->
+        <p style="font-size: 13px; color: #9CA3AF; margin-bottom: 6px;">has successfully completed</p>
+
+        <!-- Course name -->
+        <h2 style="font-family: 'Inter', sans-serif; font-size: 22px; font-weight: 600; color: #111; margin: 0 0 24px; letter-spacing: -0.01em;">${data.courseName}</h2>
 
         <!-- Score badge -->
-        <div style="display: inline-flex; align-items: center; gap: 12px; background: #f5f5f5; border: 1px solid #e5e5e5; padding: 12px 24px; margin-bottom: 28px;">
-          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #707072;">Assessment Score</span>
-          <span style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #111; line-height: 1;">${scoreDisplay}</span>
+        <div style="display: inline-flex; align-items: center; gap: 16px; background: #111; color: #fff; padding: 10px 28px; margin-bottom: 32px;">
+          <span style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.6);">Score</span>
+          <span style="font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; line-height: 1;">${scoreDisplay}</span>
         </div>
 
         <!-- Meta row -->
-        <div style="display: flex; gap: 48px; margin-bottom: 28px;">
+        <div style="display: flex; gap: 40px; margin-bottom: 32px;">
           <div style="text-align: center;">
-            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #707072; margin-bottom: 4px;">Completion Date</p>
+            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #9CA3AF; margin-bottom: 4px;">Issued</p>
             <p style="font-size: 13px; color: #111; font-weight: 500;">${data.completionDate}</p>
           </div>
+          <div style="width: 1px; background: #E5E5E5;" />
           <div style="text-align: center;">
-            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #707072; margin-bottom: 4px;">Certificate ID</p>
+            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #9CA3AF; margin-bottom: 4px;">Credential ID</p>
             <p style="font-size: 13px; color: #111; font-family: 'JetBrains Mono', monospace; font-weight: 500;">${data.certId}</p>
+          </div>
+          <div style="width: 1px; background: #E5E5E5;" />
+          <div style="text-align: center;">
+            <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #9CA3AF; margin-bottom: 4px;">Verify</p>
+            <p style="font-size: 11px; color: #6B7280; max-width: 160px; word-break: break-all;">thegrowthbench.com/verify</p>
           </div>
         </div>
 
-        <!-- Gold divider -->
-        <div style="width: 120px; height: 1px; background: linear-gradient(90deg, transparent, #C9A84C, transparent); margin-bottom: 24px;" />
-
-        <!-- QR + Signature -->
-        <div style="display: flex; gap: 64px; align-items: center; margin-bottom: 20px;">
-          <div style="text-align: center;">
-            <div style="width: 72px; height: 72px; border: 1px solid #e5e5e5; display: flex; align-items: center; justify-content: center; margin-bottom: 6px; background: #fafafa;">
-              <span style="font-size: 9px; color: #707072;">QR Code</span>
-            </div>
-            <p style="font-size: 9px; color: #707072; letter-spacing: 0.5px;">Scan to verify</p>
-          </div>
+        <!-- Signature -->
+        <div style="margin-top: auto; display: flex; align-items: flex-end; gap: 48px; width: 100%; max-width: 500px; justify-content: center;">
           <div style="text-align: center;">
             <div style="border-bottom: 1px solid #111; width: 140px; margin-bottom: 6px;" />
             <p style="font-size: 12px; color: #111; font-weight: 500;">Saswata Sengupta</p>
-            <p style="font-size: 10px; color: #707072;">Founder, The Growth Bench</p>
+            <p style="font-size: 10px; color: #9CA3AF;">Founder, The Growth Bench</p>
           </div>
         </div>
 
         <!-- Disclosure -->
-        <p style="font-size: 9px; color: #999; max-width: 380px; line-height: 1.4; margin-top: auto;">
+        <p style="font-size: 9px; color: #C4C4C4; margin-top: 16px; letter-spacing: 0.5px;">
           Independent program built around Claude. Not affiliated with, endorsed, or issued by Anthropic.
         </p>
       </div>
@@ -121,7 +120,7 @@ export async function downloadCertificatePNG(certData) {
     canvas.height = 816;
     const ctx = canvas.getContext('2d');
 
-    ctx.fillStyle = '#111111';
+    ctx.fillStyle = '#F8F7F4';
     ctx.fillRect(0, 0, 1056, 816);
 
     const svg = `
@@ -151,7 +150,7 @@ export async function downloadCertificatePNG(certData) {
       };
       img.onerror = () => {
         URL.revokeObjectURL(url);
-        const htmlBlob = new Blob([`<!DOCTYPE html><html><head><style>@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap');</style></head><body>${html}</body></html>`], { type: 'text/html' });
+        const htmlBlob = new Blob([`<!DOCTYPE html><html><head><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');</style></head><body>${html}</body></html>`], { type: 'text/html' });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(htmlBlob);
         a.download = `certificate-${data.certId}.html`;
