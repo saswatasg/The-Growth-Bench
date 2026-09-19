@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import PricingStepper from '@/components/training/PricingStepper';
 import RosterTable from '@/components/training/RosterTable';
-import { calculatePricing, validateDiscountCode, validateRoster, createOrder, formatINR, MAX_SELF_SERVE_SEATS, sendEnrollmentToCompany, sendConfirmationToRegistrant } from '@/lib/training';
+import { calculatePricing, validateDiscountCode, validateRoster, formatINR, MAX_SELF_SERVE_SEATS, sendEnrollmentToCompany, sendConfirmationToRegistrant } from '@/lib/training';
 import { createEnrollment, createRosterEntries } from '@/lib/supabase';
+import { loadRazorpayScript, createRazorpayOrder, verifyRazorpayPayment, openRazorpayCheckout } from '@/lib/razorpay';
 import { fadeUp } from '@/lib/motion';
 
 const COMPANY_SIZES = ['1–10', '11–50', '51–200', '201–500', '500+'];
@@ -79,16 +80,48 @@ const TrainingEnroll = () => {
 
     setSubmitting(true);
     try {
-      const order = await createOrder({
+      // Step 1: Load Razorpay Checkout.js
+      await loadRazorpayScript();
+
+      // Step 2: Create order on server
+      const orderData = await createRazorpayOrder({
+        seatCount,
+        discountCode: pricing.discountCode || '',
+      });
+
+      // Step 3: Open Razorpay checkout popup
+      const paymentResult = await openRazorpayCheckout({
+        orderId: orderData.orderId,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        contactPerson: form.contactPerson,
+        contactEmail: form.contactEmail,
+        contactPhone: form.contactPhone,
+      });
+
+      // Step 4: Verify payment on server
+      const verification = await verifyRazorpayPayment({
+        razorpay_order_id: paymentResult.razorpay_order_id,
+        razorpay_payment_id: paymentResult.razorpay_payment_id,
+        razorpay_signature: paymentResult.razorpay_signature,
+      });
+
+      if (!verification.verified) {
+        throw new Error('Payment verification failed');
+      }
+
+      // Step 5: Store in Supabase
+      const order = {
+        orderId: paymentResult.razorpay_order_id,
         ...form,
         seatCount,
-        discountCode,
+        discountCode: pricing.discountCode,
         discount: pricing.discount,
         total: pricing.total,
         roster,
-      });
+        createdAt: new Date().toISOString(),
+      };
 
-      // Store in Supabase
       try {
         const enrollment = await createEnrollment({
           company_name: form.companyName,
@@ -98,10 +131,12 @@ const TrainingEnroll = () => {
           company_size: form.companySize,
           preferred_delivery: form.preferredDelivery,
           seat_count: seatCount,
-          discount_code: discountCode || null,
+          discount_code: pricing.discountCode || null,
           discount_amount_paise: pricing.discount,
           total_paise: pricing.total,
-          status: 'confirmed',
+          razorpay_order_id: paymentResult.razorpay_order_id,
+          razorpay_payment_id: paymentResult.razorpay_payment_id,
+          status: 'paid',
         });
 
         await createRosterEntries(roster.filter(r => r.name && r.email).map(r => ({
@@ -111,16 +146,22 @@ const TrainingEnroll = () => {
           consent_given: true,
         })));
       } catch (e) {
-        console.warn('Supabase storage failed (mock mode):', e);
+        console.warn('Supabase storage failed:', e);
       }
 
-      // Send emails — details to company, confirmation to registrant
+      // Step 6: Send emails
       sendEnrollmentToCompany(order).catch(() => {});
       sendConfirmationToRegistrant(order).catch(() => {});
 
       setOrderResult(order);
     } catch (e) {
-      console.error('Order failed:', e);
+      if (e.message === 'PAYMENT_CANCELLED') {
+        // User closed checkout — no error needed
+        setSubmitting(false);
+        return;
+      }
+      console.error('Payment failed:', e);
+      alert(e.message || 'Payment failed. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -144,7 +185,7 @@ const TrainingEnroll = () => {
             </p>
             <div className="mt-8 p-6 bg-soft-cloud border border-hairline-soft text-left">
               <div className="grid grid-cols-2 gap-4 text-body-sm">
-                <div><span className="text-mute">Order ID</span><p className="text-ink font-medium">{orderResult.orderId}</p></div>
+                <div><span className="text-mute">Order ID</span><p className="text-ink font-medium font-mono text-caption-sm">{orderResult.orderId}</p></div>
                 <div><span className="text-mute">Company</span><p className="text-ink font-medium">{orderResult.companyName}</p></div>
                 <div><span className="text-mute">Seats</span><p className="text-ink font-medium">{orderResult.seatCount}</p></div>
                 <div><span className="text-mute">Total</span><p className="text-ink font-medium">{formatINR(orderResult.total)}</p></div>

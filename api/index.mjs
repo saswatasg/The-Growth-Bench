@@ -1,7 +1,35 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
+
+// Razorpay config — keys from environment variables
+const RAZORPAY_KEY_ID = process.env.RAZORPAY_KEY_ID;
+const RAZORPAY_KEY_SECRET = process.env.RAZORPAY_KEY_SECRET;
+const RAZORPAY_CONFIGURED = Boolean(RAZORPAY_KEY_ID && RAZORPAY_KEY_SECRET);
+
+// Pricing constants (must match src/lib/training.js)
+const BASE_PRICE_PAISE = 349900; // ₹3,499
+const MAX_SELF_SERVE_SEATS = 8;
+const DISCOUNT_CODES = [
+  { code: 'CLAUDE500', type: 'flat', value: 50000 }, // ₹500 off per person
+];
+
+function deriveAmount(seatCount, discountCode) {
+  const subtotal = BASE_PRICE_PAISE * seatCount;
+  const dc = discountCode?.trim().toUpperCase();
+  if (dc) {
+    const found = DISCOUNT_CODES.find(d => d.code === dc);
+    if (found) {
+      const discount = found.type === 'flat'
+        ? found.value * seatCount
+        : Math.round(subtotal * found.value / 100);
+      return subtotal - discount;
+    }
+  }
+  return subtotal;
+}
 
 // Fail closed: no committed fallbacks. Set JWT_SECRET + ADMIN_PASSWORD
 // as environment variables (see .env.example). Without them the admin
@@ -157,9 +185,74 @@ export default async function handler(req, res) {
       if (apiPath.startsWith('/training/certificates')) {
         const user = getUser();
         if (!user) return json(res, 401, { error: 'Unauthorized' });
-        // CRUD operations are handled client-side via Supabase
-        // This endpoint can be extended for server-side operations if needed
         return json(res, 200, { message: 'Use client-side Supabase for certificate operations' });
+      }
+
+      // ── Razorpay Payment API ─────────────────────────────────────
+      // Public: Create Razorpay order
+      if (apiPath === '/razorpay/order' && req.method === 'POST') {
+        if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });
+
+        const body = await parseBody(req);
+        const { seatCount, discountCode } = body;
+
+        if (!seatCount || seatCount < 1 || seatCount > MAX_SELF_SERVE_SEATS) {
+          return json(res, 400, { error: 'Invalid seat count (1-8)' });
+        }
+
+        const amount = deriveAmount(seatCount, discountCode);
+
+        try {
+          // Dynamic import of Razorpay SDK
+          const { default: Razorpay } = await import('razorpay');
+          const razorpay = new Razorpay({
+            key_id: RAZORPAY_KEY_ID,
+            key_secret: RAZORPAY_KEY_SECRET,
+          });
+
+          const order = await razorpay.orders.create({
+            amount,
+            currency: 'INR',
+            receipt: `TGB-${Date.now()}`,
+            notes: {
+              seatCount: String(seatCount),
+              discountCode: discountCode || 'none',
+            },
+          });
+
+          return json(res, 200, {
+            orderId: order.id,
+            amount: order.amount,
+            currency: order.currency,
+          });
+        } catch (err) {
+          console.error('Razorpay order creation failed:', err);
+          return json(res, 500, { error: 'Failed to create order' });
+        }
+      }
+
+      // Public: Verify Razorpay payment
+      if (apiPath === '/razorpay/verify' && req.method === 'POST') {
+        if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });
+
+        const body = await parseBody(req);
+        const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = body;
+
+        if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+          return json(res, 400, { error: 'Missing payment verification fields' });
+        }
+
+        // HMAC-SHA256 verification
+        const generated = crypto
+          .createHmac('sha256', RAZORPAY_KEY_SECRET)
+          .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+          .digest('hex');
+
+        if (generated !== razorpay_signature) {
+          return json(res, 400, { verified: false, error: 'Invalid signature' });
+        }
+
+        return json(res, 200, { verified: true, paymentId: razorpay_payment_id });
       }
 
       return json(res, 404, { error: 'Not found' });

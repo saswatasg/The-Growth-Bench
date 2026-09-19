@@ -14,7 +14,9 @@ CREATE TABLE IF NOT EXISTS enrollments (
   discount_code TEXT,
   discount_amount_paise INTEGER DEFAULT 0,
   total_paise INTEGER NOT NULL,
-  status TEXT DEFAULT 'confirmed' CHECK (status IN ('pending','confirmed','cancelled')),
+  razorpay_order_id TEXT,
+  razorpay_payment_id TEXT,
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending','paid','payment_failed','confirmed','cancelled')),
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
