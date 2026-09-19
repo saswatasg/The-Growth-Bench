@@ -111,6 +111,7 @@ const Assessment = () => {
             candidate_name: participantName,
             company_name: 'Self-enrolled',
             completion_date: new Date().toISOString().split('T')[0],
+            score: scoreResult.percentage,
             issued_by: 'system',
           });
           await addAuditLog({

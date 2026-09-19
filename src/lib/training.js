@@ -2,7 +2,7 @@
 
 export const BASE_PRICE_PAISE = 349900; // ₹3,499 in paise
 export const MAX_SELF_SERVE_SEATS = 8;
-export const PASS_THRESHOLD = 80; // percent
+export const PASS_THRESHOLD = 60; // percent
 export const MAX_ATTEMPTS = 2;
 export const TIMER_MINUTES = 40;
 export const QUESTION_COUNT = 20;

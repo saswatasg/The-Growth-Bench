@@ -136,6 +136,12 @@ const CertificateVerify = () => {
                       <p className="text-body-md text-ink mt-1 font-mono">{certData.cert_id}</p>
                     </div>
                   </div>
+                  {certData.score && (
+                    <div>
+                      <span className="text-label-xs text-mute uppercase tracking-wider">Assessment Score</span>
+                      <p className="text-heading-md text-ink mt-1">{certData.score}%</p>
+                    </div>
+                  )}
                   <div>
                     <span className="text-label-xs text-mute uppercase tracking-wider">Status</span>
                     <p className="text-body-md text-success font-medium mt-1">Active</p>

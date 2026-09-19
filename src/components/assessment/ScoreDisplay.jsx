@@ -22,20 +22,13 @@ const ScoreDisplay = ({ result, attemptNumber, maxAttempts, onRetry, onFinish })
         {passed ? 'Passed' : 'Not Passed'}
       </h2>
 
-      <div className="mt-6 p-6 bg-soft-cloud border border-hairline-soft">
-        <div className="grid grid-cols-3 gap-4 text-center">
-          <div>
-            <div className="font-display text-heading-lg text-ink">{result.score}</div>
-            <p className="text-caption-sm text-mute">Score</p>
-          </div>
-          <div>
-            <div className="font-display text-heading-lg text-ink">{result.percentage}%</div>
-            <p className="text-caption-sm text-mute">Percentage</p>
-          </div>
-          <div>
-            <div className="font-display text-heading-lg text-ink">{PASS_THRESHOLD}%</div>
-            <p className="text-caption-sm text-mute">Required</p>
-          </div>
+      {/* Score display */}
+      <div className="mt-6 p-8 bg-soft-cloud border border-hairline-soft">
+        <p className="text-label-xs text-mute uppercase tracking-wider mb-2">Your Score</p>
+        <div className="font-display text-display-lg text-ink">{result.percentage}%</div>
+        <p className="text-body-sm text-mute mt-2">{result.score} out of {result.totalPossible} points</p>
+        <div className="mt-4 pt-4 border-t border-hairline-soft">
+          <p className="text-caption-sm text-mute">Passing threshold: {PASS_THRESHOLD}%</p>
         </div>
       </div>
 
@@ -44,7 +37,7 @@ const ScoreDisplay = ({ result, attemptNumber, maxAttempts, onRetry, onFinish })
           <Award className="w-8 h-8 text-success mx-auto mb-3" />
           <p className="text-body-md text-ink font-medium">Congratulations!</p>
           <p className="text-body-sm text-mute mt-2">
-            Your certificate is being generated and will be emailed to you shortly.
+            Your certificate with your score of {result.percentage}% is being generated and will be emailed to you shortly.
           </p>
         </div>
       )}
@@ -65,8 +58,8 @@ const ScoreDisplay = ({ result, attemptNumber, maxAttempts, onRetry, onFinish })
           <p className="text-body-md text-ink">
             You've used all {maxAttempts} attempts. Contact us to discuss next steps.
           </p>
-          <a href="mailto:hello@thegrowthbench.com" className="text-body-sm text-ink underline mt-2 inline-block">
-            hello@thegrowthbench.com
+          <a href="mailto:saswatasg@gmail.com" className="text-body-sm text-ink underline mt-2 inline-block">
+            saswatasg@gmail.com
           </a>
         </div>
       )}

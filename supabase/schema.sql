@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS certificates (
   candidate_name TEXT NOT NULL,
   company_name TEXT NOT NULL,
   course_name TEXT DEFAULT 'Claude Practitioner Training',
+  score INTEGER, -- assessment score percentage
   completion_date DATE NOT NULL,
   status TEXT DEFAULT 'active' CHECK (status IN ('active','revoked')),
   issued_at TIMESTAMPTZ DEFAULT now(),
