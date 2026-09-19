@@ -99,8 +99,8 @@ export async function createOrder(enrollmentData) {
   };
 }
 
-// Web3Forms email notification
-export async function sendConfirmationEmail(orderData) {
+// Web3Forms email notification — sends to company with all details
+export async function sendEnrollmentToCompany(orderData) {
   const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY'; // Replace with actual key
   try {
     await fetch('https://api.web3forms.com/submit', {
@@ -108,19 +108,44 @@ export async function sendConfirmationEmail(orderData) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         access_key: WEB3FORMS_KEY,
-        subject: `New Training Enrollment: ${orderData.companyName}`,
+        subject: `New Training Enrollment: ${orderData.companyName} (${orderData.seatCount} seats)`,
         from_name: 'The Growth Bench Training',
+        to: 'saswatasg@gmail.com',
         company: orderData.companyName,
-        contact: orderData.contactPerson,
-        email: orderData.contactEmail,
-        phone: orderData.contactPhone,
+        contact_person: orderData.contactPerson,
+        contact_email: orderData.contactEmail,
+        contact_phone: orderData.contactPhone || 'Not provided',
+        company_size: orderData.companySize || 'Not specified',
+        preferred_delivery: orderData.preferredDelivery || 'Virtual',
         seats: orderData.seatCount,
+        discount_code: orderData.discountCode || 'None',
         total: formatINR(orderData.total),
-        roster: orderData.roster?.map(r => `${r.name} <${r.email}>`).join(', '),
+        roster: orderData.roster?.filter(r => r.name && r.email).map(r => `${r.name} <${r.email}>`).join(', '),
       }),
     });
   } catch (e) {
-    console.error('Email notification failed:', e);
+    console.error('Company email notification failed:', e);
+  }
+}
+
+// Web3Forms email notification — sends confirmation to registrant
+export async function sendConfirmationToRegistrant(orderData) {
+  const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_KEY'; // Replace with actual key
+  try {
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `We received your Claude Practitioner Training enrollment`,
+        from_name: 'The Growth Bench',
+        to: orderData.contactEmail,
+        reply_to: 'saswatasg@gmail.com',
+        message: `Hi ${orderData.contactPerson},\n\nThank you for enrolling your team in the Claude Practitioner Training program.\n\nWe've received your registration for ${orderData.seatCount} seat(s) from ${orderData.companyName}.\n\nHere's what happens next:\n- We'll review your enrollment and confirm within 72 hours\n- You'll receive a calendar invite with session links and materials\n- Each participant will get their assessment link after Day 3\n\nOrder ID: ${orderData.orderId}\nTotal: ${formatINR(orderData.total)}\n\nIf you have any questions, reply to this email or WhatsApp us at +91 9836312162.\n\nBest regards,\nThe Growth Bench`,
+      }),
+    });
+  } catch (e) {
+    console.error('Registrant confirmation email failed:', e);
   }
 }
 

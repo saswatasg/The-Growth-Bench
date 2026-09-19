@@ -1,13 +1,9 @@
 import React from 'react';
 
-const EDGE_THRESHOLD_PERCENT = 2; // 2% from any edge
-const MOUSE_CHECK_INTERVAL_MS = 100;
+const EDGE_THRESHOLD_PERCENT = 2;
 
-const AntiCheatOverlay = ({ children, participantName = '', onExitViolation }) => {
+const AntiCheatOverlay = ({ children, participantName = '', onViolation }) => {
   const containerRef = React.useRef(null);
-  const violationCountRef = React.useRef(0);
-  const lastViolationRef = React.useRef(0);
-  const warnedRef = React.useRef(false);
 
   // Block copy/paste/contextmenu
   React.useEffect(() => {
@@ -26,7 +22,7 @@ const AntiCheatOverlay = ({ children, participantName = '', onExitViolation }) =
     return () => handlers.forEach(([event, handler]) => el.removeEventListener(event, handler));
   }, []);
 
-  // Mouse proximity detection — warns when cursor approaches screen edges
+  // Mouse proximity detection
   React.useEffect(() => {
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
@@ -42,69 +38,36 @@ const AntiCheatOverlay = ({ children, participantName = '', onExitViolation }) =
         clientY >= innerHeight - thresholdY;
 
       if (nearEdge) {
-        const now = Date.now();
-        // Debounce: only count once per second
-        if (now - lastViolationRef.current < 1000) return;
-        lastViolationRef.current = now;
-
-        violationCountRef.current += 1;
-        if (violationCountRef.current >= 2) {
-          onExitViolation?.('ended');
-        } else if (!warnedRef.current) {
-          warnedRef.current = true;
-          onExitViolation?.('warning');
-        }
+        onViolation?.('mouse_edge');
       }
     };
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [onExitViolation]);
+  }, [onViolation]);
 
-  // Window blur detection — multi-monitor: cursor left browser window
+  // Window blur detection (multi-monitor)
   React.useEffect(() => {
     const handleBlur = () => {
-      // Only count if the blur is from the window losing focus (not an iframe)
       if (document.activeElement?.tagName === 'IFRAME') return;
-
-      const now = Date.now();
-      if (now - lastViolationRef.current < 2000) return;
-      lastViolationRef.current = now;
-
-      violationCountRef.current += 1;
-      if (violationCountRef.current >= 2) {
-        onExitViolation?.('ended');
-      } else if (!warnedRef.current) {
-        warnedRef.current = true;
-        onExitViolation?.('warning');
-      }
+      onViolation?.('window_blur');
     };
 
     window.addEventListener('blur', handleBlur);
     return () => window.removeEventListener('blur', handleBlur);
-  }, [onExitViolation]);
+  }, [onViolation]);
 
   // Tab visibility detection
   React.useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        const now = Date.now();
-        if (now - lastViolationRef.current < 2000) return;
-        lastViolationRef.current = now;
-
-        violationCountRef.current += 1;
-        if (violationCountRef.current >= 2) {
-          onExitViolation?.('ended');
-        } else if (!warnedRef.current) {
-          warnedRef.current = true;
-          onExitViolation?.('warning');
-        }
+        onViolation?.('tab_switch');
       }
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
     return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
-  }, [onExitViolation]);
+  }, [onViolation]);
 
   return (
     <div

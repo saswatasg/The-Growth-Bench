@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import PageMeta from '@/components/PageMeta';
 import PricingStepper from '@/components/training/PricingStepper';
 import RosterTable from '@/components/training/RosterTable';
-import { calculatePricing, validateDiscountCode, validateRoster, createOrder, formatINR, MAX_SELF_SERVE_SEATS } from '@/lib/training';
+import { calculatePricing, validateDiscountCode, validateRoster, createOrder, formatINR, MAX_SELF_SERVE_SEATS, sendEnrollmentToCompany, sendConfirmationToRegistrant } from '@/lib/training';
 import { createEnrollment, createRosterEntries } from '@/lib/supabase';
 import { fadeUp } from '@/lib/motion';
 
@@ -114,6 +114,10 @@ const TrainingEnroll = () => {
         console.warn('Supabase storage failed (mock mode):', e);
       }
 
+      // Send emails — details to company, confirmation to registrant
+      sendEnrollmentToCompany(order).catch(() => {});
+      sendConfirmationToRegistrant(order).catch(() => {});
+
       setOrderResult(order);
     } catch (e) {
       console.error('Order failed:', e);
@@ -131,9 +135,12 @@ const TrainingEnroll = () => {
             <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 text-success" />
             </div>
-            <h1 className="font-display text-heading-xl md:text-display-md text-ink leading-none">Enrollment confirmed</h1>
+            <h1 className="font-display text-heading-xl md:text-display-md text-ink leading-none">Registration received</h1>
             <p className="text-body-lg text-mute mt-4">
-              Thank you, {orderResult.contactPerson}. Your team of {orderResult.seatCount} is enrolled.
+              Thank you, {orderResult.contactPerson}. We've received your enrollment for {orderResult.seatCount} {orderResult.seatCount === 1 ? 'seat' : 'seats'}.
+            </p>
+            <p className="text-body-md text-mute mt-2">
+              We'll review your registration and confirm within 72 hours. Check your email ({orderResult.contactEmail}) for a confirmation summary.
             </p>
             <div className="mt-8 p-6 bg-soft-cloud border border-hairline-soft text-left">
               <div className="grid grid-cols-2 gap-4 text-body-sm">
@@ -143,7 +150,7 @@ const TrainingEnroll = () => {
                 <div><span className="text-mute">Total</span><p className="text-ink font-medium">{formatINR(orderResult.total)}</p></div>
               </div>
             </div>
-            <p className="text-body-sm text-mute mt-6">A confirmation email is on its way to {orderResult.contactEmail}.</p>
+            <p className="text-body-sm text-mute mt-6">A confirmation summary has been sent to {orderResult.contactEmail}. We'll confirm your enrollment within 72 hours.</p>
 
             <div className="mt-8 p-6 bg-canvas border border-hairline-soft text-left">
               <h3 className="text-heading-md text-ink mb-4">What happens next</h3>
