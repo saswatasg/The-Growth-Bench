@@ -38,26 +38,45 @@ export function loadRazorpayScript() {
 
 // Fetch Razorpay key_id from server
 export async function getRazorpayKeyId() {
-  const res = await fetch(`${API_URL}/api/razorpay/config`);
-  if (!res.ok) throw new Error('Failed to get payment config');
+  const url = `${API_URL}/api/razorpay/config`;
+  console.log('Fetching Razorpay config from:', url);
+  
+  const res = await fetch(url);
+  console.log('Config response status:', res.status);
+  
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    console.error('Config fetch failed:', res.status, text);
+    throw new Error(`Config failed (${res.status}): ${text || res.statusText}`);
+  }
+  
   const data = await res.json();
+  console.log('Config received:', data);
   return data.keyId;
 }
 
 // Create order via server
 export async function createRazorpayOrder({ seatCount, discountCode }) {
-  const res = await fetch(`${API_URL}/api/razorpay/order`, {
+  const url = `${API_URL}/api/razorpay/order`;
+  console.log('Creating order at:', url);
+  
+  const res = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ seatCount, discountCode: discountCode || '' }),
   });
 
+  console.log('Order response status:', res.status);
+  
   if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error || 'Failed to create order');
+    const text = await res.text().catch(() => '');
+    console.error('Order creation failed:', res.status, text);
+    throw new Error(`Order failed (${res.status}): ${text || res.statusText}`);
   }
 
-  return res.json(); // { orderId, amount, currency }
+  const data = await res.json();
+  console.log('Order created:', data);
+  return data;
 }
 
 // Verify payment via server
