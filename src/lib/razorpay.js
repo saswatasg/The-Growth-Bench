@@ -38,58 +38,33 @@ export function loadRazorpayScript() {
 
 // Fetch Razorpay key_id from server
 export async function getRazorpayKeyId() {
-  const url = `${API_URL}/api/razorpay/config`;
-  console.log('Fetching Razorpay config from:', url);
-  
-  const res = await fetch(url);
-  console.log('Config response status:', res.status);
-  
-  if (!res.ok) {
-    const text = await res.text().catch(() => '');
-    console.error('Config fetch failed:', res.status, text);
-    throw new Error(`Config failed (${res.status}): ${text || res.statusText}`);
-  }
-  
+  const res = await fetch(`${API_URL}/api/razorpay/config`);
+  if (!res.ok) throw new Error('Failed to get payment config');
   const data = await res.json();
-  console.log('Config received:', data);
   return data.keyId;
 }
 
 // Create order via server
 export async function createRazorpayOrder({ seatCount, discountCode }) {
-  const url = `${API_URL}/api/razorpay/order`;
-  console.log('Creating order at:', url);
-  
-  const res = await fetch(url, {
+  const res = await fetch(`${API_URL}/api/razorpay/order`, {
     method: 'POST',
-    headers: { 
-      'Content-Type': 'text/plain',
-      'X-Requested-With': 'XMLHttpRequest',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ seatCount, discountCode: discountCode || '' }),
   });
 
-  console.log('Order response status:', res.status);
-  
   if (!res.ok) {
     const text = await res.text().catch(() => '');
-    console.error('Order creation failed:', res.status, text);
     throw new Error(`Order failed (${res.status}): ${text || res.statusText}`);
   }
 
-  const data = await res.json();
-  console.log('Order created:', data);
-  return data;
+  return res.json();
 }
 
 // Verify payment via server
 export async function verifyRazorpayPayment({ razorpay_order_id, razorpay_payment_id, razorpay_signature }) {
   const res = await fetch(`${API_URL}/api/razorpay/verify`, {
     method: 'POST',
-    headers: { 
-      'Content-Type': 'text/plain',
-      'X-Requested-With': 'XMLHttpRequest',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ razorpay_order_id, razorpay_payment_id, razorpay_signature }),
   });
 
@@ -98,7 +73,7 @@ export async function verifyRazorpayPayment({ razorpay_order_id, razorpay_paymen
     throw new Error(err.error || 'Payment verification failed');
   }
 
-  return res.json(); // { verified: true, paymentId }
+  return res.json();
 }
 
 // Open Razorpay checkout popup
