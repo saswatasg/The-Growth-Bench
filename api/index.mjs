@@ -118,6 +118,11 @@ export default async function handler(req, res) {
 
     // ── Public routes (no auth required) ───────────────────────────
 
+    // Public: Razorpay config (key_id only — safe to expose)
+    if (apiPath === '/razorpay/config' && req.method === 'GET') {
+      return json(res, 200, { keyId: RAZORPAY_KEY_ID || '' });
+    }
+
     // Public: Create Razorpay order
     if (apiPath === '/razorpay/order' && req.method === 'POST') {
       if (!RAZORPAY_CONFIGURED) return json(res, 503, { error: 'Payment not configured' });

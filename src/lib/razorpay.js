@@ -1,9 +1,8 @@
 // Razorpay client-side utilities
-// key_id is safe to expose — it's a public identifier used by Checkout.js
+// key_id is fetched from server at runtime (never in client bundle)
 // key_secret NEVER leaves the server
 
-const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID || '';
-const API_URL = import.meta.env.VITE_API_URL || '';
+const API_URL = '';
 
 // Load Razorpay Checkout.js script dynamically (singleton)
 let razorpayPromise = null;
@@ -35,6 +34,14 @@ export function loadRazorpayScript() {
   });
 
   return razorpayPromise;
+}
+
+// Fetch Razorpay key_id from server
+export async function getRazorpayKeyId() {
+  const res = await fetch(`${API_URL}/api/razorpay/config`);
+  if (!res.ok) throw new Error('Failed to get payment config');
+  const data = await res.json();
+  return data.keyId;
 }
 
 // Create order via server
@@ -70,10 +77,10 @@ export async function verifyRazorpayPayment({ razorpay_order_id, razorpay_paymen
 }
 
 // Open Razorpay checkout popup
-export function openRazorpayCheckout({ orderId, amount, currency, contactPerson, contactEmail, contactPhone }) {
+export function openRazorpayCheckout({ keyId, orderId, amount, currency, contactPerson, contactEmail, contactPhone }) {
   return new Promise((resolve, reject) => {
     const options = {
-      key: RAZORPAY_KEY_ID,
+      key: keyId,
       amount,
       currency,
       name: 'The Growth Bench',
@@ -104,4 +111,3 @@ export function openRazorpayCheckout({ orderId, amount, currency, contactPerson,
     rzp.open();
   });
 }
-// force rebuild Mon Sep 21 13:23:08 IST 2026

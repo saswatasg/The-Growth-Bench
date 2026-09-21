@@ -8,7 +8,7 @@ import PricingStepper from '@/components/training/PricingStepper';
 import RosterTable from '@/components/training/RosterTable';
 import { calculatePricing, validateDiscountCode, validateRoster, formatINR, MAX_SELF_SERVE_SEATS, sendEnrollmentToCompany, sendConfirmationToRegistrant } from '@/lib/training';
 import { createEnrollment, createRosterEntries } from '@/lib/supabase';
-import { loadRazorpayScript, createRazorpayOrder, verifyRazorpayPayment, openRazorpayCheckout } from '@/lib/razorpay';
+import { loadRazorpayScript, getRazorpayKeyId, createRazorpayOrder, verifyRazorpayPayment, openRazorpayCheckout } from '@/lib/razorpay';
 import { fadeUp } from '@/lib/motion';
 
 const COMPANY_SIZES = ['1–10', '11–50', '51–200', '201–500', '500+'];
@@ -80,8 +80,11 @@ const TrainingEnroll = () => {
 
     setSubmitting(true);
     try {
-      // Step 1: Load Razorpay Checkout.js
-      await loadRazorpayScript();
+      // Step 1: Load Razorpay Checkout.js + fetch key
+      const [, keyId] = await Promise.all([
+        loadRazorpayScript(),
+        getRazorpayKeyId(),
+      ]);
 
       // Step 2: Create order on server
       const orderData = await createRazorpayOrder({
@@ -91,6 +94,7 @@ const TrainingEnroll = () => {
 
       // Step 3: Open Razorpay checkout popup
       const paymentResult = await openRazorpayCheckout({
+        keyId,
         orderId: orderData.orderId,
         amount: orderData.amount,
         currency: orderData.currency,
