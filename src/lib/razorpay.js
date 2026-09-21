@@ -62,7 +62,10 @@ export async function createRazorpayOrder({ seatCount, discountCode }) {
   
   const res = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'text/plain',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
     body: JSON.stringify({ seatCount, discountCode: discountCode || '' }),
   });
 
@@ -83,7 +86,10 @@ export async function createRazorpayOrder({ seatCount, discountCode }) {
 export async function verifyRazorpayPayment({ razorpay_order_id, razorpay_payment_id, razorpay_signature }) {
   const res = await fetch(`${API_URL}/api/razorpay/verify`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 
+      'Content-Type': 'text/plain',
+      'X-Requested-With': 'XMLHttpRequest',
+    },
     body: JSON.stringify({ razorpay_order_id, razorpay_payment_id, razorpay_signature }),
   });
 
