@@ -80,28 +80,58 @@ const TrainingEnroll = () => {
 
     setSubmitting(true);
     try {
-      // Step 1: Load Razorpay Checkout.js + fetch key
-      const [, keyId] = await Promise.all([
-        loadRazorpayScript(),
-        getRazorpayKeyId(),
-      ]);
+      // Step 1: Load Razorpay Checkout.js
+      try {
+        await loadRazorpayScript();
+      } catch (e) {
+        console.error('Failed to load Razorpay:', e);
+        throw new Error('Could not load payment system. Please disable ad blockers and try again.');
+      }
 
-      // Step 2: Create order on server
-      const orderData = await createRazorpayOrder({
-        seatCount,
-        discountCode: pricing.discountCode || '',
-      });
+      // Step 2: Fetch key from server
+      let keyId;
+      try {
+        keyId = await getRazorpayKeyId();
+      } catch (e) {
+        console.error('Failed to get key:', e);
+        throw new Error('Payment system not available. Please try again.');
+      }
 
-      // Step 3: Open Razorpay checkout popup
-      const paymentResult = await openRazorpayCheckout({
-        keyId,
-        orderId: orderData.orderId,
-        amount: orderData.amount,
-        currency: orderData.currency,
-        contactPerson: form.contactPerson,
-        contactEmail: form.contactEmail,
-        contactPhone: form.contactPhone,
-      });
+      if (!keyId) {
+        throw new Error('Payment system not configured. Please contact support.');
+      }
+
+      // Step 3: Create order on server
+      let orderData;
+      try {
+        orderData = await createRazorpayOrder({
+          seatCount,
+          discountCode: pricing.discountCode || '',
+        });
+      } catch (e) {
+        console.error('Failed to create order:', e);
+        throw new Error('Could not create order. Please try again.');
+      }
+
+      // Step 4: Open Razorpay checkout popup
+      try {
+        const paymentResult = await openRazorpayCheckout({
+          keyId,
+          orderId: orderData.orderId,
+          amount: orderData.amount,
+          currency: orderData.currency,
+          contactPerson: form.contactPerson,
+          contactEmail: form.contactEmail,
+          contactPhone: form.contactPhone,
+        });
+      } catch (e) {
+        if (e.message === 'PAYMENT_CANCELLED') {
+          setSubmitting(false);
+          return;
+        }
+        console.error('Step 3 failed:', e);
+        throw new Error(e.message || 'Payment failed. Please try again.');
+      }
 
       // Step 4: Verify payment on server
       const verification = await verifyRazorpayPayment({
